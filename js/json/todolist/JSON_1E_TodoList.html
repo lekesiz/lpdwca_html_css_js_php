@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List JSON - Mikail Lekesiz</title>
+    <style>
+        /* 
+         * To-Do-List avec données JSON
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         * Activité JSON Etape 1E
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .section h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .json-display {
+            background: #2c3e50;
+            color: #2ecc71;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .badge-critique { background: #e74c3c; color: white; }
+        .badge-important { background: #e67e22; color: white; }
+        .badge-moyen { background: #f39c12; color: white; }
+        .badge-faible { background: #95a5a6; color: white; }
+        
+        .statut-en-cours { color: #3498db; font-weight: bold; }
+        .statut-terminee { color: #2ecc71; font-weight: bold; }
+        .statut-planifiee { color: #95a5a6; font-weight: bold; }
+    </style>
+    <script>
+        /**
+         * To-Do-List avec données JSON
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         * Université de Strasbourg
+         * 
+         * Activité JSON - Etapes 1A à 1E
+         */
+        
+        // Etape 1A: Structure d'une tâche
+        let tacheExemple = {"idTache":"1","libelle":"Finaliser le projet LP DWCA","description":"Compléter tous les exercices HTML, CSS, JavaScript et PHP pour la formation","dateCreation":"2025-10-09","dateFinalisation":"2025-12-15","statut":"En cours","auteur":"Mikail Lekesiz"};
+        
+        // Etape 1B: Paramètre Priorité
+        let listePriorites = [
+            {"idPriorite":"1","priorite":"Critique"},
+            {"idPriorite":"2","priorite":"Très important"},
+            {"idPriorite":"3","priorite":"Important"},
+            {"idPriorite":"4","priorite":"Moyen"},
+            {"idPriorite":"5","priorite":"Peu important"},
+            {"idPriorite":"6","priorite":"Non urgent"}
+        ];
+        
+        // Etape 1C: Autres paramètres
+        
+        // Paramètre 1: Complexité
+        let listeComplexites = [
+            {"idComplexite":"1","complexite":"Très simple"},
+            {"idComplexite":"2","complexite":"Simple"},
+            {"idComplexite":"3","complexite":"Moyenne"},
+            {"idComplexite":"4","complexite":"Complexe"},
+            {"idComplexite":"5","complexite":"Très complexe"}
+        ];
+        
+        // Paramètre 2: Catégorie
+        let listeCategories = [
+            {"idCategorie":"1","categorie":"Développement Web"},
+            {"idCategorie":"2","categorie":"DevOps & Cloud"},
+            {"idCategorie":"3","categorie":"Intelligence Artificielle"},
+            {"idCategorie":"4","categorie":"Formation"},
+            {"idCategorie":"5","categorie":"Documentation"},
+            {"idCategorie":"6","categorie":"Réunion"},
+            {"idCategorie":"7","categorie":"Personnel"}
+        ];
+        
+        // Paramètre 3: Durée estimée
+        let listeDurees = [
+            {"idDuree":"1","duree":"Moins de 30 minutes"},
+            {"idDuree":"2","duree":"30 minutes à 1 heure"},
+            {"idDuree":"3","duree":"1 à 2 heures"},
+            {"idDuree":"4","duree":"2 à 4 heures"},
+            {"idDuree":"5","duree":"4 à 8 heures"},
+            {"idDuree":"6","duree":"Plus d'une journée"},
+            {"idDuree":"7","duree":"Plusieurs jours"}
+        ];
+        
+        // Etape 1D: Tâches complètes avec identifiants des paramètres
+        let listeTaches = [
+            {
+                "idTache":"1",
+                "libelle":"Finaliser le projet LP DWCA",
+                "description":"Compléter tous les exercices HTML, CSS, JavaScript et PHP pour la formation",
+                "dateCreation":"2025-10-09",
+                "dateFinalisation":"2025-12-15",
+                "statut":"En cours",
+                "auteur":"Mikail Lekesiz",
+                "idPriorite":"2",
+                "idComplexite":"4",
+                "idCategorie":"1",
+                "idDuree":"7"
+            },
+            {
+                "idTache":"2",
+                "libelle":"Déployer l'application Netz Informatique",
+                "description":"Mettre en production le nouveau site web avec toutes les fonctionnalités IA",
+                "dateCreation":"2025-10-08",
+                "dateFinalisation":"2025-10-20",
+                "statut":"En cours",
+                "auteur":"Mikail Lekesiz",
+                "idPriorite":"1",
+                "idComplexite":"5",
+                "idCategorie":"2",
+                "idDuree":"6"
+            },
+            {
+                "idTache":"3",
+                "libelle":"Préparer la formation QUALIOPI",
+                "description":"Créer les supports de cours pour la prochaine session de formation",
+                "dateCreation":"2025-10-07",
+                "dateFinalisation":"2025-11-01",
+                "statut":"Planifiée",
+                "auteur":"Mikail Lekesiz",
+                "idPriorite":"3",
+                "idComplexite":"3",
+                "idCategorie":"4",
+                "idDuree":"5"
+            },
+            {
+                "idTache":"4",
+                "libelle":"Réunion d'équipe hebdomadaire",
+                "description":"Point hebdomadaire sur l'avancement des projets en cours",
+                "dateCreation":"2025-10-09",
+                "dateFinalisation":"2025-10-09",
+                "statut":"Terminée",
+                "auteur":"Mikail Lekesiz",
+                "idPriorite":"4",
+                "idComplexite":"1",
+                "idCategorie":"6",
+                "idDuree":"2"
+            }
+        ];
+        
+        // Affichage dans la console
+        console.log("=".repeat(60));
+        console.log("TO-DO-LIST JSON - LP DWCA 2025");
+        console.log("Auteur: Mikail Lekesiz");
+        console.log("=".repeat(60));
+        
+        console.log("\n--- Etape 1A: Exemple de tâche ---");
+        console.log(tacheExemple);
+        
+        console.log("\n--- Etape 1B: Liste des priorités ---");
+        console.log(listePriorites);
+        
+        console.log("\n--- Etape 1C: Paramètre Complexité ---");
+        console.log(listeComplexites);
+        
+        console.log("\n--- Etape 1C: Paramètre Catégorie ---");
+        console.log(listeCategories);
+        
+        console.log("\n--- Etape 1C: Paramètre Durée estimée ---");
+        console.log(listeDurees);
+        
+        console.log("\n--- Etape 1D: Liste complète des tâches ---");
+        console.log(listeTaches);
+        
+        // Fonction pour obtenir la valeur d'un paramètre par son ID
+        function getPriorite(id) {
+            return listePriorites.find(p => p.idPriorite === id)?.priorite || "N/A";
+        }
+        
+        function getComplexite(id) {
+            return listeComplexites.find(c => c.idComplexite === id)?.complexite || "N/A";
+        }
+        
+        function getCategorie(id) {
+            return listeCategories.find(c => c.idCategorie === id)?.categorie || "N/A";
+        }
+        
+        function getDuree(id) {
+            return listeDurees.find(d => d.idDuree === id)?.duree || "N/A";
+        }
+        
+        // Fonction pour afficher les données dans le HTML
+        window.addEventListener('DOMContentLoaded', function() {
+            // Afficher les tâches dans un tableau
+            let tableHTML = '<table><thead><tr>';
+            tableHTML += '<th>ID</th><th>Libellé</th><th>Priorité</th><th>Catégorie</th>';
+            tableHTML += '<th>Complexité</th><th>Durée</th><th>Statut</th><th>Date fin</th>';
+            tableHTML += '</tr></thead><tbody>';
+            
+            listeTaches.forEach(tache => {
+                let prioriteClass = '';
+                let prioriteId = parseInt(tache.idPriorite);
+                if (prioriteId <= 2) prioriteClass = 'badge-critique';
+                else if (prioriteId === 3) prioriteClass = 'badge-important';
+                else if (prioriteId === 4) prioriteClass = 'badge-moyen';
+                else prioriteClass = 'badge-faible';
+                
+                let statutClass = '';
+                if (tache.statut === 'En cours') statutClass = 'statut-en-cours';
+                else if (tache.statut === 'Terminée') statutClass = 'statut-terminee';
+                else statutClass = 'statut-planifiee';
+                
+                tableHTML += '<tr>';
+                tableHTML += `<td>${tache.idTache}</td>`;
+                tableHTML += `<td><strong>${tache.libelle}</strong><br><small>${tache.description}</small></td>`;
+                tableHTML += `<td><span class="badge ${prioriteClass}">${getPriorite(tache.idPriorite)}</span></td>`;
+                tableHTML += `<td>${getCategorie(tache.idCategorie)}</td>`;
+                tableHTML += `<td>${getComplexite(tache.idComplexite)}</td>`;
+                tableHTML += `<td>${getDuree(tache.idDuree)}</td>`;
+                tableHTML += `<td class="${statutClass}">${tache.statut}</td>`;
+                tableHTML += `<td>${tache.dateFinalisation}</td>`;
+                tableHTML += '</tr>';
+            });
+            
+            tableHTML += '</tbody></table>';
+            document.getElementById('tachesTable').innerHTML = tableHTML;
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 To-Do-List avec JSON</h1>
+        <p class="subtitle">Activité JSON Etapes 1A à 1E - Par Mikail Lekesiz (LP DWCA 2025)</p>
+        
+        <!-- Section Etape 1A -->
+        <div class="section">
+            <h2>Etape 1A: Structure d'une Tâche</h2>
+            <div class="json-display">{"idTache":"1","libelle":"Finaliser le projet LP DWCA","description":"Compléter tous les exercices HTML, CSS, JavaScript et PHP pour la formation","dateCreation":"2025-10-09","dateFinalisation":"2025-12-15","statut":"En cours","auteur":"Mikail Lekesiz"}</div>
+        </div>
+        
+        <!-- Section Etape 1B -->
+        <div class="section">
+            <h2>Etape 1B: Paramètre Priorité</h2>
+            <div class="json-display">[{"idPriorite":"1","priorite":"Critique"},{"idPriorite":"2","priorite":"Très important"},{"idPriorite":"3","priorite":"Important"},{"idPriorite":"4","priorite":"Moyen"},{"idPriorite":"5","priorite":"Peu important"},{"idPriorite":"6","priorite":"Non urgent"}]</div>
+        </div>
+        
+        <!-- Section Etape 1C -->
+        <div class="section">
+            <h2>Etape 1C: Autres Paramètres</h2>
+            
+            <h3 style="margin-top: 20px; color: #2c3e50;">Paramètre 1: Complexité</h3>
+            <div class="json-display">[{"idComplexite":"1","complexite":"Très simple"},{"idComplexite":"2","complexite":"Simple"},{"idComplexite":"3","complexite":"Moyenne"},{"idComplexite":"4","complexite":"Complexe"},{"idComplexite":"5","complexite":"Très complexe"}]</div>
+            
+            <h3 style="margin-top: 20px; color: #2c3e50;">Paramètre 2: Catégorie</h3>
+            <div class="json-display">[{"idCategorie":"1","categorie":"Développement Web"},{"idCategorie":"2","categorie":"DevOps & Cloud"},{"idCategorie":"3","categorie":"Intelligence Artificielle"},{"idCategorie":"4","categorie":"Formation"},{"idCategorie":"5","categorie":"Documentation"},{"idCategorie":"6","categorie":"Réunion"},{"idCategorie":"7","categorie":"Personnel"}]</div>
+            
+            <h3 style="margin-top: 20px; color: #2c3e50;">Paramètre 3: Durée Estimée</h3>
+            <div class="json-display">[{"idDuree":"1","duree":"Moins de 30 minutes"},{"idDuree":"2","duree":"30 minutes à 1 heure"},{"idDuree":"3","duree":"1 à 2 heures"},{"idDuree":"4","duree":"2 à 4 heures"},{"idDuree":"5","duree":"4 à 8 heures"},{"idDuree":"6","duree":"Plus d'une journée"},{"idDuree":"7","duree":"Plusieurs jours"}]</div>
+        </div>
+        
+        <!-- Section Etape 1D -->
+        <div class="section">
+            <h2>Etape 1D: Tâches Complètes (avec identifiants des paramètres)</h2>
+            <div class="json-display">[{"idTache":"1","libelle":"Finaliser le projet LP DWCA","description":"Compléter tous les exercices HTML, CSS, JavaScript et PHP pour la formation","dateCreation":"2025-10-09","dateFinalisation":"2025-12-15","statut":"En cours","auteur":"Mikail Lekesiz","idPriorite":"2","idComplexite":"4","idCategorie":"1","idDuree":"7"},{"idTache":"2","libelle":"Déployer l'application Netz Informatique","description":"Mettre en production le nouveau site web avec toutes les fonctionnalités IA","dateCreation":"2025-10-08","dateFinalisation":"2025-10-20","statut":"En cours","auteur":"Mikail Lekesiz","idPriorite":"1","idComplexite":"5","idCategorie":"2","idDuree":"6"},{"idTache":"3","libelle":"Préparer la formation QUALIOPI","description":"Créer les supports de cours pour la prochaine session de formation","dateCreation":"2025-10-07","dateFinalisation":"2025-11-01","statut":"Planifiée","auteur":"Mikail Lekesiz","idPriorite":"3","idComplexite":"3","idCategorie":"4","idDuree":"5"},{"idTache":"4","libelle":"Réunion d'équipe hebdomadaire","description":"Point hebdomadaire sur l'avancement des projets en cours","dateCreation":"2025-10-09","dateFinalisation":"2025-10-09","statut":"Terminée","auteur":"Mikail Lekesiz","idPriorite":"4","idComplexite":"1","idCategorie":"6","idDuree":"2"}]</div>
+        </div>
+        
+        <!-- Section Etape 1E: Affichage visuel -->
+        <div class="section">
+            <h2>Etape 1E: Affichage Visuel des Tâches</h2>
+            <div id="tachesTable"></div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px; color: #7f8c8d;">
+            <p><strong>Mikail Lekesiz</strong> - DevOps Engineer & Full Stack Developer</p>
+            <p>Formation LP DWCA 2025 - Université de Strasbourg</p>
+            <p style="margin-top: 10px; font-size: 14px;">Ouvrez la console (F12) pour voir les données JSON affichées</p>
+        </div>
+    </div>
+</body>
+</html>
+
