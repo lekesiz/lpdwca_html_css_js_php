@@ -333,7 +333,7 @@ Les tâches référencent les paramètres par **ID** (Foreign Key):
 
 **Liens:**
 - Portfolio: https://portfolio.lekesiz.fr
-- Entreprise: https://netz-informatique.fr
+- Entreprise: https://netzinformatique.fr
 - GitHub: https://github.com/lekesiz
 
 ---
