@@ -210,10 +210,258 @@
          * Auteur: Mikail Lekesiz
          * Formation: LP DWCA 2025
          * 
-         * Utilise l'API publique JSONPlaceholder pour les démos
+         * Données personnalisées pour la démonstration
          */
         
-        const API_BASE = 'https://jsonplaceholder.typicode.com';
+        // Données locales (simulant une API)
+        const LOCAL_DATA = {
+            users: [
+                {
+                    id: 1,
+                    name: "Mikail Lekesiz",
+                    username: "lekesiz",
+                    email: "mikail.lekesiz@etu.unistra.fr",
+                    phone: "+33 6 12 34 56 78",
+                    company: { name: "Netz Informatique" },
+                    website: "portfolio.lekesiz.fr",
+                    address: { city: "Strasbourg" }
+                },
+                {
+                    id: 2,
+                    name: "Sophie Martin",
+                    username: "smartin",
+                    email: "sophie.martin@etu.unistra.fr",
+                    phone: "+33 6 23 45 67 89",
+                    company: { name: "WebDev Solutions" },
+                    website: "sophie-martin.dev",
+                    address: { city: "Paris" }
+                },
+                {
+                    id: 3,
+                    name: "Thomas Dubois",
+                    username: "tdubois",
+                    email: "thomas.dubois@etu.unistra.fr",
+                    phone: "+33 6 34 56 78 90",
+                    company: { name: "Cloud Innovations" },
+                    website: "thomas-dubois.tech",
+                    address: { city: "Lyon" }
+                },
+                {
+                    id: 4,
+                    name: "Emma Bernard",
+                    username: "ebernard",
+                    email: "emma.bernard@etu.unistra.fr",
+                    phone: "+33 6 45 67 89 01",
+                    company: { name: "AI Research Lab" },
+                    website: "emma-bernard.ai",
+                    address: { city: "Toulouse" }
+                },
+                {
+                    id: 5,
+                    name: "Lucas Petit",
+                    username: "lpetit",
+                    email: "lucas.petit@etu.unistra.fr",
+                    phone: "+33 6 56 78 90 12",
+                    company: { name: "DevOps Pro" },
+                    website: "lucas-petit.io",
+                    address: { city: "Marseille" }
+                },
+                {
+                    id: 6,
+                    name: "Léa Moreau",
+                    username: "lmoreau",
+                    email: "lea.moreau@etu.unistra.fr",
+                    phone: "+33 6 67 89 01 23",
+                    company: { name: "Design Studio" },
+                    website: "lea-moreau.design",
+                    address: { city: "Bordeaux" }
+                }
+            ],
+            posts: [
+                {
+                    id: 1,
+                    userId: 1,
+                    title: "Développement de l'application To-Do-List",
+                    body: "Aujourd'hui, j'ai finalisé le développement de l'application To-Do-List avec localStorage. L'interface est responsive et moderne, avec un système de filtres et de statistiques en temps réel. Le projet démontre une maîtrise complète du JavaScript vanilla."
+                },
+                {
+                    id: 2,
+                    userId: 1,
+                    title: "Apprentissage du format JSON",
+                    body: "Le format JSON est essentiel pour le développement web moderne. J'ai créé des structures de données complexes avec des relations Primary Key / Foreign Key. La manipulation avec parse() et stringify() est maintenant claire."
+                },
+                {
+                    id: 3,
+                    userId: 1,
+                    title: "Intégration de l'API Fetch",
+                    body: "L'API Fetch permet de récupérer des données de manière asynchrone. J'ai implémenté des appels API avec gestion d'erreurs, loading states et affichage dynamique des résultats. Les Promises et async/await sont très puissants."
+                },
+                {
+                    id: 4,
+                    userId: 2,
+                    title: "Formation LP DWCA 2025",
+                    body: "La formation Licence Professionnelle Développeur Web et Conception d'Applications est très complète. Nous apprenons HTML, CSS, JavaScript, PHP et les bonnes pratiques du développement web moderne."
+                },
+                {
+                    id: 5,
+                    userId: 2,
+                    title: "Projet de fin d'études",
+                    body: "Pour mon projet de fin d'études, je développe une application web complète avec React et Node.js. L'architecture REST API et la gestion d'état avec Redux sont au cœur du projet."
+                },
+                {
+                    id: 6,
+                    userId: 3,
+                    title: "DevOps et Cloud Computing",
+                    body: "Le DevOps est essentiel pour le déploiement moderne. J'ai appris Docker, Kubernetes et CI/CD avec GitHub Actions. L'automatisation des déploiements améliore considérablement la productivité."
+                },
+                {
+                    id: 7,
+                    userId: 3,
+                    title: "Infrastructure as Code",
+                    body: "Terraform permet de gérer l'infrastructure cloud de manière déclarative. J'ai déployé plusieurs environnements sur AWS et Azure avec des configurations reproductibles et versionnées."
+                },
+                {
+                    id: 8,
+                    userId: 4,
+                    title: "Intelligence Artificielle et Machine Learning",
+                    body: "Le Machine Learning transforme le développement web. J'ai intégré des modèles de prédiction dans une application Flask. TensorFlow et scikit-learn sont des outils puissants pour l'IA."
+                },
+                {
+                    id: 9,
+                    userId: 4,
+                    title: "Traitement du langage naturel",
+                    body: "Le NLP (Natural Language Processing) ouvre de nouvelles possibilités. J'ai développé un chatbot avec des transformers et BERT. Les résultats sont impressionnants pour la compréhension du contexte."
+                },
+                {
+                    id: 10,
+                    userId: 5,
+                    title: "Sécurité des applications web",
+                    body: "La sécurité est primordiale dans le développement web. J'ai étudié OWASP Top 10, implémenté JWT pour l'authentification et sécurisé les API avec OAuth 2.0. La protection des données utilisateurs est essentielle."
+                }
+            ],
+            todos: [
+                {
+                    id: 1,
+                    userId: 1,
+                    title: "Finaliser le projet LP DWCA",
+                    completed: false
+                },
+                {
+                    id: 2,
+                    userId: 1,
+                    title: "Compléter les exercices JSON",
+                    completed: true
+                },
+                {
+                    id: 3,
+                    userId: 1,
+                    title: "Développer l'application To-Do-List",
+                    completed: true
+                },
+                {
+                    id: 4,
+                    userId: 1,
+                    title: "Créer la structure SP pour le cours",
+                    completed: true
+                },
+                {
+                    id: 5,
+                    userId: 1,
+                    title: "Mettre à jour le portfolio",
+                    completed: false
+                },
+                {
+                    id: 6,
+                    userId: 2,
+                    title: "Apprendre React et Redux",
+                    completed: false
+                },
+                {
+                    id: 7,
+                    userId: 2,
+                    title: "Étudier les design patterns",
+                    completed: true
+                },
+                {
+                    id: 8,
+                    userId: 3,
+                    title: "Configurer Docker pour le projet",
+                    completed: true
+                },
+                {
+                    id: 9,
+                    userId: 3,
+                    title: "Déployer sur Kubernetes",
+                    completed: false
+                },
+                {
+                    id: 10,
+                    userId: 4,
+                    title: "Entraîner un modèle ML",
+                    completed: true
+                },
+                {
+                    id: 11,
+                    userId: 4,
+                    title: "Optimiser les performances du modèle",
+                    completed: false
+                },
+                {
+                    id: 12,
+                    userId: 5,
+                    title: "Audit de sécurité de l'application",
+                    completed: false
+                },
+                {
+                    id: 13,
+                    userId: 5,
+                    title: "Implémenter l'authentification JWT",
+                    completed: true
+                },
+                {
+                    id: 14,
+                    userId: 6,
+                    title: "Créer les maquettes UI/UX",
+                    completed: true
+                },
+                {
+                    id: 15,
+                    userId: 6,
+                    title: "Développer le design system",
+                    completed: false
+                },
+                {
+                    id: 16,
+                    userId: 1,
+                    title: "Préparer la présentation finale",
+                    completed: false
+                },
+                {
+                    id: 17,
+                    userId: 2,
+                    title: "Rédiger la documentation technique",
+                    completed: false
+                },
+                {
+                    id: 18,
+                    userId: 3,
+                    title: "Configurer le monitoring",
+                    completed: true
+                },
+                {
+                    id: 19,
+                    userId: 4,
+                    title: "Publier l'article sur le blog",
+                    completed: false
+                },
+                {
+                    id: 20,
+                    userId: 5,
+                    title: "Participer au hackathon",
+                    completed: true
+                }
+            ]
+        };
         
         // Fonction pour afficher le loading
         function showLoading() {
@@ -245,18 +493,20 @@
             jsonDisplay.style.display = 'block';
         }
         
+        // Simuler un délai de chargement (comme une vraie API)
+        function delay(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
         // Charger des utilisateurs
         async function fetchUsers() {
             showLoading();
             
             try {
-                const response = await fetch(`${API_BASE}/users`);
+                // Simuler un appel API avec délai
+                await delay(800);
                 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-                
-                const users = await response.json();
+                const users = LOCAL_DATA.users;
                 displayUsers(users);
                 displayJSON(users);
                 
@@ -300,8 +550,9 @@
             showLoading();
             
             try {
-                const response = await fetch(`${API_BASE}/posts?_limit=10`);
-                const posts = await response.json();
+                await delay(800);
+                
+                const posts = LOCAL_DATA.posts;
                 displayPosts(posts);
                 displayJSON(posts);
                 
@@ -344,8 +595,9 @@
             showLoading();
             
             try {
-                const response = await fetch(`${API_BASE}/todos?_limit=20`);
-                const todos = await response.json();
+                await delay(800);
+                
+                const todos = LOCAL_DATA.todos;
                 displayTodos(todos);
                 displayJSON(todos);
                 
@@ -398,7 +650,7 @@
         console.log('Fetch API & JSON Demo');
         console.log('Auteur: Mikail Lekesiz');
         console.log('Formation: LP DWCA 2025');
-        console.log('API: JSONPlaceholder');
+        console.log('Données: Locales (personnalisées)');
         console.log('='.repeat(50));
     </script>
 </body>
