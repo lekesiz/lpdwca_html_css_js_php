@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List - Formulaire Statique</title>
+    <style>
+        /**
+         * To-Do-List Application - Etape N2a
+         * Formulaire statique adapté mobile
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        label .required {
+            color: #e74c3c;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        
+        .btn-secondary:hover {
+            background: #d5dbdb;
+        }
+        
+        .info-box {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+        }
+        
+        .info-box p {
+            color: #2c3e50;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 20px;
+            }
+            
+            input[type="text"],
+            input[type="date"],
+            textarea,
+            select,
+            button {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 To-Do-List</h1>
+            <p>Ajoutez une nouvelle tâche</p>
+        </div>
+        
+        <div class="form-container">
+            <div class="info-box">
+                <p><strong>Etape N2a:</strong> Formulaire statique adapté mobile. Tous les champs sont écrits "à la main" en HTML.</p>
+            </div>
+            
+            <form id="taskForm">
+                <!-- Libellé de la tâche -->
+                <div class="form-group">
+                    <label for="libelle">
+                        Libellé de la tâche <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="libelle" 
+                        name="libelle" 
+                        placeholder="Ex: Finaliser le projet LP DWCA"
+                        required
+                    >
+                </div>
+                
+                <!-- Description -->
+                <div class="form-group">
+                    <label for="description">
+                        Description
+                    </label>
+                    <textarea 
+                        id="description" 
+                        name="description" 
+                        placeholder="Décrivez la tâche en détail..."
+                    ></textarea>
+                </div>
+                
+                <!-- Date de création et finalisation -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dateCreation">
+                            Date de création
+                        </label>
+                        <input 
+                            type="date" 
+                            id="dateCreation" 
+                            name="dateCreation"
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dateFinalisation">
+                            Date de finalisation
+                        </label>
+                        <input 
+                            type="date" 
+                            id="dateFinalisation" 
+                            name="dateFinalisation"
+                        >
+                    </div>
+                </div>
+                
+                <!-- Priorité (liste déroulante statique) -->
+                <div class="form-group">
+                    <label for="priorite">
+                        Priorité <span class="required">*</span>
+                    </label>
+                    <select id="priorite" name="priorite" required>
+                        <option value="">-- Sélectionnez une priorité --</option>
+                        <option value="1">🔴 Critique</option>
+                        <option value="2">🟠 Très important</option>
+                        <option value="3">🟡 Important</option>
+                        <option value="4">🟢 Moyen</option>
+                        <option value="5">🔵 Peu important</option>
+                        <option value="6">⚪ Non urgent</option>
+                    </select>
+                </div>
+                
+                <!-- Complexité -->
+                <div class="form-group">
+                    <label for="complexite">
+                        Complexité
+                    </label>
+                    <select id="complexite" name="complexite">
+                        <option value="">-- Sélectionnez une complexité --</option>
+                        <option value="1">⭐ Très simple</option>
+                        <option value="2">⭐⭐ Simple</option>
+                        <option value="3">⭐⭐⭐ Moyenne</option>
+                        <option value="4">⭐⭐⭐⭐ Complexe</option>
+                        <option value="5">⭐⭐⭐⭐⭐ Très complexe</option>
+                    </select>
+                </div>
+                
+                <!-- Catégorie -->
+                <div class="form-group">
+                    <label for="categorie">
+                        Catégorie
+                    </label>
+                    <select id="categorie" name="categorie">
+                        <option value="">-- Sélectionnez une catégorie --</option>
+                        <option value="1">💻 Développement Web</option>
+                        <option value="2">☁️ DevOps & Cloud</option>
+                        <option value="3">🤖 Intelligence Artificielle</option>
+                        <option value="4">📚 Formation</option>
+                        <option value="5">📄 Documentation</option>
+                        <option value="6">👥 Réunion</option>
+                        <option value="7">🏠 Personnel</option>
+                    </select>
+                </div>
+                
+                <!-- Durée estimée -->
+                <div class="form-group">
+                    <label for="duree">
+                        Durée estimée
+                    </label>
+                    <select id="duree" name="duree">
+                        <option value="">-- Sélectionnez une durée --</option>
+                        <option value="1">⏱️ Moins de 30 minutes</option>
+                        <option value="2">⏱️ 30 minutes à 1 heure</option>
+                        <option value="3">⏱️ 1 à 2 heures</option>
+                        <option value="4">⏱️ 2 à 4 heures</option>
+                        <option value="5">⏱️ 4 à 8 heures</option>
+                        <option value="6">⏱️ Plus d'une journée</option>
+                        <option value="7">⏱️ Plusieurs jours</option>
+                    </select>
+                </div>
+                
+                <!-- Statut -->
+                <div class="form-group">
+                    <label for="statut">
+                        Statut
+                    </label>
+                    <select id="statut" name="statut">
+                        <option value="Planifiée">📋 Planifiée</option>
+                        <option value="En cours" selected>🔄 En cours</option>
+                        <option value="Terminée">✅ Terminée</option>
+                    </select>
+                </div>
+                
+                <!-- Auteur -->
+                <div class="form-group">
+                    <label for="auteur">
+                        Auteur
+                    </label>
+                    <input 
+                        type="text" 
+                        id="auteur" 
+                        name="auteur" 
+                        value="Mikail Lekesiz"
+                        placeholder="Votre nom"
+                    >
+                </div>
+                
+                <!-- Boutons -->
+                <div class="btn-container">
+                    <button type="submit" class="btn-primary">
+                        💾 Enregistrer la tâche
+                    </button>
+                    <button type="reset" class="btn-secondary">
+                        🔄 Réinitialiser
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        /**
+         * Script basique pour la démonstration
+         * L'enregistrement réel sera implémenté dans l'Etape N3
+         */
+        
+        // Définir la date du jour par défaut
+        document.getElementById('dateCreation').valueAsDate = new Date();
+        
+        // Gestion du formulaire
+        document.getElementById('taskForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Récupération des données (pour démonstration)
+            const formData = {
+                libelle: document.getElementById('libelle').value,
+                description: document.getElementById('description').value,
+                dateCreation: document.getElementById('dateCreation').value,
+                dateFinalisation: document.getElementById('dateFinalisation').value,
+                idPriorite: document.getElementById('priorite').value,
+                idComplexite: document.getElementById('complexite').value,
+                idCategorie: document.getElementById('categorie').value,
+                idDuree: document.getElementById('duree').value,
+                statut: document.getElementById('statut').value,
+                auteur: document.getElementById('auteur').value
+            };
+            
+            console.log('Données du formulaire:', formData);
+            alert('✅ Formulaire validé!\n\nCette version est statique (Etape N2a).\nL\'enregistrement sera implémenté dans l\'Etape N3.\n\nConsultez la console (F12) pour voir les données.');
+        });
+    </script>
+</body>
+</html>
+

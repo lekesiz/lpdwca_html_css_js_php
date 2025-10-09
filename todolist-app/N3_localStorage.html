@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do-List - LocalStorage</title>
+    <style>
+        /**
+         * To-Do-List Application - Etape N3
+         * Enregistrement dans le localStorage
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        label .required {
+            color: #e74c3c;
+        }
+        
+        input[type="text"],
+        input[type="date"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        input[type="text"]:focus,
+        input[type="date"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23667eea' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        button {
+            flex: 1;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-secondary {
+            background: #ecf0f1;
+            color: #2c3e50;
+        }
+        
+        .btn-secondary:hover {
+            background: #d5dbdb;
+        }
+        
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+        
+        .info-box {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+        }
+        
+        .info-box p {
+            color: #2c3e50;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 25px;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-message p {
+            color: #155724;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 5px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .container {
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+            
+            .btn-container {
+                flex-direction: column;
+            }
+            
+            button {
+                width: 100%;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 To-Do-List</h1>
+            <p>Enregistrement avec LocalStorage</p>
+        </div>
+        
+        <div class="form-container">
+            <div class="info-box">
+                <p><strong>💾 Etape N3:</strong> Les tâches sont maintenant enregistrées dans le localStorage du navigateur. Elles persistent même après fermeture du navigateur!</p>
+            </div>
+            
+            <div id="successMessage" class="success-message">
+                <p>✅ Tâche enregistrée avec succès!</p>
+            </div>
+            
+            <div id="formContainer"></div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="totalTasks">0</div>
+                    <div class="stat-label">Tâches totales</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="lastId">0</div>
+                    <div class="stat-label">Dernier ID</div>
+                </div>
+            </div>
+            
+            <div class="btn-container" style="margin-top: 20px;">
+                <button onclick="viewLocalStorage()" class="btn-secondary">
+                    👁️ Voir le localStorage
+                </button>
+                <button onclick="clearAllTasks()" class="btn-danger">
+                    🗑️ Effacer toutes les tâches
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        /**
+         * To-Do-List Application - Etape N3
+         * Enregistrement et lecture du localStorage
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         */
+        
+        // Données JSON
+        const listePriorites = [
+            {"idPriorite":"1","priorite":"Critique","emoji":"🔴"},
+            {"idPriorite":"2","priorite":"Très important","emoji":"🟠"},
+            {"idPriorite":"3","priorite":"Important","emoji":"🟡"},
+            {"idPriorite":"4","priorite":"Moyen","emoji":"🟢"},
+            {"idPriorite":"5","priorite":"Peu important","emoji":"🔵"},
+            {"idPriorite":"6","priorite":"Non urgent","emoji":"⚪"}
+        ];
+        
+        const listeComplexites = [
+            {"idComplexite":"1","complexite":"Très simple","emoji":"⭐"},
+            {"idComplexite":"2","complexite":"Simple","emoji":"⭐⭐"},
+            {"idComplexite":"3","complexite":"Moyenne","emoji":"⭐⭐⭐"},
+            {"idComplexite":"4","complexite":"Complexe","emoji":"⭐⭐⭐⭐"},
+            {"idComplexite":"5","complexite":"Très complexe","emoji":"⭐⭐⭐⭐⭐"}
+        ];
+        
+        const listeCategories = [
+            {"idCategorie":"1","categorie":"Développement Web","emoji":"💻"},
+            {"idCategorie":"2","categorie":"DevOps & Cloud","emoji":"☁️"},
+            {"idCategorie":"3","categorie":"Intelligence Artificielle","emoji":"🤖"},
+            {"idCategorie":"4","categorie":"Formation","emoji":"📚"},
+            {"idCategorie":"5","categorie":"Documentation","emoji":"📄"},
+            {"idCategorie":"6","categorie":"Réunion","emoji":"👥"},
+            {"idCategorie":"7","categorie":"Personnel","emoji":"🏠"}
+        ];
+        
+        const listeDurees = [
+            {"idDuree":"1","duree":"Moins de 30 minutes","emoji":"⏱️"},
+            {"idDuree":"2","duree":"30 minutes à 1 heure","emoji":"⏱️"},
+            {"idDuree":"3","duree":"1 à 2 heures","emoji":"⏱️"},
+            {"idDuree":"4","duree":"2 à 4 heures","emoji":"⏱️"},
+            {"idDuree":"5","duree":"4 à 8 heures","emoji":"⏱️"},
+            {"idDuree":"6","duree":"Plus d'une journée","emoji":"⏱️"},
+            {"idDuree":"7","duree":"Plusieurs jours","emoji":"⏱️"}
+        ];
+        
+        const listeStatuts = [
+            {"idStatut":"1","statut":"Planifiée","emoji":"📋"},
+            {"idStatut":"2","statut":"En cours","emoji":"🔄"},
+            {"idStatut":"3","statut":"Terminée","emoji":"✅"}
+        ];
+        
+        // Clé pour le localStorage
+        const STORAGE_KEY = 'todolist_tasks_lpdwca';
+        
+        /**
+         * Lecture du localStorage
+         * Retourne un array de tâches (vide si aucune tâche)
+         */
+        function loadTasks() {
+            const tasksJSON = localStorage.getItem(STORAGE_KEY);
+            if (tasksJSON) {
+                return JSON.parse(tasksJSON);
+            }
+            return [];
+        }
+        
+        /**
+         * Écriture dans le localStorage
+         * Convertit l'array en JSON string
+         */
+        function saveTasks(tasks) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+            updateStats();
+        }
+        
+        /**
+         * Génération du prochain ID
+         * ID = nombre de tâches + 1
+         */
+        function getNextId() {
+            const tasks = loadTasks();
+            return tasks.length + 1;
+        }
+        
+        /**
+         * Mise à jour des statistiques
+         */
+        function updateStats() {
+            const tasks = loadTasks();
+            document.getElementById('totalTasks').textContent = tasks.length;
+            document.getElementById('lastId').textContent = tasks.length > 0 ? tasks[tasks.length - 1].idTache : 0;
+        }
+        
+        /**
+         * Afficher le localStorage dans la console
+         */
+        function viewLocalStorage() {
+            const tasks = loadTasks();
+            console.log('='.repeat(60));
+            console.log('CONTENU DU LOCALSTORAGE');
+            console.log('='.repeat(60));
+            console.log('Nombre de tâches:', tasks.length);
+            console.log('Données:');
+            console.log(tasks);
+            console.log('='.repeat(60));
+            console.log('JSON stringifié:');
+            console.log(JSON.stringify(tasks));
+            console.log('='.repeat(60));
+            
+            alert(`📊 LocalStorage consulté!\n\nNombre de tâches: ${tasks.length}\n\nConsultez la console (F12) pour voir les détails.`);
+        }
+        
+        /**
+         * Effacer toutes les tâches
+         */
+        function clearAllTasks() {
+            if (confirm('⚠️ Êtes-vous sûr de vouloir effacer toutes les tâches?\n\nCette action est irréversible!')) {
+                localStorage.removeItem(STORAGE_KEY);
+                updateStats();
+                console.log('🗑️ Toutes les tâches ont été effacées');
+                alert('✅ Toutes les tâches ont été effacées!');
+            }
+        }
+        
+        /**
+         * Fonction pour créer un champ de formulaire
+         */
+        function createFormGroup(config) {
+            const div = document.createElement('div');
+            div.className = 'form-group';
+            
+            const label = document.createElement('label');
+            label.setAttribute('for', config.id);
+            label.innerHTML = config.label;
+            if (config.required) {
+                label.innerHTML += ' <span class="required">*</span>';
+            }
+            
+            let input;
+            
+            if (config.type === 'textarea') {
+                input = document.createElement('textarea');
+                input.placeholder = config.placeholder || '';
+            } else if (config.type === 'select') {
+                input = document.createElement('select');
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = '';
+                defaultOption.textContent = config.placeholder || '-- Sélectionnez --';
+                input.appendChild(defaultOption);
+                
+                config.options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option.id;
+                    opt.textContent = `${option.emoji || ''} ${option.text}`.trim();
+                    if (option.selected) {
+                        opt.selected = true;
+                    }
+                    input.appendChild(opt);
+                });
+            } else {
+                input = document.createElement('input');
+                input.type = config.type;
+                input.placeholder = config.placeholder || '';
+                if (config.value) {
+                    input.value = config.value;
+                }
+            }
+            
+            input.id = config.id;
+            input.name = config.name;
+            if (config.required) {
+                input.required = true;
+            }
+            
+            div.appendChild(label);
+            div.appendChild(input);
+            
+            return div;
+        }
+        
+        /**
+         * Fonction pour créer une ligne avec 2 champs
+         */
+        function createFormRow(field1, field2) {
+            const row = document.createElement('div');
+            row.className = 'form-row';
+            row.appendChild(field1);
+            row.appendChild(field2);
+            return row;
+        }
+        
+        /**
+         * Génération dynamique du formulaire
+         */
+        function generateForm() {
+            const form = document.createElement('form');
+            form.id = 'taskForm';
+            
+            form.appendChild(createFormGroup({
+                id: 'libelle',
+                name: 'libelle',
+                type: 'text',
+                label: 'Libellé de la tâche',
+                placeholder: 'Ex: Finaliser le projet LP DWCA',
+                required: true
+            }));
+            
+            form.appendChild(createFormGroup({
+                id: 'description',
+                name: 'description',
+                type: 'textarea',
+                label: 'Description',
+                placeholder: 'Décrivez la tâche en détail...'
+            }));
+            
+            const dateCreation = createFormGroup({
+                id: 'dateCreation',
+                name: 'dateCreation',
+                type: 'date',
+                label: 'Date de création',
+                value: new Date().toISOString().split('T')[0]
+            });
+            
+            const dateFinalisation = createFormGroup({
+                id: 'dateFinalisation',
+                name: 'dateFinalisation',
+                type: 'date',
+                label: 'Date de finalisation'
+            });
+            
+            form.appendChild(createFormRow(dateCreation, dateFinalisation));
+            
+            form.appendChild(createFormGroup({
+                id: 'priorite',
+                name: 'priorite',
+                type: 'select',
+                label: 'Priorité',
+                placeholder: '-- Sélectionnez une priorité --',
+                required: true,
+                options: listePriorites.map(p => ({
+                    id: p.idPriorite,
+                    text: p.priorite,
+                    emoji: p.emoji
+                }))
+            }));
+            
+            form.appendChild(createFormGroup({
+                id: 'complexite',
+                name: 'complexite',
+                type: 'select',
+                label: 'Complexité',
+                placeholder: '-- Sélectionnez une complexité --',
+                options: listeComplexites.map(c => ({
+                    id: c.idComplexite,
+                    text: c.complexite,
+                    emoji: c.emoji
+                }))
+            }));
+            
+            form.appendChild(createFormGroup({
+                id: 'categorie',
+                name: 'categorie',
+                type: 'select',
+                label: 'Catégorie',
+                placeholder: '-- Sélectionnez une catégorie --',
+                options: listeCategories.map(c => ({
+                    id: c.idCategorie,
+                    text: c.categorie,
+                    emoji: c.emoji
+                }))
+            }));
+            
+            form.appendChild(createFormGroup({
+                id: 'duree',
+                name: 'duree',
+                type: 'select',
+                label: 'Durée estimée',
+                placeholder: '-- Sélectionnez une durée --',
+                options: listeDurees.map(d => ({
+                    id: d.idDuree,
+                    text: d.duree,
+                    emoji: d.emoji
+                }))
+            }));
+            
+            form.appendChild(createFormGroup({
+                id: 'statut',
+                name: 'statut',
+                type: 'select',
+                label: 'Statut',
+                options: listeStatuts.map((s, index) => ({
+                    id: s.idStatut,
+                    text: s.statut,
+                    emoji: s.emoji,
+                    selected: index === 1
+                }))
+            }));
+            
+            form.appendChild(createFormGroup({
+                id: 'auteur',
+                name: 'auteur',
+                type: 'text',
+                label: 'Auteur',
+                placeholder: 'Votre nom',
+                value: 'Mikail Lekesiz'
+            }));
+            
+            const btnContainer = document.createElement('div');
+            btnContainer.className = 'btn-container';
+            
+            const btnSubmit = document.createElement('button');
+            btnSubmit.type = 'submit';
+            btnSubmit.className = 'btn-primary';
+            btnSubmit.textContent = '💾 Enregistrer la tâche';
+            
+            const btnReset = document.createElement('button');
+            btnReset.type = 'reset';
+            btnReset.className = 'btn-secondary';
+            btnReset.textContent = '🔄 Réinitialiser';
+            
+            btnContainer.appendChild(btnSubmit);
+            btnContainer.appendChild(btnReset);
+            form.appendChild(btnContainer);
+            
+            return form;
+        }
+        
+        /**
+         * Gestion de la soumission du formulaire
+         * ETAPE N3: Enregistrement dans le localStorage
+         */
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            // 1. Lecture du localStorage (tâches existantes)
+            const tasks = loadTasks();
+            
+            // 2. Génération de l'ID (length + 1)
+            const newId = tasks.length + 1;
+            
+            // 3. Création de la nouvelle tâche
+            const newTask = {
+                idTache: newId.toString(),
+                libelle: document.getElementById('libelle').value,
+                description: document.getElementById('description').value,
+                dateCreation: document.getElementById('dateCreation').value,
+                dateFinalisation: document.getElementById('dateFinalisation').value,
+                idPriorite: document.getElementById('priorite').value,
+                idComplexite: document.getElementById('complexite').value || "",
+                idCategorie: document.getElementById('categorie').value || "",
+                idDuree: document.getElementById('duree').value || "",
+                statut: document.getElementById('statut').options[document.getElementById('statut').selectedIndex].text,
+                auteur: document.getElementById('auteur').value
+            };
+            
+            // 4. Ajout de la nouvelle tâche à l'array
+            tasks.push(newTask);
+            
+            // 5. Écriture dans le localStorage (stringify)
+            saveTasks(tasks);
+            
+            // Affichage du message de succès
+            const successMsg = document.getElementById('successMessage');
+            successMsg.classList.add('show');
+            setTimeout(() => {
+                successMsg.classList.remove('show');
+            }, 3000);
+            
+            // Log dans la console
+            console.log('='.repeat(60));
+            console.log('NOUVELLE TÂCHE ENREGISTRÉE (Etape N3)');
+            console.log('='.repeat(60));
+            console.log('Tâche:', newTask);
+            console.log('Total de tâches:', tasks.length);
+            console.log('='.repeat(60));
+            
+            // Réinitialiser le formulaire
+            e.target.reset();
+            document.getElementById('dateCreation').valueAsDate = new Date();
+        }
+        
+        /**
+         * Initialisation de l'application
+         */
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Application To-Do-List - Etape N3');
+            console.log('💾 LocalStorage activé');
+            
+            const form = generateForm();
+            form.addEventListener('submit', handleFormSubmit);
+            
+            document.getElementById('formContainer').appendChild(form);
+            
+            updateStats();
+            
+            console.log('✅ Application initialisée!');
+        });
+    </script>
+</body>
+</html>
+
