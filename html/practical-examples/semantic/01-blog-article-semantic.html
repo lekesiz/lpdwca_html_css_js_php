@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Article de blog sur le développement web moderne - LP DWCA 2025">
+    <meta name="author" content="Mikail Lekesiz">
+    <title>Le Développement Web Moderne - Blog LP DWCA</title>
+    <style>
+        /**
+         * EXEMPLE PRATIQUE: Article de Blog avec HTML Sémantique
+         * 
+         * OBJECTIFS PÉDAGOGIQUES:
+         * - Comprendre les balises sémantiques HTML5
+         * - Structurer un document de manière logique
+         * - Améliorer l'accessibilité et le SEO
+         * - Utiliser les balises appropriées pour chaque contenu
+         * 
+         * BALISES SÉMANTIQUES DÉMONTRÉES:
+         * - <header>: En-tête de la page/section
+         * - <nav>: Navigation
+         * - <main>: Contenu principal
+         * - <article>: Contenu autonome (article, post)
+         * - <section>: Section thématique
+         * - <aside>: Contenu complémentaire (sidebar)
+         * - <footer>: Pied de page
+         * - <figure> et <figcaption>: Images avec légendes
+         * - <time>: Dates et heures
+         * - <address>: Informations de contact
+         * 
+         * AUTEUR: Mikail Lekesiz - LP DWCA 2025
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+        
+        /* HEADER: En-tête du site */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        header h1 {
+            font-size: 24px;
+        }
+        
+        /* NAV: Navigation */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+        }
+        
+        nav a:hover {
+            opacity: 0.8;
+        }
+        
+        /* MAIN: Contenu principal */
+        main {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 40px;
+        }
+        
+        /* ARTICLE: Article de blog */
+        article {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        article header {
+            background: none;
+            color: #2c3e50;
+            padding: 0;
+            margin-bottom: 30px;
+            box-shadow: none;
+        }
+        
+        article header .container {
+            padding: 0;
+            display: block;
+        }
+        
+        article h1 {
+            font-size: 36px;
+            line-height: 1.3;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        /* Métadonnées de l'article */
+        .article-meta {
+            display: flex;
+            gap: 20px;
+            color: #7f8c8d;
+            font-size: 14px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* SECTION: Sections de l'article */
+        article section {
+            margin-bottom: 30px;
+        }
+        
+        article h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #34495e;
+        }
+        
+        article h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+        
+        article p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        /* FIGURE: Images avec légendes */
+        figure {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        figure img {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        figcaption {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        
+        /* Listes */
+        article ul, article ol {
+            margin: 15px 0 15px 30px;
+        }
+        
+        article li {
+            margin-bottom: 8px;
+        }
+        
+        /* Citations */
+        blockquote {
+            border-left: 4px solid #667eea;
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #555;
+            background: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 5px;
+        }
+        
+        /* Code */
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        
+        /* ASIDE: Barre latérale */
+        aside {
+            font-family: 'Segoe UI', sans-serif;
+        }
+        
+        .sidebar-widget {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+        }
+        
+        .sidebar-widget h3 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        .sidebar-widget ul {
+            list-style: none;
+        }
+        
+        .sidebar-widget li {
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .sidebar-widget li:last-child {
+            border-bottom: none;
+        }
+        
+        .sidebar-widget a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .sidebar-widget a:hover {
+            color: #764ba2;
+        }
+        
+        /* FOOTER: Pied de page */
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        footer p {
+            margin-bottom: 10px;
+        }
+        
+        /* ADDRESS: Informations de contact */
+        address {
+            font-style: normal;
+            margin-top: 20px;
+        }
+        
+        address a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        /* Note pédagogique */
+        .educational-note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 5px;
+        }
+        
+        .educational-note h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .educational-note p {
+            color: #856404;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+            
+            article {
+                padding: 20px;
+            }
+            
+            article h1 {
+                font-size: 28px;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER: En-tête du site -->
+    <header>
+        <div class="container">
+            <h1>📚 Blog LP DWCA</h1>
+            
+            <!-- NAV: Navigation principale -->
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#articles">Articles</a></li>
+                    <li><a href="#apropos">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- MAIN: Contenu principal de la page -->
+    <main>
+        <!-- ARTICLE: Article de blog complet -->
+        <article>
+            <!-- Header de l'article -->
+            <header>
+                <div class="container">
+                    <h1>Le Développement Web Moderne en 2025</h1>
+                    
+                    <!-- Métadonnées avec TIME -->
+                    <div class="article-meta">
+                        <span>
+                            👤 Par <strong>Mikail Lekesiz</strong>
+                        </span>
+                        <span>
+                            📅 <time datetime="2025-10-09">9 octobre 2025</time>
+                        </span>
+                        <span>
+                            ⏱️ 5 min de lecture
+                        </span>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- SECTION: Introduction -->
+            <section id="introduction">
+                <p>
+                    Le développement web a considérablement évolué ces dernières années. 
+                    De simples pages HTML statiques, nous sommes passés à des applications 
+                    web complexes et interactives. Dans cet article, nous explorerons les 
+                    technologies et pratiques modernes qui définissent le développement web en 2025.
+                </p>
+                
+                <!-- FIGURE: Image avec légende -->
+                <figure>
+                    <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800" 
+                         alt="Développement web moderne">
+                    <figcaption>
+                        Photo par Christopher Gower sur Unsplash - Espace de travail d'un développeur web
+                    </figcaption>
+                </figure>
+            </section>
+            
+            <!-- SECTION: HTML5 et Sémantique -->
+            <section id="html5">
+                <h2>1. HTML5 et la Sémantique</h2>
+                
+                <p>
+                    HTML5 a introduit de nombreuses balises sémantiques qui améliorent la structure 
+                    et l'accessibilité des pages web. Ces balises permettent aux moteurs de recherche 
+                    et aux technologies d'assistance de mieux comprendre le contenu.
+                </p>
+                
+                <h3>Les balises sémantiques principales:</h3>
+                <ul>
+                    <li><code>&lt;header&gt;</code> - En-tête de page ou de section</li>
+                    <li><code>&lt;nav&gt;</code> - Navigation principale</li>
+                    <li><code>&lt;main&gt;</code> - Contenu principal unique</li>
+                    <li><code>&lt;article&gt;</code> - Contenu autonome et réutilisable</li>
+                    <li><code>&lt;section&gt;</code> - Section thématique</li>
+                    <li><code>&lt;aside&gt;</code> - Contenu complémentaire</li>
+                    <li><code>&lt;footer&gt;</code> - Pied de page</li>
+                </ul>
+                
+                <blockquote>
+                    "L'utilisation correcte des balises sémantiques améliore le SEO de 30% 
+                    et l'accessibilité de 50%." - Web Accessibility Initiative (WAI)
+                </blockquote>
+            </section>
+            
+            <!-- SECTION: CSS Moderne -->
+            <section id="css">
+                <h2>2. CSS Moderne: Flexbox et Grid</h2>
+                
+                <p>
+                    CSS a évolué avec l'introduction de Flexbox et CSS Grid, deux systèmes de 
+                    mise en page puissants qui remplacent les anciennes techniques basées sur 
+                    les floats et les tableaux.
+                </p>
+                
+                <h3>Flexbox vs Grid:</h3>
+                <ul>
+                    <li><strong>Flexbox:</strong> Idéal pour les layouts unidimensionnels (lignes ou colonnes)</li>
+                    <li><strong>Grid:</strong> Parfait pour les layouts bidimensionnels (lignes et colonnes)</li>
+                    <li><strong>Combinaison:</strong> Utiliser les deux ensemble pour des layouts complexes</li>
+                </ul>
+            </section>
+            
+            <!-- SECTION: JavaScript -->
+            <section id="javascript">
+                <h2>3. JavaScript et les Frameworks Modernes</h2>
+                
+                <p>
+                    JavaScript est devenu le langage incontournable du web. Avec ES6+ et les 
+                    frameworks modernes comme React, Vue et Angular, le développement front-end 
+                    a atteint un nouveau niveau de sophistication.
+                </p>
+                
+                <h3>Concepts clés:</h3>
+                <ol>
+                    <li>Programmation asynchrone (Promises, async/await)</li>
+                    <li>Manipulation du DOM</li>
+                    <li>Fetch API pour les requêtes HTTP</li>
+                    <li>LocalStorage pour la persistance</li>
+                    <li>Modules ES6 pour l'organisation du code</li>
+                </ol>
+            </section>
+            
+            <!-- SECTION: Conclusion -->
+            <section id="conclusion">
+                <h2>Conclusion</h2>
+                
+                <p>
+                    Le développement web moderne requiert une compréhension approfondie de HTML, 
+                    CSS et JavaScript. En maîtrisant ces technologies et en suivant les bonnes 
+                    pratiques, vous pouvez créer des applications web performantes, accessibles 
+                    et maintenables.
+                </p>
+                
+                <p>
+                    La formation LP DWCA vous donne toutes les clés pour devenir un développeur 
+                    web compétent et recherché sur le marché du travail.
+                </p>
+            </section>
+            
+            <!-- Note pédagogique -->
+            <div class="educational-note">
+                <h4>📚 Note Pédagogique: Structure Sémantique</h4>
+                <p>
+                    Cet article utilise toutes les balises sémantiques HTML5 importantes. 
+                    Observez comment chaque balise a un rôle spécifique: <code>&lt;article&gt;</code> 
+                    pour le contenu principal, <code>&lt;section&gt;</code> pour les parties 
+                    thématiques, <code>&lt;figure&gt;</code> pour les images avec légendes, etc.
+                    <br><br>
+                    <strong>Avantages:</strong> Meilleur SEO, accessibilité améliorée, code plus 
+                    maintenable, et compréhension facilitée pour les développeurs.
+                </p>
+            </div>
+        </article>
+        
+        <!-- ASIDE: Barre latérale -->
+        <aside>
+            <!-- Widget: Articles récents -->
+            <div class="sidebar-widget">
+                <h3>📰 Articles Récents</h3>
+                <ul>
+                    <li><a href="#">Introduction à React</a></li>
+                    <li><a href="#">CSS Grid en pratique</a></li>
+                    <li><a href="#">JavaScript ES6+</a></li>
+                    <li><a href="#">Responsive Design</a></li>
+                </ul>
+            </div>
+            
+            <!-- Widget: Catégories -->
+            <div class="sidebar-widget">
+                <h3>📁 Catégories</h3>
+                <ul>
+                    <li><a href="#">HTML & CSS (12)</a></li>
+                    <li><a href="#">JavaScript (18)</a></li>
+                    <li><a href="#">PHP & Backend (8)</a></li>
+                    <li><a href="#">DevOps (5)</a></li>
+                </ul>
+            </div>
+            
+            <!-- Widget: À propos -->
+            <div class="sidebar-widget">
+                <h3>👨‍💻 À propos de l'auteur</h3>
+                <p style="font-size: 14px; color: #555;">
+                    Mikail Lekesiz, étudiant en LP DWCA à l'Université de Strasbourg 
+                    et CEO de Netz Informatique.
+                </p>
+            </div>
+        </aside>
+    </main>
+    
+    <!-- FOOTER: Pied de page -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Blog LP DWCA - Tous droits réservés</p>
+            <p>Formation: Licence Professionnelle Développeur Web et Conception d'Applications</p>
+            
+            <!-- ADDRESS: Informations de contact -->
+            <address>
+                <p>
+                    Contact: 
+                    <a href="mailto:mikail.lekesiz@etu.unistra.fr">mikail.lekesiz@etu.unistra.fr</a>
+                </p>
+                <p>
+                    Portfolio: 
+                    <a href="https://portfolio.lekesiz.fr" target="_blank">portfolio.lekesiz.fr</a>
+                </p>
+            </address>
+        </div>
+    </footer>
+    
+    <script>
+        /**
+         * JAVASCRIPT POUR LA DÉMONSTRATION
+         * 
+         * Ce script affiche la structure sémantique de la page dans la console
+         */
+        
+        console.log('='.repeat(60));
+        console.log('EXEMPLE PRATIQUE: Article de Blog Sémantique');
+        console.log('Auteur: Mikail Lekesiz - LP DWCA 2025');
+        console.log('='.repeat(60));
+        console.log('\n📋 Structure de la page:');
+        console.log('- <header>: En-tête du site');
+        console.log('- <nav>: Navigation');
+        console.log('- <main>: Contenu principal');
+        console.log('  - <article>: Article de blog');
+        console.log('    - <header>: En-tête de l\'article');
+        console.log('    - <section>: Sections thématiques (x5)');
+        console.log('    - <figure>: Image avec légende');
+        console.log('  - <aside>: Barre latérale');
+        console.log('- <footer>: Pied de page');
+        console.log('  - <address>: Informations de contact');
+        console.log('\n✅ Toutes les balises sémantiques HTML5 sont utilisées!');
+    </script>
+</body>
+</html>
+

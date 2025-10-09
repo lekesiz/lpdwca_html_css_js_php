@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire de Contact Professionnel - LP DWCA</title>
+    <style>
+        /**
+         * EXEMPLE PRATIQUE: Formulaire de Contact Professionnel
+         * 
+         * OBJECTIFS PÉDAGOGIQUES:
+         * - Comprendre la structure d'un formulaire HTML5
+         * - Utiliser les attributs de validation (required, pattern, etc.)
+         * - Appliquer des styles CSS modernes
+         * - Créer une interface responsive
+         * 
+         * CONCEPTS DÉMONTRÉS:
+         * - Balises <form>, <input>, <textarea>, <select>
+         * - Attributs: type, name, id, required, placeholder
+         * - Validation HTML5
+         * - Flexbox pour la mise en page
+         * - Media queries pour le responsive
+         * 
+         * AUTEUR: Mikail Lekesiz - LP DWCA 2025
+         */
+        
+        /* Reset et styles de base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        /* Conteneur principal du formulaire */
+        .form-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+        
+        /* En-tête du formulaire */
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-header h1 {
+            color: #2c3e50;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .form-header p {
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+        
+        /* Groupe de champs de formulaire */
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        /* Labels des champs */
+        label {
+            display: block;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        /* Indicateur de champ requis */
+        .required {
+            color: #e74c3c;
+        }
+        
+        /* Styles des inputs et textarea */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        /* Focus sur les champs */
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        /* Textarea spécifique */
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        /* Groupe de champs en ligne (2 colonnes) */
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        /* Bouton de soumission */
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        /* Message d'aide */
+        .help-text {
+            font-size: 12px;
+            color: #95a5a6;
+            margin-top: 5px;
+        }
+        
+        /* Validation: champ invalide */
+        input:invalid:not(:placeholder-shown),
+        textarea:invalid:not(:placeholder-shown) {
+            border-color: #e74c3c;
+        }
+        
+        /* Validation: champ valide */
+        input:valid:not(:placeholder-shown),
+        textarea:valid:not(:placeholder-shown) {
+            border-color: #2ecc71;
+        }
+        
+        /* Responsive: Mobile */
+        @media (max-width: 768px) {
+            .form-container {
+                padding: 25px;
+            }
+            
+            .form-header h1 {
+                font-size: 24px;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+        
+        /* Note pédagogique */
+        .educational-note {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-top: 30px;
+            border-radius: 5px;
+        }
+        
+        .educational-note h3 {
+            color: #2c3e50;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        
+        .educational-note p {
+            color: #34495e;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- En-tête du formulaire -->
+        <div class="form-header">
+            <h1>📧 Contactez-nous</h1>
+            <p>Remplissez le formulaire ci-dessous et nous vous répondrons rapidement</p>
+        </div>
+        
+        <!-- 
+            FORMULAIRE PRINCIPAL
+            
+            Attributs importants:
+            - action: URL où envoyer les données (ici #, car c'est un exemple)
+            - method: POST pour envoyer des données sensibles
+            - novalidate: Désactive la validation HTML5 (retiré ici pour la démo)
+        -->
+        <form action="#" method="POST" id="contactForm">
+            
+            <!-- Groupe 1: Nom et Prénom (2 colonnes) -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">
+                        Prénom <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="firstName" 
+                        name="firstName" 
+                        placeholder="Jean"
+                        required
+                        minlength="2"
+                        maxlength="50"
+                    >
+                    <span class="help-text">Minimum 2 caractères</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastName">
+                        Nom <span class="required">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="lastName" 
+                        name="lastName" 
+                        placeholder="Dupont"
+                        required
+                        minlength="2"
+                        maxlength="50"
+                    >
+                </div>
+            </div>
+            
+            <!-- Groupe 2: Email -->
+            <div class="form-group">
+                <label for="email">
+                    Email <span class="required">*</span>
+                </label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    placeholder="jean.dupont@example.com"
+                    required
+                >
+                <span class="help-text">Format: exemple@domaine.com</span>
+            </div>
+            
+            <!-- Groupe 3: Téléphone -->
+            <div class="form-group">
+                <label for="phone">
+                    Téléphone <span class="required">*</span>
+                </label>
+                <input 
+                    type="tel" 
+                    id="phone" 
+                    name="phone" 
+                    placeholder="+33 6 12 34 56 78"
+                    required
+                    pattern="[0-9+\s\-\(\)]+"
+                >
+                <span class="help-text">Format: +33 6 12 34 56 78</span>
+            </div>
+            
+            <!-- Groupe 4: Sujet -->
+            <div class="form-group">
+                <label for="subject">
+                    Sujet <span class="required">*</span>
+                </label>
+                <select id="subject" name="subject" required>
+                    <option value="">-- Choisissez un sujet --</option>
+                    <option value="info">Demande d'information</option>
+                    <option value="support">Support technique</option>
+                    <option value="partnership">Partenariat</option>
+                    <option value="other">Autre</option>
+                </select>
+            </div>
+            
+            <!-- Groupe 5: Message -->
+            <div class="form-group">
+                <label for="message">
+                    Message <span class="required">*</span>
+                </label>
+                <textarea 
+                    id="message" 
+                    name="message" 
+                    placeholder="Écrivez votre message ici..."
+                    required
+                    minlength="10"
+                    maxlength="1000"
+                ></textarea>
+                <span class="help-text">Minimum 10 caractères, maximum 1000</span>
+            </div>
+            
+            <!-- Bouton de soumission -->
+            <button type="submit" class="submit-btn">
+                📤 Envoyer le message
+            </button>
+        </form>
+        
+        <!-- Note pédagogique -->
+        <div class="educational-note">
+            <h3>📚 Note Pédagogique</h3>
+            <p>
+                <strong>Validation HTML5:</strong> Les attributs <code>required</code>, 
+                <code>minlength</code>, <code>maxlength</code>, <code>pattern</code> 
+                permettent une validation côté client sans JavaScript. 
+                <br><br>
+                <strong>Accessibilité:</strong> Les labels sont associés aux inputs via 
+                l'attribut <code>for</code> qui correspond à l'<code>id</code> de l'input.
+                <br><br>
+                <strong>UX:</strong> Les placeholders donnent des exemples, les help-text 
+                expliquent les contraintes, et les couleurs indiquent la validité.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        /**
+         * JAVASCRIPT POUR LA GESTION DU FORMULAIRE
+         * 
+         * Ce script gère la soumission du formulaire et affiche les données
+         * (Dans un vrai projet, les données seraient envoyées à un serveur)
+         */
+        
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Empêche le rechargement de la page
+            
+            // Récupération des données du formulaire
+            const formData = new FormData(this);
+            const data = {};
+            
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Affichage dans la console
+            console.log('📋 Données du formulaire:', data);
+            
+            // Message de confirmation
+            alert('✅ Formulaire soumis avec succès!\n\nVérifiez la console (F12) pour voir les données.');
+            
+            // Réinitialisation du formulaire
+            this.reset();
+        });
+        
+        // Log pédagogique
+        console.log('='.repeat(60));
+        console.log('EXEMPLE PRATIQUE: Formulaire de Contact');
+        console.log('Auteur: Mikail Lekesiz - LP DWCA 2025');
+        console.log('='.repeat(60));
+        console.log('Remplissez et soumettez le formulaire pour voir les données');
+    </script>
+</body>
+</html>
+

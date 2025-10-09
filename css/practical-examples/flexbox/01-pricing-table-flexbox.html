@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Tarifs avec Flexbox - LP DWCA</title>
+    <style>
+        /**
+         * EXEMPLE PRATIQUE: Tableau de Tarifs avec Flexbox
+         * 
+         * OBJECTIFS PÉDAGOGIQUES:
+         * - Maîtriser Flexbox pour créer des layouts flexibles
+         * - Comprendre les propriétés flex principales
+         * - Créer un design responsive avec Flexbox
+         * - Appliquer des effets hover et transitions
+         * 
+         * PROPRIÉTÉS FLEXBOX DÉMONTRÉES:
+         * - display: flex - Active Flexbox
+         * - flex-direction - Direction des éléments (row, column)
+         * - justify-content - Alignement horizontal
+         * - align-items - Alignement vertical
+         * - flex - Propriété raccourcie (grow, shrink, basis)
+         * - gap - Espacement entre les éléments
+         * 
+         * CAS D'USAGE RÉEL:
+         * - Pages de tarification SaaS
+         * - Sites e-commerce
+         * - Landing pages
+         * - Applications web
+         * 
+         * AUTEUR: Mikail Lekesiz - LP DWCA 2025
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        /* Conteneur principal */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* En-tête */
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 60px;
+        }
+        
+        .header h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+        
+        /* 
+         * FLEXBOX CONTAINER
+         * 
+         * display: flex - Active le mode Flexbox
+         * justify-content: center - Centre horizontalement
+         * align-items: stretch - Étire les éléments verticalement
+         * gap: 30px - Espacement entre les cartes
+         * flex-wrap: wrap - Permet le retour à la ligne sur mobile
+         */
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        /* 
+         * FLEXBOX ITEM
+         * 
+         * flex: 1 - Prend tout l'espace disponible également
+         * min-width: 300px - Largeur minimale avant le wrap
+         * max-width: 350px - Largeur maximale
+         */
+        .pricing-card {
+            flex: 1;
+            min-width: 300px;
+            max-width: 350px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            
+            /* Flexbox pour organiser le contenu interne */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Effet hover */
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        /* Carte populaire (mise en avant) */
+        .pricing-card.popular {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.08) translateY(-10px);
+        }
+        
+        /* Badge "Populaire" */
+        .badge {
+            background: #ffc107;
+            color: #2c3e50;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            align-self: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        /* Nom du plan */
+        .plan-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        /* Prix */
+        .price {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .price span {
+            font-size: 18px;
+            font-weight: 400;
+        }
+        
+        .billing-period {
+            font-size: 14px;
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+        
+        /* 
+         * LISTE DES FONCTIONNALITÉS
+         * 
+         * flex-grow: 1 - Prend tout l'espace disponible
+         * Cela pousse le bouton vers le bas
+         */
+        .features {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+        
+        .features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pricing-card.popular .features li {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+        
+        .features li:last-child {
+            border-bottom: none;
+        }
+        
+        .features li::before {
+            content: "✓";
+            color: #2ecc71;
+            font-weight: 700;
+            font-size: 18px;
+        }
+        
+        .pricing-card.popular .features li::before {
+            color: #ffc107;
+        }
+        
+        /* Bouton */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: transform 0.2s ease, box-shadow 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .pricing-card.popular .btn {
+            background: white;
+            color: #667eea;
+        }
+        
+        /* Note pédagogique */
+        .educational-note {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 60px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .educational-note h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .educational-note p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .educational-note code {
+            background: #f4f4f4;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+            
+            .pricing-card.popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête -->
+        <div class="header">
+            <h1>💰 Nos Tarifs</h1>
+            <p>Choisissez le plan qui correspond à vos besoins</p>
+        </div>
+        
+        <!-- Conteneur Flexbox des cartes de tarification -->
+        <div class="pricing-container">
+            
+            <!-- Plan Basique -->
+            <div class="pricing-card">
+                <div class="plan-name">Basique</div>
+                <div class="price">9€ <span>/mois</span></div>
+                <div class="billing-period">Facturation mensuelle</div>
+                
+                <ul class="features">
+                    <li>1 utilisateur</li>
+                    <li>10 Go de stockage</li>
+                    <li>Support par email</li>
+                    <li>Accès aux fonctionnalités de base</li>
+                    <li>Mises à jour incluses</li>
+                </ul>
+                
+                <a href="#" class="btn">Commencer</a>
+            </div>
+            
+            <!-- Plan Pro (Populaire) -->
+            <div class="pricing-card popular">
+                <span class="badge">⭐ Populaire</span>
+                <div class="plan-name">Pro</div>
+                <div class="price">29€ <span>/mois</span></div>
+                <div class="billing-period">Facturation mensuelle</div>
+                
+                <ul class="features">
+                    <li>5 utilisateurs</li>
+                    <li>100 Go de stockage</li>
+                    <li>Support prioritaire 24/7</li>
+                    <li>Toutes les fonctionnalités</li>
+                    <li>Analyses avancées</li>
+                    <li>API access</li>
+                    <li>Intégrations illimitées</li>
+                </ul>
+                
+                <a href="#" class="btn">Commencer</a>
+            </div>
+            
+            <!-- Plan Entreprise -->
+            <div class="pricing-card">
+                <div class="plan-name">Entreprise</div>
+                <div class="price">99€ <span>/mois</span></div>
+                <div class="billing-period">Facturation mensuelle</div>
+                
+                <ul class="features">
+                    <li>Utilisateurs illimités</li>
+                    <li>Stockage illimité</li>
+                    <li>Support dédié 24/7</li>
+                    <li>Fonctionnalités personnalisées</li>
+                    <li>SLA garanti 99.9%</li>
+                    <li>Formation incluse</li>
+                    <li>Gestionnaire de compte</li>
+                </ul>
+                
+                <a href="#" class="btn">Nous contacter</a>
+            </div>
+            
+        </div>
+        
+        <!-- Note pédagogique -->
+        <div class="educational-note">
+            <h3>📚 Concepts Flexbox Démontrés</h3>
+            
+            <p>
+                <strong>1. Container Flexbox:</strong><br>
+                <code>display: flex</code> active le mode Flexbox sur le conteneur.<br>
+                <code>justify-content: center</code> centre les éléments horizontalement.<br>
+                <code>align-items: stretch</code> étire les cartes pour avoir la même hauteur.<br>
+                <code>gap: 30px</code> crée un espacement uniforme entre les cartes.<br>
+                <code>flex-wrap: wrap</code> permet le retour à la ligne sur mobile.
+            </p>
+            
+            <p>
+                <strong>2. Items Flexbox:</strong><br>
+                <code>flex: 1</code> fait que chaque carte prend un espace égal.<br>
+                <code>min-width: 300px</code> définit une largeur minimale avant le wrap.<br>
+                <code>max-width: 350px</code> limite la largeur maximale.
+            </p>
+            
+            <p>
+                <strong>3. Flexbox Interne:</strong><br>
+                Chaque carte utilise aussi Flexbox (<code>flex-direction: column</code>) 
+                pour organiser son contenu verticalement. La liste de fonctionnalités 
+                utilise <code>flex-grow: 1</code> pour pousser le bouton vers le bas.
+            </p>
+            
+            <p>
+                <strong>4. Responsive:</strong><br>
+                Grâce à <code>flex-wrap: wrap</code> et aux largeurs min/max, le layout 
+                s'adapte automatiquement aux différentes tailles d'écran sans media queries 
+                complexes.
+            </p>
+            
+            <p>
+                <strong>💡 Cas d'usage réel:</strong> Ce type de tableau de tarifs est 
+                utilisé par des milliers de sites SaaS (Spotify, Netflix, Dropbox, etc.). 
+                Flexbox est parfait pour ce cas car il gère automatiquement l'alignement 
+                et la distribution de l'espace.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('='.repeat(60));
+        console.log('EXEMPLE PRATIQUE: Tableau de Tarifs avec Flexbox');
+        console.log('Auteur: Mikail Lekesiz - LP DWCA 2025');
+        console.log('='.repeat(60));
+        console.log('\n📋 Propriétés Flexbox utilisées:');
+        console.log('Container:');
+        console.log('  - display: flex');
+        console.log('  - justify-content: center');
+        console.log('  - align-items: stretch');
+        console.log('  - gap: 30px');
+        console.log('  - flex-wrap: wrap');
+        console.log('\nItems:');
+        console.log('  - flex: 1');
+        console.log('  - min-width: 300px');
+        console.log('  - max-width: 350px');
+        console.log('  - display: flex (nested)');
+        console.log('  - flex-direction: column');
+        console.log('\n✅ Responsive sans media queries complexes!');
+    </script>
+</body>
+</html>
+
