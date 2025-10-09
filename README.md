@@ -84,7 +84,7 @@ Ce matériel pédagogique est destiné aux étudiants de la LP DWCA.
 ### 🔗 Liens Utiles
 
 - [Portfolio](https://portfolio.lekesiz.fr)
-- [Netz Informatique](https://netz-informatique.fr)
+- [Netz Informatique](https://netzinformatique.fr)
 - [GitHub](https://github.com/lekesiz)
 
 ---
