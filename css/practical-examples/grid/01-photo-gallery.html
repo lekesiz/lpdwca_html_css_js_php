@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie Photos CSS Grid - LP DWCA</title>
+    <style>
+        /**
+         * EXEMPLE PRATIQUE: Galerie Photos avec CSS Grid
+         * 
+         * OBJECTIFS PÉDAGOGIQUES:
+         * - Maîtriser CSS Grid pour des layouts complexes
+         * - Créer un layout masonry-style responsive
+         * - Utiliser grid-template-columns et grid-auto-rows
+         * - Appliquer grid-row: span pour des hauteurs variables
+         * 
+         * PROPRIÉTÉS GRID DÉMONTRÉES:
+         * - display: grid
+         * - grid-template-columns: repeat(auto-fill, minmax())
+         * - grid-auto-rows
+         * - grid-row: span
+         * - gap
+         * 
+         * CAS D'USAGE: Pinterest, Instagram, portfolios photos
+         * AUTEUR: Mikail Lekesiz - LP DWCA 2025
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 16px;
+        }
+        
+        /* 
+         * CSS GRID GALLERY
+         * 
+         * grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))
+         * - auto-fill: Crée autant de colonnes que possible
+         * - minmax(250px, 1fr): Colonnes de min 250px, max 1fr
+         * 
+         * grid-auto-rows: 10px
+         * - Hauteur de base pour chaque ligne (petite unité)
+         * 
+         * gap: 15px
+         * - Espacement entre les éléments
+         */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-auto-rows: 10px;
+            gap: 15px;
+        }
+        
+        /*
+         * GRID ITEM
+         * 
+         * grid-row: span X
+         * - Fait que l'élément occupe X lignes
+         * - Permet des hauteurs variables (masonry effect)
+         */
+        .gallery-item {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        /* Hauteurs variables pour effet masonry */
+        .gallery-item:nth-child(1) { grid-row: span 30; }
+        .gallery-item:nth-child(2) { grid-row: span 25; }
+        .gallery-item:nth-child(3) { grid-row: span 35; }
+        .gallery-item:nth-child(4) { grid-row: span 28; }
+        .gallery-item:nth-child(5) { grid-row: span 32; }
+        .gallery-item:nth-child(6) { grid-row: span 26; }
+        .gallery-item:nth-child(7) { grid-row: span 30; }
+        .gallery-item:nth-child(8) { grid-row: span 34; }
+        .gallery-item:nth-child(9) { grid-row: span 27; }
+        .gallery-item:nth-child(10) { grid-row: span 31; }
+        .gallery-item:nth-child(11) { grid-row: span 29; }
+        .gallery-item:nth-child(12) { grid-row: span 33; }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 70%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-item-content {
+            padding: 15px;
+        }
+        
+        .gallery-item h3 {
+            color: #2c3e50;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .gallery-item p {
+            color: #7f8c8d;
+            font-size: 13px;
+            line-height: 1.4;
+        }
+        
+        /* Note pédagogique */
+        .educational-note {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .educational-note h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .educational-note p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .educational-note code {
+            background: #f4f4f4;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            h1 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📸 Galerie Photos CSS Grid</h1>
+            <p class="subtitle">Démonstration d'un layout masonry-style avec CSS Grid</p>
+        </header>
+        
+        <!-- Galerie CSS Grid -->
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=400" alt="Photo 1">
+                <div class="gallery-item-content">
+                    <h3>Développement Web</h3>
+                    <p>HTML, CSS, JavaScript</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400" alt="Photo 2">
+                <div class="gallery-item-content">
+                    <h3>Code Moderne</h3>
+                    <p>ES6+, React, Vue</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400" alt="Photo 3">
+                <div class="gallery-item-content">
+                    <h3>Workspace</h3>
+                    <p>Setup de développeur</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400" alt="Photo 4">
+                <div class="gallery-item-content">
+                    <h3>Programmation</h3>
+                    <p>Algorithmes et logique</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400" alt="Photo 5">
+                <div class="gallery-item-content">
+                    <h3>Collaboration</h3>
+                    <p>Travail d'équipe</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=400" alt="Photo 6">
+                <div class="gallery-item-content">
+                    <h3>Design UI/UX</h3>
+                    <p>Interface utilisateur</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=400" alt="Photo 7">
+                <div class="gallery-item-content">
+                    <h3>Technologie</h3>
+                    <p>Innovation digitale</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=400" alt="Photo 8">
+                <div class="gallery-item-content">
+                    <h3>Formation</h3>
+                    <p>LP DWCA 2025</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400" alt="Photo 9">
+                <div class="gallery-item-content">
+                    <h3>Mobile Dev</h3>
+                    <p>Applications mobiles</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=400" alt="Photo 10">
+                <div class="gallery-item-content">
+                    <h3>Backend</h3>
+                    <p>Serveurs et APIs</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400" alt="Photo 11">
+                <div class="gallery-item-content">
+                    <h3>DevOps</h3>
+                    <p>CI/CD et déploiement</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=400" alt="Photo 12">
+                <div class="gallery-item-content">
+                    <h3>Data Science</h3>
+                    <p>IA et Machine Learning</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Note pédagogique -->
+        <div class="educational-note">
+            <h2>📚 Concepts CSS Grid Démontrés</h2>
+            
+            <p>
+                <strong>1. Layout Automatique:</strong><br>
+                <code>grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))</code><br>
+                Crée automatiquement le nombre optimal de colonnes selon la largeur disponible.
+            </p>
+            
+            <p>
+                <strong>2. Masonry Effect:</strong><br>
+                <code>grid-auto-rows: 10px</code> + <code>grid-row: span X</code><br>
+                Permet des hauteurs variables pour un effet Pinterest-style.
+            </p>
+            
+            <p>
+                <strong>3. Responsive Automatique:</strong><br>
+                Grâce à <code>auto-fill</code> et <code>minmax()</code>, le layout s'adapte 
+                automatiquement sans media queries complexes.
+            </p>
+            
+            <p>
+                <strong>💡 Cas d'usage réel:</strong> Ce type de galerie est utilisé par 
+                Pinterest, Instagram, Unsplash, et de nombreux portfolios de photographes 
+                et designers.
+            </p>
+        </div>
+    </div>
+    
+    <script>
+        console.log('='.repeat(60));
+        console.log('EXEMPLE PRATIQUE: Galerie Photos CSS Grid');
+        console.log('Auteur: Mikail Lekesiz - LP DWCA 2025');
+        console.log('='.repeat(60));
+        console.log('\n📋 Propriétés CSS Grid utilisées:');
+        console.log('- display: grid');
+        console.log('- grid-template-columns: repeat(auto-fill, minmax(250px, 1fr))');
+        console.log('- grid-auto-rows: 10px');
+        console.log('- grid-row: span X (hauteurs variables)');
+        console.log('- gap: 15px');
+        console.log('\n✅ Layout masonry-style responsive!');
+    </script>
+</body>
+</html>
+
