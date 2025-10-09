@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SP - Etape 1E - To-Do-List JSON</title>
+    <style>
+        /**
+         * SP - Etape 1E
+         * Affichage des données JSON To-Do-List
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 24px;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .json-display {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .json-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .badge-critique {
+            background: #fee;
+            color: #c0392b;
+        }
+        
+        .badge-important {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .badge-moyen {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .badge-encours {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .badge-terminee {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .badge-planifiee {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .info-box {
+            background: #e8f4fd;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .info-box h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .info-box p {
+            color: #34495e;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            table {
+                font-size: 12px;
+            }
+            
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 SP - Etape 1E</h1>
+            <p>To-Do-List - Affichage des données JSON</p>
+            <p style="margin-top: 10px; font-size: 14px;">Par Mikail Lekesiz - LP DWCA 2025</p>
+        </div>
+        
+        <div class="content">
+            <div class="info-box">
+                <h3>📚 À propos de cet exercice</h3>
+                <p>
+                    Cette page affiche toutes les données JSON créées dans les étapes précédentes (1A à 1D).
+                    Les données sont chargées en JavaScript et affichées de manière structurée avec des tableaux.
+                    Consultez la console du navigateur (F12) pour voir les données brutes.
+                </p>
+            </div>
+            
+            <!-- Etape 1A -->
+            <div class="section">
+                <div class="section-title">Etape 1A - Structure d'une Tâche</div>
+                <div class="json-display">
+                    <div class="json-title">📄 etapa1A.json (Format compacté)</div>
+                    <pre id="json1A"></pre>
+                </div>
+            </div>
+            
+            <!-- Etape 1B -->
+            <div class="section">
+                <div class="section-title">Etape 1B - Paramètre Priorité</div>
+                <div class="json-display">
+                    <div class="json-title">📄 etapa1B.json (Format compacté)</div>
+                    <pre id="json1B"></pre>
+                </div>
+                <table id="table1B"></table>
+            </div>
+            
+            <!-- Etape 1C -->
+            <div class="section">
+                <div class="section-title">Etape 1C - Autres Paramètres</div>
+                
+                <div class="json-display">
+                    <div class="json-title">📄 etapa1C_complexite.json</div>
+                    <pre id="json1C_complexite"></pre>
+                </div>
+                <table id="table1C_complexite"></table>
+                
+                <div class="json-display" style="margin-top: 30px;">
+                    <div class="json-title">📄 etapa1C_categorie.json</div>
+                    <pre id="json1C_categorie"></pre>
+                </div>
+                <table id="table1C_categorie"></table>
+                
+                <div class="json-display" style="margin-top: 30px;">
+                    <div class="json-title">📄 etapa1C_duree.json</div>
+                    <pre id="json1C_duree"></pre>
+                </div>
+                <table id="table1C_duree"></table>
+            </div>
+            
+            <!-- Etape 1D -->
+            <div class="section">
+                <div class="section-title">Etape 1D - Tâches Complètes avec Paramètres</div>
+                <div class="json-display">
+                    <div class="json-title">📄 etapa1D.json (Format compacté)</div>
+                    <pre id="json1D"></pre>
+                </div>
+                <table id="table1D"></table>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        /**
+         * SP - Etape 1E
+         * Chargement et affichage des données JSON
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         */
+        
+        // Etape 1A - Structure d'une tâche
+        const tache1A = {"idTache":"1","libelle":"Finaliser le projet LP DWCA","description":"Compléter tous les exercices HTML, CSS, JavaScript et PHP pour la formation","dateCreation":"2025-10-09","dateFinalisation":"2025-12-15","statut":"En cours","auteur":"Mikail Lekesiz"};
+        
+        // Etape 1B - Priorités
+        const priorites1B = [{"idPriorite":"1","priorite":"Critique"},{"idPriorite":"2","priorite":"Très important"},{"idPriorite":"3","priorite":"Important"},{"idPriorite":"4","priorite":"Moyen"},{"idPriorite":"5","priorite":"Peu important"},{"idPriorite":"6","priorite":"Non urgent"}];
+        
+        // Etape 1C - Complexités
+        const complexites1C = [{"idComplexite":"1","complexite":"Très simple"},{"idComplexite":"2","complexite":"Simple"},{"idComplexite":"3","complexite":"Moyenne"},{"idComplexite":"4","complexite":"Complexe"},{"idComplexite":"5","complexite":"Très complexe"}];
+        
+        // Etape 1C - Catégories
+        const categories1C = [{"idCategorie":"1","categorie":"Développement Web"},{"idCategorie":"2","categorie":"DevOps & Cloud"},{"idCategorie":"3","categorie":"Intelligence Artificielle"},{"idCategorie":"4","categorie":"Formation"},{"idCategorie":"5","categorie":"Documentation"},{"idCategorie":"6","categorie":"Réunion"},{"idCategorie":"7","categorie":"Personnel"}];
+        
+        // Etape 1C - Durées
+        const durees1C = [{"idDuree":"1","duree":"Moins de 30 minutes"},{"idDuree":"2","duree":"30 minutes à 1 heure"},{"idDuree":"3","duree":"1 à 2 heures"},{"idDuree":"4","duree":"2 à 4 heures"},{"idDuree":"5","duree":"4 à 8 heures"},{"idDuree":"6","duree":"Plus d'une journée"},{"idDuree":"7","duree":"Plusieurs jours"}];
+        
+        // Etape 1D - Tâches complètes
+        const taches1D = [{"idTache":"1","libelle":"Finaliser le projet LP DWCA","description":"Compléter tous les exercices HTML, CSS, JavaScript et PHP pour la formation","dateCreation":"2025-10-09","dateFinalisation":"2025-12-15","statut":"En cours","auteur":"Mikail Lekesiz","idPriorite":"2","idComplexite":"4","idCategorie":"1","idDuree":"7"},{"idTache":"2","libelle":"Développer l'application To-Do-List","description":"Créer une application complète avec localStorage et dashboard","dateCreation":"2025-10-09","dateFinalisation":"2025-10-20","statut":"En cours","auteur":"Mikail Lekesiz","idPriorite":"1","idComplexite":"4","idCategorie":"1","idDuree":"6"},{"idTache":"3","libelle":"Apprendre les concepts JSON","description":"Maîtriser la manipulation de données JSON en JavaScript","dateCreation":"2025-10-08","dateFinalisation":"2025-10-15","statut":"Terminée","auteur":"Mikail Lekesiz","idPriorite":"3","idComplexite":"2","idCategorie":"4","idDuree":"3"},{"idTache":"4","libelle":"Mettre à jour le portfolio","description":"Ajouter les nouveaux projets LP DWCA au portfolio personnel","dateCreation":"2025-10-09","dateFinalisation":"2025-11-01","statut":"Planifiée","auteur":"Mikail Lekesiz","idPriorite":"4","idComplexite":"3","idCategorie":"1","idDuree":"4"}];
+        
+        // Afficher JSON dans les <pre>
+        document.getElementById('json1A').textContent = JSON.stringify(tache1A);
+        document.getElementById('json1B').textContent = JSON.stringify(priorites1B);
+        document.getElementById('json1C_complexite').textContent = JSON.stringify(complexites1C);
+        document.getElementById('json1C_categorie').textContent = JSON.stringify(categories1C);
+        document.getElementById('json1C_duree').textContent = JSON.stringify(durees1C);
+        document.getElementById('json1D').textContent = JSON.stringify(taches1D);
+        
+        // Fonction pour créer un tableau
+        function createTable(data, columns) {
+            let html = '<thead><tr>';
+            columns.forEach(col => {
+                html += `<th>${col.label}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+            
+            data.forEach(item => {
+                html += '<tr>';
+                columns.forEach(col => {
+                    html += `<td>${item[col.key]}</td>`;
+                });
+                html += '</tr>';
+            });
+            
+            html += '</tbody>';
+            return html;
+        }
+        
+        // Créer les tableaux
+        document.getElementById('table1B').innerHTML = createTable(priorites1B, [
+            {key: 'idPriorite', label: 'ID'},
+            {key: 'priorite', label: 'Priorité'}
+        ]);
+        
+        document.getElementById('table1C_complexite').innerHTML = createTable(complexites1C, [
+            {key: 'idComplexite', label: 'ID'},
+            {key: 'complexite', label: 'Complexité'}
+        ]);
+        
+        document.getElementById('table1C_categorie').innerHTML = createTable(categories1C, [
+            {key: 'idCategorie', label: 'ID'},
+            {key: 'categorie', label: 'Catégorie'}
+        ]);
+        
+        document.getElementById('table1C_duree').innerHTML = createTable(durees1C, [
+            {key: 'idDuree', label: 'ID'},
+            {key: 'duree', label: 'Durée estimée'}
+        ]);
+        
+        // Tableau des tâches avec résolution des références
+        function createTaskTable(tasks) {
+            let html = '<thead><tr>';
+            html += '<th>ID</th><th>Libellé</th><th>Description</th><th>Dates</th><th>Priorité</th><th>Statut</th><th>Auteur</th>';
+            html += '</tr></thead><tbody>';
+            
+            tasks.forEach(task => {
+                const priorite = priorites1B.find(p => p.idPriorite === task.idPriorite);
+                const prioriteClass = task.idPriorite <= 2 ? 'badge-critique' : task.idPriorite === 3 ? 'badge-important' : 'badge-moyen';
+                
+                let statutClass = 'badge-encours';
+                if (task.statut === 'Terminée') statutClass = 'badge-terminee';
+                if (task.statut === 'Planifiée') statutClass = 'badge-planifiee';
+                
+                html += '<tr>';
+                html += `<td><strong>#${task.idTache}</strong></td>`;
+                html += `<td><strong>${task.libelle}</strong></td>`;
+                html += `<td>${task.description}</td>`;
+                html += `<td>📅 ${task.dateCreation}<br>🎯 ${task.dateFinalisation}</td>`;
+                html += `<td><span class="badge ${prioriteClass}">${priorite ? priorite.priorite : 'N/A'}</span></td>`;
+                html += `<td><span class="badge ${statutClass}">${task.statut}</span></td>`;
+                html += `<td>${task.auteur}</td>`;
+                html += '</tr>';
+            });
+            
+            html += '</tbody>';
+            return html;
+        }
+        
+        document.getElementById('table1D').innerHTML = createTaskTable(taches1D);
+        
+        // Logs dans la console
+        console.log('='.repeat(60));
+        console.log('SP - ETAPE 1E - DONNÉES JSON TO-DO-LIST');
+        console.log('='.repeat(60));
+        console.log('Auteur: Mikail Lekesiz');
+        console.log('Formation: LP DWCA 2025');
+        console.log('='.repeat(60));
+        console.log('\n📄 Etape 1A - Tâche:');
+        console.log(tache1A);
+        console.log('\n📄 Etape 1B - Priorités:');
+        console.log(priorites1B);
+        console.log('\n📄 Etape 1C - Complexités:');
+        console.log(complexites1C);
+        console.log('\n📄 Etape 1C - Catégories:');
+        console.log(categories1C);
+        console.log('\n📄 Etape 1C - Durées:');
+        console.log(durees1C);
+        console.log('\n📄 Etape 1D - Tâches complètes:');
+        console.log(taches1D);
+        console.log('='.repeat(60));
+    </script>
+</body>
+</html>
+
