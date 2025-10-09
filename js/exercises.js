@@ -2,8 +2,8 @@
 console.log("Hello, MathInfo!");
 
 //variable type String
-var nom="Christoffel";
-let prenom="Eric";
+var nom="Lekesiz";
+let prenom="Mikail";
 
 console.log("Identité : "+nom+' '+prenom);
 
