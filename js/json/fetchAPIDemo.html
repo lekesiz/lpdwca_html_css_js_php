@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API & JSON - Mikail Lekesiz</title>
+    <style>
+        /* 
+         * Démonstration Fetch API et JSON
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+        }
+        
+        .controls {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        button {
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease, transform 0.1s ease;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        button:active {
+            transform: scale(0.98);
+        }
+        
+        button:disabled {
+            background: #95a5a6;
+            cursor: not-allowed;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .users-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .user-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .user-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .user-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            display: block;
+        }
+        
+        .user-name {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        .user-info {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            line-height: 1.6;
+        }
+        
+        .user-info p {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .icon {
+            font-size: 1.2em;
+        }
+        
+        .error {
+            background: #fee;
+            border: 1px solid #fcc;
+            color: #c33;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        .json-display {
+            background: #2c3e50;
+            color: #2ecc71;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 30px;
+        }
+        
+        pre {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 Fetch API & JSON</h1>
+            <p class="subtitle">Démonstration d'appels API avec JavaScript - Par Mikail Lekesiz (LP DWCA 2025)</p>
+        </header>
+        
+        <div class="controls">
+            <button onclick="fetchUsers()">📥 Charger des Utilisateurs</button>
+            <button onclick="fetchPosts()">📝 Charger des Posts</button>
+            <button onclick="fetchTodos()">✅ Charger des Todos</button>
+            <button onclick="clearData()">🗑️ Effacer</button>
+        </div>
+        
+        <div id="content"></div>
+        
+        <div id="jsonDisplay" class="json-display" style="display: none;">
+            <h3 style="color: white; margin-bottom: 15px;">📋 Données JSON brutes:</h3>
+            <pre id="jsonContent"></pre>
+        </div>
+    </div>
+    
+    <script>
+        /**
+         * Démonstration Fetch API et manipulation JSON
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         * 
+         * Utilise l'API publique JSONPlaceholder pour les démos
+         */
+        
+        const API_BASE = 'https://jsonplaceholder.typicode.com';
+        
+        // Fonction pour afficher le loading
+        function showLoading() {
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Chargement des données...</p>
+                </div>
+            `;
+        }
+        
+        // Fonction pour afficher les erreurs
+        function showError(message) {
+            const content = document.getElementById('content');
+            content.innerHTML = `
+                <div class="error">
+                    <h2>❌ Erreur</h2>
+                    <p>${message}</p>
+                </div>
+            `;
+        }
+        
+        // Fonction pour afficher le JSON brut
+        function displayJSON(data) {
+            const jsonDisplay = document.getElementById('jsonDisplay');
+            const jsonContent = document.getElementById('jsonContent');
+            jsonContent.textContent = JSON.stringify(data, null, 2);
+            jsonDisplay.style.display = 'block';
+        }
+        
+        // Charger des utilisateurs
+        async function fetchUsers() {
+            showLoading();
+            
+            try {
+                const response = await fetch(`${API_BASE}/users`);
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const users = await response.json();
+                displayUsers(users);
+                displayJSON(users);
+                
+                console.log('Utilisateurs chargés:', users);
+            } catch (error) {
+                showError(`Erreur lors du chargement: ${error.message}`);
+                console.error('Erreur:', error);
+            }
+        }
+        
+        // Afficher les utilisateurs
+        function displayUsers(users) {
+            const content = document.getElementById('content');
+            
+            const html = `
+                <div class="users-grid">
+                    ${users.map(user => `
+                        <div class="user-card">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=${user.id}" 
+                                 alt="${user.name}" 
+                                 class="user-avatar">
+                            <div class="user-name">${user.name}</div>
+                            <div class="user-info">
+                                <p><span class="icon">👤</span> @${user.username}</p>
+                                <p><span class="icon">📧</span> ${user.email}</p>
+                                <p><span class="icon">📱</span> ${user.phone}</p>
+                                <p><span class="icon">🏢</span> ${user.company.name}</p>
+                                <p><span class="icon">🌐</span> ${user.website}</p>
+                                <p><span class="icon">📍</span> ${user.address.city}</p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            content.innerHTML = html;
+        }
+        
+        // Charger des posts
+        async function fetchPosts() {
+            showLoading();
+            
+            try {
+                const response = await fetch(`${API_BASE}/posts?_limit=10`);
+                const posts = await response.json();
+                displayPosts(posts);
+                displayJSON(posts);
+                
+                console.log('Posts chargés:', posts);
+            } catch (error) {
+                showError(`Erreur lors du chargement: ${error.message}`);
+            }
+        }
+        
+        // Afficher les posts
+        function displayPosts(posts) {
+            const content = document.getElementById('content');
+            
+            const html = `
+                <div class="users-grid">
+                    ${posts.map(post => `
+                        <div class="user-card">
+                            <div class="user-name">📝 Post #${post.id}</div>
+                            <div class="user-info">
+                                <p style="font-weight: bold; color: #2c3e50; margin-bottom: 10px;">
+                                    ${post.title}
+                                </p>
+                                <p style="text-align: justify;">
+                                    ${post.body}
+                                </p>
+                                <p style="margin-top: 10px;">
+                                    <span class="icon">👤</span> User ID: ${post.userId}
+                                </p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            content.innerHTML = html;
+        }
+        
+        // Charger des todos
+        async function fetchTodos() {
+            showLoading();
+            
+            try {
+                const response = await fetch(`${API_BASE}/todos?_limit=20`);
+                const todos = await response.json();
+                displayTodos(todos);
+                displayJSON(todos);
+                
+                console.log('Todos chargés:', todos);
+            } catch (error) {
+                showError(`Erreur lors du chargement: ${error.message}`);
+            }
+        }
+        
+        // Afficher les todos
+        function displayTodos(todos) {
+            const content = document.getElementById('content');
+            
+            const html = `
+                <div class="users-grid">
+                    ${todos.map(todo => `
+                        <div class="user-card">
+                            <div class="user-name">
+                                ${todo.completed ? '✅' : '⏳'} Todo #${todo.id}
+                            </div>
+                            <div class="user-info">
+                                <p style="font-weight: bold; color: ${todo.completed ? '#2ecc71' : '#e74c3c'};">
+                                    ${todo.title}
+                                </p>
+                                <p style="margin-top: 10px;">
+                                    <span class="icon">👤</span> User ID: ${todo.userId}
+                                </p>
+                                <p>
+                                    <span class="icon">📊</span> 
+                                    Status: ${todo.completed ? 'Terminé' : 'En cours'}
+                                </p>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            content.innerHTML = html;
+        }
+        
+        // Effacer les données
+        function clearData() {
+            document.getElementById('content').innerHTML = '';
+            document.getElementById('jsonDisplay').style.display = 'none';
+            console.log('Données effacées');
+        }
+        
+        // Log initial
+        console.log('='.repeat(50));
+        console.log('Fetch API & JSON Demo');
+        console.log('Auteur: Mikail Lekesiz');
+        console.log('Formation: LP DWCA 2025');
+        console.log('API: JSONPlaceholder');
+        console.log('='.repeat(50));
+    </script>
+</body>
+</html>
+

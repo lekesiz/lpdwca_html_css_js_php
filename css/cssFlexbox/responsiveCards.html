@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Cards Layout - Mikail Lekesiz</title>
+    <style>
+        /* 
+         * Cards Responsive avec Flexbox
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         * Description: Système de cartes adaptatif pour services/produits
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f0f2f5;
+            padding: 40px 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.2em;
+        }
+        
+        /* Flexbox Cards Container */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            flex: 1 1 300px;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .card-header.blue {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+        
+        .card-header.green {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        }
+        
+        .card-header.orange {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+        
+        .card-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+        
+        .card-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .card-price {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        
+        .card-price small {
+            font-size: 0.5em;
+            opacity: 0.8;
+        }
+        
+        .card-body {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-description {
+            color: #7f8c8d;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-bottom: 25px;
+            flex: 1;
+        }
+        
+        .features-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ecf0f1;
+            color: #2c3e50;
+        }
+        
+        .features-list li:before {
+            content: "✓ ";
+            color: #2ecc71;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .card-footer {
+            padding: 0 30px 30px;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: #667eea;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.1s ease;
+        }
+        
+        .btn:hover {
+            background: #5568d3;
+            transform: scale(1.05);
+        }
+        
+        .btn.blue {
+            background: #4facfe;
+        }
+        
+        .btn.blue:hover {
+            background: #3a9ae5;
+        }
+        
+        .btn.green {
+            background: #43e97b;
+        }
+        
+        .btn.green:hover {
+            background: #32d86a;
+        }
+        
+        .btn.orange {
+            background: #fa709a;
+        }
+        
+        .btn.orange:hover {
+            background: #e95f89;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .cards-container {
+                gap: 20px;
+            }
+            
+            .card {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+        
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .card {
+                flex: 1 1 calc(50% - 15px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Services Netz Informatique</h1>
+            <p class="subtitle">Par Mikail Lekesiz - Solutions IT Professionnelles</p>
+        </header>
+        
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon">🚀</div>
+                    <div class="card-title">DevOps</div>
+                    <div class="card-price">Sur devis</div>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Solutions DevOps complètes pour optimiser votre infrastructure et automatiser vos déploiements.
+                    </p>
+                    <ul class="features-list">
+                        <li>Architecture Cloud (AWS, Azure, GCP)</li>
+                        <li>CI/CD Pipeline</li>
+                        <li>Containerisation (Docker, Kubernetes)</li>
+                        <li>Monitoring et Alerting</li>
+                        <li>Infrastructure as Code</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn">Demander un devis</a>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-header blue">
+                    <div class="card-icon">💻</div>
+                    <div class="card-title">Développement Web</div>
+                    <div class="card-price">À partir de 2500€</div>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Création de sites web et applications modernes, performantes et responsive.
+                    </p>
+                    <ul class="features-list">
+                        <li>Sites vitrine professionnels</li>
+                        <li>Applications web sur mesure</li>
+                        <li>E-commerce</li>
+                        <li>React, Vue.js, Node.js</li>
+                        <li>Design responsive</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn blue">Démarrer un projet</a>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-header green">
+                    <div class="card-icon">🤖</div>
+                    <div class="card-title">Intelligence Artificielle</div>
+                    <div class="card-price">Sur mesure</div>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Intégration de solutions IA pour automatiser et optimiser vos processus métier.
+                    </p>
+                    <ul class="features-list">
+                        <li>Solutions IA Offline</li>
+                        <li>Automatisation intelligente</li>
+                        <li>Chatbots et assistants virtuels</li>
+                        <li>Analyse de données</li>
+                        <li>Conseil stratégique IA</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn green">Découvrir l'IA</a>
+                </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="card-header orange">
+                    <div class="card-icon">🎓</div>
+                    <div class="card-title">Formation</div>
+                    <div class="card-price">À partir de 800€</div>
+                </div>
+                <div class="card-body">
+                    <p class="card-description">
+                        Formations professionnelles certifiées QUALIOPI en IT et technologies numériques.
+                    </p>
+                    <ul class="features-list">
+                        <li>Développement Web (HTML, CSS, JS)</li>
+                        <li>Programmation (Python, PHP)</li>
+                        <li>DevOps et Cloud</li>
+                        <li>Intelligence Artificielle</li>
+                        <li>Certification QUALIOPI</li>
+                    </ul>
+                </div>
+                <div class="card-footer">
+                    <a href="#" class="btn orange">Voir les formations</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

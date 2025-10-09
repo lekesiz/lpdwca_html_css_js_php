@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management System - OOJS - Mikail Lekesiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f0f2f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+        
+        .form-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ecf0f1;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        button {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+        
+        button:hover {
+            background: #2980b9;
+        }
+        
+        .users-list {
+            margin-top: 30px;
+        }
+        
+        .user-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .user-card.admin {
+            border-left-color: #e74c3c;
+        }
+        
+        .user-card.developer {
+            border-left-color: #2ecc71;
+        }
+        
+        .user-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .user-name {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .user-role {
+            background: #3498db;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .user-role.admin {
+            background: #e74c3c;
+        }
+        
+        .user-role.developer {
+            background: #2ecc71;
+        }
+        
+        .user-info {
+            color: #7f8c8d;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .console-output {
+            background: #2c3e50;
+            color: #2ecc71;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin-top: 30px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .console-line {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏢 Système de Gestion des Utilisateurs</h1>
+        <p class="subtitle">Programmation Orientée Objet en JavaScript - Par Mikail Lekesiz (LP DWCA 2025)</p>
+        
+        <div class="form-section">
+            <h2>Ajouter un Utilisateur</h2>
+            <div class="form-group">
+                <label for="firstName">Prénom:</label>
+                <input type="text" id="firstName" placeholder="Ex: Mikail">
+            </div>
+            <div class="form-group">
+                <label for="lastName">Nom:</label>
+                <input type="text" id="lastName" placeholder="Ex: Lekesiz">
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Ex: mikail@netz-informatique.fr">
+            </div>
+            <div class="form-group">
+                <label for="role">Rôle:</label>
+                <select id="role">
+                    <option value="user">Utilisateur</option>
+                    <option value="admin">Administrateur</option>
+                    <option value="developer">Développeur</option>
+                </select>
+            </div>
+            <button onclick="addUser()">Ajouter l'Utilisateur</button>
+        </div>
+        
+        <div class="users-list">
+            <h2>Liste des Utilisateurs</h2>
+            <div id="usersList"></div>
+        </div>
+        
+        <div class="console-output" id="console">
+            <div class="console-line">>>> Console JavaScript - OOJS Demo</div>
+            <div class="console-line">>>> Système initialisé par Mikail Lekesiz</div>
+        </div>
+    </div>
+    
+    <script>
+        /**
+         * Système de Gestion des Utilisateurs - OOJS
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         * Description: Démonstration de la POO en JavaScript avec classes, héritage et encapsulation
+         */
+        
+        // Classe de base User
+        class User {
+            constructor(firstName, lastName, email) {
+                this.firstName = firstName;
+                this.lastName = lastName;
+                this.email = email;
+                this.createdAt = new Date();
+                this.id = Date.now() + Math.random();
+            }
+            
+            // Getter pour le nom complet
+            get fullName() {
+                return `${this.firstName} ${this.lastName}`;
+            }
+            
+            // Méthode pour obtenir les informations
+            getInfo() {
+                return `${this.fullName} (${this.email})`;
+            }
+            
+            // Méthode pour afficher dans la console
+            displayInfo() {
+                console.log(`User: ${this.getInfo()}`);
+                logToConsole(`User créé: ${this.getInfo()}`);
+            }
+        }
+        
+        // Classe Admin hérite de User
+        class Admin extends User {
+            constructor(firstName, lastName, email) {
+                super(firstName, lastName, email);
+                this.role = 'admin';
+                this.permissions = ['read', 'write', 'delete', 'manage_users'];
+            }
+            
+            getInfo() {
+                return `👑 Admin: ${super.getInfo()} | Permissions: ${this.permissions.length}`;
+            }
+            
+            manageUser(user) {
+                console.log(`Admin ${this.fullName} gère l'utilisateur ${user.fullName}`);
+                logToConsole(`Admin ${this.fullName} gère ${user.fullName}`);
+            }
+        }
+        
+        // Classe Developer hérite de User
+        class Developer extends User {
+            constructor(firstName, lastName, email, skills = []) {
+                super(firstName, lastName, email);
+                this.role = 'developer';
+                this.skills = skills;
+                this.projects = [];
+            }
+            
+            addSkill(skill) {
+                this.skills.push(skill);
+                logToConsole(`${this.fullName} a ajouté la compétence: ${skill}`);
+            }
+            
+            getInfo() {
+                return `💻 Developer: ${super.getInfo()} | Compétences: ${this.skills.join(', ')}`;
+            }
+        }
+        
+        // Classe UserManager pour gérer tous les utilisateurs
+        class UserManager {
+            constructor() {
+                this.users = [];
+            }
+            
+            addUser(user) {
+                this.users.push(user);
+                user.displayInfo();
+                this.render();
+            }
+            
+            getUsersByRole(role) {
+                return this.users.filter(user => user.role === role);
+            }
+            
+            getTotalUsers() {
+                return this.users.length;
+            }
+            
+            render() {
+                const container = document.getElementById('usersList');
+                
+                if (this.users.length === 0) {
+                    container.innerHTML = '<p style="color: #95a5a6;">Aucun utilisateur enregistré</p>';
+                    return;
+                }
+                
+                container.innerHTML = this.users.map(user => `
+                    <div class="user-card ${user.role || 'user'}">
+                        <div class="user-header">
+                            <div class="user-name">${user.fullName}</div>
+                            <div class="user-role ${user.role || 'user'}">${user.role || 'user'}</div>
+                        </div>
+                        <div class="user-info">
+                            📧 ${user.email}<br>
+                            📅 Créé le: ${user.createdAt.toLocaleString('fr-FR')}<br>
+                            ${user.skills ? `💡 Compétences: ${user.skills.join(', ')}` : ''}
+                            ${user.permissions ? `🔐 Permissions: ${user.permissions.join(', ')}` : ''}
+                        </div>
+                    </div>
+                `).join('');
+            }
+        }
+        
+        // Instance globale du gestionnaire
+        const userManager = new UserManager();
+        
+        // Fonction pour ajouter un utilisateur via le formulaire
+        function addUser() {
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const role = document.getElementById('role').value;
+            
+            if (!firstName || !lastName || !email) {
+                alert('Veuillez remplir tous les champs !');
+                return;
+            }
+            
+            let user;
+            
+            switch(role) {
+                case 'admin':
+                    user = new Admin(firstName, lastName, email);
+                    break;
+                case 'developer':
+                    user = new Developer(firstName, lastName, email, ['JavaScript', 'HTML', 'CSS']);
+                    break;
+                default:
+                    user = new User(firstName, lastName, email);
+            }
+            
+            userManager.addUser(user);
+            
+            // Reset form
+            document.getElementById('firstName').value = '';
+            document.getElementById('lastName').value = '';
+            document.getElementById('email').value = '';
+        }
+        
+        // Fonction pour logger dans la console personnalisée
+        function logToConsole(message) {
+            const consoleDiv = document.getElementById('console');
+            const line = document.createElement('div');
+            line.className = 'console-line';
+            line.textContent = `>>> ${message}`;
+            consoleDiv.appendChild(line);
+            consoleDiv.scrollTop = consoleDiv.scrollHeight;
+        }
+        
+        // Initialisation avec des exemples
+        function initDemo() {
+            // Créer Mikail Lekesiz comme admin
+            const mikail = new Admin('Mikail', 'Lekesiz', 'mikail@netz-informatique.fr');
+            userManager.addUser(mikail);
+            
+            // Créer un développeur
+            const dev = new Developer('Jean', 'Dupont', 'jean.dupont@example.com', ['React', 'Node.js', 'Python']);
+            userManager.addUser(dev);
+            
+            // Créer un utilisateur simple
+            const user = new User('Marie', 'Martin', 'marie.martin@example.com');
+            userManager.addUser(user);
+            
+            logToConsole('Système initialisé avec 3 utilisateurs de démonstration');
+            logToConsole(`Total: ${userManager.getTotalUsers()} utilisateurs`);
+        }
+        
+        // Initialiser la démo au chargement
+        window.addEventListener('load', initDemo);
+        
+        console.log('='.repeat(50));
+        console.log('User Management System - OOJS');
+        console.log('Auteur: Mikail Lekesiz');
+        console.log('Formation: LP DWCA 2025');
+        console.log('='.repeat(50));
+    </script>
+</body>
+</html>
+

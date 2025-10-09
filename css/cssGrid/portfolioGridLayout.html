@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Grid Layout - Mikail Lekesiz</title>
+    <style>
+        /* 
+         * Exemple de Portfolio avec CSS Grid
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025
+         * Description: Layout moderne pour un portfolio professionnel
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Grid Layout Principal */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .portfolio-item {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .portfolio-content {
+            padding: 20px;
+        }
+        
+        .portfolio-content h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .portfolio-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .tech-badge {
+            background: #3498db;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #2c3e50;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #34495e;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Portfolio - Mikail Lekesiz</h1>
+            <p>DevOps Engineer & Full Stack Developer</p>
+        </header>
+        
+        <div class="portfolio-grid">
+            <!-- Projet 1 -->
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/400x200/667eea/ffffff?text=Netz+Informatique" alt="Netz Informatique">
+                <div class="portfolio-content">
+                    <h3>Netz Informatique</h3>
+                    <p>Site web complet pour l'entreprise IT avec solutions IA, formations QUALIOPI et services cloud.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Tailwind CSS</span>
+                        <span class="tech-badge">Node.js</span>
+                    </div>
+                    <a href="#" class="btn">Voir le projet</a>
+                </div>
+            </div>
+            
+            <!-- Projet 2 -->
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/400x200/f093fb/ffffff?text=AI+News+Scraper" alt="AI News Scraper">
+                <div class="portfolio-content">
+                    <h3>AI News Scraper</h3>
+                    <p>Outil automatisé de collecte et d'analyse d'actualités IA avec traitement intelligent des données.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">AI/ML</span>
+                        <span class="tech-badge">Web Scraping</span>
+                    </div>
+                    <a href="#" class="btn">Voir le projet</a>
+                </div>
+            </div>
+            
+            <!-- Projet 3 -->
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/400x200/4facfe/ffffff?text=Claude+Chat+App" alt="Claude Chat App">
+                <div class="portfolio-content">
+                    <h3>Claude Chat App</h3>
+                    <p>Application de chat intelligente intégrant l'API Claude pour des conversations IA avancées.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">AI API</span>
+                        <span class="tech-badge">React</span>
+                    </div>
+                    <a href="#" class="btn">Voir le projet</a>
+                </div>
+            </div>
+            
+            <!-- Projet 4 -->
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/400x200/43e97b/ffffff?text=Bilan+de+Competences" alt="Bilan de Compétences">
+                <div class="portfolio-content">
+                    <h3>Bilan de Compétences</h3>
+                    <p>Plateforme web pour la réalisation de bilans de compétences professionnels certifiés.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">TypeScript</span>
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Node.js</span>
+                    </div>
+                    <a href="#" class="btn">Voir le projet</a>
+                </div>
+            </div>
+            
+            <!-- Projet 5 -->
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/400x200/fa709a/ffffff?text=AI+Orchestrator" alt="AI Orchestrator">
+                <div class="portfolio-content">
+                    <h3>AI Orchestrator</h3>
+                    <p>Système d'orchestration pour gérer et coordonner plusieurs modèles d'IA.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">AI/ML</span>
+                        <span class="tech-badge">API</span>
+                    </div>
+                    <a href="#" class="btn">Voir le projet</a>
+                </div>
+            </div>
+            
+            <!-- Projet 6 -->
+            <div class="portfolio-item">
+                <img src="https://via.placeholder.com/400x200/fee140/333333?text=Wedof+Sync" alt="Wedof Sync">
+                <div class="portfolio-content">
+                    <h3>Wedof Sync Google Sheets</h3>
+                    <p>Outil de synchronisation automatique des données Wedof vers Google Sheets.</p>
+                    <div class="tech-stack">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Google API</span>
+                        <span class="tech-badge">Automation</span>
+                    </div>
+                    <a href="#" class="btn">Voir le projet</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
