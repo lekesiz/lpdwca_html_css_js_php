@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Mastery | LP DWCA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body class="bg-gradient-to-br from-purple-600 via-indigo-600 to-blue-600 min-h-screen py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center text-white mb-12">
+            <div class="flex justify-center items-center gap-3 mb-4">
+                <svg class="w-16 h-16" viewBox="0 0 54 33" fill="currentColor">
+                    <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
+                </svg>
+                <h1 class="text-5xl font-bold">Tailwind CSS Mastery</h1>
+            </div>
+            <p class="text-xl text-purple-100 mb-4">
+                Maîtrisez le framework CSS utility-first le plus populaire
+            </p>
+            <div class="flex flex-wrap justify-center gap-2">
+                <span class="px-4 py-2 bg-white/20 rounded-full text-sm">Utility-First</span>
+                <span class="px-4 py-2 bg-white/20 rounded-full text-sm">Responsive</span>
+                <span class="px-4 py-2 bg-white/20 rounded-full text-sm">Dark Mode</span>
+                <span class="px-4 py-2 bg-white/20 rounded-full text-sm">Personnalisable</span>
+            </div>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center text-white">
+                <div class="text-3xl font-bold mb-2">5</div>
+                <div class="text-sm text-purple-200">Sections</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center text-white">
+                <div class="text-3xl font-bold mb-2">~2,500</div>
+                <div class="text-sm text-purple-200">Lignes de Code</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center text-white">
+                <div class="text-3xl font-bold mb-2">100%</div>
+                <div class="text-sm text-purple-200">Interactif</div>
+            </div>
+            <div class="bg-white/10 backdrop-blur-md rounded-xl p-6 text-center text-white">
+                <div class="text-3xl font-bold mb-2">CDN</div>
+                <div class="text-sm text-purple-200">Prêt à l'Emploi</div>
+            </div>
+        </div>
+
+        <!-- Navigation Cards -->
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Documentation -->
+            <a href="README.md" class="block bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center text-white text-3xl flex-shrink-0">
+                        📚
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Documentation</h2>
+                        <p class="text-gray-600 mb-3">
+                            Guide complet sur Tailwind CSS : philosophie, avantages, configuration et concepts clés.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Introduction</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Setup</span>
+                            <span class="px-3 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">Concepts</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Comparison -->
+            <a href="comparison/bootstrap-card.html" class="block bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-600 rounded-2xl flex items-center justify-center text-white text-3xl flex-shrink-0">
+                        ⚖️
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Tailwind vs. Bootstrap</h2>
+                        <p class="text-gray-600 mb-3">
+                            Comparaison côte à côte : même composant construit avec Bootstrap et Tailwind CSS.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Bootstrap Card</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Tailwind Card</span>
+                            <span class="px-3 py-1 bg-purple-100 text-purple-800 text-xs rounded-full">Analyse</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Showcase -->
+            <a href="showcase/" class="block bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-teal-600 rounded-2xl flex items-center justify-center text-white text-3xl flex-shrink-0">
+                        🎨
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Showcase Landing Page</h2>
+                        <p class="text-gray-600 mb-3">
+                            Page d'accueil complète construite avec Tailwind CSS : hero, features, testimonials, CTA.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Responsive</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Animations</span>
+                            <span class="px-3 py-1 bg-green-100 text-green-800 text-xs rounded-full">Gradients</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Examples -->
+            <a href="examples/" class="block bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transform hover:-translate-y-2 transition-all">
+                <div class="flex items-start gap-4">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-600 rounded-2xl flex items-center justify-center text-white text-3xl flex-shrink-0">
+                        💻
+                    </div>
+                    <div class="flex-1">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Exemples Pratiques</h2>
+                        <p class="text-gray-600 mb-3">
+                            Collection d'exemples pratiques : utilities de base, flexbox, grid, responsive design.
+                        </p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Utilities</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Layouts</span>
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 text-xs rounded-full">Components</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Key Features -->
+        <div class="mt-12 bg-white/10 backdrop-blur-md rounded-2xl p-8 text-white">
+            <h2 class="text-3xl font-bold mb-6 text-center">Pourquoi Tailwind CSS?</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div>
+                    <div class="text-4xl mb-3">⚡</div>
+                    <h3 class="text-xl font-bold mb-2">Ultra Rapide</h3>
+                    <p class="text-purple-100 text-sm">
+                        Développez des interfaces en un temps record avec des classes utilitaires prêtes à l'emploi.
+                    </p>
+                </div>
+                <div>
+                    <div class="text-4xl mb-3">🎨</div>
+                    <h3 class="text-xl font-bold mb-2">Personnalisable</h3>
+                    <p class="text-purple-100 text-sm">
+                        Créez des designs uniques sans être limité par des composants prédéfinis.
+                    </p>
+                </div>
+                <div>
+                    <div class="text-4xl mb-3">📦</div>
+                    <h3 class="text-xl font-bold mb-2">Optimisé</h3>
+                    <p class="text-purple-100 text-sm">
+                        CSS final ultra-léger (&lt;10kB) grâce au tree-shaking automatique.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="mt-12 text-center">
+            <a href="../" class="inline-block px-8 py-4 bg-white text-purple-600 font-bold rounded-xl shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all">
+                <i class="bi bi-arrow-left"></i> Retour au Portfolio
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-12 text-center text-white/60 text-sm">
+            <p>© 2025 LP DWCA - Université de Strasbourg</p>
+            <p class="mt-2">
+                Tailwind CSS est un projet open-source créé par 
+                <a href="https://tailwindcss.com" target="_blank" class="text-white hover:text-cyan-300 transition-colors">Tailwind Labs</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+

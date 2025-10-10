@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind Card Example | LP DWCA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-600 to-indigo-700 min-h-screen py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center text-white mb-12 fade-in">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                <svg class="inline-block w-12 h-12 mr-2" viewBox="0 0 54 33" fill="currentColor">
+                    <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
+                </svg>
+                Tailwind CSS Card
+            </h1>
+            <div class="flex flex-wrap justify-center gap-2 mb-4">
+                <span class="px-4 py-2 bg-cyan-500 text-white rounded-full text-sm font-semibold">Utility-First</span>
+                <span class="px-4 py-2 bg-teal-500 text-white rounded-full text-sm font-semibold">Personnalisable</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-3 text-sm">
+                <span class="px-3 py-1 bg-white/20 rounded-full">HTML: 18 lignes</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full">Classes: 35+</span>
+                <span class="px-3 py-1 bg-white/20 rounded-full">CSS Personnalisé: 0</span>
+            </div>
+        </div>
+
+        <!-- Card -->
+        <div class="flex justify-center mb-8 fade-in" style="animation-delay: 0.2s;">
+            <div class="max-w-sm bg-white rounded-2xl shadow-2xl overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-3xl">
+                <!-- Image -->
+                <div class="relative overflow-hidden group">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop" 
+                         alt="Mountain landscape" 
+                         class="w-full h-56 object-cover transition-transform duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </div>
+                
+                <!-- Body -->
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-3">Aventure en Montagne</h2>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        Découvrez les sommets majestueux et les paysages à couper le souffle lors de cette randonnée inoubliable.
+                    </p>
+                    
+                    <!-- Badges and Price -->
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="px-3 py-1 bg-green-100 text-green-800 text-sm font-semibold rounded-full">
+                            Disponible
+                        </span>
+                        <span class="text-sm text-gray-500">À partir de <strong class="text-gray-800">299€</strong></span>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <div class="px-6 pb-6">
+                    <button class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                        Réserver Maintenant
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Code Section -->
+        <div class="bg-gray-900 rounded-2xl p-6 text-gray-100 shadow-2xl fade-in" style="animation-delay: 0.4s;">
+            <h3 class="text-2xl font-bold text-cyan-400 mb-4">📝 Code HTML (Tailwind CSS)</h3>
+            <pre class="text-sm overflow-x-auto"><code>&lt;div class="max-w-sm bg-white rounded-2xl shadow-2xl overflow-hidden 
+     transform transition-all duration-300 hover:scale-105"&gt;
+  &lt;!-- Image --&gt;
+  &lt;div class="relative overflow-hidden group"&gt;
+    &lt;img src="..." alt="..." 
+         class="w-full h-56 object-cover transition-transform 
+                duration-500 group-hover:scale-110"&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Body --&gt;
+  &lt;div class="p-6"&gt;
+    &lt;h2 class="text-2xl font-bold text-gray-800 mb-3"&gt;
+      Aventure en Montagne
+    &lt;/h2&gt;
+    &lt;p class="text-gray-600 mb-4 leading-relaxed"&gt;
+      Découvrez les sommets...
+    &lt;/p&gt;
+    
+    &lt;div class="flex justify-between items-center mb-4"&gt;
+      &lt;span class="px-3 py-1 bg-green-100 text-green-800 
+                   text-sm font-semibold rounded-full"&gt;
+        Disponible
+      &lt;/span&gt;
+      &lt;span class="text-sm text-gray-500"&gt;
+        À partir de &lt;strong&gt;299€&lt;/strong&gt;
+      &lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  
+  &lt;!-- Footer --&gt;
+  &lt;div class="px-6 pb-6"&gt;
+    &lt;button class="w-full bg-gradient-to-r from-purple-600 
+                   to-indigo-600 hover:from-purple-700 
+                   hover:to-indigo-700 text-white font-bold 
+                   py-3 px-4 rounded-xl transition-all 
+                   duration-300 transform hover:scale-105"&gt;
+      Réserver Maintenant
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            
+            <div class="grid md:grid-cols-2 gap-6 mt-6">
+                <div>
+                    <h4 class="text-xl font-bold text-green-400 mb-3">✅ Avantages Tailwind</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-400 mt-1">▸</span>
+                            <span><strong>Personnalisation</strong>: Design unique sans CSS personnalisé</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-400 mt-1">▸</span>
+                            <span><strong>Performance</strong>: CSS optimisé et minimal</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-400 mt-1">▸</span>
+                            <span><strong>Flexibilité</strong>: Construisez n'importe quel design</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-green-400 mt-1">▸</span>
+                            <span><strong>Maintenance</strong>: Styles locaux, pas d'effets de bord</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-xl font-bold text-red-400 mb-3">❌ Limitations Tailwind</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400 mt-1">▸</span>
+                            <span><strong>HTML Verbeux</strong>: Beaucoup de classes</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400 mt-1">▸</span>
+                            <span><strong>Apprentissage</strong>: Mémoriser les noms de classes</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400 mt-1">▸</span>
+                            <span><strong>Build Step</strong>: Nécessite un processus de build</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <span class="text-red-400 mt-1">▸</span>
+                            <span><strong>Pas de Composants</strong>: À construire soi-même</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="text-center mt-8 space-y-4 fade-in" style="animation-delay: 0.6s;">
+            <a href="bootstrap-card.html" 
+               class="inline-block bg-white text-purple-600 font-bold py-3 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                Voir la Version Bootstrap
+            </a>
+            <br>
+            <a href="../" 
+               class="inline-block text-white hover:text-cyan-300 transition-colors duration-300">
+                ← Retour au Module
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

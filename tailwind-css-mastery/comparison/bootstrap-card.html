@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Card Example | LP DWCA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 3rem 0;
+        }
+        
+        .comparison-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 3rem;
+        }
+        
+        .comparison-header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .comparison-header .badge {
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+        }
+        
+        .code-section {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+        }
+        
+        .code-section pre {
+            margin: 0;
+            color: #e2e8f0;
+        }
+        
+        .stats-badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+            color: white;
+            margin: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="comparison-header">
+            <h1><i class="bi bi-bootstrap-fill"></i> Bootstrap 5 Card</h1>
+            <span class="badge bg-primary">Component-Based</span>
+            <span class="badge bg-info">Prêt à l'Emploi</span>
+            <div class="mt-3">
+                <span class="stats-badge">HTML: 15 lignes</span>
+                <span class="stats-badge">Classes: 12</span>
+                <span class="stats-badge">CSS Personnalisé: 0</span>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <!-- Bootstrap Card -->
+                <div class="card shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=250&fit=crop" class="card-img-top" alt="Mountain landscape">
+                    <div class="card-body">
+                        <h5 class="card-title">Aventure en Montagne</h5>
+                        <p class="card-text">Découvrez les sommets majestueux et les paysages à couper le souffle lors de cette randonnée inoubliable.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="badge bg-success">Disponible</span>
+                            <small class="text-muted">À partir de 299€</small>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <button class="btn btn-primary w-100">
+                            <i class="bi bi-cart-plus"></i> Réserver Maintenant
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Code Section -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-10">
+                <div class="code-section">
+                    <h5 style="color: #60a5fa; margin-bottom: 1rem;">📝 Code HTML (Bootstrap)</h5>
+                    <pre>&lt;div class="card shadow-lg"&gt;
+  &lt;img src="..." class="card-img-top" alt="..."&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Aventure en Montagne&lt;/h5&gt;
+    &lt;p class="card-text"&gt;Découvrez les sommets...&lt;/p&gt;
+    &lt;div class="d-flex justify-content-between align-items-center"&gt;
+      &lt;span class="badge bg-success"&gt;Disponible&lt;/span&gt;
+      &lt;small class="text-muted"&gt;À partir de 299€&lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class="card-footer bg-transparent"&gt;
+    &lt;button class="btn btn-primary w-100"&gt;
+      &lt;i class="bi bi-cart-plus"&gt;&lt;/i&gt; Réserver Maintenant
+    &lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+                    
+                    <h5 style="color: #60a5fa; margin-top: 2rem; margin-bottom: 1rem;">✅ Avantages Bootstrap</h5>
+                    <ul style="line-height: 1.8;">
+                        <li><strong>Rapide</strong>: Composants prêts à l'emploi</li>
+                        <li><strong>Cohérent</strong>: Design system unifié</li>
+                        <li><strong>Documenté</strong>: Documentation complète</li>
+                        <li><strong>Communauté</strong>: Large communauté et ressources</li>
+                    </ul>
+                    
+                    <h5 style="color: #f87171; margin-top: 2rem; margin-bottom: 1rem;">❌ Limitations Bootstrap</h5>
+                    <ul style="line-height: 1.8;">
+                        <li><strong>Personnalisation</strong>: Difficile de sortir du design par défaut</li>
+                        <li><strong>Taille</strong>: Fichier CSS plus volumineux</li>
+                        <li><strong>Flexibilité</strong>: Limité aux composants fournis</li>
+                        <li><strong>Similarité</strong>: Beaucoup de sites se ressemblent</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-10 text-center">
+                <a href="tailwind-card.html" class="btn btn-light btn-lg">
+                    Voir la Version Tailwind CSS <i class="bi bi-arrow-right"></i>
+                </a>
+                <br><br>
+                <a href="../" class="btn btn-outline-light">
+                    <i class="bi bi-arrow-left"></i> Retour au Module
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

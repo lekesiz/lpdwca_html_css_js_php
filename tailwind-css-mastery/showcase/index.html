@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tailwind CSS Showcase | LP DWCA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#667eea',
+                        secondary: '#764ba2',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md shadow-sm z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <svg class="w-8 h-8 text-primary" viewBox="0 0 54 33" fill="currentColor">
+                        <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
+                    </svg>
+                    <span class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                        Tailwind Showcase
+                    </span>
+                </div>
+                <div class="hidden md:flex gap-6">
+                    <a href="#features" class="text-gray-700 hover:text-primary transition-colors">Fonctionnalités</a>
+                    <a href="#examples" class="text-gray-700 hover:text-primary transition-colors">Exemples</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-primary transition-colors">Témoignages</a>
+                    <a href="#cta" class="text-gray-700 hover:text-primary transition-colors">Commencer</a>
+                </div>
+                <a href="../" class="px-4 py-2 bg-gradient-to-r from-primary to-secondary text-white rounded-lg hover:shadow-lg transition-all">
+                    Retour
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 bg-gradient-to-br from-primary via-purple-600 to-secondary">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center text-white fade-in-up">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                    Construisez Plus Vite<br>
+                    <span class="bg-gradient-to-r from-cyan-300 to-teal-300 bg-clip-text text-transparent">
+                        Avec Tailwind CSS
+                    </span>
+                </h1>
+                <p class="text-xl md:text-2xl mb-8 text-purple-100 max-w-3xl mx-auto">
+                    Un framework CSS utility-first qui vous permet de créer des designs modernes sans jamais quitter votre HTML.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all">
+                        Commencer Maintenant
+                    </button>
+                    <button class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-primary transition-all">
+                        Voir la Documentation
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Floating Cards Demo -->
+            <div class="mt-16 grid md:grid-cols-3 gap-6 fade-in-up" style="animation-delay: 0.2s;">
+                <div class="bg-white rounded-2xl p-6 shadow-xl float" style="animation-delay: 0s;">
+                    <div class="w-12 h-12 bg-gradient-to-br from-cyan-400 to-blue-500 rounded-xl mb-4 flex items-center justify-center text-white text-2xl">
+                        ⚡
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Ultra Rapide</h3>
+                    <p class="text-gray-600">Développez des interfaces en un temps record avec des classes utilitaires.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-xl float" style="animation-delay: 0.5s;">
+                    <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-xl mb-4 flex items-center justify-center text-white text-2xl">
+                        🎨
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Personnalisable</h3>
+                    <p class="text-gray-600">Créez des designs uniques sans être limité par des composants prédéfinis.</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-xl float" style="animation-delay: 1s;">
+                    <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-teal-500 rounded-xl mb-4 flex items-center justify-center text-white text-2xl">
+                        📦
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Optimisé</h3>
+                    <p class="text-gray-600">CSS final ultra-léger grâce au tree-shaking automatique.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                    Fonctionnalités Puissantes
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Tout ce dont vous avez besoin pour créer des interfaces modernes et responsive.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="group p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl mb-4 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform">
+                        📱
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Responsive Design</h3>
+                    <p class="text-gray-600 mb-4">
+                        Créez des designs adaptatifs avec des préfixes intuitifs comme <code class="px-2 py-1 bg-gray-100 rounded">sm:</code>, <code class="px-2 py-1 bg-gray-100 rounded">md:</code>, <code class="px-2 py-1 bg-gray-100 rounded">lg:</code>.
+                    </p>
+                    <div class="text-sm text-primary font-semibold">En savoir plus →</div>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="group p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-purple-400 to-purple-600 rounded-2xl mb-4 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform">
+                        🌙
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Dark Mode</h3>
+                    <p class="text-gray-600 mb-4">
+                        Implémentez le mode sombre facilement avec le préfixe <code class="px-2 py-1 bg-gray-100 rounded">dark:</code> sur n'importe quelle classe.
+                    </p>
+                    <div class="text-sm text-primary font-semibold">En savoir plus →</div>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="group p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl mb-4 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform">
+                        🎭
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">States & Variants</h3>
+                    <p class="text-gray-600 mb-4">
+                        Gérez les états hover, focus, active avec des préfixes comme <code class="px-2 py-1 bg-gray-100 rounded">hover:</code>, <code class="px-2 py-1 bg-gray-100 rounded">focus:</code>.
+                    </p>
+                    <div class="text-sm text-primary font-semibold">En savoir plus →</div>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="group p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-yellow-400 to-orange-600 rounded-2xl mb-4 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform">
+                        🎨
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Palette de Couleurs</h3>
+                    <p class="text-gray-600 mb-4">
+                        Palette complète avec des nuances de 50 à 950 pour chaque couleur, incluant les couleurs P3.
+                    </p>
+                    <div class="text-sm text-primary font-semibold">En savoir plus →</div>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="group p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-pink-400 to-red-600 rounded-2xl mb-4 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform">
+                        ⚙️
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Configuration</h3>
+                    <p class="text-gray-600 mb-4">
+                        Personnalisez tout via <code class="px-2 py-1 bg-gray-100 rounded">tailwind.config.js</code> : couleurs, espacements, polices, etc.
+                    </p>
+                    <div class="text-sm text-primary font-semibold">En savoir plus →</div>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="group p-6 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all transform hover:-translate-y-2">
+                    <div class="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-2xl mb-4 flex items-center justify-center text-white text-3xl group-hover:scale-110 transition-transform">
+                        🚀
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-3">Performance</h3>
+                    <p class="text-gray-600 mb-4">
+                        Le CSS inutilisé est automatiquement supprimé, résultant en des fichiers de moins de 10kB.
+                    </p>
+                    <div class="text-sm text-primary font-semibold">En savoir plus →</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Examples Section -->
+    <section id="examples" class="py-20 px-4 bg-gray-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                    Exemples de Code
+                </h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Voyez à quel point il est facile de créer des composants magnifiques.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Example 1: Button -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Bouton Gradient</h3>
+                    <div class="mb-6">
+                        <button class="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold rounded-lg hover:from-purple-600 hover:to-pink-600 transform hover:scale-105 transition-all shadow-lg">
+                            Click Me!
+                        </button>
+                    </div>
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>&lt;button class="px-6 py-3 bg-gradient-to-r 
+        from-purple-500 to-pink-500 
+        text-white font-bold rounded-lg 
+        hover:from-purple-600 hover:to-pink-600 
+        transform hover:scale-105 
+        transition-all shadow-lg"&gt;
+  Click Me!
+&lt;/button&gt;</code></pre>
+                </div>
+                
+                <!-- Example 2: Card -->
+                <div class="bg-white rounded-2xl p-8 shadow-xl">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Carte Moderne</h3>
+                    <div class="mb-6">
+                        <div class="max-w-sm bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl p-6 text-white shadow-2xl">
+                            <h4 class="text-xl font-bold mb-2">Titre de la Carte</h4>
+                            <p class="text-blue-100">Contenu de la carte avec un design moderne et élégant.</p>
+                        </div>
+                    </div>
+                    <pre class="bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto text-sm"><code>&lt;div class="max-w-sm bg-gradient-to-br 
+     from-blue-500 to-purple-600 
+     rounded-xl p-6 text-white 
+     shadow-2xl"&gt;
+  &lt;h4 class="text-xl font-bold mb-2"&gt;
+    Titre de la Carte
+  &lt;/h4&gt;
+  &lt;p class="text-blue-100"&gt;
+    Contenu de la carte...
+  &lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+                    Ce Que Disent les Développeurs
+                </h2>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full"></div>
+                        <div>
+                            <div class="font-bold text-gray-800">Marie Dubois</div>
+                            <div class="text-sm text-gray-500">Frontend Developer</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Tailwind a révolutionné ma façon de coder. Je suis 3x plus rapide qu'avant!"
+                    </p>
+                    <div class="mt-4 text-yellow-400">★★★★★</div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-full"></div>
+                        <div>
+                            <div class="font-bold text-gray-800">Pierre Martin</div>
+                            <div class="text-sm text-gray-500">Full Stack Developer</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "La flexibilité de Tailwind est inégalée. Je ne reviendrai jamais en arrière."
+                    </p>
+                    <div class="mt-4 text-yellow-400">★★★★★</div>
+                </div>
+                
+                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-teal-500 rounded-full"></div>
+                        <div>
+                            <div class="font-bold text-gray-800">Sophie Laurent</div>
+                            <div class="text-sm text-gray-500">UI/UX Designer</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 italic">
+                        "Enfin un framework qui me laisse créer exactement ce que j'imagine!"
+                    </p>
+                    <div class="mt-4 text-yellow-400">★★★★★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="py-20 px-4 bg-gradient-to-br from-primary via-purple-600 to-secondary">
+        <div class="max-w-4xl mx-auto text-center text-white">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6">
+                Prêt à Commencer?
+            </h2>
+            <p class="text-xl mb-8 text-purple-100">
+                Rejoignez des milliers de développeurs qui construisent des sites web modernes avec Tailwind CSS.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="px-8 py-4 bg-white text-primary font-bold rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all">
+                    Installer Tailwind CSS
+                </button>
+                <button class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white hover:text-primary transition-all">
+                    Voir les Exemples
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="flex justify-center items-center gap-2 mb-4">
+                <svg class="w-8 h-8" viewBox="0 0 54 33" fill="currentColor">
+                    <path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/>
+                </svg>
+                <span class="text-2xl font-bold">Tailwind CSS Mastery</span>
+            </div>
+            <p class="text-gray-400 mb-4">
+                Un projet éducatif pour LP DWCA - Université de Strasbourg
+            </p>
+            <p class="text-sm text-gray-500">
+                © 2025 LP DWCA. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
