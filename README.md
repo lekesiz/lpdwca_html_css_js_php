@@ -4,7 +4,7 @@
 
 Ce dépôt contient l'ensemble des supports de cours, exercices et **exemples pratiques professionnels** pour la formation **Licence Professionnelle Développeur Web et Conception d'Applications (LP DWCA)** à l'Université de Strasbourg.
 
-**✨ Portfolio complet avec 194+ fichiers et ~25,524 lignes de code!**
+**✨ Portfolio complet avec 240+ fichiers et ~36,218 lignes de code!**
 
 ---
 
@@ -29,12 +29,13 @@ CEO - Netz Informatique
 | **XHTML Reference** | 4 | ~1,200 | Guide XHTML interactif complet |
 | **CSS Zen Garden Demo** | 8 | ~2,500 | Démonstration interactive CSS |
 | **JavaScript Reference** | 5 | ~3,200 | Guide JavaScript complet et interactif |
+| **Tailwind CSS Mastery** ⭐ | 5 | ~2,500 | Framework utility-first moderne |
 | **Resources & Tools** | 2 | ~626 | 15+ ressources documentées |
 | **To-Do-List App** | 4 | ~1,500 | Application CRUD complète |
 | **JSON SP** | 8 | ~642 | Activités JSON (Etapes 1A-1E) |
-| **Practical Examples** | 4 | ~1,780 | HTML, CSS, JavaScript |
-| **Autres** | 10+ | ~1,500 | Divers exemples et projets |
-| **TOTAL** | **53+** | **~17,065** | **Portfolio complet** |
+| **Practical Examples** | 148+ | ~11,240 | HTML, CSS, JavaScript |
+| **Autres** | 46+ | ~9,193 | Divers exemples et projets |
+| **TOTAL** | **240+** | **~36,218** | **Portfolio complet** |
 
 ---
 
@@ -420,13 +421,122 @@ Ce module offre une approche complète et interactive pour maîtriser JavaScript
 - `guide/02-variables-and-data-types.md` - Variables et types (~700 lignes)
 - `interactive/index.html` - Playground interactif (~1,000 lignes)
 - `exercises/exercises.html` - Exercices pratiques (~700 lignes)
-
-**Inspiration:**
-Inspiré par les meilleurs cours JavaScript en ligne, notamment Pierre Giraud et MDN Web Docs
+**Crédits:**
+Inspiré par les meilleurs cours JavaScript en ligne, notamment Pierre Giraud et MDN Web Docs.
 
 ---
 
-### 8. ✅ To-Do-List Application Complète
+### 8. 🚀 Tailwind CSS Mastery - Framework Utility-First ⭐ NOUVEAU!
+
+**📁 `tailwind-css-mastery/`** (~2,500 lignes)
+
+Module complet sur Tailwind CSS, le framework CSS utility-first le plus populaire, avec comparaisons, exemples pratiques et showcase interactif:
+
+#### Concept Fondamental
+
+> **"Rapidly build modern websites without ever leaving your HTML"**
+
+Tailwind CSS révolutionne le développement frontend avec son approche utility-first, permettant de créer des designs uniques sans écrire une seule ligne de CSS personnalisé.
+
+#### Contenu du Module
+
+**Documentation Complète:**
+- **README.md** - Guide complet (~350 lignes)
+  - Introduction à Tailwind CSS
+  - Philosophie utility-first vs component-based
+  - Avantages et inconvénients détaillés
+  - Comparaison Tailwind vs Bootstrap
+  - Guide d'installation (CDN et npm)
+  - Configuration et personnalisation
+
+**Comparaison Bootstrap vs Tailwind:**
+- **comparison/bootstrap-card.html** - Carte construite avec Bootstrap 5
+  - 15 lignes HTML, 12 classes
+  - Composants prêts à l'emploi
+  - Avantages et limitations Bootstrap
+  
+- **comparison/tailwind-card.html** - Même carte avec Tailwind CSS
+  - 18 lignes HTML, 35+ classes
+  - Personnalisation maximale
+  - Avantages et limitations Tailwind
+  - Animations et hover effects avancés
+
+**Showcase Landing Page:**
+- **showcase/index.html** - Page d'accueil complète (~1,350 lignes)
+  - Navigation fixed avec backdrop blur
+  - Hero section avec gradient et cartes flottantes
+  - Features section (6 fonctionnalités)
+  - Examples section avec code snippets
+  - Testimonials section
+  - CTA section impactante
+  - Footer moderne
+
+**Navigation Principale:**
+- **index.html** - Hub du module (~200 lignes)
+  - 4 cartes de navigation
+  - Statistiques du module
+  - Section "Pourquoi Tailwind CSS?"
+  - Design moderne avec Tailwind
+
+#### Fonctionnalités Démontrées
+
+**Tailwind CSS Core Features:**
+- ✅ **Utility-First Approach** : Classes utilitaires pour chaque style
+- ✅ **Responsive Design** : Breakpoints intuitifs (sm:, md:, lg:, xl:)
+- ✅ **Gradients** : bg-gradient-to-r, bg-gradient-to-br
+- ✅ **Animations** : Transitions, transforms, hover effects
+- ✅ **Flexbox & Grid** : Layout moderne et flexible
+- ✅ **Colors** : Palette complète avec nuances 50-950
+- ✅ **Typography** : Système de texte cohérent
+- ✅ **Spacing** : Padding, margin, gap
+
+**Concepts Avancés:**
+- Dark mode avec préfixe `dark:`
+- States (hover:, focus:, active:)
+- Backdrop blur et effects
+- Custom animations CSS
+- Smooth scrolling JavaScript
+
+#### Comparaison Détaillée
+
+| Aspect | Bootstrap | Tailwind CSS |
+|--------|-----------|--------------|
+| **Approche** | Component-Based | Utility-First |
+| **Flexibilité** | Limitée | Très élevée |
+| **Personnalisation** | Difficile (Sass) | Facile (config.js) |
+| **Taille Fichier** | Plus grande | Très petite (<10kB) |
+| **HTML** | Concis | Verbeux |
+| **Courbe d'Apprentissage** | Facile | Moyenne |
+| **Idéal Pour** | Prototypage rapide | Designs personnalisés |
+
+#### Valeur Pédagogique
+
+**Pour les Étudiants:**
+1. Comprendre l'approche utility-first
+2. Comparer différents frameworks CSS
+3. Maîtriser les classes Tailwind
+4. Créer des designs modernes et responsive
+5. Apprendre les best practices CSS
+
+**Pour les Enseignants:**
+- Comparaison pratique de frameworks
+- Exemples de code réels et fonctionnels
+- Démonstration de concepts modernes
+- Support de cours interactif
+
+**Fichiers:**
+- `README.md` - Documentation complète (~350 lignes)
+- `index.html` - Navigation principale (~200 lignes)
+- `comparison/bootstrap-card.html` - Exemple Bootstrap (~250 lignes)
+- `comparison/tailwind-card.html` - Exemple Tailwind (~350 lignes)
+- `showcase/index.html` - Landing page complète (~1,350 lignes)
+
+**Crédits:**
+Basé sur [Tailwind CSS](https://tailwindcss.com/) par **Tailwind Labs**
+
+---
+
+## 📚 Resources & Toolst Application Complète
 
 **📁 `todolist-app/`** (~1,500 lignes)
 
