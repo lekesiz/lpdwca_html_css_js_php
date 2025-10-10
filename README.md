@@ -4,7 +4,7 @@
 
 Ce dépôt contient l'ensemble des supports de cours, exercices et **exemples pratiques professionnels** pour la formation **Licence Professionnelle Développeur Web et Conception d'Applications (LP DWCA)** à l'Université de Strasbourg.
 
-**✨ Portfolio complet avec 38+ fichiers et ~10,665 lignes de code!**
+**✨ Portfolio complet avec 194+ fichiers et ~25,524 lignes de code!**
 
 ---
 
