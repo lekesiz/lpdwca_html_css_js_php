@@ -4,7 +4,7 @@
 
 Ce dépôt contient l'ensemble des supports de cours, exercices et **exemples pratiques professionnels** pour la formation **Licence Professionnelle Développeur Web et Conception d'Applications (LP DWCA)** à l'Université de Strasbourg.
 
-**✨ Portfolio complet avec 240+ fichiers et ~36,218 lignes de code!**
+**✨ Portfolio complet avec 244+ fichiers et ~37,269 lignes de code!**
 
 ---
 
@@ -36,7 +36,8 @@ CEO - Netz Informatique
 | **Practical Examples** | 148+ | ~11,240 | HTML, CSS, JavaScript |
 | **Autres** | 46+ | ~9,193 | Divers exemples et projets |
 | **HTML N1 CV Homework** | 6 | ~1,017 | Évaluation HTML5 sémantique |
-| **TOTAL** | **246+** | **~37,235** | **Portfolio complet** |
+| **DOM CSS Mastery** ⭐ | 4 | ~1,051 | Manipulation DOM & CSS interactif |
+| **TOTAL** | **250+** | **~38,286** | **Portfolio complet** |
 
 ---
 
@@ -431,7 +432,130 @@ Inspiré par les meilleurs cours JavaScript en ligne, notamment Pierre Giraud et
 
 ---
 
-### 9. 🎓 HTML N1 CV Homework - Semantic HTML5 ⭐ NOUVEAU!
+### 9. 🧩 DOM CSS Mastery - Interactive Learning ⭐ NOUVEAU!
+
+**📁 `dom-css-mastery/`** (~1,051 lignes)
+
+Module interactif complet pour maîtriser la manipulation du DOM et le contrôle CSS avec JavaScript, inspiré par l'excellent [DOM|CSS Visualizer](https://fritscher.ch/dom-css/) de fritscher.ch:
+
+#### Concept Fondamental
+
+> **"Learn by doing, see by visualizing"**
+
+Ce module offre une expérience d'apprentissage interactive où les étudiants peuvent écrire du code HTML/CSS et voir instantanément l'arbre DOM et la spécificité CSS.
+
+#### Contenu du Module
+
+**Interactive Playground:**
+- **interactive/playground.html** - Éditeur en temps réel (~350 lignes)
+  - **Live HTML Editor:** Écrire du HTML et voir le résultat instantanément
+  - **Live CSS Editor:** Écrire des règles CSS avec aperçu en direct
+  - **DOM Tree Visualizer:** Représentation visuelle de la structure DOM
+  - **CSS Specificity Calculator:** Calcul automatique de la spécificité des sélecteurs
+  - **Instant Preview:** Rendu en temps réel du code
+  - **Modern UI:** Design gradient avec Bootstrap 5
+
+**Progressive Exercises:**
+- **exercises/dom-exercises.html** - 5 exercices pratiques (~400 lignes)
+  
+  **Exercice 1 (Débutant):** Sélection et modification de texte
+  - Skills: `getElementById`, `textContent`, inline styles
+  - Demo: Bouton interactif pour changer le texte
+  
+  **Exercice 2 (Débutant):** Ajouter/supprimer des classes CSS
+  - Skills: `classList.toggle()`, manipulation de classes
+  - Demo: Toggle l'apparence d'une boîte
+  
+  **Exercice 3 (Intermédiaire):** Créer et ajouter des éléments
+  - Skills: `createElement`, `appendChild`, contenu dynamique
+  - Demo: Ajouter de nouveaux éléments à la page
+  
+  **Exercice 4 (Intermédiaire):** Gestion des événements
+  - Skills: `addEventListener`, callbacks, compteurs
+  - Demo: Compteur de clics avec couleurs dynamiques
+  
+  **Exercice 5 (Avancé):** Liste interactive avec suppression
+  - Skills: Manipulation DOM complexe, validation d'input
+  - Demo: Ajouter/supprimer des éléments de liste (CRUD)
+
+**Documentation:**
+- **README.md** - Guide complet (~100 lignes)
+  - Introduction au DOM et à sa structure
+  - Techniques de manipulation DOM
+  - Sélecteurs CSS et spécificité
+  - Manipulation CSS avec JavaScript
+  - Objectifs d'apprentissage
+  - Crédits et remerciements
+
+**Navigation Principale:**
+- **index.html** - Hub du module (~200 lignes)
+  - Présentation des fonctionnalités
+  - Liens vers playground et exercices
+  - Objectifs d'apprentissage détaillés
+  - Navigation vers portfolio
+
+#### Fonctionnalités Clés
+
+**Playground Interactif:**
+- ✅ Éditeurs HTML et CSS avec coloration syntaxique
+- ✅ Visualisation de l'arbre DOM en temps réel
+- ✅ Calculateur de spécificité CSS (inline, IDs, classes, elements)
+- ✅ Aperçu instantané du rendu
+- ✅ Interface moderne et intuitive
+
+**Exercices Progressifs:**
+- ✅ 5 exercices du débutant à l'avancé
+- ✅ Démonstrations interactives en direct
+- ✅ Solutions détaillées avec code commenté
+- ✅ Boutons "Voir la Solution" pour chaque exercice
+- ✅ Exemples du monde réel
+
+#### Technologies Utilisées
+
+- **HTML5:** Structure sémantique
+- **CSS3:** Styling moderne, gradients, transitions
+- **JavaScript (ES6+):** Manipulation DOM, event handling
+- **Bootstrap 5:** Design responsive et composants
+- **Bootstrap Icons:** Iconographie professionnelle
+
+#### Objectifs d'Apprentissage
+
+**Manipulation DOM:**
+- ✅ Comprendre la structure du DOM
+- ✅ Sélectionner des éléments (`getElementById`, `querySelector`, etc.)
+- ✅ Créer et ajouter de nouveaux éléments
+- ✅ Modifier les attributs et le contenu des éléments
+- ✅ Gérer les événements utilisateur
+
+**Contrôle CSS:**
+- ✅ Comprendre les sélecteurs CSS
+- ✅ Calculer la spécificité CSS
+- ✅ Manipuler les styles avec JavaScript
+- ✅ Ajouter/supprimer des classes CSS
+- ✅ Créer des animations dynamiques
+
+#### Valeur Pédagogique
+
+**Pour les Étudiants:**
+- Expérience d'apprentissage pratique
+- Feedback et visualisation instantanés
+- Courbe de difficulté progressive
+- Exemples du monde réel
+- Apprentissage à son propre rythme
+
+**Pour les Enseignants:**
+- Matériel pédagogique prêt à l'emploi
+- Démonstrations interactives
+- Exercices d'évaluation
+- Couverture complète des sujets DOM/CSS
+- Présentation professionnelle
+
+**Crédits:**
+Ce module est fortement inspiré par le **DOM|CSS Visualizer** créé par [fritscher.ch](https://fritscher.ch/dom-css/). L'outil original est une ressource fantastique pour apprendre et enseigner le DOM et CSS.
+
+---
+
+### 10. 🎓 HTML N1 CV Homework - Semantic HTML5 ⭐ NOUVEAU!
 
 **📁 `html-n1-cv/`** (~1,017 lignes)
 
