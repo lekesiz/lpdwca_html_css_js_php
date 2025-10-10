@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>OOJS, JSON & DOM | Mikail Lekesiz</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; }
+        h1 { color: #667eea; }
+        .concept { background: #f8f9fa; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; margin: 10px 5px; }
+        .output { border: 2px solid #667eea; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        #results, #domResults { font-family: monospace; line-height: 1.8; }
+        .student-card { background: #e3f2fd; padding: 15px; margin: 10px 0; border-radius: 8px; border-left: 4px solid #2196f3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎯 OOJS, JSON & DOM - Mikail Lekesiz</h1>
+        
+        <div class="concept">
+            <h2>1. OOJS - Objets et Classes</h2>
+            <pre>class Etudiant {
+    constructor(nom, prenom, note) {
+        this.nom = nom;
+        this.prenom = prenom;
+        this.note = note;
+    }
+    afficher() {
+        return `${this.prenom} ${this.nom}: ${this.note}/20`;
+    }
+}</pre>
+        </div>
+        
+        <div class="concept">
+            <h2>2. JSON - Parse & Stringify</h2>
+            <pre>const jsonString = JSON.stringify(objet);
+const objet = JSON.parse(jsonString);</pre>
+        </div>
+        
+        <div class="concept">
+            <h2>3. DOM Manipulation</h2>
+            <pre>document.getElementById('id');
+element.innerHTML = 'contenu';
+element.addEventListener('click', function);</pre>
+        </div>
+        
+        <button onclick="runOOJS()">▶️ Exécuter OOJS</button>
+        <button onclick="runJSON()">▶️ Exécuter JSON</button>
+        <button onclick="runDOM()">▶️ Exécuter DOM</button>
+        
+        <div class="output">
+            <h3>📊 Résultats Console</h3>
+            <div id="results"></div>
+        </div>
+        
+        <div class="output">
+            <h3>🎨 Résultats DOM</h3>
+            <div id="domResults"></div>
+        </div>
+    </div>
+    
+    <script>
+        function log(m) {
+            document.getElementById('results').innerHTML += m + '<br>';
+        }
+        
+        function clearLog() {
+            document.getElementById('results').innerHTML = '';
+        }
+        
+        // OOJS
+        class Etudiant {
+            constructor(nom, prenom, note) {
+                this.nom = nom;
+                this.prenom = prenom;
+                this.note = note;
+            }
+            afficher() {
+                return `${this.prenom} ${this.nom}: ${this.note}/20`;
+            }
+            estAdmis() {
+                return this.note >= 10;
+            }
+        }
+        
+        function runOOJS() {
+            clearLog();
+            log('=== OOJS - Programmation Orientée Objet ===\n');
+            
+            const etudiant1 = new Etudiant('Lekesiz', 'Mikail', 18);
+            const etudiant2 = new Etudiant('Hoffer', 'Mickael', 16);
+            
+            log('Étudiant 1: ' + etudiant1.afficher());
+            log('Admis? ' + (etudiant1.estAdmis() ? 'Oui ✅' : 'Non ❌'));
+            log('');
+            log('Étudiant 2: ' + etudiant2.afficher());
+            log('Admis? ' + (etudiant2.estAdmis() ? 'Oui ✅' : 'Non ❌'));
+            
+            log('\n✅ OOJS démontré!');
+        }
+        
+        function runJSON() {
+            clearLog();
+            log('=== JSON - Parse & Stringify ===\n');
+            
+            const etudiant = {
+                nom: 'Lekesiz',
+                prenom: 'Mikail',
+                formation: 'LP DWCA',
+                annee: 2025
+            };
+            
+            // Stringify
+            const jsonString = JSON.stringify(etudiant);
+            log('1️⃣ JSON.stringify():');
+            log(jsonString);
+            log('');
+            
+            // Parse
+            const parsed = JSON.parse(jsonString);
+            log('2️⃣ JSON.parse():');
+            log(`Nom: ${parsed.nom}`);
+            log(`Prénom: ${parsed.prenom}`);
+            log(`Formation: ${parsed.formation}`);
+            
+            log('\n✅ JSON démontré!');
+        }
+        
+        function runDOM() {
+            clearLog();
+            log('=== DOM Manipulation ===\n');
+            log('Création de cartes étudiants dans le DOM...');
+            
+            const etudiants = [
+                new Etudiant('Lekesiz', 'Mikail', 18),
+                new Etudiant('Hoffer', 'Mickael', 16),
+                new Etudiant('Merkel', 'Léo', 17)
+            ];
+            
+            const domResults = document.getElementById('domResults');
+            domResults.innerHTML = '';
+            
+            etudiants.forEach((etudiant, index) => {
+                const card = document.createElement('div');
+                card.className = 'student-card';
+                card.innerHTML = `
+                    <strong>Étudiant ${index + 1}:</strong> ${etudiant.afficher()}<br>
+                    <strong>Statut:</strong> ${etudiant.estAdmis() ? 'Admis ✅' : 'Non admis ❌'}
+                `;
+                domResults.appendChild(card);
+            });
+            
+            log(`${etudiants.length} cartes créées dans le DOM!`);
+            log('\n✅ DOM démontré!');
+        }
+        
+        window.addEventListener('load', () => {
+            setTimeout(runOOJS, 500);
+        });
+    </script>
+</body>
+</html>

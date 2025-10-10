@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Functions | Mikail Lekesiz</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; }
+        h1 { color: #667eea; }
+        .concept { background: #f8f9fa; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; margin: 10px 5px; }
+        .output { border: 2px solid #667eea; padding: 20px; border-radius: 8px; margin: 20px 0; }
+        #results { font-family: monospace; line-height: 1.8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⚡ Functions - Mikail Lekesiz</h1>
+        <div class="concept"><h2>1. Function Declaration</h2><pre>function saluer(nom) { return `Bonjour ${nom}`; }</pre></div>
+        <div class="concept"><h2>2. Function Expression</h2><pre>const add = function(a, b) { return a + b; };</pre></div>
+        <div class="concept"><h2>3. Arrow Function (ES6)</h2><pre>const multiply = (a, b) => a * b;</pre></div>
+        <button onclick="run()">▶️ Exécuter</button>
+        <div class="output"><div id="results"></div></div>
+    </div>
+    <script>
+        function run() {
+            const r = document.getElementById('results');
+            r.innerHTML = '';
+            function log(m) { r.innerHTML += m + '<br>'; }
+            
+            // Declaration
+            function saluer(nom) { return `Bonjour ${nom}`; }
+            log('1️⃣ Declaration: ' + saluer('Mikail'));
+            
+            // Expression
+            const add = function(a, b) { return a + b; };
+            log('2️⃣ Expression: add(5, 3) = ' + add(5, 3));
+            
+            // Arrow
+            const multiply = (a, b) => a * b;
+            log('3️⃣ Arrow: multiply(4, 5) = ' + multiply(4, 5));
+            
+            // Callback
+            const numbers = [1, 2, 3, 4, 5];
+            const doubled = numbers.map(n => n * 2);
+            log('4️⃣ Callback: ' + JSON.stringify(doubled));
+            
+            log('\n✅ Fonctions démontrées!');
+        }
+        window.addEventListener('load', () => setTimeout(run, 500));
+    </script>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Structures | Mikail Lekesiz</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+        h1 { color: #667eea; margin-bottom: 10px; font-size: 2.5em; }
+        .subtitle { color: #666; margin-bottom: 30px; font-size: 1.1em; }
+        .concept { background: #f8f9fa; border-left: 4px solid #667eea; padding: 20px; margin: 20px 0; border-radius: 8px; }
+        .concept h2 { color: #667eea; margin-bottom: 15px; }
+        .code-block { background: #2d2d2d; color: #f8f8f2; padding: 20px; border-radius: 8px; margin: 15px 0; font-family: 'Courier New', monospace; overflow-x: auto; }
+        button { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; padding: 12px 30px; border-radius: 8px; cursor: pointer; font-size: 16px; margin: 10px 5px; }
+        button:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4); }
+        .output { background: white; border: 2px solid #667eea; padding: 20px; border-radius: 8px; margin: 20px 0; min-height: 100px; }
+        #results { font-family: monospace; line-height: 1.8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔀 Chapter 1: Structures de Contrôle</h1>
+        <p class="subtitle">if/else, switch, for, while, do-while - Par Mikail Lekesiz (LP DWCA 2025)</p>
+        
+        <div class="concept">
+            <h2>1. if / else if / else</h2>
+            <div class="code-block">
+let age = 20;
+if (age >= 18) {
+    console.log("Majeur");
+} else {
+    console.log("Mineur");
+}
+            </div>
+        </div>
+        
+        <div class="concept">
+            <h2>2. switch</h2>
+            <div class="code-block">
+let jour = 3;
+switch(jour) {
+    case 1: console.log("Lundi"); break;
+    case 2: console.log("Mardi"); break;
+    case 3: console.log("Mercredi"); break;
+    default: console.log("Autre jour");
+}
+            </div>
+        </div>
+        
+        <div class="concept">
+            <h2>3. for loop</h2>
+            <div class="code-block">
+for (let i = 0; i < 5; i++) {
+    console.log(`Itération ${i}`);
+}
+            </div>
+        </div>
+        
+        <div class="concept">
+            <h2>4. while loop</h2>
+            <div class="code-block">
+let compteur = 0;
+while (compteur < 3) {
+    console.log(`Compteur: ${compteur}`);
+    compteur++;
+}
+            </div>
+        </div>
+        
+        <div class="concept">
+            <h2>5. do-while loop</h2>
+            <div class="code-block">
+let x = 0;
+do {
+    console.log(`x = ${x}`);
+    x++;
+} while (x < 3);
+            </div>
+        </div>
+        
+        <button onclick="runExamples()">▶️ Exécuter</button>
+        <button onclick="clearOutput()">🗑️ Effacer</button>
+        
+        <div class="output">
+            <h3>📊 Résultats</h3>
+            <div id="results"></div>
+        </div>
+    </div>
+    
+    <script>
+        function log(msg) {
+            document.getElementById('results').innerHTML += msg + '<br>';
+        }
+        function clearOutput() {
+            document.getElementById('results').innerHTML = '';
+        }
+        function runExamples() {
+            clearOutput();
+            log('=== STRUCTURES DE CONTRÔLE ===\n');
+            
+            // if/else
+            let age = 20;
+            log('1️⃣ IF/ELSE:');
+            if (age >= 18) {
+                log('  → Majeur (age = ' + age + ')\n');
+            }
+            
+            // switch
+            log('2️⃣ SWITCH:');
+            let jour = 3;
+            let nomJour;
+            switch(jour) {
+                case 1: nomJour = "Lundi"; break;
+                case 2: nomJour = "Mardi"; break;
+                case 3: nomJour = "Mercredi"; break;
+                default: nomJour = "Autre";
+            }
+            log(`  → Jour ${jour} = ${nomJour}\n`);
+            
+            // for
+            log('3️⃣ FOR LOOP:');
+            for (let i = 0; i < 3; i++) {
+                log(`  → Itération ${i}`);
+            }
+            log('');
+            
+            // while
+            log('4️⃣ WHILE LOOP:');
+            let compteur = 0;
+            while (compteur < 3) {
+                log(`  → Compteur: ${compteur}`);
+                compteur++;
+            }
+            log('');
+            
+            // do-while
+            log('5️⃣ DO-WHILE LOOP:');
+            let x = 0;
+            do {
+                log(`  → x = ${x}`);
+                x++;
+            } while (x < 3);
+            
+            log('\n✅ Tous les exemples exécutés!');
+        }
+        window.addEventListener('load', () => setTimeout(runExamples, 500));
+    </script>
+</body>
+</html>
