@@ -3,334 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LP DWCA - Formation HTML, CSS, JavaScript & PHP - Mikail Lekesiz</title>
+    <title>LP DWCA - Portfolio Complet - Mikail Lekesiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--primary-gradient);
             min-height: 100vh;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .hero .lead {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            background: white;
+            padding: 40px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card {
+            text-align: center;
             padding: 20px;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            overflow: hidden;
+        .stat-card h3 {
+            font-size: 3rem;
+            font-weight: bold;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
         }
         
-        header {
-            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        .section-title {
+            background: var(--primary-gradient);
             color: white;
-            padding: 60px 40px;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 50px 0 30px 0;
             text-align: center;
+            font-weight: bold;
+            font-size: 2rem;
         }
         
-        h1 {
-            font-size: 3em;
-            margin-bottom: 15px;
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+            height: 100%;
         }
         
-        .subtitle {
-            font-size: 1.3em;
-            opacity: 0.9;
-            margin-bottom: 10px;
-        }
-        
-        .author {
-            font-size: 1.1em;
-            opacity: 0.8;
-            margin-top: 20px;
-        }
-        
-        .content {
-            padding: 40px;
-        }
-        
-        .section {
-            margin-bottom: 50px;
-        }
-        
-        .section h2 {
-            color: #2c3e50;
-            font-size: 2em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #667eea;
-        }
-        
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        .card {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 25px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 4px solid #667eea;
-        }
-        
-        .card:hover {
+        .project-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         
-        .card h3 {
-            color: #2c3e50;
-            font-size: 1.5em;
+        .project-card h3 {
+            color: #667eea;
+            font-weight: bold;
             margin-bottom: 15px;
+            font-size: 1.5rem;
         }
         
-        .card p {
-            color: #7f8c8d;
-            line-height: 1.6;
-            margin-bottom: 15px;
-        }
-        
-        .links {
-            list-style: none;
-        }
-        
-        .links li {
+        .project-card .badge {
+            font-size: 0.85rem;
+            padding: 6px 12px;
+            margin-right: 8px;
             margin-bottom: 10px;
         }
         
-        .links a {
-            color: #667eea;
+        .project-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-gradient);
+            color: white;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            margin-right: 10px;
         }
         
-        .links a:hover {
-            color: #5568d3;
-            text-decoration: underline;
+        .project-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        
+        .highlight-new {
+            position: relative;
+        }
+        
+        .highlight-new::after {
+            content: "⭐ NOUVEAU";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
         }
         
         footer {
             background: #2c3e50;
             color: white;
-            text-align: center;
-            padding: 30px;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-            flex-wrap: wrap;
+            padding: 40px 0;
+            margin-top: 80px;
         }
         
         .footer-links a {
             color: white;
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            margin: 0 15px;
+            transition: opacity 0.3s;
         }
         
         .footer-links a:hover {
             opacity: 0.7;
         }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-            
-            .content {
-                padding: 20px;
-            }
-            
-            .cards {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>📚 LP DWCA</h1>
-            <p class="subtitle">Formation Développeur Web et Conception d'Applications</p>
-            <p class="subtitle">HTML • CSS • JavaScript • PHP</p>
-            <p class="author">Par <strong>Mikail Lekesiz</strong> - DevOps Engineer & Full Stack Developer</p>
-        </header>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1><i class="bi bi-code-slash"></i> LP DWCA - Portfolio Complet</h1>
+            <p class="lead">Formation Développeur Web et Conception d'Applications</p>
+            <p class="lead">HTML • CSS • JavaScript • PHP • Bootstrap • Emmet</p>
+            <p class="mt-4"><strong>Par Mikail Lekesiz</strong> - DevOps Engineer & Full Stack Developer</p>
+            <p>Professeur: <strong>ERIC CHRISTOFFEL</strong> | Université de Strasbourg</p>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 stat-card">
+                    <h3>38+</h3>
+                    <p>Fichiers</p>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <h3>~10,665</h3>
+                    <p>Lignes de Code</p>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <h3>7</h3>
+                    <p>Catégories</p>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <h3>15+</h3>
+                    <p>Ressources</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
         
-        <div class="content">
-            <!-- HTML Section -->
-            <div class="section">
-                <h2>🌐 HTML</h2>
-                <div class="cards">
-                    <div class="card">
-                        <h3>Structure & Sémantique</h3>
-                        <p>Exemples de structures HTML5 sémantiques</p>
-                        <ul class="links">
-                            <li><a href="html/caseStudy/structureDOMhtml5Cas1.html">→ Cas d'étude 1</a></li>
-                            <li><a href="html/caseStudy/structureDOMhtml5Cas2.html">→ Cas d'étude 2</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Formulaires Web</h3>
-                        <p>Création et validation de formulaires</p>
-                        <ul class="links">
-                            <li><a href="html/webForm/webform2025.html">→ Formulaire 2025</a></li>
-                            <li><a href="html/webForm/webformSolution.html">→ Solution complète</a></li>
-                            <li><a href="html/webForm/contactFormAdvanced.php">→ Formulaire PHP avancé</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Projet Oscar</h3>
-                        <p>Projet pratique complet</p>
-                        <ul class="links">
-                            <li><a href="html/projetOscar/">→ Voir le projet</a></li>
-                        </ul>
+        <!-- PROJETS PHARES -->
+        <div class="section-title">
+            <i class="bi bi-star-fill"></i> Projets Phares
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-book"></i> Course Exercises</h3>
+                    <p>4 chapitres JavaScript complets démontrant la maîtrise de tous les concepts enseignés.</p>
+                    <span class="badge bg-warning">JavaScript</span>
+                    <span class="badge bg-primary">~1,267 lignes</span>
+                    <span class="badge bg-success">Interactif</span>
+                    <div class="mt-3">
+                        <a href="course-exercises/" class="project-link">
+                            <i class="bi bi-folder-open"></i> Explorer
+                        </a>
                     </div>
                 </div>
             </div>
             
-            <!-- CSS Section -->
-            <div class="section">
-                <h2>🎨 CSS</h2>
-                <div class="cards">
-                    <div class="card">
-                        <h3>Box Model</h3>
-                        <p>Comprendre le modèle de boîte CSS</p>
-                        <ul class="links">
-                            <li><a href="css/boxModel/boxModel2025.html">→ Box Model 2025</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Flexbox</h3>
-                        <p>Layouts flexibles et responsive</p>
-                        <ul class="links">
-                            <li><a href="css/cssFlexbox/flexTitleLogo2025.html">→ Flex Title Logo</a></li>
-                            <li><a href="css/cssFlexbox/modernNavbar.html">→ Navigation moderne ⭐</a></li>
-                            <li><a href="css/cssFlexbox/responsiveCards.html">→ Cards responsive ⭐</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>CSS Grid</h3>
-                        <p>Grilles CSS avancées</p>
-                        <ul class="links">
-                            <li><a href="css/cssGrid/exTextImgMultiColumnsRows2025.html">→ Multi-colonnes</a></li>
-                            <li><a href="css/cssGrid/trombinoscopeGrid.html">→ Trombinoscope</a></li>
-                            <li><a href="css/cssGrid/portfolioGridLayout.html">→ Portfolio Grid ⭐</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Sélecteurs & Combinateurs</h3>
-                        <p>Sélecteurs CSS avancés</p>
-                        <ul class="links">
-                            <li><a href="css/combinators/selectorCombinators.html">→ Combinateurs</a></li>
-                            <li><a href="css/combinators/descendantSelectors.html">→ Descendants</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Float & Inline-Block</h3>
-                        <p>Techniques de positionnement</p>
-                        <ul class="links">
-                            <li><a href="css/floatInlineBlock/floatSideBySide2025.html">→ Float Side by Side</a></li>
-                            <li><a href="css/floatInlineBlock/inlineBlockSideBySide2025.html">→ Inline-Block</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Responsive Design</h3>
-                        <p>Unités viewport et responsive</p>
-                        <ul class="links">
-                            <li><a href="css/vw_vh/vwVersusPercent.html">→ VW vs Percent</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- JavaScript Section -->
-            <div class="section">
-                <h2>⚡ JavaScript</h2>
-                <div class="cards">
-                    <div class="card">
-                        <h3>Introduction JS</h3>
-                        <p>Bases de JavaScript ES6+</p>
-                        <ul class="links">
-                            <li><a href="js/introJS_2025.html">→ Intro JS 2025</a></li>
-                            <li><a href="js/introJS_solution.html">→ Solution</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Applications Modernes</h3>
-                        <p>Applications JavaScript complètes</p>
-                        <ul class="links">
-                            <li><a href="js/todoAppModern.html">→ Todo App ⭐</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>Programmation Orientée Objet</h3>
-                        <p>OOJS - Classes et héritage</p>
-                        <ul class="links">
-                            <li><a href="js/OOJS/">→ Exemples OOJS</a></li>
-                            <li><a href="js/OOJS/userManagementSystem.html">→ User Management ⭐</a></li>
-                        </ul>
-                    </div>
-                    
-                    <div class="card">
-                        <h3>JSON & APIs</h3>
-                        <p>Manipulation de données JSON</p>
-                        <ul class="links">
-                            <li><a href="js/json/json.html">→ JSON Basics</a></li>
-                            <li><a href="js/json/fetchAPIDemo.html">→ Fetch API Demo ⭐</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- PHP Section -->
-            <div class="section">
-                <h2>🔧 PHP</h2>
-                <div class="cards">
-                    <div class="card">
-                        <h3>Traitement de Formulaires</h3>
-                        <p>PHP et gestion des données</p>
-                        <ul class="links">
-                            <li><a href="html/webForm/sentData.php">→ Envoi de données</a></li>
-                            <li><a href="html/webForm/contactFormAdvanced.php">→ Formulaire avancé ⭐</a></li>
-                        </ul>
+            <div class="col-md-6">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-bootstrap"></i> Mini-Projet Bootstrap</h3>
+                    <p>Projet en binôme (avec Mickael Hoffer) démontrant 50+ composants Bootstrap 5.3.</p>
+                    <span class="badge bg-primary">Bootstrap</span>
+                    <span class="badge bg-info">~850 lignes</span>
+                    <span class="badge bg-success">Binôme</span>
+                    <div class="mt-3">
+                        <a href="mini-projet-bootstrap/" class="project-link">
+                            <i class="bi bi-eye"></i> Voir le Projet
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
         
-        <footer>
-            <p><strong>Mikail Lekesiz</strong></p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="project-card">
+                    <h3><i class="bi bi-lightning"></i> Emmet Mastery</h3>
+                    <p>Guide complet avec 100+ raccourcis Emmet, exemples pratiques et projet showcase.</p>
+                    <span class="badge bg-danger">Emmet</span>
+                    <span class="badge bg-primary">~2,500 lignes</span>
+                    <span class="badge bg-warning">Guide</span>
+                    <div class="mt-3">
+                        <a href="emmet-mastery/" class="project-link">
+                            <i class="bi bi-rocket"></i> Apprendre
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-bookmark-star"></i> Resources & Tools</h3>
+                    <p>15+ ressources documentées avec utilisation pratique dans mes projets.</p>
+                    <span class="badge bg-info">Ressources</span>
+                    <span class="badge bg-success">~626 lignes</span>
+                    <span class="badge bg-warning">Documentation</span>
+                    <div class="mt-3">
+                        <a href="resources-and-tools/" class="project-link">
+                            <i class="bi bi-collection"></i> Découvrir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="project-card">
+                    <h3><i class="bi bi-check2-square"></i> To-Do-List App</h3>
+                    <p>Application CRUD complète avec LocalStorage, filtres et statistiques.</p>
+                    <span class="badge bg-success">JavaScript</span>
+                    <span class="badge bg-primary">~1,500 lignes</span>
+                    <span class="badge bg-info">CRUD</span>
+                    <div class="mt-3">
+                        <a href="todolist-app/" class="project-link">
+                            <i class="bi bi-play-circle"></i> Lancer l'App
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="project-card">
+                    <h3><i class="bi bi-braces"></i> JSON SP</h3>
+                    <p>Situations Professionnelles - Activités JSON (Etapes 1A-1E) avec relations de données.</p>
+                    <span class="badge bg-warning">JSON</span>
+                    <span class="badge bg-primary">~642 lignes</span>
+                    <span class="badge bg-success">Complet</span>
+                    <div class="mt-3">
+                        <a href="js/SP/Etape1/" class="project-link">
+                            <i class="bi bi-file-code"></i> Voir JSON
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- HTML SECTION -->
+        <div class="section-title">
+            <i class="bi bi-filetype-html"></i> HTML - Exemples & Projets
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="project-card">
+                    <h3>Formulaire Professionnel</h3>
+                    <p>Formulaire de contact complet avec validation HTML5 et JavaScript.</p>
+                    <span class="badge bg-primary">~380 lignes</span>
+                    <div class="mt-3">
+                        <a href="html/practical-examples/forms/01-contact-form-professional.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="project-card">
+                    <h3>Article Sémantique</h3>
+                    <p>Article de blog avec toutes les balises sémantiques HTML5.</p>
+                    <span class="badge bg-success">~580 lignes</span>
+                    <div class="mt-3">
+                        <a href="html/practical-examples/semantic/01-blog-article-semantic.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="project-card">
+                    <h3>Formulaires Web</h3>
+                    <p>Collection de formulaires avec validation et traitement PHP.</p>
+                    <span class="badge bg-warning">Multiple</span>
+                    <div class="mt-3">
+                        <a href="html/webForm/" class="project-link">
+                            <i class="bi bi-folder"></i> Explorer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CSS SECTION -->
+        <div class="section-title">
+            <i class="bi bi-palette"></i> CSS - Layouts & Design
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="project-card">
+                    <h3>Pricing Table (Flexbox)</h3>
+                    <p>Tableau de tarifs avec Flexbox et design moderne.</p>
+                    <span class="badge bg-primary">~470 lignes</span>
+                    <div class="mt-3">
+                        <a href="css/practical-examples/flexbox/01-pricing-table-flexbox.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="project-card">
+                    <h3>Photo Gallery (Grid)</h3>
+                    <p>Galerie photos Masonry avec CSS Grid.</p>
+                    <span class="badge bg-success">~350 lignes</span>
+                    <div class="mt-3">
+                        <a href="css/practical-examples/grid/01-photo-gallery.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="project-card">
+                    <h3>Plus d'exemples CSS</h3>
+                    <p>Flexbox, Grid, Box Model, Combinateurs, Responsive...</p>
+                    <span class="badge bg-info">Multiple</span>
+                    <div class="mt-3">
+                        <a href="css/" class="project-link">
+                            <i class="bi bi-folder"></i> Explorer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- JAVASCRIPT SECTION -->
+        <div class="section-title">
+            <i class="bi bi-code-square"></i> JavaScript - Applications & Concepts
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="project-card">
+                    <h3>Fetch API Demo</h3>
+                    <p>Démonstration Fetch API avec données personnalisées.</p>
+                    <span class="badge bg-warning">API</span>
+                    <div class="mt-3">
+                        <a href="js/json/fetchAPIDemo.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="project-card">
+                    <h3>User Management (OOJS)</h3>
+                    <p>Système de gestion d'utilisateurs avec JavaScript Orienté Objet.</p>
+                    <span class="badge bg-primary">OOJS</span>
+                    <div class="mt-3">
+                        <a href="js/OOJS/userManagementSystem.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="project-card">
+                    <h3>Todo App Modern</h3>
+                    <p>Application Todo avec localStorage et interface moderne.</p>
+                    <span class="badge bg-success">App</span>
+                    <div class="mt-3">
+                        <a href="js/todoAppModern.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- DOCUMENTATION -->
+        <div class="section-title">
+            <i class="bi bi-file-text"></i> Documentation & Ressources
+        </div>
+        
+        <div class="row">
+            <div class="col-md-12">
+                <div class="project-card">
+                    <h3><i class="bi bi-github"></i> README Complet</h3>
+                    <p>Documentation complète du portfolio avec statistiques, structure et guide d'utilisation.</p>
+                    <span class="badge bg-primary">Documentation</span>
+                    <span class="badge bg-info">Complet</span>
+                    <div class="mt-3">
+                        <a href="https://github.com/lekesiz/lpdwca_html_css_js_php" target="_blank" class="project-link">
+                            <i class="bi bi-github"></i> Voir sur GitHub
+                        </a>
+                        <a href="README.md" class="project-link">
+                            <i class="bi bi-file-text"></i> Lire README
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <h4><strong>Mikail Lekesiz</strong></h4>
             <p>DevOps Engineer & Full Stack Developer</p>
             <p>CEO - Netz Informatique</p>
-            <div class="footer-links">
-                <a href="https://portfolio.lekesiz.fr" target="_blank">🌐 Portfolio</a>
-                <a href="https://netz-informatique.fr" target="_blank">🏢 Netz Informatique</a>
-                <a href="https://github.com/lekesiz" target="_blank">💻 GitHub</a>
+            <div class="footer-links mt-4">
+                <a href="https://portfolio.lekesiz.fr" target="_blank">
+                    <i class="bi bi-globe"></i> Portfolio
+                </a>
+                <a href="https://netzinformatique.fr" target="_blank">
+                    <i class="bi bi-building"></i> Netz Informatique
+                </a>
+                <a href="https://github.com/lekesiz" target="_blank">
+                    <i class="bi bi-github"></i> GitHub
+                </a>
+                <a href="mailto:mikail.lekesiz@etu.unistra.fr">
+                    <i class="bi bi-envelope"></i> Email
+                </a>
             </div>
-            <p style="margin-top: 30px; opacity: 0.7;">© 2025 LP DWCA - Université de Strasbourg</p>
-        </footer>
-    </div>
+            <p class="mt-4" style="opacity: 0.7;">
+                © 2025 LP DWCA - Université de Strasbourg<br>
+                Professeur: ERIC CHRISTOFFEL
+            </p>
+            <p class="mt-3">
+                <strong>38+ fichiers • ~10,665 lignes de code • 7 catégories • 15+ ressources</strong>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        console.log('📚 LP DWCA - Portfolio Complet');
+        console.log('Par: Mikail Lekesiz');
+        console.log('Professeur: ERIC CHRISTOFFEL');
+        console.log('Université de Strasbourg - 2025/2026');
+        console.log('');
+        console.log('Statistiques:');
+        console.log('- 38+ fichiers');
+        console.log('- ~10,665 lignes de code');
+        console.log('- 7 catégories de projets');
+        console.log('- 15+ ressources documentées');
+    </script>
 </body>
 </html>
 
