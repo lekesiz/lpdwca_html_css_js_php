@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ressources & Outils - LP DWCA 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .main-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .header h1 {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .resource-card h3 {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .resource-card .badge {
+            font-size: 0.9rem;
+            padding: 8px 15px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .tool-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+        
+        .tool-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        
+        .category-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin: 40px 0 25px 0;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+        
+        .example-code {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1><i class="bi bi-bookmark-star"></i> Ressources & Outils</h1>
+            <p class="lead">Compilation complète des ressources utilisées pour le cours LP DWCA 2025</p>
+            <p><strong>Par:</strong> Mikail Lekesiz | <strong>Professeur:</strong> ERIC CHRISTOFFEL</p>
+        </div>
+
+        <!-- SECTION 1: Cours & Documentation -->
+        <div class="category-header">
+            <i class="bi bi-book"></i> 1. Cours & Documentation Officielle
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-github"></i> Repository GitHub du Professeur</h3>
+            <p>Repository officiel contenant tous les exemples de code et exercices du cours.</p>
+            <span class="badge bg-primary">HTML</span>
+            <span class="badge bg-success">CSS</span>
+            <span class="badge bg-warning">JavaScript</span>
+            <div class="mt-3">
+                <a href="https://github.com/echristof67/lpdwca_html_css_js_php" target="_blank" class="tool-link">
+                    <i class="bi bi-github"></i> Accéder au Repository
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Utilisation:</strong> Clone du repository pour accéder aux exemples<br>
+                <code>git clone https://github.com/echristof67/lpdwca_html_css_js_php.git</code>
+            </div>
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-table"></i> Tableau des Cours LP DWCA</h3>
+            <p>Planning détaillé des cours avec enseignants et heures de cours pour le semestre 5 et 6.</p>
+            <span class="badge bg-info">Planning</span>
+            <span class="badge bg-secondary">Organisation</span>
+            <div class="mt-3">
+                <a href="https://christoffel.alwaysdata.net/lpdwca/tableau_hCI_LPDWCA.htm" target="_blank" class="tool-link">
+                    <i class="bi bi-calendar3"></i> Voir le Tableau
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Contenu:</strong><br>
+                - UE 5.2.1: Langages HTML et CSS (10h - E. Christoffel)<br>
+                - UE 5.2.2: JavaScript, API et Framework JS (10h - E. Christoffel)<br>
+                - UE 6.1.1: PHP et base de données (12h - E. Christoffel)
+            </div>
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-calendar-check"></i> Calendrier du Cours</h3>
+            <p>Calendrier interactif avec les dates importantes et les échéances.</p>
+            <span class="badge bg-danger">Échéances</span>
+            <span class="badge bg-success">Planning</span>
+            <div class="mt-3">
+                <a href="https://christoffel.alwaysdata.net/lpdwca/calendar.php" target="_blank" class="tool-link">
+                    <i class="bi bi-calendar2-week"></i> Voir le Calendrier
+                </a>
+            </div>
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-file-text"></i> Document Google - Notes de Cours</h3>
+            <p>Document collaboratif avec notes de cours et ressources supplémentaires.</p>
+            <span class="badge bg-primary">Notes</span>
+            <span class="badge bg-info">Collaboratif</span>
+            <div class="mt-3">
+                <a href="https://docs.google.com/document/d/1XGzMUea1Ezx66r5J4QXzgu8WVe2viliUs3TyWak0VNc/edit" target="_blank" class="tool-link">
+                    <i class="bi bi-google"></i> Ouvrir le Document
+                </a>
+            </div>
+        </div>
+
+        <!-- SECTION 2: Outils de Validation -->
+        <div class="category-header">
+            <i class="bi bi-check-circle"></i> 2. Outils de Validation & Vérification
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-shield-check"></i> W3C HTML Validator</h3>
+            <p>Validateur officiel du W3C pour vérifier la conformité HTML5.</p>
+            <span class="badge bg-success">HTML5</span>
+            <span class="badge bg-primary">W3C</span>
+            <span class="badge bg-warning">Validation</span>
+            <div class="mt-3">
+                <a href="https://validator.w3.org/#validate_by_input" target="_blank" class="tool-link">
+                    <i class="bi bi-check2-square"></i> Valider mon HTML
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Utilisation:</strong><br>
+                1. Copier votre code HTML<br>
+                2. Coller dans "Validate by Direct Input"<br>
+                3. Cliquer sur "Check"<br>
+                4. Corriger les erreurs signalées
+            </div>
+        </div>
+
+        <!-- SECTION 3: Outils de Formatage -->
+        <div class="category-header">
+            <i class="bi bi-code-square"></i> 3. Outils de Formatage & Beautification
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-filetype-xml"></i> XML Viewer & Beautifier</h3>
+            <p>Formater et visualiser du code XML de manière lisible.</p>
+            <span class="badge bg-danger">XML</span>
+            <span class="badge bg-info">Formatage</span>
+            <div class="mt-3">
+                <a href="https://codebeautify.org/xmlviewer" target="_blank" class="tool-link">
+                    <i class="bi bi-eye"></i> Formater XML
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Exemple d'utilisation:</strong><br>
+                Avant: <code>&lt;root&gt;&lt;item&gt;value&lt;/item&gt;&lt;/root&gt;</code><br>
+                Après formatage: Structure indentée et lisible
+            </div>
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-filetype-js"></i> JavaScript Minifier</h3>
+            <p>Minifier le code JavaScript pour réduire la taille des fichiers.</p>
+            <span class="badge bg-warning">JavaScript</span>
+            <span class="badge bg-success">Performance</span>
+            <div class="mt-3">
+                <a href="https://minify-js.com/" target="_blank" class="tool-link">
+                    <i class="bi bi-file-zip"></i> Minifier JS
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Avantages:</strong><br>
+                - Réduction de la taille du fichier (jusqu'à 70%)<br>
+                - Amélioration des performances<br>
+                - Temps de chargement réduit
+            </div>
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-braces"></i> JSON Editor Online</h3>
+            <p>Éditeur JSON en ligne avec validation et formatage automatique.</p>
+            <span class="badge bg-primary">JSON</span>
+            <span class="badge bg-info">Éditeur</span>
+            <div class="mt-3">
+                <a href="https://jsoneditoronline.org/#/" target="_blank" class="tool-link">
+                    <i class="bi bi-pencil-square"></i> Éditer JSON
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Fonctionnalités:</strong><br>
+                - Validation automatique<br>
+                - Vue arbre et code<br>
+                - Recherche et filtrage<br>
+                - Import/Export
+            </div>
+        </div>
+
+        <!-- SECTION 4: Outils de Développement -->
+        <div class="category-header">
+            <i class="bi bi-tools"></i> 4. Outils de Développement & Test
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-diagram-3"></i> Live DOM Viewer</h3>
+            <p>Visualiser en temps réel la structure DOM générée par votre HTML.</p>
+            <span class="badge bg-success">DOM</span>
+            <span class="badge bg-warning">Live</span>
+            <div class="mt-3">
+                <a href="https://software.hixie.ch/utilities/js/live-dom-viewer/" target="_blank" class="tool-link">
+                    <i class="bi bi-eye-fill"></i> Voir le DOM
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Utilisation:</strong><br>
+                Tapez votre HTML et voyez instantanément la structure DOM générée.<br>
+                Utile pour comprendre comment le navigateur interprète votre code.
+            </div>
+        </div>
+
+        <!-- SECTION 5: Ressources d'Apprentissage -->
+        <div class="category-header">
+            <i class="bi bi-mortarboard"></i> 5. Ressources d'Apprentissage
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-book-half"></i> W3Schools</h3>
+            <p>Tutoriels complets et interactifs pour HTML, CSS, JavaScript et plus.</p>
+            <span class="badge bg-success">Tutoriels</span>
+            <span class="badge bg-primary">Exemples</span>
+            <span class="badge bg-warning">Exercices</span>
+            <div class="mt-3">
+                <a href="https://www.w3schools.com/" target="_blank" class="tool-link">
+                    <i class="bi bi-journal-code"></i> Apprendre sur W3Schools
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Contenu:</strong><br>
+                - Tutoriels HTML, CSS, JavaScript<br>
+                - Exemples interactifs "Try it Yourself"<br>
+                - Références complètes<br>
+                - Quiz et exercices
+            </div>
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-browser-firefox"></i> MDN Web Docs (Mozilla)</h3>
+            <p>Documentation de référence pour les technologies web par Mozilla.</p>
+            <span class="badge bg-danger">Référence</span>
+            <span class="badge bg-info">Avancé</span>
+            <div class="mt-3">
+                <a href="https://developer.mozilla.org/en-US/" target="_blank" class="tool-link">
+                    <i class="bi bi-book"></i> MDN Web Docs
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Points forts:</strong><br>
+                - Documentation technique complète<br>
+                - Compatibilité navigateurs<br>
+                - Exemples de code<br>
+                - Guides et tutoriels
+            </div>
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-code-slash"></i> Pierre Giraud - JavaScript</h3>
+            <p>Cours JavaScript complet en français avec exercices pratiques.</p>
+            <span class="badge bg-warning">JavaScript</span>
+            <span class="badge bg-success">Français</span>
+            <span class="badge bg-primary">Complet</span>
+            <div class="mt-3">
+                <a href="https://www.pierre-giraud.com/javascript-apprendre-coder-cours/" target="_blank" class="tool-link">
+                    <i class="bi bi-play-circle"></i> Suivre le Cours
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Contenu:</strong><br>
+                - Syntaxe JavaScript<br>
+                - DOM manipulation<br>
+                - OOJS<br>
+                - Exercices pratiques
+            </div>
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-book"></i> ScholarVox - HTML5</h3>
+            <p>Livre numérique sur HTML5 disponible via la bibliothèque universitaire.</p>
+            <span class="badge bg-primary">HTML5</span>
+            <span class="badge bg-info">Livre</span>
+            <div class="mt-3">
+                <a href="https://univ-scholarvox-com.scd-rproxy.u-strasbg.fr/catalog/book/docid/88809318" target="_blank" class="tool-link">
+                    <i class="bi bi-book-fill"></i> Lire le Livre
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Accès:</strong> Via le proxy de l'Université de Strasbourg<br>
+                Connexion avec identifiants universitaires requise
+            </div>
+        </div>
+
+        <!-- SECTION 6: Inspiration & Design -->
+        <div class="category-header">
+            <i class="bi bi-palette"></i> 6. Inspiration & Design
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-flower1"></i> CSS Zen Garden</h3>
+            <p>Démonstration de la puissance du CSS avec le même HTML mais des designs différents.</p>
+            <span class="badge bg-success">CSS</span>
+            <span class="badge bg-primary">Design</span>
+            <span class="badge bg-warning">Inspiration</span>
+            <div class="mt-3">
+                <a href="https://csszengarden.com/" target="_blank" class="tool-link">
+                    <i class="bi bi-palette2"></i> Explorer CSS Zen Garden
+                </a>
+            </div>
+            <div class="example-code">
+                <strong>Concept:</strong><br>
+                Même HTML, designs CSS complètement différents.<br>
+                Démontre la séparation contenu/présentation.<br>
+                Source d'inspiration pour le design CSS.
+            </div>
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-code"></i> XHTML Qanuq</h3>
+            <p>Ressources et exemples XHTML.</p>
+            <span class="badge bg-info">XHTML</span>
+            <span class="badge bg-secondary">Exemples</span>
+            <div class="mt-3">
+                <a href="https://xhtml.qanuq.com/p" target="_blank" class="tool-link">
+                    <i class="bi bi-link-45deg"></i> Voir les Exemples
+                </a>
+            </div>
+        </div>
+
+        <!-- SECTION 7: Comment j'ai utilisé ces ressources -->
+        <div class="category-header">
+            <i class="bi bi-lightbulb"></i> 7. Comment j'ai utilisé ces ressources
+        </div>
+
+        <div class="resource-card">
+            <h3><i class="bi bi-check2-all"></i> Utilisation dans mes projets</h3>
+            <div class="mt-3">
+                <h5>1. Validation HTML/CSS</h5>
+                <p>Tous mes fichiers HTML ont été validés avec le W3C Validator pour assurer la conformité aux standards.</p>
+                
+                <h5>2. Formatage du code</h5>
+                <p>Utilisation de beautifiers pour maintenir un code propre et lisible dans tous mes projets.</p>
+                
+                <h5>3. Apprentissage</h5>
+                <p>Consultation régulière de MDN et W3Schools pour approfondir les concepts JavaScript et CSS.</p>
+                
+                <h5>4. JSON</h5>
+                <p>Utilisation de JSON Editor Online pour créer et valider les structures JSON dans le projet SP.</p>
+                
+                <h5>5. Inspiration Design</h5>
+                <p>CSS Zen Garden m'a inspiré pour créer des designs modernes avec gradients et animations.</p>
+                
+                <h5>6. Repository du Professeur</h5>
+                <p>Référence constante pour comprendre les attentes et les bonnes pratiques enseignées.</p>
+            </div>
+            <div class="example-code">
+                <strong>Résultat:</strong><br>
+                - Code valide et conforme aux standards<br>
+                - Design moderne et professionnel<br>
+                - Best practices appliquées<br>
+                - Documentation complète
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p><strong>Mikail Lekesiz</strong> - LP DWCA 2025/2026</p>
+            <p>Université de Strasbourg | Professeur: ERIC CHRISTOFFEL</p>
+            <p><a href="https://github.com/lekesiz/lpdwca_html_css_js_php" target="_blank">
+                <i class="bi bi-github"></i> Mon Repository GitHub
+            </a></p>
+            <p class="mt-3">
+                <small>© 2025 - Toutes les ressources listées sont utilisées à des fins éducatives</small>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Animation au scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.resource-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '0';
+                        entry.target.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            entry.target.style.transition = 'all 0.6s ease';
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                        }, 100);
+                    }
+                });
+            });
+            
+            cards.forEach(card => observer.observe(card));
+            
+            console.log('📚 Ressources & Outils - LP DWCA 2025');
+            console.log('Par: Mikail Lekesiz');
+            console.log('Total ressources: ' + cards.length);
+        });
+    </script>
+</body>
+</html>
+
