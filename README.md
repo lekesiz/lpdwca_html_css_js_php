@@ -35,7 +35,8 @@ CEO - Netz Informatique
 | **JSON SP** | 8 | ~642 | Activités JSON (Etapes 1A-1E) |
 | **Practical Examples** | 148+ | ~11,240 | HTML, CSS, JavaScript |
 | **Autres** | 46+ | ~9,193 | Divers exemples et projets |
-| **TOTAL** | **240+** | **~36,218** | **Portfolio complet** |
+| **HTML N1 CV Homework** | 6 | ~1,017 | Évaluation HTML5 sémantique |
+| **TOTAL** | **246+** | **~37,235** | **Portfolio complet** |
 
 ---
 
@@ -427,6 +428,29 @@ Inspiré par les meilleurs cours JavaScript en ligne, notamment Pierre Giraud et
 ---
 
 ### 8. 🚀 Tailwind CSS Mastery - Framework Utility-First ⭐ NOUVEAU!
+
+---
+
+### 9. 🎓 HTML N1 CV Homework - Semantic HTML5 ⭐ NOUVEAU!
+
+**📁 `html-n1-cv/`** (~1,017 lignes)
+
+Projet complet pour l'évaluation HTML N1, démontrant la maîtrise du HTML5 sémantique sans CSS:
+
+**Contenu du Module:**
+- **cv_pw1.html:** CV de base sans éléments de section
+- **cv_pw2.html:** CV optimisé avec sémantique HTML5
+- **Documentation complète:** Guides pour W3C validation, code analysis, et déploiement Alwaysdata
+
+**Compétences Démontrées:**
+- ✅ HTML5 sémantique
+- ✅ Validation W3C (0 Erreur)
+- ✅ Analyse de code
+- ✅ SEO et accessibilité
+- ✅ Documentation technique
+
+---
+
 
 **📁 `tailwind-css-mastery/`** (~2,500 lignes)
 
