@@ -1,0 +1,1443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emmet Cheat Sheet Complet - Mikail Lekesiz | LP DWCA 2025</title>
+    <style>
+        /**
+         * EMMET CHEAT SHEET COMPLET
+         * 
+         * Guide exhaustif des raccourcis Emmet pour HTML & CSS
+         * Démonstration de maîtrise pour ERIC CHRISTOFFEL
+         * 
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025/2026 - Université de Strasbourg
+         * Email: mikail.lekesiz@etu.unistra.fr
+         * Portfolio: https://portfolio.lekesiz.fr
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .author-info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .author-info p {
+            color: #555;
+            margin: 5px 0;
+        }
+        
+        .author-info strong {
+            color: #667eea;
+        }
+        
+        /* Table of Contents */
+        .toc {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .toc h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 32px;
+        }
+        
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .toc-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .toc-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Section */
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 36px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .section h3 {
+            color: #764ba2;
+            font-size: 24px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        /* Emmet Table */
+        .emmet-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .emmet-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .emmet-table th {
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .emmet-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .emmet-table tbody tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .emmet-code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 4px 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .emmet-result {
+            background: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            color: #333;
+            margin-top: 5px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        /* Tips Box */
+        .tip-box {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .tip-box strong {
+            color: #856404;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Example Box */
+        .example-box {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .example-box strong {
+            color: #0c5460;
+            display: block;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        footer {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-top: 30px;
+        }
+        
+        footer p {
+            color: #666;
+            margin: 5px 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .section h2 {
+                font-size: 28px;
+            }
+            
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .emmet-table {
+                font-size: 13px;
+            }
+            
+            .emmet-table th,
+            .emmet-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>⚡ Emmet Cheat Sheet Complet</h1>
+            <p class="subtitle">Guide Exhaustif des Raccourcis Emmet pour HTML & CSS</p>
+            <div class="author-info">
+                <p><strong>Auteur:</strong> Mikail Lekesiz</p>
+                <p><strong>Formation:</strong> LP DWCA 2025/2026 - Université de Strasbourg</p>
+                <p><strong>Professeur:</strong> ERIC CHRISTOFFEL</p>
+                <p><strong>Email:</strong> mikail.lekesiz@etu.unistra.fr</p>
+                <p><strong>Portfolio:</strong> <a href="https://portfolio.lekesiz.fr" target="_blank">portfolio.lekesiz.fr</a></p>
+            </div>
+        </header>
+        
+        <!-- Table of Contents -->
+        <div class="toc">
+            <h2>📋 Table des Matières</h2>
+            <div class="toc-grid">
+                <a href="#syntaxe-base" class="toc-item">1. Syntaxe de Base</a>
+                <a href="#elements-html" class="toc-item">2. Éléments HTML</a>
+                <a href="#attributs" class="toc-item">3. Attributs</a>
+                <a href="#operateurs" class="toc-item">4. Opérateurs</a>
+                <a href="#multiplication" class="toc-item">5. Multiplication</a>
+                <a href="#groupement" class="toc-item">6. Groupement</a>
+                <a href="#numerotation" class="toc-item">7. Numérotation</a>
+                <a href="#texte" class="toc-item">8. Texte</a>
+                <a href="#css" class="toc-item">9. CSS</a>
+                <a href="#avance" class="toc-item">10. Techniques Avancées</a>
+            </div>
+        </div>
+        
+        <!-- Section 1: Syntaxe de Base -->
+        <div class="section" id="syntaxe-base">
+            <h2>1. Syntaxe de Base</h2>
+            
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci Emmet</th>
+                        <th>Description</th>
+                        <th>Résultat HTML</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">!</span> ou <span class="emmet-code">html:5</span></td>
+                        <td>Génère une structure HTML5 complète</td>
+                        <td><div class="emmet-result">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">div</span></td>
+                        <td>Crée une balise div</td>
+                        <td><div class="emmet-result">&lt;div&gt;&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">p</span></td>
+                        <td>Crée un paragraphe</td>
+                        <td><div class="emmet-result">&lt;p&gt;&lt;/p&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip-box">
+                <strong>💡 Astuce:</strong>
+                Tapez le raccourci puis appuyez sur <code>Tab</code> ou <code>Ctrl+E</code> (VS Code) pour l'expansion.
+            </div>
+        </div>
+        
+        <!-- Section 2: Éléments HTML -->
+        <div class="section" id="elements-html">
+            <h2>2. Éléments HTML Courants</h2>
+            
+            <h3>Éléments de Structure</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">header</span></td>
+                        <td>En-tête de page</td>
+                        <td><div class="emmet-result">&lt;header&gt;&lt;/header&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">nav</span></td>
+                        <td>Navigation</td>
+                        <td><div class="emmet-result">&lt;nav&gt;&lt;/nav&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">main</span></td>
+                        <td>Contenu principal</td>
+                        <td><div class="emmet-result">&lt;main&gt;&lt;/main&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">section</span></td>
+                        <td>Section de contenu</td>
+                        <td><div class="emmet-result">&lt;section&gt;&lt;/section&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">article</span></td>
+                        <td>Article</td>
+                        <td><div class="emmet-result">&lt;article&gt;&lt;/article&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">aside</span></td>
+                        <td>Contenu latéral</td>
+                        <td><div class="emmet-result">&lt;aside&gt;&lt;/aside&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">footer</span></td>
+                        <td>Pied de page</td>
+                        <td><div class="emmet-result">&lt;footer&gt;&lt;/footer&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Éléments de Texte</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">h1</span> à <span class="emmet-code">h6</span></td>
+                        <td>Titres (niveaux 1 à 6)</td>
+                        <td><div class="emmet-result">&lt;h1&gt;&lt;/h1&gt; ... &lt;h6&gt;&lt;/h6&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">p</span></td>
+                        <td>Paragraphe</td>
+                        <td><div class="emmet-result">&lt;p&gt;&lt;/p&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">span</span></td>
+                        <td>Span inline</td>
+                        <td><div class="emmet-result">&lt;span&gt;&lt;/span&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">a</span></td>
+                        <td>Lien hypertexte</td>
+                        <td><div class="emmet-result">&lt;a href=""&gt;&lt;/a&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">strong</span></td>
+                        <td>Texte important (gras)</td>
+                        <td><div class="emmet-result">&lt;strong&gt;&lt;/strong&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">em</span></td>
+                        <td>Emphase (italique)</td>
+                        <td><div class="emmet-result">&lt;em&gt;&lt;/em&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Listes</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">ul</span></td>
+                        <td>Liste non ordonnée</td>
+                        <td><div class="emmet-result">&lt;ul&gt;&lt;/ul&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">ol</span></td>
+                        <td>Liste ordonnée</td>
+                        <td><div class="emmet-result">&lt;ol&gt;&lt;/ol&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">li</span></td>
+                        <td>Élément de liste</td>
+                        <td><div class="emmet-result">&lt;li&gt;&lt;/li&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">dl</span></td>
+                        <td>Liste de définitions</td>
+                        <td><div class="emmet-result">&lt;dl&gt;&lt;/dl&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">dt</span></td>
+                        <td>Terme de définition</td>
+                        <td><div class="emmet-result">&lt;dt&gt;&lt;/dt&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">dd</span></td>
+                        <td>Description de définition</td>
+                        <td><div class="emmet-result">&lt;dd&gt;&lt;/dd&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Formulaires</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">form</span></td>
+                        <td>Formulaire</td>
+                        <td><div class="emmet-result">&lt;form action=""&gt;&lt;/form&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">input</span></td>
+                        <td>Champ input</td>
+                        <td><div class="emmet-result">&lt;input type="text"&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">input:text</span></td>
+                        <td>Input texte</td>
+                        <td><div class="emmet-result">&lt;input type="text" name="" id=""&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">input:email</span></td>
+                        <td>Input email</td>
+                        <td><div class="emmet-result">&lt;input type="email" name="" id=""&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">input:password</span></td>
+                        <td>Input mot de passe</td>
+                        <td><div class="emmet-result">&lt;input type="password" name="" id=""&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">input:checkbox</span></td>
+                        <td>Checkbox</td>
+                        <td><div class="emmet-result">&lt;input type="checkbox" name="" id=""&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">input:radio</span></td>
+                        <td>Radio button</td>
+                        <td><div class="emmet-result">&lt;input type="radio" name="" id=""&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">input:submit</span></td>
+                        <td>Bouton submit</td>
+                        <td><div class="emmet-result">&lt;input type="submit" value=""&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">textarea</span></td>
+                        <td>Zone de texte</td>
+                        <td><div class="emmet-result">&lt;textarea name="" id="" cols="30" rows="10"&gt;&lt;/textarea&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">select</span></td>
+                        <td>Liste déroulante</td>
+                        <td><div class="emmet-result">&lt;select name="" id=""&gt;&lt;/select&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">option</span></td>
+                        <td>Option de select</td>
+                        <td><div class="emmet-result">&lt;option value=""&gt;&lt;/option&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">button</span></td>
+                        <td>Bouton</td>
+                        <td><div class="emmet-result">&lt;button&gt;&lt;/button&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">label</span></td>
+                        <td>Label de formulaire</td>
+                        <td><div class="emmet-result">&lt;label for=""&gt;&lt;/label&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Médias</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">img</span></td>
+                        <td>Image</td>
+                        <td><div class="emmet-result">&lt;img src="" alt=""&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">video</span></td>
+                        <td>Vidéo</td>
+                        <td><div class="emmet-result">&lt;video src=""&gt;&lt;/video&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">audio</span></td>
+                        <td>Audio</td>
+                        <td><div class="emmet-result">&lt;audio src=""&gt;&lt;/audio&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">iframe</span></td>
+                        <td>Iframe</td>
+                        <td><div class="emmet-result">&lt;iframe src="" frameborder="0"&gt;&lt;/iframe&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Tableaux</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">table</span></td>
+                        <td>Tableau</td>
+                        <td><div class="emmet-result">&lt;table&gt;&lt;/table&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">thead</span></td>
+                        <td>En-tête de tableau</td>
+                        <td><div class="emmet-result">&lt;thead&gt;&lt;/thead&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">tbody</span></td>
+                        <td>Corps de tableau</td>
+                        <td><div class="emmet-result">&lt;tbody&gt;&lt;/tbody&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">tr</span></td>
+                        <td>Ligne de tableau</td>
+                        <td><div class="emmet-result">&lt;tr&gt;&lt;/tr&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">th</span></td>
+                        <td>Cellule d'en-tête</td>
+                        <td><div class="emmet-result">&lt;th&gt;&lt;/th&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">td</span></td>
+                        <td>Cellule de données</td>
+                        <td><div class="emmet-result">&lt;td&gt;&lt;/td&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Section 3: Attributs -->
+        <div class="section" id="attributs">
+            <h2>3. Attributs</h2>
+            
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">.classname</span></td>
+                        <td>Ajoute une classe</td>
+                        <td><div class="emmet-result">&lt;div class="classname"&gt;&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">#idname</span></td>
+                        <td>Ajoute un ID</td>
+                        <td><div class="emmet-result">&lt;div id="idname"&gt;&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">div.container</span></td>
+                        <td>Div avec classe</td>
+                        <td><div class="emmet-result">&lt;div class="container"&gt;&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">div#header</span></td>
+                        <td>Div avec ID</td>
+                        <td><div class="emmet-result">&lt;div id="header"&gt;&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">div.class1.class2</span></td>
+                        <td>Div avec plusieurs classes</td>
+                        <td><div class="emmet-result">&lt;div class="class1 class2"&gt;&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">a[href="#"]</span></td>
+                        <td>Lien avec attribut href</td>
+                        <td><div class="emmet-result">&lt;a href="#"&gt;&lt;/a&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">img[src="image.jpg" alt="Description"]</span></td>
+                        <td>Image avec attributs</td>
+                        <td><div class="emmet-result">&lt;img src="image.jpg" alt="Description"&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">input[type="text" placeholder="Entrez votre nom"]</span></td>
+                        <td>Input avec attributs</td>
+                        <td><div class="emmet-result">&lt;input type="text" placeholder="Entrez votre nom"&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <strong>📌 Exemple Pratique:</strong>
+                <code>a.btn.btn-primary[href="https://example.com" target="_blank"]</code>
+                <div class="emmet-result">&lt;a href="https://example.com" target="_blank" class="btn btn-primary"&gt;&lt;/a&gt;</div>
+            </div>
+        </div>
+        
+        <!-- Section 4: Opérateurs -->
+        <div class="section" id="operateurs">
+            <h2>4. Opérateurs de Navigation</h2>
+            
+            <h3>Enfant (>)</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">div>p</span></td>
+                        <td>P enfant de div</td>
+                        <td><div class="emmet-result">&lt;div&gt;
+    &lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">ul>li</span></td>
+                        <td>Li enfant de ul</td>
+                        <td><div class="emmet-result">&lt;ul&gt;
+    &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">nav>ul>li>a</span></td>
+                        <td>Navigation imbriquée</td>
+                        <td><div class="emmet-result">&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;a href=""&gt;&lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Frère (+)</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">div+p</span></td>
+                        <td>Div et p au même niveau</td>
+                        <td><div class="emmet-result">&lt;div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;/p&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">h1+p+p</span></td>
+                        <td>H1 suivi de 2 paragraphes</td>
+                        <td><div class="emmet-result">&lt;h1&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Remonter (^)</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">div>p>span^div</span></td>
+                        <td>Remonte d'un niveau après span</td>
+                        <td><div class="emmet-result">&lt;div&gt;
+    &lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;
+    &lt;div&gt;&lt;/div&gt;
+&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">div>p>span^^div</span></td>
+                        <td>Remonte de deux niveaux</td>
+                        <td><div class="emmet-result">&lt;div&gt;
+    &lt;p&gt;&lt;span&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;&lt;/div&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Section 5: Multiplication -->
+        <div class="section" id="multiplication">
+            <h2>5. Multiplication (*)</h2>
+            
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">ul>li*5</span></td>
+                        <td>Liste avec 5 éléments</td>
+                        <td><div class="emmet-result">&lt;ul&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">div.item*3</span></td>
+                        <td>3 divs avec classe item</td>
+                        <td><div class="emmet-result">&lt;div class="item"&gt;&lt;/div&gt;
+&lt;div class="item"&gt;&lt;/div&gt;
+&lt;div class="item"&gt;&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">nav>ul>li*4>a</span></td>
+                        <td>Navigation avec 4 liens</td>
+                        <td><div class="emmet-result">&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip-box">
+                <strong>💡 Astuce:</strong>
+                La multiplication peut être combinée avec tous les autres opérateurs pour créer des structures complexes rapidement.
+            </div>
+        </div>
+        
+        <!-- Section 6: Groupement -->
+        <div class="section" id="groupement">
+            <h2>6. Groupement ()</h2>
+            
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">(header>h1)+(main>p)+(footer>p)</span></td>
+                        <td>Structure de page groupée</td>
+                        <td><div class="emmet-result">&lt;header&gt;
+    &lt;h1&gt;&lt;/h1&gt;
+&lt;/header&gt;
+&lt;main&gt;
+    &lt;p&gt;&lt;/p&gt;
+&lt;/main&gt;
+&lt;footer&gt;
+    &lt;p&gt;&lt;/p&gt;
+&lt;/footer&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">(div>h2+p)*3</span></td>
+                        <td>3 sections identiques</td>
+                        <td><div class="emmet-result">&lt;div&gt;
+    &lt;h2&gt;&lt;/h2&gt;
+    &lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;h2&gt;&lt;/h2&gt;
+    &lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;div&gt;
+    &lt;h2&gt;&lt;/h2&gt;
+    &lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">ul>(li>a)*5</span></td>
+                        <td>Liste avec 5 liens</td>
+                        <td><div class="emmet-result">&lt;ul&gt;
+    &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=""&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Section 7: Numérotation -->
+        <div class="section" id="numerotation">
+            <h2>7. Numérotation ($)</h2>
+            
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">ul>li.item$*5</span></td>
+                        <td>Numérotation simple (1-5)</td>
+                        <td><div class="emmet-result">&lt;ul&gt;
+    &lt;li class="item1"&gt;&lt;/li&gt;
+    &lt;li class="item2"&gt;&lt;/li&gt;
+    &lt;li class="item3"&gt;&lt;/li&gt;
+    &lt;li class="item4"&gt;&lt;/li&gt;
+    &lt;li class="item5"&gt;&lt;/li&gt;
+&lt;/ul&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">div.section$$*3</span></td>
+                        <td>Numérotation avec zéros (01-03)</td>
+                        <td><div class="emmet-result">&lt;div class="section01"&gt;&lt;/div&gt;
+&lt;div class="section02"&gt;&lt;/div&gt;
+&lt;div class="section03"&gt;&lt;/div&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">img[src="img$.jpg"]*3</span></td>
+                        <td>Images numérotées</td>
+                        <td><div class="emmet-result">&lt;img src="img1.jpg" alt=""&gt;
+&lt;img src="img2.jpg" alt=""&gt;
+&lt;img src="img3.jpg" alt=""&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">ul>li.item$@-*5</span></td>
+                        <td>Numérotation inversée (5-1)</td>
+                        <td><div class="emmet-result">&lt;ul&gt;
+    &lt;li class="item5"&gt;&lt;/li&gt;
+    &lt;li class="item4"&gt;&lt;/li&gt;
+    &lt;li class="item3"&gt;&lt;/li&gt;
+    &lt;li class="item2"&gt;&lt;/li&gt;
+    &lt;li class="item1"&gt;&lt;/li&gt;
+&lt;/ul&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">ul>li.item$@3*5</span></td>
+                        <td>Numérotation à partir de 3</td>
+                        <td><div class="emmet-result">&lt;ul&gt;
+    &lt;li class="item3"&gt;&lt;/li&gt;
+    &lt;li class="item4"&gt;&lt;/li&gt;
+    &lt;li class="item5"&gt;&lt;/li&gt;
+    &lt;li class="item6"&gt;&lt;/li&gt;
+    &lt;li class="item7"&gt;&lt;/li&gt;
+&lt;/ul&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <strong>📌 Exemple Avancé:</strong>
+                <code>div.gallery>figure.photo-$$*6>img[src="photo-$$.jpg"]+figcaption{Photo $$}</code>
+                <p>Crée une galerie de 6 photos numérotées avec légendes!</p>
+            </div>
+        </div>
+        
+        <!-- Section 8: Texte -->
+        <div class="section" id="texte">
+            <h2>8. Insertion de Texte {}</h2>
+            
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Description</th>
+                        <th>Résultat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">p{Bonjour le monde}</span></td>
+                        <td>Paragraphe avec texte</td>
+                        <td><div class="emmet-result">&lt;p&gt;Bonjour le monde&lt;/p&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">a{Cliquez ici}</span></td>
+                        <td>Lien avec texte</td>
+                        <td><div class="emmet-result">&lt;a href=""&gt;Cliquez ici&lt;/a&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">ul>li*3{Item $}</span></td>
+                        <td>Liste avec texte numéroté</td>
+                        <td><div class="emmet-result">&lt;ul&gt;
+    &lt;li&gt;Item 1&lt;/li&gt;
+    &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;li&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">h1{Titre}+p{Paragraphe}</span></td>
+                        <td>Titre et paragraphe avec texte</td>
+                        <td><div class="emmet-result">&lt;h1&gt;Titre&lt;/h1&gt;
+&lt;p&gt;Paragraphe&lt;/p&gt;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">button.btn{Envoyer}</span></td>
+                        <td>Bouton avec classe et texte</td>
+                        <td><div class="emmet-result">&lt;button class="btn"&gt;Envoyer&lt;/button&gt;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="tip-box">
+                <strong>💡 Astuce:</strong>
+                Le texte entre accolades peut être combiné avec la numérotation $ pour créer du contenu dynamique.
+            </div>
+        </div>
+        
+        <!-- Section 9: CSS -->
+        <div class="section" id="css">
+            <h2>9. Raccourcis CSS</h2>
+            
+            <h3>Propriétés de Positionnement</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Résultat CSS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">pos</span></td>
+                        <td><div class="emmet-result">position: relative;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">pos:a</span></td>
+                        <td><div class="emmet-result">position: absolute;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">pos:r</span></td>
+                        <td><div class="emmet-result">position: relative;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">pos:f</span></td>
+                        <td><div class="emmet-result">position: fixed;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">pos:s</span></td>
+                        <td><div class="emmet-result">position: sticky;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">t10</span></td>
+                        <td><div class="emmet-result">top: 10px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">r20</span></td>
+                        <td><div class="emmet-result">right: 20px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">b30</span></td>
+                        <td><div class="emmet-result">bottom: 30px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">l40</span></td>
+                        <td><div class="emmet-result">left: 40px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">z100</span></td>
+                        <td><div class="emmet-result">z-index: 100;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Dimensions</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Résultat CSS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">w100</span></td>
+                        <td><div class="emmet-result">width: 100px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">w100p</span></td>
+                        <td><div class="emmet-result">width: 100%;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">h200</span></td>
+                        <td><div class="emmet-result">height: 200px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">maw500</span></td>
+                        <td><div class="emmet-result">max-width: 500px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">mah300</span></td>
+                        <td><div class="emmet-result">max-height: 300px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">miw100</span></td>
+                        <td><div class="emmet-result">min-width: 100px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">mih50</span></td>
+                        <td><div class="emmet-result">min-height: 50px;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Marges et Padding</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Résultat CSS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">m10</span></td>
+                        <td><div class="emmet-result">margin: 10px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">mt20</span></td>
+                        <td><div class="emmet-result">margin-top: 20px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">mr15</span></td>
+                        <td><div class="emmet-result">margin-right: 15px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">mb10</span></td>
+                        <td><div class="emmet-result">margin-bottom: 10px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">ml5</span></td>
+                        <td><div class="emmet-result">margin-left: 5px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">m10-20</span></td>
+                        <td><div class="emmet-result">margin: 10px 20px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">p20</span></td>
+                        <td><div class="emmet-result">padding: 20px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">pt10</span></td>
+                        <td><div class="emmet-result">padding-top: 10px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">pr15</span></td>
+                        <td><div class="emmet-result">padding-right: 15px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">pb20</span></td>
+                        <td><div class="emmet-result">padding-bottom: 20px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">pl25</span></td>
+                        <td><div class="emmet-result">padding-left: 25px;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Display et Flexbox</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Résultat CSS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">d:n</span></td>
+                        <td><div class="emmet-result">display: none;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">d:b</span></td>
+                        <td><div class="emmet-result">display: block;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">d:f</span></td>
+                        <td><div class="emmet-result">display: flex;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">d:g</span></td>
+                        <td><div class="emmet-result">display: grid;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">fxd:r</span></td>
+                        <td><div class="emmet-result">flex-direction: row;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">fxd:c</span></td>
+                        <td><div class="emmet-result">flex-direction: column;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">jc:c</span></td>
+                        <td><div class="emmet-result">justify-content: center;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">jc:sb</span></td>
+                        <td><div class="emmet-result">justify-content: space-between;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">ai:c</span></td>
+                        <td><div class="emmet-result">align-items: center;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">fx:1</span></td>
+                        <td><div class="emmet-result">flex: 1;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Couleurs et Backgrounds</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Résultat CSS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">c#fff</span></td>
+                        <td><div class="emmet-result">color: #fff;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">bg#000</span></td>
+                        <td><div class="emmet-result">background: #000;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">bgc#f00</span></td>
+                        <td><div class="emmet-result">background-color: #f00;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">op0.5</span></td>
+                        <td><div class="emmet-result">opacity: 0.5;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Texte</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Résultat CSS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">fz16</span></td>
+                        <td><div class="emmet-result">font-size: 16px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">fw700</span></td>
+                        <td><div class="emmet-result">font-weight: 700;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">fw:b</span></td>
+                        <td><div class="emmet-result">font-weight: bold;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">ta:c</span></td>
+                        <td><div class="emmet-result">text-align: center;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">td:n</span></td>
+                        <td><div class="emmet-result">text-decoration: none;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">td:u</span></td>
+                        <td><div class="emmet-result">text-decoration: underline;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">tt:u</span></td>
+                        <td><div class="emmet-result">text-transform: uppercase;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">lh1.5</span></td>
+                        <td><div class="emmet-result">line-height: 1.5;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Bordures</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Raccourci</th>
+                        <th>Résultat CSS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="emmet-code">bd1</span></td>
+                        <td><div class="emmet-result">border: 1px solid #000;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">bd+</span></td>
+                        <td><div class="emmet-result">border: 1px solid #000;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">bdt2</span></td>
+                        <td><div class="emmet-result">border-top: 2px solid #000;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">bdr5</span></td>
+                        <td><div class="emmet-result">border-radius: 5px;</div></td>
+                    </tr>
+                    <tr>
+                        <td><span class="emmet-code">bxsh</span></td>
+                        <td><div class="emmet-result">box-shadow: 0 0 0 #000;</div></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Section 10: Techniques Avancées -->
+        <div class="section" id="avance">
+            <h2>10. Techniques Avancées</h2>
+            
+            <h3>Structures Complexes</h3>
+            <table class="emmet-table">
+                <thead>
+                    <tr>
+                        <th>Cas d'Usage</th>
+                        <th>Raccourci Emmet</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Navigation complète</td>
+                        <td><span class="emmet-code">nav.navbar>ul.nav-list>li.nav-item*5>a.nav-link[href="#"]{Menu $}</span></td>
+                        <td>Crée une navigation avec 5 liens nommés "Menu 1" à "Menu 5"</td>
+                    </tr>
+                    <tr>
+                        <td>Galerie d'images</td>
+                        <td><span class="emmet-code">div.gallery>(figure.photo>img[src="photo-$.jpg" alt="Photo $"]+figcaption{Photo $})*6</span></td>
+                        <td>Galerie de 6 photos avec légendes</td>
+                    </tr>
+                    <tr>
+                        <td>Formulaire complet</td>
+                        <td><span class="emmet-code">form.contact-form>(div.form-group>label[for="name"]{Nom}+input:text#name.form-control)+(div.form-group>label[for="email"]{Email}+input:email#email.form-control)+(div.form-group>label[for="message"]{Message}+textarea#message.form-control)+button:submit.btn{Envoyer}</span></td>
+                        <td>Formulaire de contact avec labels et inputs</td>
+                    </tr>
+                    <tr>
+                        <td>Tableau complet</td>
+                        <td><span class="emmet-code">table.data-table>(thead>tr>th*4{Colonne $})+(tbody>tr*5>td*4{Donnée})</span></td>
+                        <td>Tableau 4x5 avec en-têtes</td>
+                    </tr>
+                    <tr>
+                        <td>Grid Layout</td>
+                        <td><span class="emmet-code">div.grid-container>(div.grid-item>h3{Item $}+p{Description})*9</span></td>
+                        <td>9 éléments de grille avec titre et description</td>
+                    </tr>
+                    <tr>
+                        <td>Cards Layout</td>
+                        <td><span class="emmet-code">div.cards-container>(div.card>(img.card-img[src="card-$.jpg"]+div.card-body>h4.card-title{Titre $}+p.card-text{Description}+a.btn[href="#"]{Lire plus}))*4</span></td>
+                        <td>4 cartes avec image, titre, texte et bouton</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="example-box">
+                <strong>📌 Exemple Ultra-Avancé - Page Complète:</strong>
+                <code>html:5>(header.site-header>nav.navbar>ul.nav-list>li.nav-item*4>a.nav-link[href="#"]{Menu $})+(main.site-main>section.hero>h1{Bienvenue}+p{Description}+a.btn[href="#"]{Commencer})+(section.features>h2{Fonctionnalités}+(div.feature-grid>(div.feature-card>i.icon+h3{Feature $}+p{Description})*6))+(footer.site-footer>p{© 2025 Mikail Lekesiz})</code>
+                <p>Crée une page complète avec header, navigation, hero, features et footer!</p>
+            </div>
+            
+            <div class="tip-box">
+                <strong>💡 Conseils de Pro:</strong>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>Utilisez Emmet pour prototyper rapidement des structures HTML</li>
+                    <li>Combinez plusieurs techniques pour des résultats complexes</li>
+                    <li>Créez vos propres snippets Emmet personnalisés dans VS Code</li>
+                    <li>Pratiquez régulièrement pour mémoriser les raccourcis</li>
+                    <li>Utilisez Emmet en CSS pour accélérer le styling</li>
+                </ul>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer>
+            <p><strong>© 2025 Mikail Lekesiz - LP DWCA - Université de Strasbourg</strong></p>
+            <p>Guide créé pour la formation LP DWCA 2025/2026</p>
+            <p>Professeur: ERIC CHRISTOFFEL</p>
+            <p>Email: mikail.lekesiz@etu.unistra.fr | Portfolio: <a href="https://portfolio.lekesiz.fr">portfolio.lekesiz.fr</a></p>
+            <p style="margin-top: 15px; font-size: 14px; color: #999;">
+                Ce guide démontre la maîtrise complète d'Emmet, un outil essentiel pour le développement web moderne.
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        console.log('='.repeat(80));
+        console.log('⚡ EMMET CHEAT SHEET COMPLET');
+        console.log('='.repeat(80));
+        console.log('\n📚 Guide exhaustif des raccourcis Emmet pour HTML & CSS');
+        console.log('\n👨‍💻 Auteur: Mikail Lekesiz');
+        console.log('🎓 Formation: LP DWCA 2025/2026 - Université de Strasbourg');
+        console.log('👨‍🏫 Professeur: ERIC CHRISTOFFEL');
+        console.log('📧 Email: mikail.lekesiz@etu.unistra.fr');
+        console.log('🌐 Portfolio: https://portfolio.lekesiz.fr');
+        console.log('\n' + '='.repeat(80));
+        console.log('\n📋 SECTIONS DU GUIDE:');
+        console.log('1. Syntaxe de Base');
+        console.log('2. Éléments HTML');
+        console.log('3. Attributs');
+        console.log('4. Opérateurs de Navigation');
+        console.log('5. Multiplication');
+        console.log('6. Groupement');
+        console.log('7. Numérotation');
+        console.log('8. Insertion de Texte');
+        console.log('9. Raccourcis CSS');
+        console.log('10. Techniques Avancées');
+        console.log('\n' + '='.repeat(80));
+        console.log('\n💡 ASTUCE: Utilisez Ctrl+F pour rechercher un raccourci spécifique!');
+        console.log('\n✅ Ce guide démontre une maîtrise complète d\'Emmet!');
+        console.log('\n' + '='.repeat(80));
+    </script>
+</body>
+</html>
+

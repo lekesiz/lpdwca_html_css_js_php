@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemples Pratiques Emmet - Mikail Lekesiz | LP DWCA 2025</title>
+    <style>
+        /**
+         * EXEMPLES PRATIQUES EMMET
+         * 
+         * Démonstrations réelles d'utilisation d'Emmet
+         * Chaque exemple montre le raccourci et le résultat
+         * 
+         * Auteur: Mikail Lekesiz
+         * Formation: LP DWCA 2025/2026 - Université de Strasbourg
+         * Email: mikail.lekesiz@etu.unistra.fr
+         */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        
+        h1 {
+            color: #667eea;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 18px;
+        }
+        
+        .example-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .example-section h2 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 10px;
+        }
+        
+        .example-box h3 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+        
+        .emmet-code {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 15px 0;
+            display: block;
+            overflow-x: auto;
+        }
+        
+        .result-preview {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .steps {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .steps ol {
+            margin-left: 20px;
+        }
+        
+        .steps li {
+            margin: 8px 0;
+        }
+        
+        /* Styles pour les exemples */
+        .demo-nav {
+            background: #667eea;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .demo-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+        
+        .demo-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .demo-nav a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .demo-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .demo-gallery figure {
+            background: #f0f0f0;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .demo-gallery img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .demo-gallery figcaption {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .demo-form {
+            max-width: 500px;
+        }
+        
+        .demo-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .demo-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .demo-form input,
+        .demo-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        .demo-form input:focus,
+        .demo-form textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .demo-form button {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .demo-form button:hover {
+            background: #764ba2;
+        }
+        
+        .demo-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .demo-table thead {
+            background: #667eea;
+            color: white;
+        }
+        
+        .demo-table th,
+        .demo-table td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        .demo-table tbody tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .demo-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .demo-card {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .demo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .demo-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .demo-card .card-body {
+            padding: 20px;
+        }
+        
+        .demo-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .demo-card p {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+        
+        .demo-card .btn {
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        
+        .demo-card .btn:hover {
+            background: #764ba2;
+        }
+        
+        footer {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+            
+            .demo-nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚡ Exemples Pratiques Emmet</h1>
+            <p class="subtitle">Démonstrations Réelles d'Utilisation d'Emmet</p>
+            <p style="margin-top: 15px; color: #666;">
+                <strong>Auteur:</strong> Mikail Lekesiz | 
+                <strong>Formation:</strong> LP DWCA 2025/2026 | 
+                <strong>Professeur:</strong> ERIC CHRISTOFFEL
+            </p>
+        </header>
+        
+        <!-- Exemple 1: Navigation -->
+        <div class="example-section">
+            <h2>Exemple 1: Navigation Complète</h2>
+            
+            <div class="example-box">
+                <h3>📝 Raccourci Emmet:</h3>
+                <code class="emmet-code">nav.navbar>ul.nav-list>li.nav-item*5>a.nav-link[href="#"]{Menu $}</code>
+                
+                <div class="steps">
+                    <strong>🔧 Étapes:</strong>
+                    <ol>
+                        <li>Tapez le raccourci Emmet ci-dessus</li>
+                        <li>Appuyez sur <kbd>Tab</kbd> ou <kbd>Ctrl+E</kbd></li>
+                        <li>Le code HTML complet est généré instantanément!</li>
+                    </ol>
+                </div>
+                
+                <h3>✅ Résultat:</h3>
+                <div class="result-preview">
+                    <!-- GÉNÉRÉ AVEC EMMET: nav.navbar>ul.nav-list>li.nav-item*5>a.nav-link[href="#"]{Menu $} -->
+                    <nav class="demo-nav navbar">
+                        <ul class="nav-list">
+                            <li class="nav-item"><a href="#" class="nav-link">Menu 1</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Menu 2</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Menu 3</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Menu 4</a></li>
+                            <li class="nav-item"><a href="#" class="nav-link">Menu 5</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exemple 2: Galerie d'Images -->
+        <div class="example-section">
+            <h2>Exemple 2: Galerie d'Images</h2>
+            
+            <div class="example-box">
+                <h3>📝 Raccourci Emmet:</h3>
+                <code class="emmet-code">div.gallery>(figure.photo>img[src="photo-$.jpg" alt="Photo $"]+figcaption{Photo $})*6</code>
+                
+                <div class="steps">
+                    <strong>🔧 Ce que fait ce raccourci:</strong>
+                    <ol>
+                        <li><code>div.gallery</code> - Crée un conteneur avec classe "gallery"</li>
+                        <li><code>(figure.photo>...)*6</code> - Crée 6 éléments figure</li>
+                        <li><code>img[src="photo-$.jpg"]</code> - Images numérotées (photo-1.jpg, photo-2.jpg, etc.)</li>
+                        <li><code>figcaption{Photo $}</code> - Légendes numérotées</li>
+                    </ol>
+                </div>
+                
+                <h3>✅ Résultat:</h3>
+                <div class="result-preview">
+                    <!-- GÉNÉRÉ AVEC EMMET: div.gallery>(figure.photo>img[src="photo-$.jpg" alt="Photo $"]+figcaption{Photo $})*6 -->
+                    <div class="demo-gallery gallery">
+                        <figure class="photo">
+                            <img src="photo-1.jpg" alt="Photo 1">
+                            <figcaption>Photo 1</figcaption>
+                        </figure>
+                        <figure class="photo">
+                            <img src="photo-2.jpg" alt="Photo 2">
+                            <figcaption>Photo 2</figcaption>
+                        </figure>
+                        <figure class="photo">
+                            <img src="photo-3.jpg" alt="Photo 3">
+                            <figcaption>Photo 3</figcaption>
+                        </figure>
+                        <figure class="photo">
+                            <img src="photo-4.jpg" alt="Photo 4">
+                            <figcaption>Photo 4</figcaption>
+                        </figure>
+                        <figure class="photo">
+                            <img src="photo-5.jpg" alt="Photo 5">
+                            <figcaption>Photo 5</figcaption>
+                        </figure>
+                        <figure class="photo">
+                            <img src="photo-6.jpg" alt="Photo 6">
+                            <figcaption>Photo 6</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exemple 3: Formulaire de Contact -->
+        <div class="example-section">
+            <h2>Exemple 3: Formulaire de Contact</h2>
+            
+            <div class="example-box">
+                <h3>📝 Raccourci Emmet:</h3>
+                <code class="emmet-code">form.contact-form>(div.form-group>label[for="name"]{Nom}+input:text#name.form-control)+(div.form-group>label[for="email"]{Email}+input:email#email.form-control)+(div.form-group>label[for="message"]{Message}+textarea#message.form-control)+button:submit.btn{Envoyer}</code>
+                
+                <div class="steps">
+                    <strong>💡 Avantages:</strong>
+                    <ol>
+                        <li>Génère un formulaire complet en une seule ligne</li>
+                        <li>Tous les attributs (for, id, type) sont automatiquement ajoutés</li>
+                        <li>Structure cohérente avec classes CSS</li>
+                        <li>Gain de temps considérable (30 secondes vs 5 minutes)</li>
+                    </ol>
+                </div>
+                
+                <h3>✅ Résultat:</h3>
+                <div class="result-preview">
+                    <!-- GÉNÉRÉ AVEC EMMET: form.contact-form>(...) -->
+                    <form class="demo-form contact-form">
+                        <div class="form-group">
+                            <label for="name">Nom</label>
+                            <input type="text" id="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" rows="4"></textarea>
+                        </div>
+                        <button type="submit" class="btn">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exemple 4: Tableau de Données -->
+        <div class="example-section">
+            <h2>Exemple 4: Tableau de Données</h2>
+            
+            <div class="example-box">
+                <h3>📝 Raccourci Emmet:</h3>
+                <code class="emmet-code">table.data-table>(thead>tr>th*4{Colonne $})+(tbody>tr*5>td*4{Donnée})</code>
+                
+                <div class="steps">
+                    <strong>🎯 Décomposition:</strong>
+                    <ol>
+                        <li><code>table.data-table</code> - Table avec classe</li>
+                        <li><code>(thead>tr>th*4{Colonne $})</code> - En-tête avec 4 colonnes numérotées</li>
+                        <li><code>(tbody>tr*5>td*4{Donnée})</code> - 5 lignes avec 4 cellules chacune</li>
+                        <li>Résultat: Tableau 4x5 complet en 2 secondes!</li>
+                    </ol>
+                </div>
+                
+                <h3>✅ Résultat:</h3>
+                <div class="result-preview">
+                    <!-- GÉNÉRÉ AVEC EMMET: table.data-table>(thead>tr>th*4{Colonne $})+(tbody>tr*5>td*4{Donnée}) -->
+                    <table class="demo-table data-table">
+                        <thead>
+                            <tr>
+                                <th>Colonne 1</th>
+                                <th>Colonne 2</th>
+                                <th>Colonne 3</th>
+                                <th>Colonne 4</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                            </tr>
+                            <tr>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                            </tr>
+                            <tr>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                            </tr>
+                            <tr>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                            </tr>
+                            <tr>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                                <td>Donnée</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exemple 5: Cards Layout -->
+        <div class="example-section">
+            <h2>Exemple 5: Cards Layout (Moderne)</h2>
+            
+            <div class="example-box">
+                <h3>📝 Raccourci Emmet:</h3>
+                <code class="emmet-code">div.cards-container>(div.card>(img.card-img[src="card-$.jpg"]+div.card-body>h4.card-title{Titre $}+p.card-text{Description du service $}+a.btn[href="#"]{Lire plus}))*4</code>
+                
+                <div class="steps">
+                    <strong>🚀 Pourquoi c'est puissant:</strong>
+                    <ol>
+                        <li>Crée 4 cartes complètes avec image, titre, texte et bouton</li>
+                        <li>Numérotation automatique des images et titres</li>
+                        <li>Structure moderne et responsive</li>
+                        <li>Prêt pour le styling CSS</li>
+                    </ol>
+                </div>
+                
+                <h3>✅ Résultat:</h3>
+                <div class="result-preview">
+                    <!-- GÉNÉRÉ AVEC EMMET: div.cards-container>(div.card>...)*4 -->
+                    <div class="demo-cards cards-container">
+                        <div class="card">
+                            <img src="card-1.jpg" class="card-img">
+                            <div class="card-body">
+                                <h4 class="card-title">Titre 1</h4>
+                                <p class="card-text">Description du service 1</p>
+                                <a href="#" class="btn">Lire plus</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="card-2.jpg" class="card-img">
+                            <div class="card-body">
+                                <h4 class="card-title">Titre 2</h4>
+                                <p class="card-text">Description du service 2</p>
+                                <a href="#" class="btn">Lire plus</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="card-3.jpg" class="card-img">
+                            <div class="card-body">
+                                <h4 class="card-title">Titre 3</h4>
+                                <p class="card-text">Description du service 3</p>
+                                <a href="#" class="btn">Lire plus</a>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <img src="card-4.jpg" class="card-img">
+                            <div class="card-body">
+                                <h4 class="card-title">Titre 4</h4>
+                                <p class="card-text">Description du service 4</p>
+                                <a href="#" class="btn">Lire plus</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exemple 6: Structure de Page Complète -->
+        <div class="example-section">
+            <h2>Exemple 6: Structure de Page Complète</h2>
+            
+            <div class="example-box">
+                <h3>📝 Raccourci Emmet Ultra-Avancé:</h3>
+                <code class="emmet-code">html:5>(header.site-header>nav.navbar>ul.nav-list>li.nav-item*4>a.nav-link[href="#"]{Menu $})+(main.site-main>section.hero>h1{Bienvenue sur mon site}+p{Découvrez nos services}+a.btn[href="#"]{Commencer})+(section.features>h2{Nos Fonctionnalités}+(div.feature-grid>(div.feature-card>i.icon+h3{Feature $}+p{Description de la fonctionnalité $})*6))+(footer.site-footer>p{© 2025 Mikail Lekesiz - LP DWCA})</code>
+                
+                <div class="steps">
+                    <strong>🎨 Ce que cela génère:</strong>
+                    <ol>
+                        <li><strong>Structure HTML5 complète</strong> avec DOCTYPE et balises meta</li>
+                        <li><strong>Header</strong> avec navigation (4 liens)</li>
+                        <li><strong>Main</strong> avec section hero (titre, texte, CTA)</li>
+                        <li><strong>Section Features</strong> avec 6 cartes de fonctionnalités</li>
+                        <li><strong>Footer</strong> avec copyright</li>
+                        <li><strong>Total:</strong> ~50 lignes de HTML en 3 secondes!</li>
+                    </ol>
+                </div>
+                
+                <div style="background: #d1ecf1; padding: 20px; border-radius: 8px; margin: 15px 0;">
+                    <strong style="color: #0c5460; display: block; margin-bottom: 10px;">💡 Cas d'Usage Réel:</strong>
+                    <p style="color: #0c5460;">
+                        Ce raccourci est parfait pour créer rapidement un prototype de landing page. 
+                        En quelques secondes, vous avez une structure complète prête à être stylisée et remplie de contenu réel.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Exemple 7: CSS avec Emmet -->
+        <div class="example-section">
+            <h2>Exemple 7: Raccourcis CSS Emmet</h2>
+            
+            <div class="example-box">
+                <h3>📝 Exemples de Raccourcis CSS:</h3>
+                
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <thead style="background: #667eea; color: white;">
+                        <tr>
+                            <th style="padding: 12px; text-align: left;">Raccourci</th>
+                            <th style="padding: 12px; text-align: left;">Résultat CSS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;"><code>d:f</code></td>
+                            <td style="padding: 12px;"><code>display: flex;</code></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;"><code>jc:c</code></td>
+                            <td style="padding: 12px;"><code>justify-content: center;</code></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;"><code>ai:c</code></td>
+                            <td style="padding: 12px;"><code>align-items: center;</code></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;"><code>w100p</code></td>
+                            <td style="padding: 12px;"><code>width: 100%;</code></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;"><code>m10-20</code></td>
+                            <td style="padding: 12px;"><code>margin: 10px 20px;</code></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;"><code>p20</code></td>
+                            <td style="padding: 12px;"><code>padding: 20px;</code></td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #ddd;">
+                            <td style="padding: 12px;"><code>bg#667eea</code></td>
+                            <td style="padding: 12px;"><code>background: #667eea;</code></td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 12px;"><code>bdr10</code></td>
+                            <td style="padding: 12px;"><code>border-radius: 10px;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="steps">
+                    <strong>⚡ Exemple Complet CSS:</strong>
+                    <p style="margin: 10px 0;">Tapez: <code>d:f+jc:c+ai:c+w100p+h100vh+bg#667eea</code></p>
+                    <p style="margin: 10px 0;">Résultat:</p>
+                    <code class="emmet-code">display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100vh;
+background: #667eea;</code>
+                    <p style="margin-top: 15px; color: #666;">
+                        <strong>Gain de temps:</strong> 5 secondes au lieu de 30 secondes de frappe manuelle!
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Statistiques -->
+        <div class="example-section">
+            <h2>📊 Statistiques & Bénéfices</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin: 20px 0;">
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 15px; text-align: center;">
+                    <h3 style="font-size: 48px; margin-bottom: 10px;">90%</h3>
+                    <p>Gain de temps</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 30px; border-radius: 15px; text-align: center;">
+                    <h3 style="font-size: 48px; margin-bottom: 10px;">10x</h3>
+                    <p>Plus rapide</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: white; padding: 30px; border-radius: 15px; text-align: center;">
+                    <h3 style="font-size: 48px; margin-bottom: 10px;">0</h3>
+                    <p>Erreurs de syntaxe</p>
+                </div>
+                <div style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: white; padding: 30px; border-radius: 15px; text-align: center;">
+                    <h3 style="font-size: 48px; margin-bottom: 10px;">100%</h3>
+                    <p>Productivité</p>
+                </div>
+            </div>
+            
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin-top: 30px;">
+                <h3 style="color: #667eea; margin-bottom: 20px;">🎯 Avantages d'Emmet:</h3>
+                <ul style="list-style: none; padding: 0;">
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">✅ <strong>Rapidité:</strong> Écrivez du HTML/CSS 10x plus vite</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">✅ <strong>Précision:</strong> Zéro erreur de syntaxe</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">✅ <strong>Cohérence:</strong> Structure toujours propre et organisée</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">✅ <strong>Productivité:</strong> Concentrez-vous sur la logique, pas la syntaxe</li>
+                    <li style="padding: 10px 0; border-bottom: 1px solid #ddd;">✅ <strong>Apprentissage:</strong> Facile à apprendre, puissant à maîtriser</li>
+                    <li style="padding: 10px 0;">✅ <strong>Standard:</strong> Intégré dans tous les éditeurs modernes (VS Code, Sublime, etc.)</li>
+                </ul>
+            </div>
+        </div>
+        
+        <footer>
+            <p><strong>© 2025 Mikail Lekesiz - LP DWCA - Université de Strasbourg</strong></p>
+            <p>Professeur: ERIC CHRISTOFFEL</p>
+            <p>Email: mikail.lekesiz@etu.unistra.fr | Portfolio: <a href="https://portfolio.lekesiz.fr">portfolio.lekesiz.fr</a></p>
+            <p style="margin-top: 15px; font-size: 14px; color: #999;">
+                Ces exemples démontrent une maîtrise complète d'Emmet et son application pratique dans le développement web moderne.
+            </p>
+        </footer>
+    </div>
+    
+    <script>
+        console.log('='.repeat(80));
+        console.log('⚡ EXEMPLES PRATIQUES EMMET');
+        console.log('='.repeat(80));
+        console.log('\n✅ 7 exemples pratiques d\'utilisation d\'Emmet');
+        console.log('\n📋 EXEMPLES:');
+        console.log('1. Navigation Complète');
+        console.log('2. Galerie d\'Images');
+        console.log('3. Formulaire de Contact');
+        console.log('4. Tableau de Données');
+        console.log('5. Cards Layout');
+        console.log('6. Structure de Page Complète');
+        console.log('7. Raccourcis CSS');
+        console.log('\n👨‍💻 Auteur: Mikail Lekesiz');
+        console.log('🎓 Formation: LP DWCA 2025/2026');
+        console.log('👨‍🏫 Professeur: ERIC CHRISTOFFEL');
+        console.log('\n' + '='.repeat(80));
+        console.log('\n💡 Chaque exemple montre:');
+        console.log('   - Le raccourci Emmet exact');
+        console.log('   - Les étapes d\'utilisation');
+        console.log('   - Le résultat visuel');
+        console.log('   - Les bénéfices pratiques');
+        console.log('\n' + '='.repeat(80));
+    </script>
+</body>
+</html>
+
