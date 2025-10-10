@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 1 - Variables, Types & Operators | Mikail Lekesiz</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .concept {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        
+        .concept h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .result {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        .result h3 {
+            color: #2e7d32;
+            margin-bottom: 10px;
+        }
+        
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .output {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            min-height: 100px;
+        }
+        
+        .output h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        #results {
+            font-family: monospace;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 Chapter 1: Variables, Types & Operators</h1>
+        <p class="subtitle">Démonstration pratique des concepts de base JavaScript - Par Mikail Lekesiz (LP DWCA 2025)</p>
+        
+        <!-- Concept 1: Variables -->
+        <div class="concept">
+            <h2>1. Déclarations de Variables (var, let, const)</h2>
+            <p><strong>Concept enseigné:</strong> JavaScript propose 3 façons de déclarer des variables.</p>
+            
+            <div class="code-block">
+// var: ancienne méthode, scope fonction
+var nom = "Lekesiz";
+
+// let: moderne, scope bloc, réassignable
+let prenom = "Mikail";
+
+// const: moderne, scope bloc, NON réassignable
+const universite = "Unistra";
+            </div>
+            
+            <div class="note">
+                <strong>📌 Note pédagogique:</strong> Privilégier <code>const</code> par défaut, utiliser <code>let</code> si réassignation nécessaire, éviter <code>var</code>.
+            </div>
+        </div>
+        
+        <!-- Concept 2: Types de données -->
+        <div class="concept">
+            <h2>2. Types de Données Primitifs</h2>
+            <p><strong>Concept enseigné:</strong> JavaScript a 7 types primitifs.</p>
+            
+            <div class="code-block">
+// String
+let formation = "LP DWCA";
+
+// Number
+let annee = 2025;
+let note = 18.5;
+
+// Boolean
+let estEtudiant = true;
+
+// Undefined
+let variable;
+
+// Null
+let valeurVide = null;
+
+// Symbol (ES6)
+let id = Symbol('id');
+
+// BigInt (ES2020)
+let grandNombre = 9007199254740991n;
+            </div>
+            
+            <div class="note">
+                <strong>📌 typeof operator:</strong> Permet de vérifier le type d'une variable.
+            </div>
+        </div>
+        
+        <!-- Concept 3: Opérateurs Arithmétiques -->
+        <div class="concept">
+            <h2>3. Opérateurs Arithmétiques</h2>
+            <p><strong>Concept enseigné:</strong> +, -, *, /, %, **, ++, --</p>
+            
+            <div class="code-block">
+let a = 10;
+let b = 3;
+
+let addition = a + b;        // 13
+let soustraction = a - b;    // 7
+let multiplication = a * b;  // 30
+let division = a / b;        // 3.333...
+let modulo = a % b;          // 1 (reste de la division)
+let puissance = a ** b;      // 1000 (10^3)
+
+// Incrémentation / Décrémentation
+let compteur = 0;
+compteur++;  // 1
+compteur--;  // 0
+            </div>
+        </div>
+        
+        <!-- Concept 4: Opérateurs de Comparaison -->
+        <div class="concept">
+            <h2>4. Opérateurs de Comparaison</h2>
+            <p><strong>Concept enseigné:</strong> ==, ===, !=, !==, >, <, >=, <=</p>
+            
+            <div class="code-block">
+let x = 5;
+let y = "5";
+
+// Égalité faible (conversion de type)
+console.log(x == y);   // true
+
+// Égalité stricte (pas de conversion)
+console.log(x === y);  // false
+
+// Inégalité
+console.log(x != y);   // false
+console.log(x !== y);  // true
+
+// Comparaisons
+console.log(x > 3);    // true
+console.log(x <= 5);   // true
+            </div>
+            
+            <div class="note">
+                <strong>⚠️ Important:</strong> Toujours utiliser === et !== pour éviter les conversions de type implicites.
+            </div>
+        </div>
+        
+        <!-- Concept 5: Opérateurs Logiques -->
+        <div class="concept">
+            <h2>5. Opérateurs Logiques</h2>
+            <p><strong>Concept enseigné:</strong> && (AND), || (OR), ! (NOT)</p>
+            
+            <div class="code-block">
+let age = 20;
+let aPermis = true;
+
+// AND: les deux conditions doivent être vraies
+let peutConduire = (age >= 18) && aPermis;  // true
+
+// OR: au moins une condition doit être vraie
+let peutVoter = (age >= 18) || (age >= 16);  // true
+
+// NOT: inverse la valeur booléenne
+let estMineur = !(age >= 18);  // false
+            </div>
+        </div>
+        
+        <!-- Concept 6: Opérateurs d'Affectation -->
+        <div class="concept">
+            <h2>6. Opérateurs d'Affectation</h2>
+            <p><strong>Concept enseigné:</strong> =, +=, -=, *=, /=, %=</p>
+            
+            <div class="code-block">
+let score = 100;
+
+score += 10;   // score = score + 10  → 110
+score -= 5;    // score = score - 5   → 105
+score *= 2;    // score = score * 2   → 210
+score /= 3;    // score = score / 3   → 70
+score %= 60;   // score = score % 60  → 10
+            </div>
+        </div>
+        
+        <!-- Concept 7: Concaténation de Strings -->
+        <div class="concept">
+            <h2>7. Concaténation et Template Literals</h2>
+            <p><strong>Concept enseigné:</strong> Combiner des strings avec + ou template literals (``)</p>
+            
+            <div class="code-block">
+let nom = "Lekesiz";
+let prenom = "Mikail";
+
+// Méthode 1: Concaténation avec +
+let message1 = "Bonjour " + prenom + " " + nom;
+
+// Méthode 2: Template literals (ES6) - RECOMMANDÉ
+let message2 = `Bonjour ${prenom} ${nom}`;
+
+// Expressions dans template literals
+let age = 25;
+let message3 = `J'ai ${age} ans, dans 5 ans j'aurai ${age + 5} ans`;
+            </div>
+            
+            <div class="note">
+                <strong>💡 Astuce:</strong> Les template literals permettent aussi les strings multi-lignes.
+            </div>
+        </div>
+        
+        <!-- Boutons d'action -->
+        <div style="text-align: center; margin: 30px 0;">
+            <button onclick="runAllExamples()">▶️ Exécuter Tous les Exemples</button>
+            <button onclick="clearOutput()">🗑️ Effacer</button>
+        </div>
+        
+        <!-- Zone de sortie -->
+        <div class="output">
+            <h3>📊 Résultats Console</h3>
+            <div id="results"></div>
+        </div>
+        
+        <div class="result">
+            <h3>✅ Concepts Démontrés</h3>
+            <ul>
+                <li>✓ Déclarations: var, let, const</li>
+                <li>✓ Types primitifs: string, number, boolean, undefined, null</li>
+                <li>✓ Opérateurs arithmétiques: +, -, *, /, %, **</li>
+                <li>✓ Opérateurs de comparaison: ==, ===, !=, !==, >, <</li>
+                <li>✓ Opérateurs logiques: &&, ||, !</li>
+                <li>✓ Opérateurs d'affectation: =, +=, -=, *=, /=</li>
+                <li>✓ Concaténation et template literals</li>
+                <li>✓ typeof operator</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        function log(message) {
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML += message + '<br>';
+            console.log(message);
+        }
+        
+        function clearOutput() {
+            document.getElementById('results').innerHTML = '';
+        }
+        
+        function runAllExamples() {
+            clearOutput();
+            log('=== DÉMONSTRATION COMPLÈTE - Mikail Lekesiz ===\n');
+            
+            // 1. Variables
+            log('1️⃣ VARIABLES:');
+            var nom = "Lekesiz";
+            let prenom = "Mikail";
+            const universite = "Unistra";
+            log(`nom (var): ${nom}`);
+            log(`prenom (let): ${prenom}`);
+            log(`universite (const): ${universite}\n`);
+            
+            // 2. Types
+            log('2️⃣ TYPES DE DONNÉES:');
+            let formation = "LP DWCA";
+            let annee = 2025;
+            let note = 18.5;
+            let estEtudiant = true;
+            let variable;
+            let valeurVide = null;
+            
+            log(`formation: "${formation}" (type: ${typeof formation})`);
+            log(`annee: ${annee} (type: ${typeof annee})`);
+            log(`note: ${note} (type: ${typeof note})`);
+            log(`estEtudiant: ${estEtudiant} (type: ${typeof estEtudiant})`);
+            log(`variable: ${variable} (type: ${typeof variable})`);
+            log(`valeurVide: ${valeurVide} (type: ${typeof valeurVide})\n`);
+            
+            // 3. Opérateurs Arithmétiques
+            log('3️⃣ OPÉRATEURS ARITHMÉTIQUES:');
+            let a = 10, b = 3;
+            log(`a = ${a}, b = ${b}`);
+            log(`a + b = ${a + b}`);
+            log(`a - b = ${a - b}`);
+            log(`a * b = ${a * b}`);
+            log(`a / b = ${(a / b).toFixed(2)}`);
+            log(`a % b = ${a % b}`);
+            log(`a ** b = ${a ** b}\n`);
+            
+            // 4. Opérateurs de Comparaison
+            log('4️⃣ OPÉRATEURS DE COMPARAISON:');
+            let x = 5, y = "5";
+            log(`x = ${x} (number), y = "${y}" (string)`);
+            log(`x == y: ${x == y}`);
+            log(`x === y: ${x === y}`);
+            log(`x != y: ${x != y}`);
+            log(`x !== y: ${x !== y}`);
+            log(`x > 3: ${x > 3}`);
+            log(`x <= 5: ${x <= 5}\n`);
+            
+            // 5. Opérateurs Logiques
+            log('5️⃣ OPÉRATEURS LOGIQUES:');
+            let age = 20, aPermis = true;
+            log(`age = ${age}, aPermis = ${aPermis}`);
+            log(`(age >= 18) && aPermis: ${(age >= 18) && aPermis}`);
+            log(`(age >= 18) || (age >= 16): ${(age >= 18) || (age >= 16)}`);
+            log(`!(age >= 18): ${!(age >= 18)}\n`);
+            
+            // 6. Opérateurs d'Affectation
+            log('6️⃣ OPÉRATEURS D\'AFFECTATION:');
+            let score = 100;
+            log(`score initial: ${score}`);
+            score += 10;
+            log(`après score += 10: ${score}`);
+            score -= 5;
+            log(`après score -= 5: ${score}`);
+            score *= 2;
+            log(`après score *= 2: ${score}`);
+            score /= 3;
+            log(`après score /= 3: ${score.toFixed(2)}\n`);
+            
+            // 7. Template Literals
+            log('7️⃣ TEMPLATE LITERALS:');
+            let message = `Bonjour ${prenom} ${nom}, étudiant à ${universite}`;
+            log(`Message: ${message}`);
+            log(`Expression: J'ai ${age} ans, dans 5 ans j'aurai ${age + 5} ans\n`);
+            
+            log('✅ Tous les exemples ont été exécutés avec succès!');
+        }
+        
+        // Exécution automatique au chargement
+        window.addEventListener('load', () => {
+            setTimeout(runAllExamples, 500);
+        });
+    </script>
+</body>
+</html>
+
