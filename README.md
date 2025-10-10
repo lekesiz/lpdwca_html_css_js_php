@@ -26,12 +26,13 @@ CEO - Netz Informatique
 | **Course Exercises** | 4 | ~1,267 | Chapitres JavaScript complets |
 | **Mini-Projet Bootstrap** | 2 | ~850 | Projet en binôme (avec Mickael Hoffer) |
 | **Emmet Mastery** | 4 | ~2,500 | Guide Emmet complet |
+| **XHTML Reference** | 4 | ~1,200 | Guide XHTML interactif complet |
 | **Resources & Tools** | 2 | ~626 | 15+ ressources documentées |
 | **To-Do-List App** | 4 | ~1,500 | Application CRUD complète |
 | **JSON SP** | 8 | ~642 | Activités JSON (Etapes 1A-1E) |
 | **Practical Examples** | 4 | ~1,780 | HTML, CSS, JavaScript |
 | **Autres** | 10+ | ~1,500 | Divers exemples et projets |
-| **TOTAL** | **38+** | **~10,665** | **Portfolio complet** |
+| **TOTAL** | **42+** | **~11,865** | **Portfolio complet** |
 
 ---
 
@@ -178,7 +179,53 @@ Compilation complète de toutes les ressources utilisées pendant la formation:
 
 ---
 
-### 5. ✅ To-Do-List Application Complète
+### 5. 📖 XHTML Reference ⭐ NOUVEAU!
+
+**📁 `xhtml-reference/`** (~1,200 lignes)
+
+Guide de référence XHTML complet basé sur [XHTML Qanuq](https://xhtml.qanuq.com/), transformé en ressource pédagogique interactive:
+
+#### Contenu du Module
+
+**Guide Structuré:**
+- **01-introduction.html** - Introduction complète à XHTML
+- Différences HTML vs XHTML
+- Règles strictes de XHTML
+- Exemples de code valide
+
+**Interface Interactive:**
+- **interactive/index.html** - Recherche de balises en temps réel
+- 77 balises HTML/XHTML documentées
+- Filtrage par catégorie (structure, texte, formulaire, tableau, liste, média)
+- Exemples de code pour chaque balise
+- Liens directs vers XHTML Qanuq
+
+**Exemples Pratiques:**
+- **01-document-simple.html** - Structure XHTML de base
+- Code commenté et expliqué
+- Validation W3C
+
+#### Fonctionnalités
+
+- ✅ **Recherche interactive** : Trouvez rapidement n'importe quelle balise
+- ✅ **Catégorisation** : Balises organisées par fonction
+- ✅ **Documentation complète** : Utilité, type (inline/block), exemples
+- ✅ **Référence originale** : Liens vers XHTML Qanuq pour détails complets
+- ✅ **Apprentissage progressif** : Du simple au complexe
+- ✅ **Code valide** : Tous les exemples conformes XHTML 1.1
+
+**Fichiers:**
+- `README.md` - Documentation complète du module
+- `guide/01-introduction.html` - Guide d'introduction (~800 lignes)
+- `interactive/index.html` - Interface de recherche (~400 lignes)
+- `examples/01-document-simple.html` - Exemple pratique
+
+**Crédits:**
+Basé sur [XHTML Qanuq](https://xhtml.qanuq.com/) de **Matthieu PETIOT**
+
+---
+
+### 6. ✅ To-Do-List Application Complète
 
 **📁 `todolist-app/`** (~1,500 lignes)
 

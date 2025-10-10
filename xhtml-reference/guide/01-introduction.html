@@ -1,0 +1,445 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction à XHTML - Guide de Référence</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" />
+    <style type="text/css">
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        h1 {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        
+        h2 {
+            color: #764ba2;
+            font-weight: bold;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        
+        h3 {
+            color: #667eea;
+            font-weight: 600;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .alert-info {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+        
+        .alert-warning {
+            background: #ffc107;
+            border: none;
+        }
+        
+        .alert-success {
+            background: #28a745;
+            color: white;
+            border: none;
+        }
+        
+        .code-example {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        code {
+            background: #e9ecef;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #d63384;
+        }
+        
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        
+        pre code {
+            background: transparent;
+            color: #f8f8f2;
+        }
+        
+        .comparison-table {
+            margin: 30px 0;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .nav-buttons {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+        }
+        
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-custom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        
+        .highlight-box {
+            background: #f0f7ff;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .rule-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .rule-list li {
+            padding: 10px;
+            margin: 10px 0;
+            background: #f8f9fa;
+            border-radius: 5px;
+            border-left: 4px solid #28a745;
+        }
+        
+        .rule-list li::before {
+            content: "✓ ";
+            color: #28a745;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="bi bi-book"></i> Introduction à XHTML</h1>
+        
+        <div class="alert alert-info">
+            <i class="bi bi-info-circle"></i> <strong>Bienvenue !</strong> Ce guide vous présente les concepts fondamentaux de XHTML et vous prépare à créer des documents web conformes aux standards.
+        </div>
+        
+        <h2><i class="bi bi-question-circle"></i> Qu'est-ce que XHTML ?</h2>
+        
+        <p>
+            <strong>XHTML (eXtensible HyperText Markup Language)</strong> est une reformulation de HTML en tant qu'application XML. 
+            Il combine la flexibilité de HTML avec la rigueur de XML, créant ainsi un langage de balisage plus strict et plus cohérent.
+        </p>
+        
+        <div class="highlight-box">
+            <h3>Définition Officielle</h3>
+            <p>
+                Selon le W3C, XHTML est "une famille de types de documents et de modules actuels et futurs qui reproduisent, 
+                sous-ensemblent et étendent HTML, reformulé en XML 1.0".
+            </p>
+        </div>
+        
+        <h2><i class="bi bi-diagram-3"></i> Historique et Évolution</h2>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <h3>HTML (1991-1999)</h3>
+                <ul>
+                    <li><strong>HTML 1.0</strong> (1991) : Version initiale</li>
+                    <li><strong>HTML 2.0</strong> (1995) : Première standardisation</li>
+                    <li><strong>HTML 3.2</strong> (1997) : Ajout de tableaux et applets</li>
+                    <li><strong>HTML 4.01</strong> (1999) : Séparation contenu/présentation</li>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h3>XHTML (2000-présent)</h3>
+                <ul>
+                    <li><strong>XHTML 1.0</strong> (2000) : HTML 4 en XML</li>
+                    <li><strong>XHTML 1.1</strong> (2001) : Version modulaire stricte</li>
+                    <li><strong>XHTML 2.0</strong> (abandonné) : Trop radical</li>
+                    <li><strong>HTML5</strong> (2014) : Retour à HTML avec XHTML optionnel</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2><i class="bi bi-arrow-left-right"></i> HTML vs XHTML : Les Différences</h2>
+        
+        <table class="table table-bordered comparison-table">
+            <thead>
+                <tr>
+                    <th>Aspect</th>
+                    <th>HTML</th>
+                    <th>XHTML</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Syntaxe</strong></td>
+                    <td>Permissive, tolère les erreurs</td>
+                    <td>Stricte, aucune erreur tolérée</td>
+                </tr>
+                <tr>
+                    <td><strong>Balises</strong></td>
+                    <td>Majuscules ou minuscules</td>
+                    <td>Uniquement minuscules</td>
+                </tr>
+                <tr>
+                    <td><strong>Fermeture</strong></td>
+                    <td>Optionnelle pour certaines balises</td>
+                    <td>Obligatoire pour toutes</td>
+                </tr>
+                <tr>
+                    <td><strong>Attributs</strong></td>
+                    <td>Peuvent être sans valeur</td>
+                    <td>Doivent toujours avoir une valeur</td>
+                </tr>
+                <tr>
+                    <td><strong>Guillemets</strong></td>
+                    <td>Optionnels pour les valeurs</td>
+                    <td>Obligatoires</td>
+                </tr>
+                <tr>
+                    <td><strong>Validation</strong></td>
+                    <td>Recommandée</td>
+                    <td>Obligatoire</td>
+                </tr>
+                <tr>
+                    <td><strong>Namespace</strong></td>
+                    <td>Non requis</td>
+                    <td>Requis (xmlns)</td>
+                </tr>
+                <tr>
+                    <td><strong>DOCTYPE</strong></td>
+                    <td>Recommandé</td>
+                    <td>Obligatoire</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2><i class="bi bi-check2-square"></i> Les Règles Strictes de XHTML</h2>
+        
+        <p>XHTML impose des règles strictes qui garantissent la cohérence et la validité du code :</p>
+        
+        <ul class="rule-list">
+            <li><strong>Toutes les balises en minuscules</strong> : <code>&lt;div&gt;</code> et non <code>&lt;DIV&gt;</code></li>
+            <li><strong>Fermeture obligatoire</strong> : <code>&lt;p&gt;texte&lt;/p&gt;</code> et non <code>&lt;p&gt;texte</code></li>
+            <li><strong>Balises auto-fermantes</strong> : <code>&lt;br /&gt;</code> et non <code>&lt;br&gt;</code></li>
+            <li><strong>Attributs entre guillemets</strong> : <code>class="menu"</code> et non <code>class=menu</code></li>
+            <li><strong>Attributs avec valeurs</strong> : <code>checked="checked"</code> et non <code>checked</code></li>
+            <li><strong>Hiérarchie respectée</strong> : Pas de <code>&lt;p&gt;</code> dans un autre <code>&lt;p&gt;</code></li>
+            <li><strong>DOCTYPE obligatoire</strong> : Déclaration en début de document</li>
+            <li><strong>Encodage déclaré</strong> : Spécification de l'encodage des caractères</li>
+            <li><strong>Namespace XHTML</strong> : <code>xmlns="http://www.w3.org/1999/xhtml"</code></li>
+            <li><strong>Document bien formé</strong> : Structure XML valide</li>
+        </ul>
+        
+        <h2><i class="bi bi-code-square"></i> Exemples de Code</h2>
+        
+        <h3>❌ HTML Permissif (Non valide en XHTML)</h3>
+        <div class="code-example">
+            <pre><code>&lt;!-- Balises en majuscules --&gt;
+&lt;DIV&gt;
+    &lt;!-- Balise non fermée --&gt;
+    &lt;P&gt;Ceci est un paragraphe
+    
+    &lt;!-- Attribut sans guillemets --&gt;
+    &lt;IMG src=image.jpg&gt;
+    
+    &lt;!-- Attribut booléen sans valeur --&gt;
+    &lt;INPUT type=checkbox checked&gt;
+&lt;/DIV&gt;</code></pre>
+        </div>
+        
+        <h3>✅ XHTML Strict (Valide)</h3>
+        <div class="code-example">
+            <pre><code>&lt;!-- Balises en minuscules --&gt;
+&lt;div&gt;
+    &lt;!-- Balise correctement fermée --&gt;
+    &lt;p&gt;Ceci est un paragraphe&lt;/p&gt;
+    
+    &lt;!-- Attribut avec guillemets --&gt;
+    &lt;img src="image.jpg" alt="Description" /&gt;
+    
+    &lt;!-- Attribut booléen avec valeur --&gt;
+    &lt;input type="checkbox" checked="checked" /&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+        
+        <h2><i class="bi bi-trophy"></i> Pourquoi Utiliser XHTML ?</h2>
+        
+        <div class="row">
+            <div class="col-md-6">
+                <div class="alert alert-success">
+                    <h4><i class="bi bi-check-circle"></i> Avantages</h4>
+                    <ul>
+                        <li><strong>Code plus propre</strong> : Syntaxe stricte = code cohérent</li>
+                        <li><strong>Meilleure compatibilité</strong> : Fonctionne sur tous les navigateurs</li>
+                        <li><strong>Facilite le traitement</strong> : Peut être parsé comme XML</li>
+                        <li><strong>Détection d'erreurs</strong> : Les erreurs sont immédiatement visibles</li>
+                        <li><strong>Accessibilité</strong> : Structure claire pour les lecteurs d'écran</li>
+                        <li><strong>Maintenance</strong> : Code plus facile à maintenir</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="alert alert-warning">
+                    <h4><i class="bi bi-exclamation-triangle"></i> Inconvénients</h4>
+                    <ul>
+                        <li><strong>Plus strict</strong> : Moins tolérant aux erreurs</li>
+                        <li><strong>Verbeux</strong> : Code plus long (ex: <code>&lt;br /&gt;</code>)</li>
+                        <li><strong>Courbe d'apprentissage</strong> : Nécessite de la rigueur</li>
+                        <li><strong>Type MIME</strong> : Peut causer des problèmes de serveur</li>
+                        <li><strong>Moins populaire</strong> : HTML5 est devenu le standard</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <h2><i class="bi bi-lightbulb"></i> Quand Utiliser XHTML ?</h2>
+        
+        <div class="highlight-box">
+            <h3>Cas d'Usage Recommandés</h3>
+            <ul>
+                <li><strong>Applications d'entreprise</strong> : Nécessitant une validation stricte</li>
+                <li><strong>Traitement XML</strong> : Quand le document doit être parsé comme XML</li>
+                <li><strong>Intégration avec XML</strong> : Mélange de XHTML avec d'autres XML (SVG, MathML)</li>
+                <li><strong>Formation</strong> : Apprendre les bonnes pratiques de codage</li>
+                <li><strong>Accessibilité</strong> : Garantir une structure sémantique correcte</li>
+            </ul>
+        </div>
+        
+        <h2><i class="bi bi-gear"></i> Configuration Requise</h2>
+        
+        <h3>DOCTYPE pour XHTML 1.1</h3>
+        <div class="code-example">
+            <pre><code>&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;</code></pre>
+        </div>
+        
+        <h3>Balise HTML avec Namespace</h3>
+        <div class="code-example">
+            <pre><code>&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"&gt;</code></pre>
+        </div>
+        
+        <h3>En-tête Meta Complète</h3>
+        <div class="code-example">
+            <pre><code>&lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+    &lt;title&gt;Titre de la Page&lt;/title&gt;
+&lt;/head&gt;</code></pre>
+        </div>
+        
+        <h2><i class="bi bi-file-earmark-code"></i> Structure Minimale d'un Document XHTML</h2>
+        
+        <div class="code-example">
+            <pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"&gt;
+&lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+    &lt;title&gt;Ma Première Page XHTML&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Bienvenue en XHTML&lt;/h1&gt;
+    &lt;p&gt;Ceci est un document XHTML valide.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        
+        <h2><i class="bi bi-tools"></i> Outils de Validation</h2>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-check-circle"></i> W3C Validator</h5>
+                        <p class="card-text">Validateur officiel du W3C pour XHTML</p>
+                        <a href="https://validator.w3.org/" class="btn btn-custom btn-sm" target="_blank">Visiter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-code-slash"></i> VS Code</h5>
+                        <p class="card-text">Éditeur avec validation XHTML intégrée</p>
+                        <a href="https://code.visualstudio.com/" class="btn btn-custom btn-sm" target="_blank">Télécharger</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-browser-chrome"></i> Extensions</h5>
+                        <p class="card-text">Extensions de navigateur pour validation</p>
+                        <a href="#" class="btn btn-custom btn-sm">Explorer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h2><i class="bi bi-mortarboard"></i> Points Clés à Retenir</h2>
+        
+        <div class="alert alert-info">
+            <ul>
+                <li>XHTML est une version stricte de HTML basée sur XML</li>
+                <li>Toutes les règles doivent être respectées (pas de tolérance aux erreurs)</li>
+                <li>Le code XHTML est plus propre et plus maintenable</li>
+                <li>La validation est obligatoire, pas optionnelle</li>
+                <li>XHTML prépare à comprendre XML et les standards web</li>
+                <li>Bien que HTML5 soit devenu le standard, XHTML reste pertinent pour l'apprentissage</li>
+            </ul>
+        </div>
+        
+        <div class="nav-buttons">
+            <div class="row">
+                <div class="col-6">
+                    <a href="../README.md" class="btn btn-custom">
+                        <i class="bi bi-arrow-left"></i> Retour au Sommaire
+                    </a>
+                </div>
+                <div class="col-6 text-end">
+                    <a href="02-structure-document.html" class="btn btn-custom">
+                        Chapitre Suivant <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

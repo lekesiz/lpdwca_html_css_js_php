@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XHTML Reference - Recherche Interactive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary-gradient);
+            min-height: 100vh;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .search-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: -30px auto 30px;
+            max-width: 800px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .search-box {
+            position: relative;
+        }
+        
+        .search-box input {
+            padding: 15px 50px 15px 20px;
+            font-size: 1.1rem;
+            border: 2px solid #e9ecef;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box input:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        
+        .search-box i {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            color: #667eea;
+        }
+        
+        .filter-buttons {
+            margin-top: 20px;
+        }
+        
+        .filter-btn {
+            margin: 5px;
+            padding: 8px 20px;
+            border-radius: 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--primary-gradient);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .tags-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        
+        .tag-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border-left: 4px solid #667eea;
+        }
+        
+        .tag-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .tag-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .tag-type {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 5px;
+        }
+        
+        .tag-description {
+            font-size: 0.9rem;
+            color: #495057;
+            margin-top: 10px;
+        }
+        
+        .modal-header {
+            background: var(--primary-gradient);
+            color: white;
+        }
+        
+        .modal-body {
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+        
+        .attribute-table {
+            font-size: 0.9rem;
+        }
+        
+        .attribute-table th {
+            background: #f8f9fa;
+        }
+        
+        .code-example {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .badge-inline {
+            background: #28a745;
+        }
+        
+        .badge-block {
+            background: #007bff;
+        }
+        
+        .stats-container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px auto;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+        
+        .no-results i {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1><i class="bi bi-search"></i> XHTML Reference Interactive</h1>
+            <p class="lead">Recherchez rapidement n'importe quelle balise HTML/XHTML</p>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" class="form-control" placeholder="Rechercher une balise (ex: div, p, a, table...)">
+                <i class="bi bi-search"></i>
+            </div>
+            
+            <div class="filter-buttons text-center">
+                <button class="filter-btn active" data-filter="all">Toutes</button>
+                <button class="filter-btn" data-filter="structure">Structure</button>
+                <button class="filter-btn" data-filter="texte">Texte</button>
+                <button class="filter-btn" data-filter="formulaire">Formulaires</button>
+                <button class="filter-btn" data-filter="tableau">Tableaux</button>
+                <button class="filter-btn" data-filter="liste">Listes</button>
+                <button class="filter-btn" data-filter="media">Média</button>
+            </div>
+        </div>
+        
+        <div class="stats-container">
+            <div class="row">
+                <div class="col-md-3 stat-card">
+                    <div class="stat-number" id="totalTags">77</div>
+                    <p>Balises Totales</p>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <div class="stat-number" id="displayedTags">77</div>
+                    <p>Affichées</p>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <div class="stat-number">150+</div>
+                    <p>Attributs</p>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <div class="stat-number">20+</div>
+                    <p>Événements</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="tagsContainer" class="tags-grid"></div>
+        
+        <div id="noResults" class="no-results" style="display: none;">
+            <i class="bi bi-search"></i>
+            <h3>Aucun résultat trouvé</h3>
+            <p>Essayez avec un autre terme de recherche</p>
+        </div>
+    </div>
+    
+    <!-- Modal pour les détails -->
+    <div class="modal fade" id="tagModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTagName"></h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="modalContent">
+                    <!-- Contenu dynamique -->
+                </div>
+                <div class="modal-footer">
+                    <a id="qanuqLink" href="#" target="_blank" class="btn btn-primary">
+                        <i class="bi bi-box-arrow-up-right"></i> Voir sur XHTML Qanuq
+                    </a>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Base de données des balises XHTML
+        const xhtmlTags = [
+            // Structure
+            { name: 'html', type: 'block', category: 'structure', description: 'Élément racine du document XHTML' },
+            { name: 'head', type: 'block', category: 'structure', description: 'Contient les métadonnées du document' },
+            { name: 'body', type: 'block', category: 'structure', description: 'Contient le contenu visible du document' },
+            { name: 'div', type: 'block', category: 'structure', description: 'Division ou section générique' },
+            { name: 'span', type: 'inline', category: 'structure', description: 'Conteneur générique en ligne' },
+            
+            // Texte
+            { name: 'h1', type: 'block', category: 'texte', description: 'Titre de niveau 1 (le plus important)' },
+            { name: 'h2', type: 'block', category: 'texte', description: 'Titre de niveau 2' },
+            { name: 'h3', type: 'block', category: 'texte', description: 'Titre de niveau 3' },
+            { name: 'h4', type: 'block', category: 'texte', description: 'Titre de niveau 4' },
+            { name: 'h5', type: 'block', category: 'texte', description: 'Titre de niveau 5' },
+            { name: 'h6', type: 'block', category: 'texte', description: 'Titre de niveau 6 (le moins important)' },
+            { name: 'p', type: 'block', category: 'texte', description: 'Paragraphe de texte' },
+            { name: 'br', type: 'inline', category: 'texte', description: 'Saut de ligne' },
+            { name: 'hr', type: 'block', category: 'texte', description: 'Ligne horizontale de séparation' },
+            { name: 'strong', type: 'inline', category: 'texte', description: 'Texte important (gras)' },
+            { name: 'em', type: 'inline', category: 'texte', description: 'Texte accentué (italique)' },
+            { name: 'b', type: 'inline', category: 'texte', description: 'Texte en gras (présentation)' },
+            { name: 'i', type: 'inline', category: 'texte', description: 'Texte en italique (présentation)' },
+            { name: 'u', type: 'inline', category: 'texte', description: 'Texte souligné' },
+            { name: 'small', type: 'inline', category: 'texte', description: 'Texte en petits caractères' },
+            { name: 'sub', type: 'inline', category: 'texte', description: 'Texte en indice' },
+            { name: 'sup', type: 'inline', category: 'texte', description: 'Texte en exposant' },
+            { name: 'code', type: 'inline', category: 'texte', description: 'Code informatique' },
+            { name: 'pre', type: 'block', category: 'texte', description: 'Texte préformaté' },
+            { name: 'abbr', type: 'inline', category: 'texte', description: 'Abréviation' },
+            { name: 'acronym', type: 'inline', category: 'texte', description: 'Acronyme' },
+            { name: 'address', type: 'block', category: 'texte', description: 'Informations de contact' },
+            { name: 'blockquote', type: 'block', category: 'texte', description: 'Citation longue' },
+            { name: 'q', type: 'inline', category: 'texte', description: 'Citation courte' },
+            { name: 'cite', type: 'inline', category: 'texte', description: 'Référence à une œuvre' },
+            
+            // Liens et navigation
+            { name: 'a', type: 'inline', category: 'texte', description: 'Lien hypertexte ou ancre' },
+            
+            // Listes
+            { name: 'ul', type: 'block', category: 'liste', description: 'Liste non ordonnée (à puces)' },
+            { name: 'ol', type: 'block', category: 'liste', description: 'Liste ordonnée (numérotée)' },
+            { name: 'li', type: 'block', category: 'liste', description: 'Élément de liste' },
+            { name: 'dl', type: 'block', category: 'liste', description: 'Liste de définitions' },
+            { name: 'dt', type: 'block', category: 'liste', description: 'Terme à définir' },
+            { name: 'dd', type: 'block', category: 'liste', description: 'Définition du terme' },
+            
+            // Tableaux
+            { name: 'table', type: 'block', category: 'tableau', description: 'Tableau de données' },
+            { name: 'thead', type: 'block', category: 'tableau', description: 'En-tête de tableau' },
+            { name: 'tbody', type: 'block', category: 'tableau', description: 'Corps du tableau' },
+            { name: 'tfoot', type: 'block', category: 'tableau', description: 'Pied de tableau' },
+            { name: 'tr', type: 'block', category: 'tableau', description: 'Ligne de tableau' },
+            { name: 'th', type: 'block', category: 'tableau', description: 'Cellule d\'en-tête' },
+            { name: 'td', type: 'block', category: 'tableau', description: 'Cellule de données' },
+            { name: 'caption', type: 'block', category: 'tableau', description: 'Légende du tableau' },
+            { name: 'col', type: 'block', category: 'tableau', description: 'Colonne de tableau' },
+            { name: 'colgroup', type: 'block', category: 'tableau', description: 'Groupe de colonnes' },
+            
+            // Formulaires
+            { name: 'form', type: 'block', category: 'formulaire', description: 'Formulaire interactif' },
+            { name: 'input', type: 'inline', category: 'formulaire', description: 'Champ de saisie' },
+            { name: 'textarea', type: 'inline', category: 'formulaire', description: 'Zone de texte multiligne' },
+            { name: 'button', type: 'inline', category: 'formulaire', description: 'Bouton cliquable' },
+            { name: 'select', type: 'inline', category: 'formulaire', description: 'Liste déroulante' },
+            { name: 'option', type: 'inline', category: 'formulaire', description: 'Option de liste' },
+            { name: 'optgroup', type: 'inline', category: 'formulaire', description: 'Groupe d\'options' },
+            { name: 'label', type: 'inline', category: 'formulaire', description: 'Étiquette de champ' },
+            { name: 'fieldset', type: 'block', category: 'formulaire', description: 'Groupe de champs' },
+            { name: 'legend', type: 'block', category: 'formulaire', description: 'Légende du fieldset' },
+            
+            // Média
+            { name: 'img', type: 'inline', category: 'media', description: 'Image' },
+            { name: 'map', type: 'inline', category: 'media', description: 'Carte d\'image cliquable' },
+            { name: 'area', type: 'inline', category: 'media', description: 'Zone cliquable dans une carte' },
+            { name: 'object', type: 'inline', category: 'media', description: 'Objet externe (plugin)' },
+            { name: 'param', type: 'inline', category: 'media', description: 'Paramètre d\'objet' },
+            
+            // Métadonnées
+            { name: 'title', type: 'block', category: 'structure', description: 'Titre du document' },
+            { name: 'meta', type: 'inline', category: 'structure', description: 'Métadonnées' },
+            { name: 'link', type: 'inline', category: 'structure', description: 'Lien vers ressource externe' },
+            { name: 'style', type: 'block', category: 'structure', description: 'Styles CSS internes' },
+            { name: 'script', type: 'block', category: 'structure', description: 'Script JavaScript' },
+            { name: 'noscript', type: 'block', category: 'structure', description: 'Contenu sans JavaScript' },
+            { name: 'base', type: 'inline', category: 'structure', description: 'URL de base du document' }
+        ];
+        
+        let currentFilter = 'all';
+        let currentSearch = '';
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            displayTags(xhtmlTags);
+            setupEventListeners();
+        });
+        
+        // Configuration des écouteurs d'événements
+        function setupEventListeners() {
+            // Recherche
+            document.getElementById('searchInput').addEventListener('input', function(e) {
+                currentSearch = e.target.value.toLowerCase();
+                filterAndDisplay();
+            });
+            
+            // Filtres
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    currentFilter = this.dataset.filter;
+                    filterAndDisplay();
+                });
+            });
+        }
+        
+        // Filtrage et affichage
+        function filterAndDisplay() {
+            let filtered = xhtmlTags;
+            
+            // Filtrer par catégorie
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(tag => tag.category === currentFilter);
+            }
+            
+            // Filtrer par recherche
+            if (currentSearch) {
+                filtered = filtered.filter(tag => 
+                    tag.name.toLowerCase().includes(currentSearch) ||
+                    tag.description.toLowerCase().includes(currentSearch)
+                );
+            }
+            
+            displayTags(filtered);
+        }
+        
+        // Affichage des balises
+        function displayTags(tags) {
+            const container = document.getElementById('tagsContainer');
+            const noResults = document.getElementById('noResults');
+            
+            if (tags.length === 0) {
+                container.style.display = 'none';
+                noResults.style.display = 'block';
+            } else {
+                container.style.display = 'grid';
+                noResults.style.display = 'none';
+                
+                container.innerHTML = tags.map(tag => `
+                    <div class="tag-card" onclick="showTagDetails('${tag.name}')">
+                        <div class="tag-name">&lt;${tag.name}&gt;</div>
+                        <div class="tag-type">
+                            <span class="badge ${tag.type === 'inline' ? 'badge-inline' : 'badge-block'}">
+                                ${tag.type}
+                            </span>
+                            <span class="badge bg-secondary">${tag.category}</span>
+                        </div>
+                        <div class="tag-description">${tag.description}</div>
+                    </div>
+                `).join('');
+            }
+            
+            // Mise à jour du compteur
+            document.getElementById('displayedTags').textContent = tags.length;
+        }
+        
+        // Affichage des détails d'une balise
+        function showTagDetails(tagName) {
+            const tag = xhtmlTags.find(t => t.name === tagName);
+            if (!tag) return;
+            
+            document.getElementById('modalTagName').innerHTML = `&lt;${tag.name}&gt;`;
+            document.getElementById('qanuqLink').href = `https://xhtml.qanuq.com/${tagName}`;
+            
+            const modalContent = `
+                <h4><i class="bi bi-info-circle"></i> Description</h4>
+                <p>${tag.description}</p>
+                
+                <h4><i class="bi bi-tag"></i> Type</h4>
+                <p>
+                    <span class="badge ${tag.type === 'inline' ? 'badge-inline' : 'badge-block'}">${tag.type}</span>
+                    ${tag.type === 'inline' ? 
+                        'Élément en ligne (ne crée pas de saut de ligne)' : 
+                        'Élément de bloc (crée un saut de ligne avant et après)'}
+                </p>
+                
+                <h4><i class="bi bi-folder"></i> Catégorie</h4>
+                <p><span class="badge bg-secondary">${tag.category}</span></p>
+                
+                <h4><i class="bi bi-code-square"></i> Exemple d'utilisation</h4>
+                <div class="code-example">
+                    <code>${getExampleCode(tag.name)}</code>
+                </div>
+                
+                <div class="alert alert-info">
+                    <i class="bi bi-lightbulb"></i> <strong>Conseil :</strong> 
+                    Consultez la page XHTML Qanuq pour voir tous les attributs et événements disponibles pour cette balise.
+                </div>
+            `;
+            
+            document.getElementById('modalContent').innerHTML = modalContent;
+            
+            const modal = new bootstrap.Modal(document.getElementById('tagModal'));
+            modal.show();
+        }
+        
+        // Exemples de code
+        function getExampleCode(tagName) {
+            const examples = {
+                'div': '&lt;div class="container"&gt;\n    Contenu de la division\n&lt;/div&gt;',
+                'p': '&lt;p&gt;Ceci est un paragraphe de texte.&lt;/p&gt;',
+                'a': '&lt;a href="https://example.com"&gt;Lien&lt;/a&gt;',
+                'img': '&lt;img src="image.jpg" alt="Description" /&gt;',
+                'ul': '&lt;ul&gt;\n    &lt;li&gt;Élément 1&lt;/li&gt;\n    &lt;li&gt;Élément 2&lt;/li&gt;\n&lt;/ul&gt;',
+                'table': '&lt;table&gt;\n    &lt;tr&gt;\n        &lt;th&gt;En-tête&lt;/th&gt;\n    &lt;/tr&gt;\n    &lt;tr&gt;\n        &lt;td&gt;Données&lt;/td&gt;\n    &lt;/tr&gt;\n&lt;/table&gt;',
+                'form': '&lt;form action="/submit" method="post"&gt;\n    &lt;input type="text" name="nom" /&gt;\n    &lt;button type="submit"&gt;Envoyer&lt;/button&gt;\n&lt;/form&gt;'
+            };
+            
+            return examples[tagName] || `&lt;${tagName}&gt;Contenu&lt;/${tagName}&gt;`;
+        }
+    </script>
+</body>
+</html>
+

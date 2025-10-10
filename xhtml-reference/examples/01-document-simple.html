@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Exemple de Document XHTML Simple</title>
+    <style type="text/css">
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+        
+        .code-block {
+            background-color: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+        
+        .highlight {
+            background-color: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .note {
+            background-color: #d1ecf1;
+            border-left: 4px solid #0c5460;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .example-output {
+            border: 2px dashed #3498db;
+            padding: 20px;
+            margin: 15px 0;
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Document XHTML Simple - Exemple Complet</h1>
+        
+        <p>
+            Cet exemple démontre la structure de base d'un document <strong>XHTML 1.1</strong> valide. 
+            Chaque élément respecte les règles strictes de XHTML.
+        </p>
+        
+        <h2>1. Déclaration DOCTYPE</h2>
+        
+        <p>
+            Le document commence par la déclaration <span class="highlight">DOCTYPE</span> qui indique 
+            au navigateur que nous utilisons XHTML 1.1 :
+        </p>
+        
+        <div class="code-block">
+            <code>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+            </code>
+        </div>
+        
+        <div class="note">
+            <strong>Note :</strong> Cette déclaration est <strong>obligatoire</strong> en XHTML 1.1 
+            et doit être la première ligne du document.
+        </div>
+        
+        <h2>2. Élément Racine &lt;html&gt;</h2>
+        
+        <p>
+            L'élément <code>&lt;html&gt;</code> contient deux attributs obligatoires :
+        </p>
+        
+        <ul>
+            <li><strong>xmlns</strong> : Définit l'espace de nommage XHTML</li>
+            <li><strong>xml:lang</strong> : Spécifie la langue du document</li>
+        </ul>
+        
+        <div class="code-block">
+            <code>
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"&gt;
+            </code>
+        </div>
+        
+        <h2>3. Section &lt;head&gt;</h2>
+        
+        <p>
+            La section <code>&lt;head&gt;</code> contient les métadonnées du document :
+        </p>
+        
+        <div class="code-block">
+            <code>
+&lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+    &lt;title&gt;Titre de la Page&lt;/title&gt;
+&lt;/head&gt;
+            </code>
+        </div>
+        
+        <div class="note">
+            <strong>Important :</strong> Notez que la balise <code>&lt;meta /&gt;</code> est 
+            <strong>auto-fermante</strong> avec <code>/&gt;</code> à la fin. C'est une règle XHTML stricte.
+        </div>
+        
+        <h2>4. Section &lt;body&gt;</h2>
+        
+        <p>
+            Le <code>&lt;body&gt;</code> contient tout le contenu visible de la page :
+        </p>
+        
+        <div class="code-block">
+            <code>
+&lt;body&gt;
+    &lt;h1&gt;Mon Premier Document XHTML&lt;/h1&gt;
+    &lt;p&gt;Ceci est un paragraphe.&lt;/p&gt;
+&lt;/body&gt;
+            </code>
+        </div>
+        
+        <h2>5. Exemple de Rendu</h2>
+        
+        <p>Voici comment le contenu s'affiche dans le navigateur :</p>
+        
+        <div class="example-output">
+            <h3>Mon Premier Document XHTML</h3>
+            <p>Ceci est un paragraphe.</p>
+        </div>
+        
+        <h2>6. Document Complet</h2>
+        
+        <p>Voici le code source complet de ce document :</p>
+        
+        <div class="code-block">
+            <code>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr"&gt;
+&lt;head&gt;
+    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;
+    &lt;title&gt;Mon Premier Document XHTML&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Mon Premier Document XHTML&lt;/h1&gt;
+    &lt;p&gt;Ceci est un paragraphe.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+            </code>
+        </div>
+        
+        <h2>7. Points Clés à Retenir</h2>
+        
+        <ul>
+            <li>✓ DOCTYPE obligatoire en première ligne</li>
+            <li>✓ Namespace xmlns dans la balise &lt;html&gt;</li>
+            <li>✓ Toutes les balises en minuscules</li>
+            <li>✓ Toutes les balises fermées (même les auto-fermantes avec /&gt;)</li>
+            <li>✓ Tous les attributs entre guillemets</li>
+            <li>✓ Structure hiérarchique respectée</li>
+        </ul>
+        
+        <h2>8. Validation</h2>
+        
+        <p>
+            Pour vérifier que votre document XHTML est valide, utilisez le 
+            <a href="https://validator.w3.org/">validateur W3C</a>.
+        </p>
+        
+        <div class="note">
+            <strong>Exercice :</strong> Essayez de créer votre propre document XHTML en suivant 
+            cette structure. Validez-le ensuite avec le validateur W3C.
+        </div>
+        
+        <hr />
+        
+        <p style="text-align: center; color: #7f8c8d; margin-top: 40px;">
+            <small>
+                Exemple créé pour le cours LP DWCA - Université de Strasbourg<br />
+                Basé sur les spécifications XHTML 1.1 du W3C
+            </small>
+        </p>
+    </div>
+</body>
+</html>
+
