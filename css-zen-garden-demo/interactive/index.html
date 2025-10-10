@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Zen Garden Demo - Démo Interactive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        /* Theme Selector */
+        .theme-selector {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            margin-bottom: 2rem;
+        }
+        
+        .theme-selector h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+        
+        .theme-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+        
+        .theme-btn {
+            padding: 1.5rem;
+            border: 3px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .theme-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .theme-btn.active {
+            border-color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .theme-btn-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .theme-btn-desc {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .theme-btn.active .theme-btn-desc {
+            opacity: 1;
+        }
+        
+        /* Demo Frame */
+        .demo-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .demo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .demo-title {
+            font-size: 1.5rem;
+            color: #333;
+        }
+        
+        .demo-controls {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .control-btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #667eea;
+            border-radius: 50px;
+            background: white;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .iframe-container {
+            width: 100%;
+            height: 800px;
+            border: 3px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            background: white;
+        }
+        
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            box-shadow: 0 10px 40px rgba(245, 87, 108, 0.3);
+        }
+        
+        .info-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .info-box p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
+        }
+        
+        .info-box strong {
+            font-weight: 700;
+        }
+        
+        /* Stats */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+        }
+        
+        /* Loading */
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+        }
+        
+        .loading.active {
+            display: block;
+        }
+        
+        .spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #667eea;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.75rem;
+            }
+            
+            .theme-buttons {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .demo-controls {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .iframe-container {
+                height: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>🎨 CSS Zen Garden - Démo Interactive</h1>
+            <p>Découvrez comment CSS transforme le même HTML en designs complètement différents</p>
+        </div>
+        
+        <!-- Theme Selector -->
+        <div class="theme-selector">
+            <h2>Sélectionnez un Thème</h2>
+            <div class="theme-buttons">
+                <button class="theme-btn active" data-theme="minimal">
+                    <div class="theme-btn-name">✨ Minimal</div>
+                    <div class="theme-btn-desc">Épuré et simple</div>
+                </button>
+                <button class="theme-btn" data-theme="modern">
+                    <div class="theme-btn-name">🚀 Modern</div>
+                    <div class="theme-btn-desc">Contemporain et dynamique</div>
+                </button>
+                <button class="theme-btn" data-theme="base">
+                    <div class="theme-btn-name">📄 Sans CSS</div>
+                    <div class="theme-btn-desc">HTML brut</div>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Demo Container -->
+        <div class="demo-container">
+            <div class="demo-header">
+                <h3 class="demo-title">Aperçu du Thème : <span id="currentTheme">Minimal</span></h3>
+                <div class="demo-controls">
+                    <button class="control-btn" onclick="openInNewTab()">📱 Ouvrir</button>
+                    <button class="control-btn" onclick="refreshFrame()">🔄 Actualiser</button>
+                </div>
+            </div>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Chargement du thème...</p>
+            </div>
+            
+            <div class="iframe-container">
+                <iframe id="demoFrame" src="../themes/theme-minimal.html"></iframe>
+            </div>
+        </div>
+        
+        <!-- Info Box -->
+        <div class="info-box">
+            <h3>💡 Le Concept du CSS Zen Garden</h3>
+            <p>
+                <strong>Le HTML reste identique</strong> pour tous les thèmes. Seul le fichier CSS change, 
+                démontrant ainsi la puissance de la séparation entre contenu (HTML) et présentation (CSS).
+            </p>
+            <p>
+                Cette approche permet de :
+            </p>
+            <ul style="margin-left: 2rem; margin-top: 1rem;">
+                <li>✅ Maintenir un code HTML propre et sémantique</li>
+                <li>✅ Créer des designs radicalement différents sans toucher au HTML</li>
+                <li>✅ Faciliter la maintenance et les mises à jour</li>
+                <li>✅ Améliorer l'accessibilité et le SEO</li>
+            </ul>
+        </div>
+        
+        <!-- Stats -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">1</div>
+                <div class="stat-label">HTML Unique</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Thèmes CSS</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Possibilités</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0</div>
+                <div class="stat-label">Modif. HTML</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Éléments DOM
+        const themeButtons = document.querySelectorAll('.theme-btn');
+        const demoFrame = document.getElementById('demoFrame');
+        const currentThemeText = document.getElementById('currentTheme');
+        const loading = document.getElementById('loading');
+        
+        // Mapping des thèmes
+        const themes = {
+            'minimal': {
+                name: 'Minimal',
+                file: 'theme-minimal.html'
+            },
+            'modern': {
+                name: 'Modern',
+                file: 'theme-modern.html'
+            },
+            'base': {
+                name: 'Sans CSS',
+                file: 'base.html'
+            }
+        };
+        
+        // Thème actuel
+        let currentTheme = 'minimal';
+        
+        // Gestionnaire de clic sur les boutons de thème
+        themeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const theme = this.dataset.theme;
+                changeTheme(theme);
+            });
+        });
+        
+        // Fonction pour changer de thème
+        function changeTheme(theme) {
+            if (!themes[theme]) return;
+            
+            // Mise à jour de l'interface
+            themeButtons.forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[data-theme="${theme}"]`).classList.add('active');
+            
+            // Afficher le loading
+            loading.classList.add('active');
+            
+            // Charger le nouveau thème
+            currentTheme = theme;
+            currentThemeText.textContent = themes[theme].name;
+            demoFrame.src = `../themes/${themes[theme].file}`;
+            
+            // Masquer le loading après chargement
+            demoFrame.onload = function() {
+                setTimeout(() => {
+                    loading.classList.remove('active');
+                }, 500);
+            };
+        }
+        
+        // Fonction pour ouvrir dans un nouvel onglet
+        function openInNewTab() {
+            const url = `../themes/${themes[currentTheme].file}`;
+            window.open(url, '_blank');
+        }
+        
+        // Fonction pour actualiser l'iframe
+        function refreshFrame() {
+            loading.classList.add('active');
+            demoFrame.src = demoFrame.src;
+        }
+        
+        // Gestion du clavier
+        document.addEventListener('keydown', function(e) {
+            const themeKeys = ['1', '2', '3', '4', '5'];
+            const themeNames = Object.keys(themes);
+            
+            if (themeKeys.includes(e.key)) {
+                const index = parseInt(e.key) - 1;
+                if (themeNames[index]) {
+                    changeTheme(themeNames[index]);
+                }
+            }
+        });
+        
+        // Message de bienvenue
+        console.log('%c🎨 CSS Zen Garden Demo', 'font-size: 20px; font-weight: bold; color: #667eea;');
+        console.log('%cUtilisez les touches 1, 2, 3 pour changer rapidement de thème!', 'font-size: 14px; color: #666;');
+    </script>
+</body>
+</html>
+

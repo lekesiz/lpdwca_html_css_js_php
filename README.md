@@ -27,12 +27,13 @@ CEO - Netz Informatique
 | **Mini-Projet Bootstrap** | 2 | ~850 | Projet en binôme (avec Mickael Hoffer) |
 | **Emmet Mastery** | 4 | ~2,500 | Guide Emmet complet |
 | **XHTML Reference** | 4 | ~1,200 | Guide XHTML interactif complet |
+| **CSS Zen Garden Demo** | 6 | ~2,000 | Démonstration interactive CSS |
 | **Resources & Tools** | 2 | ~626 | 15+ ressources documentées |
 | **To-Do-List App** | 4 | ~1,500 | Application CRUD complète |
 | **JSON SP** | 8 | ~642 | Activités JSON (Etapes 1A-1E) |
 | **Practical Examples** | 4 | ~1,780 | HTML, CSS, JavaScript |
 | **Autres** | 10+ | ~1,500 | Divers exemples et projets |
-| **TOTAL** | **42+** | **~11,865** | **Portfolio complet** |
+| **TOTAL** | **48+** | **~13,865** | **Portfolio complet** |
 
 ---
 
@@ -225,7 +226,94 @@ Basé sur [XHTML Qanuq](https://xhtml.qanuq.com/) de **Matthieu PETIOT**
 
 ---
 
-### 6. ✅ To-Do-List Application Complète
+### 6. 🎨 CSS Zen Garden Demo ⭐ NOUVEAU!
+
+**📁 `css-zen-garden-demo/`** (~2,000 lignes)
+
+Démonstration interactive de la puissance de CSS, inspirée du célèbre [CSS Zen Garden](https://csszengarden.com/) de Dave Shea:
+
+#### Concept Fondamental
+
+> **"Un même HTML, des designs infinis"**
+
+Le CSS Zen Garden démontre un principe révolutionnaire : **la séparation complète du contenu (HTML) et de la présentation (CSS)**. Le même HTML peut produire des designs radicalement différents en changeant uniquement le fichier CSS.
+
+#### Contenu du Module
+
+**Démonstration Interactive:**
+- **interactive/index.html** - Interface de changement de thèmes en temps réel
+- Sélecteur de thèmes avec aperçu instantané
+- Comparaison visuelle des différents styles
+- Raccourcis clavier pour navigation rapide
+
+**Thèmes CSS:**
+- **theme-minimal.css** - Design épuré et minimaliste
+- **theme-modern.css** - Style contemporain avec gradients et animations
+- **base.css** - HTML brut sans style (pour comparaison)
+
+**HTML de Base:**
+- **base.html** - Structure HTML unique utilisée par tous les thèmes
+- Sémantique et accessible
+- Aucune modification entre les thèmes
+
+#### Fonctionnalités
+
+- ✅ **Changement de thème en direct** : Visualisez instantanément les transformations
+- ✅ **Même HTML** : Structure identique pour tous les designs
+- ✅ **CSS uniquement** : Toute la magie vient du CSS
+- ✅ **Démonstration pédagogique** : Comprendre la séparation contenu/présentation
+- ✅ **Code commenté** : Explications détaillées dans chaque fichier CSS
+- ✅ **Responsive** : Tous les thèmes s'adaptent aux différents écrans
+
+#### Concepts CSS Démontrés
+
+**Layout:**
+- Flexbox pour alignements flexibles
+- CSS Grid pour grilles complexes
+- Positioning (absolute, relative, fixed)
+
+**Styling:**
+- Gradients et couleurs
+- Typography avancée
+- Ombres et effets visuels
+
+**Animations:**
+- Transitions fluides
+- Keyframes animations
+- Transform et hover effects
+
+**Responsive Design:**
+- Media queries
+- Unités flexibles (rem, em, %, vw, vh)
+- Mobile-first approach
+
+#### Valeur Pédagogique
+
+**Pour les Étudiants:**
+1. Comprendre la puissance de CSS
+2. Voir la séparation contenu/présentation en action
+3. Apprendre les techniques CSS modernes
+4. S'inspirer pour créer leurs propres designs
+
+**Pour les Enseignants:**
+- Support de cours visuel et interactif
+- Démonstration claire d'un concept fondamental
+- Exemples de code réutilisables
+- Exercices pratiques suggérés
+
+**Fichiers:**
+- `README.md` - Documentation complète du concept
+- `themes/base.html` - HTML de base (~500 lignes)
+- `themes/theme-minimal.css` - Thème minimal (~400 lignes)
+- `themes/theme-modern.css` - Thème moderne (~600 lignes)
+- `interactive/index.html` - Démo interactive (~500 lignes)
+
+**Crédits:**
+Inspiré par [CSS Zen Garden](https://csszengarden.com/) de **Dave Shea**
+
+---
+
+### 7. ✅ To-Do-List Application Complète
 
 **📁 `todolist-app/`** (~1,500 lignes)
 

@@ -1,0 +1,353 @@
+/*
+ * CSS ZEN GARDEN DEMO - THÈME MINIMAL
+ * ====================================
+ * 
+ * Design épuré et minimaliste
+ * - Typographie claire et lisible
+ * - Espaces blancs généreux
+ * - Palette monochrome
+ * - Pas d'effets superflus
+ * 
+ * Créé pour LP DWCA - Université de Strasbourg
+ * Par Mikail Lekesiz - 2025/2026
+ */
+
+/* ===== RESET ET BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    background-color: #fff;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ===== TYPOGRAPHIE ===== */
+h1, h2, h3 {
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 3rem;
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-top: 3rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+a:hover {
+    border-bottom-color: #333;
+}
+
+strong {
+    font-weight: 600;
+}
+
+/* ===== HEADER ===== */
+.page-header {
+    text-align: center;
+    padding: 4rem 0;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 4rem;
+}
+
+.main-title {
+    font-size: 4rem;
+    font-weight: 200;
+    letter-spacing: -2px;
+    margin-bottom: 0.5rem;
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.tagline {
+    font-size: 1rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* ===== MAIN CONTENT ===== */
+.main-content {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+}
+
+section {
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #eee;
+}
+
+/* ===== SECTIONS SPÉCIFIQUES ===== */
+.intro-text,
+.explanation-text,
+.participation-text,
+.benefits-text,
+.requirements-text {
+    margin-bottom: 1.5rem;
+    text-align: justify;
+}
+
+/* Download Box */
+.download-box {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    margin: 2rem 0;
+    border-left: 3px solid #333;
+}
+
+.download-box h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.download-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.download-btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #555;
+}
+
+/* Benefits Grid */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.benefit-card {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.benefit-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.benefit-description {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* Requirements List */
+.requirements-list {
+    list-style: none;
+    margin-top: 2rem;
+}
+
+.requirement-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.requirement-item:last-child {
+    border-bottom: none;
+}
+
+.requirement-icon {
+    font-size: 1.25rem;
+    color: #333;
+}
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+    max-width: 800px;
+    margin: 0 auto 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid #eee;
+}
+
+.sidebar-section {
+    margin-bottom: 3rem;
+}
+
+.sidebar-title {
+    font-size: 1.25rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.theme-list,
+.resource-list {
+    list-style: none;
+}
+
+.theme-item,
+.resource-item {
+    margin-bottom: 0.5rem;
+}
+
+.theme-link,
+.resource-link {
+    display: block;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: padding-left 0.3s ease;
+}
+
+.theme-link:hover,
+.resource-link:hover {
+    padding-left: 1rem;
+}
+
+.theme-name {
+    display: block;
+    font-weight: 500;
+}
+
+.theme-author {
+    display: block;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+.about-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+/* ===== FOOTER ===== */
+.page-footer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 0;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.footer-link-item {
+    font-size: 0.85rem;
+    color: #999;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.footer-link-item:hover {
+    color: #333;
+    border-bottom-color: #333;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.25rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-buttons {
+        flex-direction: column;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .page-header {
+        padding: 2rem 0;
+    }
+}
+
