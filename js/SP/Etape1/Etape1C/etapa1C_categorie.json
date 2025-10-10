@@ -1,2 +1,30 @@
-[{"idCategorie":"1","categorie":"Développement Web"},{"idCategorie":"2","categorie":"DevOps & Cloud"},{"idCategorie":"3","categorie":"Intelligence Artificielle"},{"idCategorie":"4","categorie":"Formation"},{"idCategorie":"5","categorie":"Documentation"},{"idCategorie":"6","categorie":"Réunion"},{"idCategorie":"7","categorie":"Personnel"}]
-
+[
+    {
+        "idCategorie": "1",
+        "categorie": "D\u00e9veloppement Web"
+    },
+    {
+        "idCategorie": "2",
+        "categorie": "DevOps & Cloud"
+    },
+    {
+        "idCategorie": "3",
+        "categorie": "Intelligence Artificielle"
+    },
+    {
+        "idCategorie": "4",
+        "categorie": "Formation"
+    },
+    {
+        "idCategorie": "5",
+        "categorie": "Documentation"
+    },
+    {
+        "idCategorie": "6",
+        "categorie": "R\u00e9union"
+    },
+    {
+        "idCategorie": "7",
+        "categorie": "Personnel"
+    }
+]

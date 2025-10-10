@@ -1,2 +1,27 @@
-[{"idPriorite":"1","priorite":"Critique"},{"idPriorite":"2","priorite":"Très important"},{"idPriorite":"3","priorite":"Important"},{"idPriorite":"4","priorite":"Moyen"},{"idPriorite":"5","priorite":"Peu important"},{"idPriorite":"6","priorite":"Non urgent"}]
+[
+  {
+    "idPriorite": "1",
+    "priorite": "Critique"
+  },
+  {
+    "idPriorite": "2",
+    "priorite": "Très important"
+  },
+  {
+    "idPriorite": "3",
+    "priorite": "Important"
+  },
+  {
+    "idPriorite": "4",
+    "priorite": "Moyen"
+  },
+  {
+    "idPriorite": "5",
+    "priorite": "Peu important"
+  },
+  {
+    "idPriorite": "6",
+    "priorite": "Non urgent"
+  }
+]
 

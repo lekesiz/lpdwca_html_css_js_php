@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etape 1D - Tâches avec Relations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .header-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header-card h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .data-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .data-card h3 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .task-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        .task-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .task-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .task-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .badge-custom {
+            padding: 6px 12px;
+            border-radius: 15px;
+        }
+        .json-code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            overflow-x: auto;
+            white-space: pre;
+            max-height: 400px;
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        .btn-custom:hover {
+            transform: scale(1.05);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-card">
+            <h1><i class="bi bi-diagram-3"></i> Etape 1D - Tâches avec Relations</h1>
+            <p class="text-muted mb-0">Tâches complètes avec relations vers catégories, priorités, complexités et durées</p>
+        </div>
+
+        <!-- Tasks List -->
+        <div class="data-card">
+            <h3><i class="bi bi-list-task"></i> Liste des Tâches</h3>
+            <div id="tasksList">
+                <div class="text-center"><i class="bi bi-hourglass-split"></i> Chargement...</div>
+            </div>
+        </div>
+
+        <!-- JSON Code -->
+        <div class="data-card">
+            <h3><i class="bi bi-code-slash"></i> Code JSON</h3>
+            <div class="json-code" id="jsonCode">Chargement...</div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="text-center">
+            <a href="../Etape1C/" class="btn-custom">
+                <i class="bi bi-arrow-left"></i> Etape 1C
+            </a>
+            <a href="../" class="btn-custom">
+                <i class="bi bi-house"></i> Retour aux Etapes
+            </a>
+            <a href="etapa1D.json" target="_blank" class="btn-custom">
+                <i class="bi bi-file-code"></i> Voir JSON brut
+            </a>
+            <a href="../Etape1E/" class="btn-custom">
+                Etape 1E <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Charger et afficher les données JSON
+        fetch('etapa1D.json')
+            .then(response => response.json())
+            .then(data => {
+                // Afficher les tâches
+                const tasksHTML = data.map(task => `
+                    <div class="task-card">
+                        <div class="task-title">
+                            <i class="bi bi-check-circle"></i> ${task.libelle}
+                        </div>
+                        <p>${task.description}</p>
+                        <div class="task-meta">
+                            <span class="badge bg-primary badge-custom">
+                                <i class="bi bi-hash"></i> ID: ${task.idTache}
+                            </span>
+                            <span class="badge bg-info badge-custom">
+                                <i class="bi bi-folder"></i> Catégorie: ${task.idCategorie}
+                            </span>
+                            <span class="badge bg-warning badge-custom">
+                                <i class="bi bi-flag"></i> Priorité: ${task.idPriorite}
+                            </span>
+                            <span class="badge bg-success badge-custom">
+                                <i class="bi bi-speedometer"></i> Complexité: ${task.idComplexite}
+                            </span>
+                            <span class="badge bg-secondary badge-custom">
+                                <i class="bi bi-clock"></i> Durée: ${task.idDuree}
+                            </span>
+                        </div>
+                        <div class="mt-2">
+                            <small class="text-muted">
+                                <i class="bi bi-calendar-plus"></i> Créé: ${task.dateCreation} | 
+                                <i class="bi bi-calendar-check"></i> Finalisation: ${task.dateFinalisation} | 
+                                <i class="bi bi-person"></i> ${task.auteur}
+                            </small>
+                        </div>
+                    </div>
+                `).join('');
+                document.getElementById('tasksList').innerHTML = tasksHTML;
+
+                // Afficher le code JSON formaté
+                document.getElementById('jsonCode').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('tasksList').innerHTML = '<div class="text-danger">Erreur de chargement: ' + error.message + '</div>';
+                document.getElementById('jsonCode').textContent = 'Erreur de chargement';
+            });
+    </script>
+</body>
+</html>
+

@@ -1,2 +1,22 @@
-[{"idComplexite":"1","complexite":"Très simple"},{"idComplexite":"2","complexite":"Simple"},{"idComplexite":"3","complexite":"Moyenne"},{"idComplexite":"4","complexite":"Complexe"},{"idComplexite":"5","complexite":"Très complexe"}]
-
+[
+    {
+        "idComplexite": "1",
+        "complexite": "Tr\u00e8s simple"
+    },
+    {
+        "idComplexite": "2",
+        "complexite": "Simple"
+    },
+    {
+        "idComplexite": "3",
+        "complexite": "Moyenne"
+    },
+    {
+        "idComplexite": "4",
+        "complexite": "Complexe"
+    },
+    {
+        "idComplexite": "5",
+        "complexite": "Tr\u00e8s complexe"
+    }
+]

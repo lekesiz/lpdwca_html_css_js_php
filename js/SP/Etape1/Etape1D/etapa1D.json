@@ -1,2 +1,54 @@
-[{"idTache":"1","libelle":"Finaliser le projet LP DWCA","description":"Compléter tous les exercices HTML, CSS, JavaScript et PHP pour la formation","dateCreation":"2025-10-09","dateFinalisation":"2025-12-15","statut":"En cours","auteur":"Mikail Lekesiz","idPriorite":"2","idComplexite":"4","idCategorie":"1","idDuree":"7"},{"idTache":"2","libelle":"Développer l'application To-Do-List","description":"Créer une application complète avec localStorage et dashboard","dateCreation":"2025-10-09","dateFinalisation":"2025-10-20","statut":"En cours","auteur":"Mikail Lekesiz","idPriorite":"1","idComplexite":"4","idCategorie":"1","idDuree":"6"},{"idTache":"3","libelle":"Apprendre les concepts JSON","description":"Maîtriser la manipulation de données JSON en JavaScript","dateCreation":"2025-10-08","dateFinalisation":"2025-10-15","statut":"Terminée","auteur":"Mikail Lekesiz","idPriorite":"3","idComplexite":"2","idCategorie":"4","idDuree":"3"},{"idTache":"4","libelle":"Mettre à jour le portfolio","description":"Ajouter les nouveaux projets LP DWCA au portfolio personnel","dateCreation":"2025-10-09","dateFinalisation":"2025-11-01","statut":"Planifiée","auteur":"Mikail Lekesiz","idPriorite":"4","idComplexite":"3","idCategorie":"1","idDuree":"4"}]
-
+[
+    {
+        "idTache": "1",
+        "libelle": "Finaliser le projet LP DWCA",
+        "description": "Compl\u00e9ter tous les exercices HTML, CSS, JavaScript et PHP pour la formation",
+        "dateCreation": "2025-10-09",
+        "dateFinalisation": "2025-12-15",
+        "statut": "En cours",
+        "auteur": "Mikail Lekesiz",
+        "idPriorite": "2",
+        "idComplexite": "4",
+        "idCategorie": "1",
+        "idDuree": "7"
+    },
+    {
+        "idTache": "2",
+        "libelle": "D\u00e9velopper l'application To-Do-List",
+        "description": "Cr\u00e9er une application compl\u00e8te avec localStorage et dashboard",
+        "dateCreation": "2025-10-09",
+        "dateFinalisation": "2025-10-20",
+        "statut": "En cours",
+        "auteur": "Mikail Lekesiz",
+        "idPriorite": "1",
+        "idComplexite": "4",
+        "idCategorie": "1",
+        "idDuree": "6"
+    },
+    {
+        "idTache": "3",
+        "libelle": "Apprendre les concepts JSON",
+        "description": "Ma\u00eetriser la manipulation de donn\u00e9es JSON en JavaScript",
+        "dateCreation": "2025-10-08",
+        "dateFinalisation": "2025-10-15",
+        "statut": "Termin\u00e9e",
+        "auteur": "Mikail Lekesiz",
+        "idPriorite": "3",
+        "idComplexite": "2",
+        "idCategorie": "4",
+        "idDuree": "3"
+    },
+    {
+        "idTache": "4",
+        "libelle": "Mettre \u00e0 jour le portfolio",
+        "description": "Ajouter les nouveaux projets LP DWCA au portfolio personnel",
+        "dateCreation": "2025-10-09",
+        "dateFinalisation": "2025-11-01",
+        "statut": "Planifi\u00e9e",
+        "auteur": "Mikail Lekesiz",
+        "idPriorite": "4",
+        "idComplexite": "3",
+        "idCategorie": "1",
+        "idDuree": "4"
+    }
+]

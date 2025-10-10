@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etape 1B - Liste de Priorités</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+        .container {
+            max-width: 900px;
+        }
+        .header-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .header-card h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        .data-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .data-card h3 {
+            color: #667eea;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .priority-item {
+            background: #f8f9fa;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .priority-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        .priority-badge {
+            font-size: 1.2rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+        .json-code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        .btn-custom {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        .btn-custom:hover {
+            transform: scale(1.05);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header-card">
+            <h1><i class="bi bi-list-ol"></i> Etape 1B - Liste de Priorités</h1>
+            <p class="text-muted mb-0">Tableau de référence des niveaux de priorité</p>
+        </div>
+
+        <!-- Priorités List -->
+        <div class="data-card">
+            <h3><i class="bi bi-flag-fill"></i> Niveaux de Priorité</h3>
+            <div id="priorityList">
+                <div class="text-center"><i class="bi bi-hourglass-split"></i> Chargement...</div>
+            </div>
+        </div>
+
+        <!-- JSON Code -->
+        <div class="data-card">
+            <h3><i class="bi bi-code-slash"></i> Code JSON</h3>
+            <div class="json-code" id="jsonCode">Chargement...</div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="text-center">
+            <a href="../Etape1A/" class="btn-custom">
+                <i class="bi bi-arrow-left"></i> Etape 1A
+            </a>
+            <a href="../" class="btn-custom">
+                <i class="bi bi-house"></i> Retour aux Etapes
+            </a>
+            <a href="etapa1B.json" target="_blank" class="btn-custom">
+                <i class="bi bi-file-code"></i> Voir JSON brut
+            </a>
+            <a href="../Etape1C/" class="btn-custom">
+                Etape 1C <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Couleurs pour les priorités
+        const priorityColors = {
+            '1': 'danger',
+            '2': 'warning',
+            '3': 'info',
+            '4': 'primary',
+            '5': 'secondary',
+            '6': 'success'
+        };
+
+        // Charger et afficher les données JSON
+        fetch('etapa1B.json')
+            .then(response => response.json())
+            .then(data => {
+                // Afficher les priorités
+                const priorityHTML = data.map(item => `
+                    <div class="priority-item">
+                        <div>
+                            <strong>ID ${item.idPriorite}:</strong> ${item.priorite}
+                        </div>
+                        <span class="badge bg-${priorityColors[item.idPriorite]} priority-badge">
+                            Niveau ${item.idPriorite}
+                        </span>
+                    </div>
+                `).join('');
+                document.getElementById('priorityList').innerHTML = priorityHTML;
+
+                // Afficher le code JSON formaté
+                document.getElementById('jsonCode').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('priorityList').innerHTML = '<div class="text-danger">Erreur de chargement: ' + error.message + '</div>';
+                document.getElementById('jsonCode').textContent = 'Erreur de chargement';
+            });
+    </script>
+</body>
+</html>
+

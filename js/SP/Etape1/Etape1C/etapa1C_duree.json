@@ -1,2 +1,30 @@
-[{"idDuree":"1","duree":"Moins de 30 minutes"},{"idDuree":"2","duree":"30 minutes à 1 heure"},{"idDuree":"3","duree":"1 à 2 heures"},{"idDuree":"4","duree":"2 à 4 heures"},{"idDuree":"5","duree":"4 à 8 heures"},{"idDuree":"6","duree":"Plus d'une journée"},{"idDuree":"7","duree":"Plusieurs jours"}]
-
+[
+    {
+        "idDuree": "1",
+        "duree": "Moins de 30 minutes"
+    },
+    {
+        "idDuree": "2",
+        "duree": "30 minutes \u00e0 1 heure"
+    },
+    {
+        "idDuree": "3",
+        "duree": "1 \u00e0 2 heures"
+    },
+    {
+        "idDuree": "4",
+        "duree": "2 \u00e0 4 heures"
+    },
+    {
+        "idDuree": "5",
+        "duree": "4 \u00e0 8 heures"
+    },
+    {
+        "idDuree": "6",
+        "duree": "Plus d'une journ\u00e9e"
+    },
+    {
+        "idDuree": "7",
+        "duree": "Plusieurs jours"
+    }
+]
