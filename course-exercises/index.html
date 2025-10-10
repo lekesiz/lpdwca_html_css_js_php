@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Exercises - JavaScript | LP DWCA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --success-color: #48bb78;
+            --dark-bg: #1a202c;
+            --card-bg: #2d3748;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .hero-section {
+            padding: 4rem 0 3rem;
+            color: white;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .chapter-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .chapter-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .chapter-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .chapter-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            margin-right: 1.5rem;
+        }
+
+        .chapter-title {
+            flex: 1;
+        }
+
+        .chapter-title h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: #2d3748;
+        }
+
+        .chapter-title p {
+            margin: 0.3rem 0 0;
+            color: #718096;
+            font-size: 0.95rem;
+        }
+
+        .exercise-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .exercise-item {
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            background: #f7fafc;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .exercise-item:hover {
+            background: #edf2f7;
+            border-left-color: var(--success-color);
+            transform: translateX(5px);
+        }
+
+        .exercise-item a {
+            text-decoration: none;
+            color: #2d3748;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .exercise-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .exercise-icon {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .stats-section {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.8rem 1.5rem;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            background: rgba(255,255,255,0.3);
+            color: white;
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .chapter-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .chapter-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero-section">
+        <div class="container">
+            <h1><i class="bi bi-code-square"></i> Course Exercises</h1>
+            <p>4 Chapitres JavaScript Complets - Maîtrise de tous les concepts enseignés</p>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <a href="../" class="back-link">
+            <i class="bi bi-arrow-left"></i> Retour au Portfolio
+        </a>
+
+        <!-- Statistics Section -->
+        <div class="stats-section">
+            <h3 class="text-center mb-0"><i class="bi bi-graph-up"></i> Statistiques du Projet</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Chapitres</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">~1,267</span>
+                    <span class="stat-label">Lignes de Code</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Exercices</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Concepts Couverts</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chapter 1 -->
+        <div class="chapter-card">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="bi bi-1-circle-fill"></i>
+                </div>
+                <div class="chapter-title">
+                    <h2>Chapitre 1 - Fondamentaux</h2>
+                    <p>Variables, types de données, opérateurs et structures de base</p>
+                </div>
+            </div>
+            <ul class="exercise-list">
+                <li class="exercise-item">
+                    <a href="chapter1/index.html">
+                        <span class="exercise-name"><i class="bi bi-file-code"></i> Exercices du Chapitre 1</span>
+                        <i class="bi bi-arrow-right exercise-icon"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Chapter 2 -->
+        <div class="chapter-card">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="bi bi-2-circle-fill"></i>
+                </div>
+                <div class="chapter-title">
+                    <h2>Chapitre 2 - Structures de Contrôle</h2>
+                    <p>Conditions, boucles et logique de programmation</p>
+                </div>
+            </div>
+            <ul class="exercise-list">
+                <li class="exercise-item">
+                    <a href="chapter2/index.html">
+                        <span class="exercise-name"><i class="bi bi-file-code"></i> Exercices du Chapitre 2</span>
+                        <i class="bi bi-arrow-right exercise-icon"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Integrated Project -->
+        <div class="chapter-card">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="bi bi-star-fill"></i>
+                </div>
+                <div class="chapter-title">
+                    <h2>Projet Intégré</h2>
+                    <p>Application complète utilisant tous les concepts appris</p>
+                </div>
+            </div>
+            <ul class="exercise-list">
+                <li class="exercise-item">
+                    <a href="integrated-project/index.html">
+                        <span class="exercise-name"><i class="bi bi-rocket-takeoff"></i> Voir le Projet Intégré</span>
+                        <i class="bi bi-arrow-right exercise-icon"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Documentation -->
+        <div class="chapter-card">
+            <div class="chapter-header">
+                <div class="chapter-icon">
+                    <i class="bi bi-book-fill"></i>
+                </div>
+                <div class="chapter-title">
+                    <h2>Documentation</h2>
+                    <p>Guide complet et explications détaillées</p>
+                </div>
+            </div>
+            <ul class="exercise-list">
+                <li class="exercise-item">
+                    <a href="README.md" target="_blank">
+                        <span class="exercise-name"><i class="bi bi-file-text"></i> Lire le README</span>
+                        <i class="bi bi-box-arrow-up-right exercise-icon"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
