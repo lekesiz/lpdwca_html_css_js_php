@@ -27,13 +27,14 @@ CEO - Netz Informatique
 | **Mini-Projet Bootstrap** | 2 | ~850 | Projet en binôme (avec Mickael Hoffer) |
 | **Emmet Mastery** | 4 | ~2,500 | Guide Emmet complet |
 | **XHTML Reference** | 4 | ~1,200 | Guide XHTML interactif complet |
-| **CSS Zen Garden Demo** | 6 | ~2,000 | Démonstration interactive CSS |
+| **CSS Zen Garden Demo** | 8 | ~2,500 | Démonstration interactive CSS |
+| **JavaScript Reference** | 5 | ~3,200 | Guide JavaScript complet et interactif |
 | **Resources & Tools** | 2 | ~626 | 15+ ressources documentées |
 | **To-Do-List App** | 4 | ~1,500 | Application CRUD complète |
 | **JSON SP** | 8 | ~642 | Activités JSON (Etapes 1A-1E) |
 | **Practical Examples** | 4 | ~1,780 | HTML, CSS, JavaScript |
 | **Autres** | 10+ | ~1,500 | Divers exemples et projets |
-| **TOTAL** | **48+** | **~13,865** | **Portfolio complet** |
+| **TOTAL** | **53+** | **~17,065** | **Portfolio complet** |
 
 ---
 
@@ -313,7 +314,119 @@ Inspiré par [CSS Zen Garden](https://csszengarden.com/) de **Dave Shea**
 
 ---
 
-### 7. ✅ To-Do-List Application Complète
+### 7. 📘 JavaScript Reference - Guide Complet et Interactif ⭐ NOUVEAU!
+
+**📁 `javascript-reference/`** (~3,200 lignes)
+
+Guide JavaScript complet inspiré des meilleurs cours en ligne, avec playground interactif et exercices pratiques:
+
+#### Concept Fondamental
+
+> **"Apprendre JavaScript en pratiquant"**
+
+Ce module offre une approche complète et interactive pour maîtriser JavaScript, du niveau débutant au niveau avancé, avec des exemples concrets et des exercices progressifs.
+
+#### Contenu du Module
+
+**Guides Théoriques:**
+- **guide/01-introduction-to-javascript.md** - Introduction complète à JavaScript
+  - Histoire et évolution (1995 → 2025)
+  - Pourquoi apprendre JavaScript
+  - Premier programme "Hello World"
+  - Écosystème JavaScript moderne
+  
+- **guide/02-variables-and-data-types.md** - Variables et types de données
+  - let, const, var (différences et bonnes pratiques)
+  - Types primitifs (string, number, boolean, undefined, null)
+  - Typage dynamique
+  - Objets et structures complexes
+
+**Playground Interactif:**
+- **interactive/index.html** - Environnement d'exécution en temps réel
+  - Éditeur de code intégré
+  - Console de sortie interactive
+  - 9 exemples prêts à l'emploi
+  - Raccourcis clavier (Ctrl+Enter pour exécuter)
+
+**Exercices Pratiques:**
+- **exercises/exercises.html** - 6 exercices progressifs avec solutions
+  - Exercice 1: Calculatrice Simple (Facile)
+  - Exercice 2: Vérificateur de Palindrome (Facile)
+  - Exercice 3: Filtrer les Nombres Pairs (Facile)
+  - Exercice 4: Compter les Voyelles (Moyen)
+  - Exercice 5: FizzBuzz (Moyen)
+  - Exercice 6: Trouver le Maximum (Moyen)
+
+#### Fonctionnalités du Playground
+
+- ✅ **Éditeur de code** : Textarea avec coloration syntaxique
+- ✅ **Exécution en temps réel** : Voir les résultats instantanément
+- ✅ **Console interactive** : Affichage des console.log()
+- ✅ **Exemples intégrés** : 9 catégories d'exemples
+  - Hello World
+  - Variables et Types
+  - Opérateurs
+  - Conditions (if/else, switch)
+  - Boucles (for, while, forEach)
+  - Fonctions (classiques et arrow functions)
+  - Tableaux (map, filter, reduce)
+  - Objets (création, manipulation, destructuration)
+  - DOM Manipulation
+- ✅ **Gestion des erreurs** : Messages d'erreur clairs
+- ✅ **Interface moderne** : Design avec gradients et animations
+
+#### Concepts JavaScript Couverts
+
+**Fondamentaux:**
+- Variables (let, const, var)
+- Types de données primitifs
+- Opérateurs (arithmétiques, comparaison, logiques)
+- Structures conditionnelles (if/else, switch, ternaire)
+- Boucles (for, while, do-while)
+
+**Intermédiaire:**
+- Fonctions (déclaration, expression, arrow)
+- Tableaux et méthodes (map, filter, reduce, forEach)
+- Objets et propriétés
+- JSON (parse, stringify)
+- Scope et closures
+
+**Avancé:**
+- Manipulation du DOM
+- Event listeners
+- LocalStorage
+- Programmation fonctionnelle
+- ES6+ features
+
+#### Valeur Pédagogique
+
+**Pour les Étudiants:**
+1. Apprendre en pratiquant immédiatement
+2. Tester des idées sans configuration
+3. Comprendre les concepts avec des exemples concrets
+4. Progresser à son rythme avec exercices gradués
+5. Voir les résultats en temps réel
+
+**Pour les Enseignants:**
+- Outil de démonstration en classe
+- Exercices prêts à utiliser
+- Progression pédagogique structurée
+- Support de cours interactif
+- Évaluation avec solutions fournies
+
+**Fichiers:**
+- `README.md` - Documentation complète du module
+- `guide/01-introduction-to-javascript.md` - Introduction (~800 lignes)
+- `guide/02-variables-and-data-types.md` - Variables et types (~700 lignes)
+- `interactive/index.html` - Playground interactif (~1,000 lignes)
+- `exercises/exercises.html` - Exercices pratiques (~700 lignes)
+
+**Inspiration:**
+Inspiré par les meilleurs cours JavaScript en ligne, notamment Pierre Giraud et MDN Web Docs
+
+---
+
+### 8. ✅ To-Do-List Application Complète
 
 **📁 `todolist-app/`** (~1,500 lignes)
 

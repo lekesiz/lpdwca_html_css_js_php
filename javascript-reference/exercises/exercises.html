@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercices JavaScript</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .exercises-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .exercise-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .exercise-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        }
+
+        .exercise-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .exercise-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .exercise-title {
+            flex: 1;
+        }
+
+        .exercise-title h3 {
+            color: #333;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+
+        .difficulty {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .difficulty.easy {
+            background: #4caf50;
+            color: white;
+        }
+
+        .difficulty.medium {
+            background: #ff9800;
+            color: white;
+        }
+
+        .difficulty.hard {
+            background: #f44336;
+            color: white;
+        }
+
+        .exercise-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .exercise-code {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            overflow-x: auto;
+        }
+
+        .exercise-hint {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .exercise-hint strong {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .btn-solution {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-solution:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .solution {
+            display: none;
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .solution.show {
+            display: block;
+        }
+
+        .solution pre {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .exercises-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📝 Exercices JavaScript</h1>
+            <p class="subtitle">Pratiquez et améliorez vos compétences en JavaScript</p>
+        </header>
+
+        <div class="exercises-grid">
+            <!-- Exercice 1 -->
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-number">1</div>
+                    <div class="exercise-title">
+                        <h3>Calculatrice Simple</h3>
+                        <span class="difficulty easy">Facile</span>
+                    </div>
+                </div>
+                <div class="exercise-description">
+                    Créez une fonction <code>calculer(a, b, operation)</code> qui prend deux nombres et une opération (+, -, *, /) et retourne le résultat.
+                </div>
+                <div class="exercise-code">
+// Exemple d'utilisation :
+console.log(calculer(10, 5, '+')); // 15
+console.log(calculer(10, 5, '-')); // 5
+console.log(calculer(10, 5, '*')); // 50
+console.log(calculer(10, 5, '/')); // 2
+                </div>
+                <div class="exercise-hint">
+                    <strong>💡 Indice :</strong>
+                    Utilisez une structure switch ou if/else pour gérer les différentes opérations.
+                </div>
+                <button class="btn-solution" onclick="toggleSolution(1)">Voir la Solution</button>
+                <div class="solution" id="solution-1">
+                    <pre>function calculer(a, b, operation) {
+    switch(operation) {
+        case '+':
+            return a + b;
+        case '-':
+            return a - b;
+        case '*':
+            return a * b;
+        case '/':
+            return a / b;
+        default:
+            return 'Opération invalide';
+    }
+}
+
+// Tests
+console.log(calculer(10, 5, '+')); // 15
+console.log(calculer(10, 5, '-')); // 5
+console.log(calculer(10, 5, '*')); // 50
+console.log(calculer(10, 5, '/')); // 2</pre>
+                </div>
+            </div>
+
+            <!-- Exercice 2 -->
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-number">2</div>
+                    <div class="exercise-title">
+                        <h3>Vérificateur de Palindrome</h3>
+                        <span class="difficulty easy">Facile</span>
+                    </div>
+                </div>
+                <div class="exercise-description">
+                    Créez une fonction <code>estPalindrome(mot)</code> qui vérifie si un mot est un palindrome (se lit de la même façon dans les deux sens).
+                </div>
+                <div class="exercise-code">
+// Exemple d'utilisation :
+console.log(estPalindrome('radar')); // true
+console.log(estPalindrome('kayak')); // true
+console.log(estPalindrome('hello')); // false
+                </div>
+                <div class="exercise-hint">
+                    <strong>💡 Indice :</strong>
+                    Utilisez la méthode split(), reverse() et join() pour inverser la chaîne.
+                </div>
+                <button class="btn-solution" onclick="toggleSolution(2)">Voir la Solution</button>
+                <div class="solution" id="solution-2">
+                    <pre>function estPalindrome(mot) {
+    const motInverse = mot.split('').reverse().join('');
+    return mot === motInverse;
+}
+
+// Tests
+console.log(estPalindrome('radar')); // true
+console.log(estPalindrome('kayak')); // true
+console.log(estPalindrome('hello')); // false
+console.log(estPalindrome('level')); // true</pre>
+                </div>
+            </div>
+
+            <!-- Exercice 3 -->
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-number">3</div>
+                    <div class="exercise-title">
+                        <h3>Filtrer les Nombres Pairs</h3>
+                        <span class="difficulty easy">Facile</span>
+                    </div>
+                </div>
+                <div class="exercise-description">
+                    Créez une fonction <code>filtrerPairs(tableau)</code> qui retourne un nouveau tableau contenant uniquement les nombres pairs.
+                </div>
+                <div class="exercise-code">
+// Exemple d'utilisation :
+const nombres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(filtrerPairs(nombres)); 
+// [2, 4, 6, 8, 10]
+                </div>
+                <div class="exercise-hint">
+                    <strong>💡 Indice :</strong>
+                    Utilisez la méthode filter() et l'opérateur modulo (%).
+                </div>
+                <button class="btn-solution" onclick="toggleSolution(3)">Voir la Solution</button>
+                <div class="solution" id="solution-3">
+                    <pre>function filtrerPairs(tableau) {
+    return tableau.filter(nombre => nombre % 2 === 0);
+}
+
+// Tests
+const nombres = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+console.log(filtrerPairs(nombres)); // [2, 4, 6, 8, 10]</pre>
+                </div>
+            </div>
+
+            <!-- Exercice 4 -->
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-number">4</div>
+                    <div class="exercise-title">
+                        <h3>Compter les Voyelles</h3>
+                        <span class="difficulty medium">Moyen</span>
+                    </div>
+                </div>
+                <div class="exercise-description">
+                    Créez une fonction <code>compterVoyelles(texte)</code> qui compte le nombre de voyelles (a, e, i, o, u) dans une chaîne de caractères.
+                </div>
+                <div class="exercise-code">
+// Exemple d'utilisation :
+console.log(compterVoyelles('Hello World')); // 3
+console.log(compterVoyelles('JavaScript')); // 3
+                </div>
+                <div class="exercise-hint">
+                    <strong>💡 Indice :</strong>
+                    Convertissez en minuscules et utilisez une boucle ou filter().
+                </div>
+                <button class="btn-solution" onclick="toggleSolution(4)">Voir la Solution</button>
+                <div class="solution" id="solution-4">
+                    <pre>function compterVoyelles(texte) {
+    const voyelles = 'aeiouAEIOU';
+    let compteur = 0;
+    
+    for (let lettre of texte) {
+        if (voyelles.includes(lettre)) {
+            compteur++;
+        }
+    }
+    
+    return compteur;
+}
+
+// Alternative avec filter
+function compterVoyelles2(texte) {
+    const voyelles = 'aeiouAEIOU';
+    return texte.split('').filter(lettre => 
+        voyelles.includes(lettre)
+    ).length;
+}
+
+// Tests
+console.log(compterVoyelles('Hello World')); // 3
+console.log(compterVoyelles('JavaScript')); // 3</pre>
+                </div>
+            </div>
+
+            <!-- Exercice 5 -->
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-number">5</div>
+                    <div class="exercise-title">
+                        <h3>FizzBuzz</h3>
+                        <span class="difficulty medium">Moyen</span>
+                    </div>
+                </div>
+                <div class="exercise-description">
+                    Créez une fonction <code>fizzBuzz(n)</code> qui affiche les nombres de 1 à n. Pour les multiples de 3, affichez "Fizz". Pour les multiples de 5, affichez "Buzz". Pour les multiples de 3 et 5, affichez "FizzBuzz".
+                </div>
+                <div class="exercise-code">
+// Exemple d'utilisation :
+fizzBuzz(15);
+// 1, 2, Fizz, 4, Buzz, Fizz, 7, 8, Fizz, 
+// Buzz, 11, Fizz, 13, 14, FizzBuzz
+                </div>
+                <div class="exercise-hint">
+                    <strong>💡 Indice :</strong>
+                    Vérifiez d'abord si le nombre est divisible par 15, puis par 3, puis par 5.
+                </div>
+                <button class="btn-solution" onclick="toggleSolution(5)">Voir la Solution</button>
+                <div class="solution" id="solution-5">
+                    <pre>function fizzBuzz(n) {
+    for (let i = 1; i <= n; i++) {
+        if (i % 15 === 0) {
+            console.log('FizzBuzz');
+        } else if (i % 3 === 0) {
+            console.log('Fizz');
+        } else if (i % 5 === 0) {
+            console.log('Buzz');
+        } else {
+            console.log(i);
+        }
+    }
+}
+
+// Test
+fizzBuzz(15);</pre>
+                </div>
+            </div>
+
+            <!-- Exercice 6 -->
+            <div class="exercise-card">
+                <div class="exercise-header">
+                    <div class="exercise-number">6</div>
+                    <div class="exercise-title">
+                        <h3>Trouver le Maximum</h3>
+                        <span class="difficulty medium">Moyen</span>
+                    </div>
+                </div>
+                <div class="exercise-description">
+                    Créez une fonction <code>trouverMax(tableau)</code> qui retourne le plus grand nombre dans un tableau sans utiliser Math.max().
+                </div>
+                <div class="exercise-code">
+// Exemple d'utilisation :
+console.log(trouverMax([3, 7, 2, 9, 1])); // 9
+console.log(trouverMax([-5, -2, -10])); // -2
+                </div>
+                <div class="exercise-hint">
+                    <strong>💡 Indice :</strong>
+                    Parcourez le tableau et gardez une trace du maximum trouvé.
+                </div>
+                <button class="btn-solution" onclick="toggleSolution(6)">Voir la Solution</button>
+                <div class="solution" id="solution-6">
+                    <pre>function trouverMax(tableau) {
+    let max = tableau[0];
+    
+    for (let i = 1; i < tableau.length; i++) {
+        if (tableau[i] > max) {
+            max = tableau[i];
+        }
+    }
+    
+    return max;
+}
+
+// Alternative avec reduce
+function trouverMax2(tableau) {
+    return tableau.reduce((max, current) => 
+        current > max ? current : max
+    );
+}
+
+// Tests
+console.log(trouverMax([3, 7, 2, 9, 1])); // 9
+console.log(trouverMax([-5, -2, -10])); // -2</pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleSolution(exerciseNumber) {
+            const solution = document.getElementById(`solution-${exerciseNumber}`);
+            solution.classList.toggle('show');
+            
+            const button = solution.previousElementSibling;
+            if (solution.classList.contains('show')) {
+                button.textContent = 'Masquer la Solution';
+            } else {
+                button.textContent = 'Voir la Solution';
+            }
+        }
+    </script>
+</body>
+</html>
+
