@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM CSS Playground - Interactive Learning</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+        
+        .main-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .editor-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .editor-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        textarea {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            background: #2d2d2d;
+            color: #f8f8f2;
+            border: none;
+            border-radius: 5px;
+            padding: 15px;
+            width: 100%;
+            min-height: 200px;
+            resize: vertical;
+        }
+        
+        .output-section {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .output-section h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        #domTree {
+            font-family: 'Courier New', monospace;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre;
+        }
+        
+        #preview {
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 15px;
+            min-height: 200px;
+            background: white;
+        }
+        
+        .specificity-display {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-top: 10px;
+        }
+        
+        .specificity-badge {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: white;
+        }
+        
+        .spec-inline {
+            background: #e74c3c;
+        }
+        
+        .spec-id {
+            background: #3498db;
+        }
+        
+        .spec-class {
+            background: #2ecc71;
+        }
+        
+        .spec-element {
+            background: #95a5a6;
+        }
+        
+        .btn-run {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-run:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-clear {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-clear:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-container">
+            <div class="header">
+                <h1><i class="bi bi-diagram-3"></i> DOM CSS Playground</h1>
+                <p class="lead">Interactive DOM Manipulation & CSS Specificity Calculator</p>
+                <p class="text-muted">Inspired by <a href="https://fritscher.ch/dom-css/" target="_blank">fritscher.ch/dom-css</a></p>
+            </div>
+
+            <div class="row">
+                <!-- HTML Editor -->
+                <div class="col-md-6">
+                    <div class="editor-section">
+                        <h3><i class="bi bi-code-slash"></i> HTML</h3>
+                        <textarea id="htmlInput" placeholder="Entrez votre code HTML ici..."><div class="container">
+  <h1 class="title">Bonjour le Monde!</h1>
+  <p id="intro">Ceci est un paragraphe.</p>
+  <ul class="list">
+    <li>Item 1</li>
+    <li class="active">Item 2</li>
+    <li>Item 3</li>
+  </ul>
+</div></textarea>
+                    </div>
+                </div>
+
+                <!-- CSS Editor -->
+                <div class="col-md-6">
+                    <div class="editor-section">
+                        <h3><i class="bi bi-palette"></i> CSS</h3>
+                        <textarea id="cssInput" placeholder="Entrez votre code CSS ici...">.container {
+  padding: 20px;
+  background: #f0f0f0;
+}
+
+.title {
+  color: #667eea;
+  font-size: 2rem;
+}
+
+#intro {
+  font-style: italic;
+}
+
+.list .active {
+  font-weight: bold;
+  color: #764ba2;
+}</textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="text-center mb-4">
+                <button class="btn btn-run" onclick="updatePreview()">
+                    <i class="bi bi-play-circle"></i> Exécuter
+                </button>
+                <button class="btn btn-clear" onclick="clearAll()">
+                    <i class="bi bi-x-circle"></i> Effacer
+                </button>
+            </div>
+
+            <div class="row">
+                <!-- Preview -->
+                <div class="col-md-6">
+                    <div class="output-section">
+                        <h3><i class="bi bi-eye"></i> Aperçu</h3>
+                        <div id="preview"></div>
+                    </div>
+                </div>
+
+                <!-- DOM Tree -->
+                <div class="col-md-6">
+                    <div class="output-section">
+                        <h3><i class="bi bi-diagram-3"></i> Arbre DOM</h3>
+                        <div id="domTree"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CSS Specificity -->
+            <div class="output-section">
+                <h3><i class="bi bi-calculator"></i> Calculateur de Spécificité CSS</h3>
+                <div class="mb-3">
+                    <label class="form-label">Entrez un sélecteur CSS:</label>
+                    <input type="text" class="form-control" id="selectorInput" placeholder="Ex: .container #intro.active" value=".list .active">
+                </div>
+                <button class="btn btn-run btn-sm" onclick="calculateSpecificity()">
+                    <i class="bi bi-calculator"></i> Calculer
+                </button>
+                <div id="specificityResult" class="specificity-display"></div>
+            </div>
+
+            <!-- Back Button -->
+            <div class="text-center mt-4">
+                <a href="../" class="btn btn-clear">
+                    <i class="bi bi-arrow-left"></i> Retour au Module
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Update preview with HTML and CSS
+        function updatePreview() {
+            const htmlInput = document.getElementById('htmlInput').value;
+            const cssInput = document.getElementById('cssInput').value;
+            const preview = document.getElementById('preview');
+            
+            // Create a style element for CSS
+            const style = document.createElement('style');
+            style.textContent = cssInput;
+            
+            // Update preview
+            preview.innerHTML = htmlInput;
+            preview.appendChild(style);
+            
+            // Update DOM tree
+            updateDOMTree();
+        }
+        
+        // Generate DOM tree visualization
+        function updateDOMTree() {
+            const preview = document.getElementById('preview');
+            const domTree = document.getElementById('domTree');
+            
+            function generateTree(element, indent = 0) {
+                let tree = '';
+                const indentation = '  '.repeat(indent);
+                
+                if (element.nodeType === Node.ELEMENT_NODE) {
+                    const tagName = element.tagName.toLowerCase();
+                    const classes = element.className ? ` class="${element.className}"` : '';
+                    const id = element.id ? ` id="${element.id}"` : '';
+                    
+                    tree += `${indentation}<${tagName}${id}${classes}>\n`;
+                    
+                    // Process children
+                    for (let child of element.childNodes) {
+                        if (child.nodeType === Node.ELEMENT_NODE) {
+                            tree += generateTree(child, indent + 1);
+                        } else if (child.nodeType === Node.TEXT_NODE && child.textContent.trim()) {
+                            tree += `${indentation}  "${child.textContent.trim()}"\n`;
+                        }
+                    }
+                    
+                    tree += `${indentation}</${tagName}>\n`;
+                }
+                
+                return tree;
+            }
+            
+            let treeHTML = '';
+            for (let child of preview.childNodes) {
+                if (child.nodeType === Node.ELEMENT_NODE && child.tagName !== 'STYLE') {
+                    treeHTML += generateTree(child);
+                }
+            }
+            
+            domTree.textContent = treeHTML || 'Aucun élément à afficher';
+        }
+        
+        // Calculate CSS specificity
+        function calculateSpecificity() {
+            const selector = document.getElementById('selectorInput').value.trim();
+            const result = document.getElementById('specificityResult');
+            
+            if (!selector) {
+                result.innerHTML = '<p class="text-danger">Veuillez entrer un sélecteur CSS.</p>';
+                return;
+            }
+            
+            // Simple specificity calculation
+            // Inline styles: 1000
+            // IDs: 100
+            // Classes, attributes, pseudo-classes: 10
+            // Elements, pseudo-elements: 1
+            
+            const inline = 0; // Not applicable for selector input
+            const ids = (selector.match(/#[\w-]+/g) || []).length;
+            const classes = (selector.match(/\.[\w-]+/g) || []).length;
+            const attributes = (selector.match(/\[[\w-]+\]/g) || []).length;
+            const pseudoClasses = (selector.match(/:[\w-]+/g) || []).length;
+            const elements = (selector.match(/^[\w-]+|[\s>+~][\w-]+/g) || []).length;
+            const pseudoElements = (selector.match(/::[\w-]+/g) || []).length;
+            
+            const classTotal = classes + attributes + pseudoClasses;
+            const elementTotal = elements + pseudoElements;
+            
+            const totalSpecificity = (ids * 100) + (classTotal * 10) + elementTotal;
+            
+            result.innerHTML = `
+                <div class="specificity-badge spec-inline">${inline}</div>
+                <div class="specificity-badge spec-id">${ids}</div>
+                <div class="specificity-badge spec-class">${classTotal}</div>
+                <div class="specificity-badge spec-element">${elementTotal}</div>
+                <div class="ms-3">
+                    <strong>Spécificité totale: ${totalSpecificity}</strong><br>
+                    <small class="text-muted">(${inline}, ${ids}, ${classTotal}, ${elementTotal})</small>
+                </div>
+            `;
+        }
+        
+        // Clear all inputs
+        function clearAll() {
+            document.getElementById('htmlInput').value = '';
+            document.getElementById('cssInput').value = '';
+            document.getElementById('preview').innerHTML = '';
+            document.getElementById('domTree').textContent = '';
+            document.getElementById('specificityResult').innerHTML = '';
+        }
+        
+        // Initial load
+        updatePreview();
+        calculateSpecificity();
+    </script>
+</body>
+</html>
+
