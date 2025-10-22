@@ -1,0 +1,21 @@
+{
+  "name": "lpdwca_html_css_js_php",
+  "version": "1.0.0",
+  "description": "Ce dépôt contient l'ensemble des supports de cours, exercices et **exemples pratiques professionnels** pour la formation **Licence Professionnelle Développeur Web et Conception d'Applications (LP DWCA)** à l'Université de Strasbourg.",
+  "main": "index.js",
+  "scripts": {
+  "start": "php -S 127.0.0.1:8000 -t ./" ,
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mickaaa67/lpdwca_html_css_js_php.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mickaaa67/lpdwca_html_css_js_php/issues"
+  },
+  "homepage": "https://github.com/mickaaa67/lpdwca_html_css_js_php#readme"
+}

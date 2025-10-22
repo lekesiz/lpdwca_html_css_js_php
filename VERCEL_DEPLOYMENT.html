@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guide Vercel - Déploiement et bonnes pratiques LP DWCA 2025">
+    <meta name="author" content="Mikail Lekesiz">
+    <title>🚀 Guide Vercel - Blog LP DWCA</title>
+    <style>
+        * {margin: 0; padding: 0; box-sizing: border-box;}
+        body {font-family: 'Georgia', serif; line-height: 1.8; color: #2c3e50; background: #f8f9fa;}
+        header {background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px 0; box-shadow: 0 2px 10px rgba(0,0,0,0.1);}
+        header .container {max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; justify-content: space-between; align-items: center;}
+        header h1 {font-size: 24px;}
+        nav ul {list-style: none; display: flex; gap: 20px;}
+        nav a {color: white; text-decoration: none; font-weight: 500; transition: opacity 0.3s ease;}
+        nav a:hover {opacity: 0.8;}
+        main {max-width: 1100px; margin: 40px auto; padding: 0 20px; display: grid; grid-template-columns: 1fr 300px; gap: 40px;}
+        article {background: white; padding: 40px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);}
+        article header {padding: 0; margin-bottom: 30px;}
+        article h1 {font-size: 36px; line-height: 1.3; margin-bottom: 15px; color: #2c3e50;}
+        .article-meta {display: flex; gap: 20px; color: #7f8c8d; font-size: 14px; font-family: 'Segoe UI', sans-serif;}
+        .article-meta span {display: flex; align-items: center; gap: 5px;}
+        article section {margin-bottom: 30px;}
+        article h2 {font-size: 28px; margin-bottom: 15px; color: #34495e;}
+        article h3 {font-size: 22px; margin-bottom: 10px; color: #34495e;}
+        article p {margin-bottom: 15px; text-align: justify;}
+        figure {margin: 30px 0; text-align: center;}
+        figure img {width: 100%; max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);}
+        figcaption {margin-top: 10px; font-size: 14px; color: #7f8c8d; font-style: italic;}
+        article ul, article ol {margin: 15px 0 15px 30px;}
+        article li {margin-bottom: 8px;}
+        blockquote {border-left: 4px solid #667eea; padding-left: 20px; margin: 20px 0; font-style: italic; color: #555; background: #f8f9fa; padding: 15px 20px; border-radius: 5px;}
+        code {background: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: 'Courier New', monospace; font-size: 14px;}
+        aside {font-family: 'Segoe UI', sans-serif;}
+        .sidebar-widget {background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px;}
+        .sidebar-widget h3 {font-size: 18px; margin-bottom: 15px; color: #2c3e50;}
+        .sidebar-widget ul {list-style: none;}
+        .sidebar-widget li {padding: 8px 0; border-bottom: 1px solid #ecf0f1;}
+        .sidebar-widget li:last-child {border-bottom: none;}
+        .sidebar-widget a {color: #667eea; text-decoration: none; transition: color 0.3s ease;}
+        .sidebar-widget a:hover {color: #764ba2;}
+        footer {background: #2c3e50; color: white; padding: 40px 0; margin-top: 60px;}
+        footer .container {max-width: 1200px; margin: 0 auto; padding: 0 20px; text-align: center;}
+        footer p {margin-bottom: 10px;}
+        address {font-style: normal; margin-top: 20px;}
+        address a {color: #3498db; text-decoration: none;}
+        .educational-note {background: #fff3cd; border-left: 4px solid #ffc107; padding: 20px; margin: 30px 0; border-radius: 5px;}
+        .educational-note h4 {color: #856404; margin-bottom: 10px;}
+        .educational-note p {color: #856404; font-size: 14px;}
+        @media (max-width: 768px) {
+            main {grid-template-columns: 1fr;}
+            article {padding: 20px;}
+            article h1 {font-size: 28px;}
+            nav ul {flex-direction: column; gap: 10px;}
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🚀 Blog LP DWCA</h1>
+            <nav>
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#guide">Guide Vercel</a></li>
+                    <li><a href="#ressources">Ressources</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <article>
+            <header>
+                <div class="container">
+                    <h1>🚀 Guide Complet pour Déployer sur Vercel</h1>
+                </div>
+            </header>
+
+            <section id="introduction">
+                <p>
+                    Vercel est une plateforme cloud moderne conçue pour déployer des sites web et des applications avec rapidité et simplicité. Créée par les développeurs de Next.js, Vercel est idéale pour les projets frontend et les portfolios professionnels.
+                </p>
+                <!-- Image avec légende -->
+                <figure>
+                    <img src="https://encore.cloud/assets/resources/vercel.png" 
+                         alt="Développement web moderne">
+                    <figcaption>
+                        Photo par Marcus Kohlberg sur Encore cloud - Aperçu depuis Vercel Déploiement de production 
+                    </figcaption>
+                </figure>
+            </section>
+
+            <section id="quest-ce-que-vercel">
+                <h2>🌐 Qu'est-ce que Vercel ?</h2>
+                <p>
+                    Vercel fournit un environnement optimisé pour transformer le code source en sites web performants accessibles mondialement, en automatisant build, déploiement et mise à l'échelle.
+                </p>
+            </section>
+
+            <section id="pourquoi-vercel">
+                <h2>💡 Pourquoi Vercel ?</h2>
+                <p>
+                    Pour les étudiants, Vercel permet de voir leurs projets en ligne instantanément, enseigne les bonnes pratiques Git et CI/CD, et rend le partage avec professeurs et pairs très simple.
+                </p>
+            </section>
+
+            <section id="avantages-de-vercel">
+                <h2>⚡ Avantages de Vercel</h2>
+                <ul>
+                    <li><strong>Déploiement Automatique :</strong> Chaque push Git déclenche un déploiement.</li>
+                    <li><strong>Performance Optimale :</strong> CDN mondial, compression, cache intelligent, HTTP/2 et HTTP/3.</li>
+                    <li><strong>HTTPS Gratuit :</strong> Certificats SSL générés automatiquement.</li>
+                    <li><strong>Domaines Personnalisés :</strong> Sous-domaine gratuit et possibilité d'ajouter votre propre domaine.</li>
+                    <li><strong>Preview Deployments :</strong> Tester chaque branche avant mise en production.</li>
+                    <li><strong>Analytics Intégrés :</strong> Suivi des performances et visiteurs.</li>
+                    <li><strong>Zéro Configuration :</strong> Vercel détecte automatiquement le type de projet.</li>
+                    <li><strong>Plan Gratuit Génereux :</strong> Suffisant pour les projets étudiants.</li>
+                </ul>
+            </section>
+
+            <section id="comment-deployer">
+                <h2>🛠️ Comment Déployer sur Vercel</h2>
+                <h3>Méthode 1 : Interface Web</h3>
+                <ol>
+                    <li>Créer un compte sur <a href="https://vercel.com" target="_blank">Vercel</a>.</li>
+                    <li>Importer le projet depuis GitHub.</li>
+                    <li>Cliquer sur <strong>Deploy</strong> (configuration automatique pour site statique).</li>
+                    <li>Accéder à l'URL fournie par Vercel.</li>
+                </ol>
+                <h3>Méthode 2 : CLI Vercel</h3>
+                <pre><code>npm install -g vercel
+                            vercel login
+                            cd /chemin/vers/projet
+                            vercel</code>
+                </pre>
+            </section>
+
+            <section id="fonctionnalites-utilisees">
+                <h2>🎯 Fonctionnalités Utilisées</h2>
+                <ul>
+                    <li>Déploiement automatique depuis GitHub</li>
+                    <li>Serveur de fichiers statiques optimisé</li>
+                    <li>Routing automatique des dossiers et pages</li>
+                    <li>HTTPS par défaut et redirection automatique</li>
+                </ul>
+            </section>
+
+            <section id="resolution-problemes">
+                <h2>🛡️ Résolution de Problèmes</h2>
+                <p><strong>404 Not Found :</strong> Créer un index.html dans chaque dossier.</p>
+                <p><strong>Symlinks :</strong> Vérifier qu'ils sont commités dans Git.</p>
+                <p><strong>Chemins relatifs :</strong> Utiliser des chemins absolus depuis la racine.</p>
+                <p><strong>Délai de déploiement :</strong> Attendre 1-2 minutes pour que les changements apparaissent.</p>
+            </section>
+
+            <section id="ressources-utiles">
+                <h2>📚 Ressources Utiles</h2>
+                <ul>
+                    <li><a href="https://vercel.com/docs" target="_blank">Vercel Docs</a></li>
+                    <li><a href="https://vercel.com/docs/cli" target="_blank">Vercel CLI</a></li>
+                    <li><a href="https://vercel.com/docs/git" target="_blank">GitHub Integration</a></li>
+                    <li><a href="https://youtube.com/@vercelhq" target="_blank">Chaîne YouTube Vercel</a></li>
+                </ul>
+            </section>
+
+            <section id="conclusion">
+                <h2>✍️ Conclusion</h2>
+                <p>
+                    Vercel simplifie le déploiement web et transforme un projet local en portfolio professionnel en quelques minutes. Déploiement automatique, performances optimales et workflow moderne rendent cette plateforme idéale pour les étudiants et développeurs.
+                </p>
+            </section>
+        </article>
+
+        <aside>
+            <div class="sidebar-widget">
+                <h3>Table des Matières</h3>
+                <ul>
+                    <li><a href="#introduction">Introduction</a></li>
+                    <li><a href="#quest-ce-que-vercel">Qu'est-ce que Vercel?</a></li>
+                    <li><a href="#pourquoi-vercel">Pourquoi Vercel?</a></li>
+                    <li><a href="#avantages-de-vercel">Avantages</a></li>
+                    <li><a href="#comment-deployer">Comment Déployer</a></li>
+                    <li><a href="#fonctionnalites-utilisees">Fonctionnalités</a></li>
+                    <li><a href="#resolution-problemes">Résolution de Problèmes</a></li>
+                    <li><a href="#ressources-utiles">Ressources Utiles</a></li>
+                    <li><a href="#conclusion">Conclusion</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-widget">
+                <h3>À propos de l'auteur</h3>
+                    <span>👤 Par <strong>Mickael Hoffer</strong></span><br>
+                    <span>📅 <time datetime="2025-10-10">17 octobre 2025</time></span><br>
+                    <span>⏱️ 5 min de lecture</span>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Blog LP DWCA - Tous droits réservés</p>
+            <p>Formation: Licence Professionnelle Développeur Web et Conception d'Applications</p>
+            
+            <!-- Informations de contact -->
+            <address>
+                <p>
+                    Contact: 
+                    <a href="mailto:mikail.lekesiz@etu.unistra.fr">mikail.lekesiz@etu.unistra.fr</a><br>
+                    <a href="mickael.hoffer@etu.unistra.fr">mickael.hoffer@etu.unistra.fr</a>
+                </p>
+                <p>
+                    Portfolio: 
+                    <a href="https://portfolio.lekesiz.fr" target="_blank">portfolio.lekesiz.fr</a><br>
+                    <a href="mickael-dev.vercel.app" target="_blank">mickael-dev.vercel</a>
+                </p>
+            </address>
+        </div>
+    </footer>
+</body>
+</html>

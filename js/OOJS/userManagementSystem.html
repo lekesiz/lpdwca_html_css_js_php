@@ -101,6 +101,10 @@
         .user-card.developer {
             border-left-color: #2ecc71;
         }
+
+        .user-card.it_director {
+            border-left-color: #76027a;
+        }
         
         .user-header {
             display: flex;
@@ -130,6 +134,10 @@
         .user-role.developer {
             background: #2ecc71;
         }
+
+        .user-role.it_director {
+            background: #76027a;
+        }
         
         .user-info {
             color: #7f8c8d;
@@ -157,7 +165,7 @@
 <body>
     <div class="container">
         <h1>🏢 Système de Gestion des Utilisateurs</h1>
-        <p class="subtitle">Programmation Orientée Objet en JavaScript - Par Mikail Lekesiz (LP DWCA 2025)</p>
+        <p class="subtitle">Programmation Orientée Objet en JavaScript - Par Mikail Lekesiz et Mickael Hoffer (LP DWCA 2025)</p>
         
         <div class="form-section">
             <h2>Ajouter un Utilisateur</h2>
@@ -178,6 +186,7 @@
                 <select id="role">
                     <option value="user">Utilisateur</option>
                     <option value="admin">Administrateur</option>
+                    <option value="it_director">Directeur Service Informatique</option>
                     <option value="developer">Développeur</option>
                 </select>
             </div>
@@ -191,7 +200,7 @@
         
         <div class="console-output" id="console">
             <div class="console-line">>>> Console JavaScript - OOJS Demo</div>
-            <div class="console-line">>>> Système initialisé par Mikail Lekesiz</div>
+            <div class="console-line">>>> Système initialisé par Mikail Lekesiz et Mickael Hoffer</div>
         </div>
     </div>
     
@@ -265,6 +274,35 @@
             getInfo() {
                 return `💻 Developer: ${super.getInfo()} | Compétences: ${this.skills.join(', ')}`;
             }
+
+            manageUser(developer) {
+                console.log(`Admin ${this.fullName} gère l'utilisateur ${user.fullName}`);
+                logToConsole(`Admin ${this.fullName} gère ${user.fullName}`);
+            }
+        }
+
+        // Classe IT Director hérite de User
+        class ITDirector extends Admin {
+            constructor(firstName, lastName, email, skills = []) {
+                super(firstName, lastName, email);
+                this.role = 'it_director';
+                this.skills = skills;
+                this.projects = [];
+            }
+            
+            addSkill(skill) {
+                this.skills.push(skill);
+                logToConsole(`${this.fullName} a ajouté la compétence: ${skill}`);
+            }
+            
+            getInfo() {
+                return `💻 IT Director: ${super.getInfo()} | Compétences: ${this.skills.join(', ')}`;
+            }
+
+            manageUser(user) {
+                console.log(`IT Director ${this.fullName} gère l'utilisateur ${user.fullName}`);
+                logToConsole(`IT Director ${this.fullName} gère ${user.fullName}`);
+            }
         }
         
         // Classe UserManager pour gérer tous les utilisateurs
@@ -336,6 +374,9 @@
                 case 'developer':
                     user = new Developer(firstName, lastName, email, ['JavaScript', 'HTML', 'CSS']);
                     break;
+                case 'it_director':
+                    user = new ITDirector(firstName, lastName, email, ['JavaScript', 'HTML', 'CSS','PHP','Laravel','MySQL','Java','C++','Vue.js']);
+                    break;
                 default:
                     user = new User(firstName, lastName, email);
             }
@@ -363,6 +404,10 @@
             // Créer Mikail Lekesiz comme admin
             const mikail = new Admin('Mikail', 'Lekesiz', 'mikail@netz-informatique.fr');
             userManager.addUser(mikail);
+
+            // Créer Mickael Hoffer comme IT Director
+            const mickael = new ITDirector('Mickael', 'Hoffer', 'mickael.hoffer@gmail.com', ['React', 'C#', 'Node.js', 'Python','Docker','PHP','Laravel','MySQL','Java','C++','Vue.js']);
+            userManager.addUser(mickael);
             
             // Créer un développeur
             const dev = new Developer('Jean', 'Dupont', 'jean.dupont@example.com', ['React', 'Node.js', 'Python']);
