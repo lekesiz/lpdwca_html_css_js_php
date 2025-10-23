@@ -1,118 +1,1766 @@
-'''<!DOCTYPE html>  <html lang="tr">  <head>      <meta charset="UTF-8">      <meta name="viewport" content="width=device-width, initial-scale=1.0">      <title>Kapsamlı HTML5 Referansı</title>      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">      <style>          body {              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;          }          #sidebar {              position: fixed;              top: 0;              left: 0;              width: 280px;              height: 100%;              background: #f8f9fa;              padding: 20px;              overflow-y: auto;          }          #content {              margin-left: 300px;              padding: 40px;          }          #sidebar .nav-link {              color: #333;              margin-bottom: 5px;          }          #sidebar .nav-link.active, #sidebar .nav-link:hover {              color: #0d6efd;              font-weight: bold;          }          section {              margin-bottom: 80px;              padding-top: 60px; /* Offset for fixed header */          }          h2 {              border-bottom: 2px solid #0d6efd;              padding-bottom: 10px;              margin-bottom: 20px;          }          pre {              background: #e9ecef;              padding: 15px;              border-radius: 5px;          }      </style>  </head>  <body data-bs-spy="scroll" data-bs-target="#sidebar-nav" data-bs-offset="100">      <div id="sidebar">          <h5>HTML5 Referansı</h5>          <nav id="sidebar-nav" class="nav flex-column">              <a class="nav-link" href="#introduction">Giriş</a>              <a class="nav-link" href="#structure">Temel Yapı</a>              <a class="nav-link" href="#semantic">Semantik Etiketler</a>              <a class="nav-link" href="#text">Metin Etiketleri</a>              <a class="nav-link" href="#media">Bağlantılar ve Medya</a>              <a class="nav-link" href="#forms">Formlar</a>              <a class="nav-link" href="#tables">Tablolar</a>              <a class="nav-link" href="#apis">HTML5 API'ları</a>              <a class="nav-link" href="#multimedia">Multimedya</a>              <a class="nav-link" href="#accessibility">Erişilebilirlik</a>              <a class="nav-link" href="#best-practices">En İyi Uygulamalar</a>          </nav>      </div>        <div id="content">          <section id="introduction">              <h2><i class="bi bi-flag-fill"></i> HTML5 Giriş</h2>              <p>HTML5, World Wide Web'in temel taşı olan HTML standardının beşinci ve en son ana sürümüdür. Web sayfalarına ve uygulamalarına yeni özellikler, geliştirmeler ve daha zengin bir anlamsal yapı getirmeyi amaçlamaktadır.</p>              <h4>HTML5 Nedir?</h4>              <p>HTML5, multimedya, grafik, cihaz erişimi ve daha iyi semantik gibi modern web ihtiyaçlarını karşılamak için geliştirilmiş bir işaretleme dilidir. Hem HTML hem de XHTML'in özelliklerini birleştirir ve daha esnek bir sözdizimine sahiptir.</p>              <h4>Temel Avantajları</h4>              <ul>                  <li><strong>Geliştirilmiş Semantik:</strong> <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code> gibi yeni etiketlerle sayfa yapısı daha anlamlı hale gelir.</li>                  <li><strong>Multimedya Desteği:</strong> Flash gibi eklentilere ihtiyaç duymadan doğrudan <code>&lt;video&gt;</code> ve <code>&lt;audio&gt;</code> etiketleriyle medya oynatma.</li>                  <li><strong>Form Geliştirmeleri:</strong> Yeni giriş türleri (email, date, range), öznitelikler (required, pattern) ve daha iyi doğrulama yetenekleri.</li>                  <li><strong>Canvas ve SVG:</strong> 2D ve 3D grafikler çizmek için güçlü araçlar.</li>                  <li><strong>Çevrimdışı ve Depolama:</strong> Web Storage (localStorage/sessionStorage) ve Application Cache ile çevrimdışı uygulamalar oluşturma imkanı.</li>              </ul>          </section>            <section id="structure">              <h2><i class="bi bi-file-code-fill"></i> Temel Belge Yapısı</h2>              <p>Her HTML5 belgesi, tarayıcıya sayfanın standardını bildiren bir DOCTYPE ile başlar ve temel yapı etiketlerini içerir.</p>              <pre><code>&lt;!DOCTYPE html&gt;  &lt;html lang="tr"&gt;  &lt;head&gt;      &lt;meta charset="UTF-8"&gt;      &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;      &lt;title&gt;Sayfa Başlığı&lt;/title&gt;  &lt;/head&gt;  &lt;body&gt;      &lt;!-- Sayfa içeriği buraya gelir --&gt;  &lt;/body&gt;  &lt;/html&gt;  </code></pre>          </section>            <section id="semantic">              <h2><i class="bi bi-tags-fill"></i> Semantik Etiketler</h2>              <p>Semantik etiketler, içeriğin anlamını hem tarayıcıya hem de geliştiriciye açıklar. Bu, SEO ve erişilebilirlik için kritik öneme sahiptir.</p>              <pre><code>&lt;header&gt;      &lt;h1&gt;Web Sitesi Başlığı&lt;/h1&gt;      &lt;nav&gt;          &lt;a href="/home"&gt;Anasayfa&lt;/a&gt;      &lt;/nav&gt;  &lt;/header&gt;    &lt;main&gt;      &lt;article&gt;          &lt;h2&gt;Makale Başlığı&lt;/h2&gt;          &lt;p&gt;Makale içeriği...&lt;/p&gt;      &lt;/article&gt;  &lt;/main&gt;    &lt;aside&gt;      &lt;p&gt;Yan panel içeriği.&lt;/p&gt;  &lt;/aside&gt;    &lt;footer&gt;      &lt;p&gt;Telif Hakkı © 2025&lt;/p&gt;  &lt;/footer&gt;  </code></pre>          </section>            </div>        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  </body>  </html>'''
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Référence complète HTML5 - Guide interactif des éléments sémantiques et balises HTML5">
+    <meta name="keywords" content="HTML5, référence, balises sémantiques, tutoriel, guide">
+    <meta name="author" content="LP DWCA - Mikail Lekesiz">
+    <title>Référence Complète HTML5 | LP DWCA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --sidebar-width: 280px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8f9fa;
+        }
+        
+        /* Sidebar */
+        #sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            padding: 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        
+        #sidebar::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        #sidebar::-webkit-scrollbar-track {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        #sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.3);
+            border-radius: 4px;
+        }
+        
+        #sidebar h5 {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        #sidebar .nav-link {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 8px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+        
+        #sidebar .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        #sidebar .nav-link.active {
+            background: var(--primary-gradient);
+            color: white;
+            font-weight: bold;
+        }
+        
+        #sidebar .nav-link i {
+            margin-right: 8px;
+            width: 20px;
+        }
+        
+        /* Content */
+        #content {
+            margin-left: calc(var(--sidebar-width) + 40px);
+            padding: 40px;
+            max-width: 1200px;
+        }
+        
+        /* Header */
+        .page-header {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .page-header p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 0;
+        }
+        
+        /* Sections */
+        section {
+            margin-bottom: 80px;
+            scroll-margin-top: 80px;
+        }
+        
+        section h2 {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        section h2 i {
+            margin-right: 15px;
+        }
+        
+        section h3 {
+            color: #2c3e50;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+        
+        section h4 {
+            color: #34495e;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        /* Element Cards */
+        .element-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+        
+        .element-card:hover {
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            transform: translateY(-2px);
+        }
+        
+        .element-card .element-name {
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .element-card .element-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .element-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .badge-new {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .badge-semantic {
+            background: #51cf66;
+            color: white;
+        }
+        
+        .badge-structure {
+            background: #339af0;
+            color: white;
+        }
+        
+        .badge-text {
+            background: #ffd43b;
+            color: #333;
+        }
+        
+        /* Code Blocks */
+        .code-example {
+            background: #2d2d2d;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        
+        .code-example pre {
+            margin: 0;
+            color: #f8f8f2;
+        }
+        
+        .code-example code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        /* Info Boxes */
+        .info-box {
+            background: #e7f5ff;
+            border-left: 4px solid #339af0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .info-box.warning {
+            background: #fff3bf;
+            border-left-color: #ffd43b;
+        }
+        
+        .info-box.success {
+            background: #d3f9d8;
+            border-left-color: #51cf66;
+        }
+        
+        .info-box.danger {
+            background: #ffe3e3;
+            border-left-color: #ff6b6b;
+        }
+        
+        .info-box strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+        
+        /* Table */
+        .comparison-table {
+            width: 100%;
+            margin: 25px 0;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+        
+        .comparison-table th {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .comparison-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        /* Demo Box */
+        .demo-box {
+            background: white;
+            border: 2px dashed #667eea;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .demo-box-title {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .demo-box-title i {
+            margin-right: 8px;
+        }
+        
+        /* TP Section */
+        .tp-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(240, 147, 251, 0.3);
+        }
+        
+        .tp-section h2 {
+            color: white;
+            border-bottom-color: white;
+        }
+        
+        .tp-section a {
+            color: white;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+        
+        .tp-section a:hover {
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            #sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            #sidebar.show {
+                transform: translateX(0);
+            }
+            
+            #content {
+                margin-left: 0;
+                padding: 20px;
+            }
+        }
+        
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body data-bs-spy="scroll" data-bs-target="#sidebar-nav" data-bs-offset="100">
+    
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <h5><i class="bi bi-filetype-html"></i> HTML5</h5>
+        <nav id="sidebar-nav" class="nav flex-column">
+            <a class="nav-link" href="#introduction"><i class="bi bi-house-door"></i> Introduction</a>
+            <a class="nav-link" href="#structure"><i class="bi bi-diagram-3"></i> Structure du Document</a>
+            <a class="nav-link" href="#semantic-structure"><i class="bi bi-layout-text-window"></i> Éléments de Structure</a>
+            <a class="nav-link" href="#text-content"><i class="bi bi-fonts"></i> Contenu Textuel</a>
+            <a class="nav-link" href="#inline-text"><i class="bi bi-type"></i> Sémantique de Texte</a>
+            <a class="nav-link" href="#media"><i class="bi bi-image"></i> Médias</a>
+            <a class="nav-link" href="#forms"><i class="bi bi-ui-checks"></i> Formulaires</a>
+            <a class="nav-link" href="#tables"><i class="bi bi-table"></i> Tableaux</a>
+            <a class="nav-link" href="#embedded"><i class="bi bi-code-square"></i> Contenu Intégré</a>
+            <a class="nav-link" href="#interactive"><i class="bi bi-cursor"></i> Éléments Interactifs</a>
+            <a class="nav-link" href="#apis"><i class="bi bi-gear"></i> APIs HTML5</a>
+            <a class="nav-link" href="#accessibility"><i class="bi bi-universal-access"></i> Accessibilité</a>
+            <a class="nav-link" href="#best-practices"><i class="bi bi-check-circle"></i> Bonnes Pratiques</a>
+            <a class="nav-link" href="#tp-n3"><i class="bi bi-file-earmark-code"></i> TP N3</a>
+        </nav>
+    </div>
+    
+    <!-- Content -->
+    <div id="content">
+        
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1><i class="bi bi-filetype-html"></i> Référence Complète HTML5</h1>
+            <p>Guide interactif et complet des éléments sémantiques HTML5 avec exemples pratiques</p>
+            <p class="mt-3"><strong>LP DWCA</strong> - Développeur Web et Conception d'Applications</p>
+        </div>
+        
+        <!-- Introduction -->
+        <section id="introduction">
+            <h2><i class="bi bi-flag"></i> Qu'est-ce que le HTML5 ?</h2>
+            
+            <p>HTML5 est la cinquième et dernière version majeure du standard HTML (HyperText Markup Language), le langage fondamental du World Wide Web. Il apporte de nouvelles fonctionnalités, des améliorations et une structure sémantique plus riche pour répondre aux besoins modernes du web.</p>
+            
+            <h3>Définition du HTML Sémantique</h3>
+            <p>Le <strong>HTML sémantique</strong>, également connu sous le nom de balisage sémantique, désigne l'utilisation de balises HTML qui transmettent la signification - ou la valeur sémantique - du contenu qu'elles renferment.</p>
+            
+            <div class="info-box success">
+                <strong><i class="bi bi-lightbulb"></i> Pourquoi "Sémantique" ?</strong>
+                Le mot <em>sémantique</em> signifie « qui concerne le sens, la signification ». En ajoutant des balises sémantiques HTML à vos pages, vous fournissez des informations supplémentaires qui définissent les rôles et l'importance relative des différentes parties de votre page.
+            </div>
+            
+            <h3>Avantages Principaux du HTML5</h3>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-tags"></i> Sémantique Améliorée</div>
+                        <div class="element-description">
+                            De nouvelles balises comme <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;article&gt;</code> rendent la structure de la page plus claire et significative.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-play-circle"></i> Support Multimédia</div>
+                        <div class="element-description">
+                            Lecture de vidéos et audio directement avec <code>&lt;video&gt;</code> et <code>&lt;audio&gt;</code> sans plugins externes comme Flash.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-ui-checks"></i> Formulaires Avancés</div>
+                        <div class="element-description">
+                            Nouveaux types d'input (email, date, range), attributs (required, pattern) et meilleures capacités de validation.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-palette"></i> Canvas et SVG</div>
+                        <div class="element-description">
+                            Outils puissants pour dessiner des graphiques 2D et 3D directement dans le navigateur.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-database"></i> Stockage Local</div>
+                        <div class="element-description">
+                            Web Storage (localStorage/sessionStorage) pour créer des applications hors ligne.
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-search"></i> SEO Optimisé</div>
+                        <div class="element-description">
+                            Les balises sémantiques aident les moteurs de recherche à mieux comprendre et indexer votre contenu.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Pourquoi Utiliser des Balises Sémantiques ?</h3>
+            
+            <div class="info-box">
+                <strong><i class="bi bi-universal-access"></i> Accessibilité</strong>
+                Les balises sémantiques permettent aux lecteurs d'écran de mieux comprendre votre contenu, rendant votre site accessible aux utilisateurs aveugles ou malvoyants.
+            </div>
+            
+            <div class="info-box">
+                <strong><i class="bi bi-graph-up"></i> SEO (Référencement)</strong>
+                Les balises sémantiques indiquent aux robots des moteurs de recherche (comme Googlebot) le rôle du contenu, augmentant vos chances d'apparaître dans les résultats de recherche pour des mots-clés pertinents.
+            </div>
+            
+            <div class="info-box">
+                <strong><i class="bi bi-code-slash"></i> Maintenabilité du Code</strong>
+                Un code sémantique est plus facile à lire et à comprendre pour les développeurs, facilitant la maintenance et les évolutions futures.
+            </div>
+        </section>
+        
+        <!-- Structure du Document -->
+        <section id="structure">
+            <h2><i class="bi bi-diagram-3"></i> Structure du Document HTML5</h2>
+            
+            <p>Chaque document HTML5 commence par une déclaration DOCTYPE qui indique au navigateur le standard de la page, suivi des éléments de structure de base.</p>
+            
+            <h3>Structure Minimale</h3>
+            
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="fr"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Titre de la Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!-- Le contenu de la page va ici --&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <h3>Éléments Racine et Métadonnées</h3>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;!DOCTYPE html&gt;</div>
+                <span class="element-badge badge-structure">Obligatoire</span>
+                <div class="element-description">
+                    Déclare que le document est un document HTML5. Cette déclaration doit être la toute première ligne du fichier.
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;html&gt;</div>
+                <span class="element-badge badge-structure">Élément Racine</span>
+                <div class="element-description">
+                    L'élément racine qui contient tout le contenu HTML. L'attribut <code>lang</code> spécifie la langue du document (ex: <code>lang="fr"</code> pour le français).
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;head&gt;</div>
+                <span class="element-badge badge-structure">Métadonnées</span>
+                <div class="element-description">
+                    Contient les métadonnées du document : titre, encodage, liens vers CSS et JavaScript, etc.
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;meta charset="UTF-8"&gt;</div>
+                <span class="element-badge badge-structure">Encodage</span>
+                <div class="element-description">
+                    Définit l'encodage des caractères. UTF-8 est recommandé car il supporte tous les caractères internationaux.
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;meta name="viewport"&gt;</div>
+                <span class="element-badge badge-structure">Responsive</span>
+                <div class="element-description">
+                    Essentiel pour le design responsive. Contrôle comment la page est affichée sur les appareils mobiles.
+                    <div class="code-example mt-2">
+                        <pre><code class="language-html">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;title&gt;</div>
+                <span class="element-badge badge-structure">Obligatoire</span>
+                <div class="element-description">
+                    Définit le titre du document affiché dans l'onglet du navigateur et utilisé par les moteurs de recherche.
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;body&gt;</div>
+                <span class="element-badge badge-structure">Contenu</span>
+                <div class="element-description">
+                    Contient tout le contenu visible de la page web.
+                </div>
+            </div>
+        </section>
+        
+        <!-- Éléments de Structure Sémantique -->
+        <section id="semantic-structure">
+            <h2><i class="bi bi-layout-text-window"></i> Éléments de Structure Sémantique</h2>
+            
+            <p>Les éléments de structure sémantique organisent le contenu de la page de manière significative. Ils ont été introduits avec HTML5 pour remplacer les <code>&lt;div&gt;</code> génériques.</p>
+            
+            <div class="info-box warning">
+                <strong><i class="bi bi-exclamation-triangle"></i> Important</strong>
+                Contrairement aux éléments <code>&lt;div&gt;</code> et <code>&lt;span&gt;</code> qui sont non-sémantiques, ces balises indiquent clairement le rôle du contenu qu'elles renferment.
+            </div>
+            
+            <h3>Structure Typique d'une Page HTML5</h3>
+            
+            <div class="demo-box">
+                <div class="demo-box-title"><i class="bi bi-eye"></i> Exemple Visuel</div>
+                <img src="HTML5_Template_Example.jpg" alt="Exemple de structure HTML5" class="img-fluid rounded shadow-sm">
+            </div>
+            
+            <div class="code-example">
+                <pre><code class="language-html">&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Titre du Site&lt;/h1&gt;
+        &lt;nav&gt;
+            &lt;a href="#accueil"&gt;Accueil&lt;/a&gt;
+            &lt;a href="#services"&gt;Services&lt;/a&gt;
+            &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+    
+    &lt;main&gt;
+        &lt;article&gt;
+            &lt;header&gt;
+                &lt;h2&gt;Titre de l'Article&lt;/h2&gt;
+            &lt;/header&gt;
+            &lt;section&gt;
+                &lt;h3&gt;Première Section&lt;/h3&gt;
+                &lt;p&gt;Contenu de la section...&lt;/p&gt;
+            &lt;/section&gt;
+            &lt;footer&gt;
+                &lt;p&gt;Publié le 23 octobre 2025&lt;/p&gt;
+            &lt;/footer&gt;
+        &lt;/article&gt;
+        
+        &lt;aside&gt;
+            &lt;h3&gt;Articles Connexes&lt;/h3&gt;
+            &lt;p&gt;Contenu complémentaire...&lt;/p&gt;
+        &lt;/aside&gt;
+    &lt;/main&gt;
+    
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2025 Mon Site Web&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+            </div>
+            
+            <h3>Détail des Éléments</h3>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;header&gt;</div>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Définit l'en-tête d'une page ou d'une section.<br>
+                    <strong>Contenu typique :</strong> Logo, titre principal, navigation, formulaire de recherche.<br>
+                    <strong>Note :</strong> Peut être utilisé plusieurs fois dans une page (en-tête de page, en-tête d'article, etc.).
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;header&gt;
+    &lt;h1&gt;Mon Blog Personnel&lt;/h1&gt;
+    &lt;p&gt;Partage de connaissances en développement web&lt;/p&gt;
+&lt;/header&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;nav&gt;</div>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Contient les liens de navigation principaux.<br>
+                    <strong>Utilisation :</strong> Menu principal, table des matières, fil d'Ariane.<br>
+                    <strong>Conseil :</strong> Réservez <code>&lt;nav&gt;</code> pour les navigations importantes, pas pour tous les groupes de liens.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/"&gt;Accueil&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;main&gt;</div>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Contient le contenu principal unique de la page.<br>
+                    <strong>Règle importante :</strong> Il ne doit y avoir qu'<strong>un seul</strong> élément <code>&lt;main&gt;</code> par page.<br>
+                    <strong>Exclusions :</strong> Ne doit pas contenir de contenu répété (navigation, footer, sidebar).
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;main&gt;
+    &lt;h1&gt;Guide HTML5 Complet&lt;/h1&gt;
+    &lt;p&gt;Contenu principal de la page...&lt;/p&gt;
+&lt;/main&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;article&gt;</div>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Représente un contenu autonome et réutilisable.<br>
+                    <strong>Exemples :</strong> Article de blog, commentaire, widget, carte produit.<br>
+                    <strong>Test :</strong> Le contenu aurait-il du sens s'il était extrait et publié ailleurs ? Si oui, utilisez <code>&lt;article&gt;</code>.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;article&gt;
+    &lt;h2&gt;Les Nouveautés HTML5&lt;/h2&gt;
+    &lt;p&gt;Publié le &lt;time datetime="2025-10-23"&gt;23 octobre 2025&lt;/time&gt;&lt;/p&gt;
+    &lt;p&gt;HTML5 apporte de nombreuses améliorations...&lt;/p&gt;
+&lt;/article&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;section&gt;</div>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Regroupe du contenu thématiquement lié.<br>
+                    <strong>Différence avec article :</strong> <code>&lt;section&gt;</code> n'est pas autonome, c'est une partie d'un ensemble.<br>
+                    <strong>Bonne pratique :</strong> Chaque section devrait avoir un titre (<code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, etc.).
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;section&gt;
+    &lt;h2&gt;À Propos de Nous&lt;/h2&gt;
+    &lt;p&gt;Notre mission est de...&lt;/p&gt;
+&lt;/section&gt;
 
+&lt;section&gt;
+    &lt;h2&gt;Nos Services&lt;/h2&gt;
+    &lt;p&gt;Nous proposons...&lt;/p&gt;
+&lt;/section&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;aside&gt;</div>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Contenu tangentiel ou complémentaire.<br>
+                    <strong>Utilisations courantes :</strong> Barre latérale (sidebar), encadrés, publicités, liens connexes.<br>
+                    <strong>Caractéristique :</strong> Le contenu est lié mais pas essentiel à la compréhension du contenu principal.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;aside&gt;
+    &lt;h3&gt;Articles Populaires&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="/article1"&gt;Introduction à CSS&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="/article2"&gt;JavaScript ES6&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;footer&gt;</div>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Pied de page d'une page ou d'une section.<br>
+                    <strong>Contenu typique :</strong> Informations de copyright, liens de contact, mentions légales, plan du site.<br>
+                    <strong>Note :</strong> Comme <code>&lt;header&gt;</code>, peut être utilisé plusieurs fois (pied de page, pied d'article).
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;footer&gt;
+    &lt;p&gt;&copy; 2025 Mon Site. Tous droits réservés.&lt;/p&gt;
+    &lt;nav&gt;
+        &lt;a href="/mentions-legales"&gt;Mentions Légales&lt;/a&gt;
+        &lt;a href="/confidentialite"&gt;Politique de Confidentialité&lt;/a&gt;
+    &lt;/nav&gt;
+&lt;/footer&gt;</code></pre>
+                </div>
+            </div>
+        </section>
 
-<section id="text">
-    <h2><i class="bi bi-fonts"></i> Metin Etiketleri</h2>
-    <p>Metin içeriğini yapılandırmak ve biçimlendirmek için kullanılan temel etiketler.</p>
-    <pre><code>&lt;h1&gt;Ana Başlık&lt;/h1&gt;
-&lt;p&gt;Bu bir paragraftır. &lt;strong&gt;Kalın&lt;/strong&gt; ve &lt;em&gt;italik&lt;/em&gt; metin içerebilir.&lt;/p&gt;
-&lt;ul&gt;
-    &lt;li&gt;Sırasız liste öğesi 1&lt;/li&gt;
-    &lt;li&gt;Sırasız liste öğesi 2&lt;/li&gt;
+        <!-- Contenu Textuel -->
+        <section id="text-content">
+            <h2><i class="bi bi-fonts"></i> Éléments de Contenu Textuel</h2>
+            
+            <p>Ces éléments organisent les blocs ou sections de contenu textuel. Ils sont essentiels pour la structure sémantique du document.</p>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;p&gt;</div>
+                <span class="element-badge badge-text">Texte</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Définit un paragraphe de texte.<br>
+                    <strong>Usage :</strong> L'élément le plus courant pour le contenu textuel.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;p&gt;Ceci est un paragraphe de texte. Il peut contenir plusieurs phrases.&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;h1&gt; à &lt;h6&gt;</div>
+                <span class="element-badge badge-text">Titres</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Définissent les titres de différents niveaux.<br>
+                    <strong>Hiérarchie :</strong> <code>&lt;h1&gt;</code> est le plus important, <code>&lt;h6&gt;</code> le moins important.<br>
+                    <strong>SEO :</strong> Un seul <code>&lt;h1&gt;</code> par page recommandé.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;h1&gt;Titre Principal&lt;/h1&gt;
+&lt;h2&gt;Sous-titre&lt;/h2&gt;
+&lt;h3&gt;Sous-sous-titre&lt;/h3&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;ul&gt; et &lt;ol&gt;</div>
+                <span class="element-badge badge-text">Listes</span>
+                <div class="element-description">
+                    <strong>&lt;ul&gt;</strong> : Liste non ordonnée (à puces)<br>
+                    <strong>&lt;ol&gt;</strong> : Liste ordonnée (numérotée)<br>
+                    <strong>&lt;li&gt;</strong> : Élément de liste
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;ul&gt;
+    &lt;li&gt;Premier élément&lt;/li&gt;
+    &lt;li&gt;Deuxième élément&lt;/li&gt;
 &lt;/ul&gt;
-&lt;blockquote&gt;
-    &lt;p&gt;Bu bir alıntıdır.&lt;/p&gt;
-    &lt;footer&gt;Yazar, &lt;cite&gt;Kaynak&lt;/cite&gt;&lt;/footer&gt;
+
+&lt;ol&gt;
+    &lt;li&gt;Étape 1&lt;/li&gt;
+    &lt;li&gt;Étape 2&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;dl&gt;, &lt;dt&gt;, &lt;dd&gt;</div>
+                <span class="element-badge badge-text">Liste de Définitions</span>
+                <div class="element-description">
+                    <strong>&lt;dl&gt;</strong> : Liste de définitions<br>
+                    <strong>&lt;dt&gt;</strong> : Terme à définir<br>
+                    <strong>&lt;dd&gt;</strong> : Description/définition du terme
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;dl&gt;
+    &lt;dt&gt;HTML&lt;/dt&gt;
+    &lt;dd&gt;HyperText Markup Language&lt;/dd&gt;
+    
+    &lt;dt&gt;CSS&lt;/dt&gt;
+    &lt;dd&gt;Cascading Style Sheets&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;blockquote&gt;</div>
+                <span class="element-badge badge-text">Citation</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Citation longue provenant d'une autre source.<br>
+                    <strong>Attribut :</strong> <code>cite</code> pour indiquer la source.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;blockquote cite="https://example.com"&gt;
+    &lt;p&gt;Le web est pour tout le monde.&lt;/p&gt;
+    &lt;footer&gt;— Tim Berners-Lee&lt;/footer&gt;
 &lt;/blockquote&gt;</code></pre>
-</section>
-
-<section id="media">
-    <h2><i class="bi bi-image-fill"></i> Bağlantılar ve Medya</h2>
-    <p>Diğer sayfalara bağlantı vermek ve resim, video gibi medya öğelerini eklemek için kullanılır.</p>
-    <pre><code>&lt;a href="https://www.google.com" target="_blank"&gt;Google'a Git&lt;/a&gt;
-
-&lt;img src="resim.jpg" alt="Açıklayıcı metin" width="500" height="300"&gt;
-
-&lt;video controls width="600"&gt;
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;pre&gt;</div>
+                <span class="element-badge badge-text">Texte Préformaté</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Préserve les espaces et les sauts de ligne.<br>
+                    <strong>Usage :</strong> Code source, poésie, ASCII art.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;pre&gt;
+function hello() {
+    console.log("Bonjour!");
+}
+&lt;/pre&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;hr&gt;</div>
+                <span class="element-badge badge-text">Séparateur</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Séparation thématique entre paragraphes.<br>
+                    <strong>Rendu :</strong> Ligne horizontale.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;p&gt;Première section&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;Deuxième section&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sémantique de Texte Inline -->
+        <section id="inline-text">
+            <h2><i class="bi bi-type"></i> Sémantique de Texte Inline</h2>
+            
+            <p>Ces balises définissent la signification, la structure ou le style d'un mot, d'une ligne ou d'un fragment de texte.</p>
+            
+            <div class="info-box warning">
+                <strong><i class="bi bi-exclamation-triangle"></i> Attention</strong>
+                N'utilisez pas ces balises uniquement pour leur apparence visuelle. Utilisez CSS pour la mise en forme.
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;a&gt;</div>
+                <span class="element-badge badge-text">Lien</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Crée un hyperlien vers une autre page ou ressource.<br>
+                    <strong>Attribut principal :</strong> <code>href</code> (destination du lien)
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;a href="https://www.example.com"&gt;Visitez notre site&lt;/a&gt;
+&lt;a href="#section"&gt;Aller à la section&lt;/a&gt;
+&lt;a href="mailto:contact@example.com"&gt;Nous contacter&lt;/a&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;strong&gt;</div>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Indique une forte importance.<br>
+                    <strong>Rendu :</strong> Généralement en gras.<br>
+                    <strong>Différence avec &lt;b&gt; :</strong> <code>&lt;strong&gt;</code> a une valeur sémantique, <code>&lt;b&gt;</code> est purement stylistique.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;p&gt;Ceci est &lt;strong&gt;très important&lt;/strong&gt;.&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;em&gt;</div>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Met l'accent sur un texte.<br>
+                    <strong>Rendu :</strong> Généralement en italique.<br>
+                    <strong>Différence avec &lt;i&gt; :</strong> <code>&lt;em&gt;</code> a une valeur sémantique (emphase), <code>&lt;i&gt;</code> est stylistique.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;p&gt;Je &lt;em&gt;dois&lt;/em&gt; finir ce projet aujourd'hui.&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;mark&gt;</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Marque ou surligne du texte pour référence.<br>
+                    <strong>Usage :</strong> Résultats de recherche, passages importants.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;p&gt;Recherche : &lt;mark&gt;HTML5&lt;/mark&gt; trouvé dans le document.&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;code&gt;</div>
+                <span class="element-badge badge-text">Code</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Représente un fragment de code informatique.<br>
+                    <strong>Rendu :</strong> Police monospace.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;p&gt;Utilisez la fonction &lt;code&gt;console.log()&lt;/code&gt; pour déboguer.&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;time&gt;</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Représente une date ou une heure.<br>
+                    <strong>Attribut :</strong> <code>datetime</code> pour le format machine-readable.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;p&gt;Publié le &lt;time datetime="2025-10-23"&gt;23 octobre 2025&lt;/time&gt;&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;abbr&gt;</div>
+                <span class="element-badge badge-semantic">Sémantique</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Définit une abréviation ou un acronyme.<br>
+                    <strong>Attribut :</strong> <code>title</code> pour la forme complète.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;p&gt;&lt;abbr title="World Wide Web"&gt;WWW&lt;/abbr&gt; a été inventé en 1989.&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;sub&gt; et &lt;sup&gt;</div>
+                <span class="element-badge badge-text">Indices</span>
+                <div class="element-description">
+                    <strong>&lt;sub&gt;</strong> : Indice (subscript) - H₂O<br>
+                    <strong>&lt;sup&gt;</strong> : Exposant (superscript) - E=mc²
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;p&gt;Formule chimique : H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;p&gt;Équation : E=mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;span&gt;</div>
+                <span class="element-badge badge-text">Neutre</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Conteneur inline générique sans signification sémantique.<br>
+                    <strong>Usage :</strong> Appliquer des styles CSS ou manipuler avec JavaScript.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;p&gt;Le prix est &lt;span class="prix"&gt;99€&lt;/span&gt;&lt;/p&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Médias -->
+        <section id="media">
+            <h2><i class="bi bi-image"></i> Éléments Multimédias</h2>
+            
+            <p>HTML5 introduit un support natif pour les médias sans nécessiter de plugins externes.</p>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;img&gt;</div>
+                <span class="element-badge badge-text">Image</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Intègre une image dans le document.<br>
+                    <strong>Attributs essentiels :</strong> <code>src</code> (source), <code>alt</code> (texte alternatif pour l'accessibilité)
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;img src="photo.jpg" alt="Description de l'image" width="500" height="300"&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;video&gt;</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Intègre une vidéo sans plugin.<br>
+                    <strong>Attributs :</strong> <code>controls</code>, <code>autoplay</code>, <code>loop</code>, <code>muted</code>
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;video controls width="600"&gt;
     &lt;source src="video.mp4" type="video/mp4"&gt;
-    Tarayıcınız video etiketini desteklemiyor.
-&lt;/video&gt;
-
-&lt;audio controls&gt;
-    &lt;source src="ses.mp3" type="audio/mpeg"&gt;
-    Tarayıcınız ses etiketini desteklemiyor.
+    &lt;source src="video.webm" type="video/webm"&gt;
+    Votre navigateur ne supporte pas la vidéo.
+&lt;/video&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;audio&gt;</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Intègre un fichier audio.<br>
+                    <strong>Formats supportés :</strong> MP3, WAV, OGG
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mpeg"&gt;
+    &lt;source src="audio.ogg" type="audio/ogg"&gt;
+    Votre navigateur ne supporte pas l'audio.
 &lt;/audio&gt;</code></pre>
-</section>
-
-<section id="forms">
-    <h2><i class="bi bi-input-cursor-text"></i> Formlar</h2>
-    <p>Kullanıcıdan veri toplamak için güçlü ve esnek form kontrolleri.</p>
-    <pre><code>&lt;form action="/submit" method="post"&gt;
-    &lt;label for="email">E-posta:&lt;/label&gt;
-    &lt;input type="email" id="email" name="email" required&gt;
-
-    &lt;label for="password">Şifre:&lt;/label&gt;
-    &lt;input type="password" id="password" name="password" minlength="8" required&gt;
-
-    &lt;input type="submit" value="Gönder"&gt;
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;picture&gt;</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Permet le responsive design pour les images.<br>
+                    <strong>Usage :</strong> Différentes images selon la taille d'écran.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;picture&gt;
+    &lt;source media="(min-width: 800px)" srcset="large.jpg"&gt;
+    &lt;source media="(min-width: 400px)" srcset="medium.jpg"&gt;
+    &lt;img src="small.jpg" alt="Image responsive"&gt;
+&lt;/picture&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;svg&gt;</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Graphiques vectoriels évolutifs.<br>
+                    <strong>Avantage :</strong> Qualité parfaite à toutes les tailles.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;svg width="100" height="100"&gt;
+    &lt;circle cx="50" cy="50" r="40" stroke="blue" stroke-width="3" fill="lightblue" /&gt;
+&lt;/svg&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;canvas&gt;</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Zone de dessin pour graphiques dynamiques via JavaScript.<br>
+                    <strong>Usage :</strong> Jeux, visualisations, animations.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;canvas id="myCanvas" width="200" height="100"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+    const canvas = document.getElementById('myCanvas');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = 'blue';
+    ctx.fillRect(10, 10, 150, 80);
+&lt;/script&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Formulaires -->
+        <section id="forms">
+            <h2><i class="bi bi-ui-checks"></i> Formulaires HTML5</h2>
+            
+            <p>HTML5 apporte de nombreuses améliorations aux formulaires avec de nouveaux types d'input et attributs de validation.</p>
+            
+            <h3>Structure de Base</h3>
+            
+            <div class="code-example">
+                <pre><code class="language-html">&lt;form action="/submit" method="post"&gt;
+    &lt;label for="nom"&gt;Nom :&lt;/label&gt;
+    &lt;input type="text" id="nom" name="nom" required&gt;
+    
+    &lt;button type="submit"&gt;Envoyer&lt;/button&gt;
 &lt;/form&gt;</code></pre>
-</section>
-
-<section id="tables">
-    <h2><i class="bi bi-table"></i> Tablolar</h2>
-    <p>Verileri satırlar ve sütunlar halinde yapılandırmak için kullanılır.</p>
-    <pre><code>&lt;table&gt;
-    &lt;caption&gt;Aylık Satış Raporu&lt;/caption&gt;
+            </div>
+            
+            <h3>Nouveaux Types d'Input HTML5</h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Exemple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>email</code></td>
+                        <td>Adresse e-mail avec validation</td>
+                        <td><code>&lt;input type="email"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>url</code></td>
+                        <td>URL avec validation</td>
+                        <td><code>&lt;input type="url"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>tel</code></td>
+                        <td>Numéro de téléphone</td>
+                        <td><code>&lt;input type="tel"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>number</code></td>
+                        <td>Nombre avec contrôles</td>
+                        <td><code>&lt;input type="number" min="0" max="100"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>range</code></td>
+                        <td>Curseur de sélection</td>
+                        <td><code>&lt;input type="range" min="0" max="100"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>date</code></td>
+                        <td>Sélecteur de date</td>
+                        <td><code>&lt;input type="date"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>time</code></td>
+                        <td>Sélecteur d'heure</td>
+                        <td><code>&lt;input type="time"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>color</code></td>
+                        <td>Sélecteur de couleur</td>
+                        <td><code>&lt;input type="color"&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><code>search</code></td>
+                        <td>Champ de recherche</td>
+                        <td><code>&lt;input type="search"&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Attributs de Validation HTML5</h3>
+            
+            <div class="element-card">
+                <div class="element-name">required</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    Rend le champ obligatoire.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;input type="text" required&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">pattern</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    Validation par expression régulière.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;input type="text" pattern="[A-Za-z]{3,}" title="Au moins 3 lettres"&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">placeholder</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    Texte d'aide affiché dans le champ vide.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;input type="email" placeholder="votre@email.com"&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">min / max</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    Valeurs minimale et maximale pour les nombres et dates.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;input type="number" min="1" max="10"&gt;
+&lt;input type="date" min="2025-01-01" max="2025-12-31"&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">autofocus</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    Focus automatique au chargement de la page.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;input type="text" autofocus&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Tableaux -->
+        <section id="tables">
+            <h2><i class="bi bi-table"></i> Tableaux</h2>
+            
+            <p>Les tableaux organisent les données en lignes et colonnes.</p>
+            
+            <div class="info-box warning">
+                <strong><i class="bi bi-exclamation-triangle"></i> Important</strong>
+                N'utilisez jamais les tableaux pour la mise en page ! Ils sont réservés aux données tabulaires.
+            </div>
+            
+            <h3>Structure Complète d'un Tableau</h3>
+            
+            <div class="code-example">
+                <pre><code class="language-html">&lt;table&gt;
+    &lt;caption&gt;Rapport Mensuel des Ventes&lt;/caption&gt;
     &lt;thead&gt;
         &lt;tr&gt;
-            &lt;th&gt;Ay&lt;/th&gt;
-            &lt;th&gt;Satış&lt;/th&gt;
+            &lt;th&gt;Mois&lt;/th&gt;
+            &lt;th&gt;Ventes&lt;/th&gt;
+            &lt;th&gt;Profit&lt;/th&gt;
         &lt;/tr&gt;
     &lt;/thead&gt;
     &lt;tbody&gt;
         &lt;tr&gt;
-            &lt;td&gt;Ocak&lt;/td&gt;
-            &lt;td&gt;10,000 TL&lt;/td&gt;
+            &lt;td&gt;Janvier&lt;/td&gt;
+            &lt;td&gt;10 000 €&lt;/td&gt;
+            &lt;td&gt;2 000 €&lt;/td&gt;
+        &lt;/tr&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Février&lt;/td&gt;
+            &lt;td&gt;12 000 €&lt;/td&gt;
+            &lt;td&gt;2 400 €&lt;/td&gt;
         &lt;/tr&gt;
     &lt;/tbody&gt;
+    &lt;tfoot&gt;
+        &lt;tr&gt;
+            &lt;td&gt;Total&lt;/td&gt;
+            &lt;td&gt;22 000 €&lt;/td&gt;
+            &lt;td&gt;4 400 €&lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tfoot&gt;
 &lt;/table&gt;</code></pre>
-</section>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;table&gt;</div>
+                <div class="element-description">Conteneur principal du tableau.</div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;caption&gt;</div>
+                <div class="element-description">Titre ou légende du tableau.</div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;thead&gt;</div>
+                <div class="element-description">Groupe l'en-tête du tableau.</div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;tbody&gt;</div>
+                <div class="element-description">Groupe le corps du tableau (données principales).</div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;tfoot&gt;</div>
+                <div class="element-description">Groupe le pied du tableau (totaux, résumés).</div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;tr&gt;</div>
+                <div class="element-description">Ligne du tableau (table row).</div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;th&gt;</div>
+                <div class="element-description">Cellule d'en-tête (table header).</div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;td&gt;</div>
+                <div class="element-description">Cellule de données (table data).</div>
+            </div>
+        </section>
+        
+        <!-- Contenu Intégré -->
+        <section id="embedded">
+            <h2><i class="bi bi-code-square"></i> Contenu Intégré</h2>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;iframe&gt;</div>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Intègre un document HTML dans un autre.<br>
+                    <strong>Usage :</strong> Vidéos YouTube, cartes Google Maps, widgets externes.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;iframe src="https://www.youtube.com/embed/VIDEO_ID" 
+        width="560" height="315" 
+        frameborder="0" 
+        allowfullscreen&gt;
+&lt;/iframe&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;embed&gt;</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Intègre du contenu externe (plugins).<br>
+                    <strong>Usage :</strong> PDF, Flash (obsolète), applications.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;embed src="document.pdf" type="application/pdf" width="600" height="400"&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Éléments Interactifs -->
+        <section id="interactive">
+            <h2><i class="bi bi-cursor"></i> Éléments Interactifs</h2>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;details&gt; et &lt;summary&gt;</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Crée un widget d'affichage/masquage de contenu.<br>
+                    <strong>Avantage :</strong> Interactif sans JavaScript.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;details&gt;
+    &lt;summary&gt;Cliquez pour plus d'informations&lt;/summary&gt;
+    &lt;p&gt;Voici le contenu caché qui s'affiche au clic.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+                </div>
+                <div class="demo-box mt-3">
+                    <div class="demo-box-title"><i class="bi bi-eye"></i> Démonstration</div>
+                    <details>
+                        <summary>Cliquez pour plus d'informations</summary>
+                        <p>Voici le contenu caché qui s'affiche au clic. C'est un élément HTML5 natif !</p>
+                    </details>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">&lt;dialog&gt;</div>
+                <span class="element-badge badge-new">HTML5</span>
+                <div class="element-description">
+                    <strong>Rôle :</strong> Boîte de dialogue ou fenêtre modale.<br>
+                    <strong>Contrôle :</strong> Via JavaScript avec <code>showModal()</code> et <code>close()</code>.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;dialog id="myDialog"&gt;
+    &lt;h2&gt;Titre de la boîte de dialogue&lt;/h2&gt;
+    &lt;p&gt;Contenu...&lt;/p&gt;
+    &lt;button onclick="document.getElementById('myDialog').close()"&gt;Fermer&lt;/button&gt;
+&lt;/dialog&gt;
 
-<section id="apis">
-    <h2><i class="bi bi-gear-fill"></i> HTML5 API'ları</h2>
-    <p>Web uygulamalarına masaüstü benzeri yetenekler kazandıran güçlü JavaScript API'ları.</p>
-    <ul>
-        <li><b>Canvas API:</b> 2D grafikler çizmek için.</li>
-        <li><b>Geolocation API:</b> Kullanıcının coğrafi konumunu almak için.</li>
-        <li><b>Web Storage:</b> Tarayıcıda veri depolamak için (localStorage ve sessionStorage).</li>
-        <li><b>Drag and Drop API:</b> Sürükle ve bırak işlevselliği eklemek için.</li>
-    </ul>
-</section>
+&lt;button onclick="document.getElementById('myDialog').showModal()"&gt;Ouvrir&lt;/button&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <!-- APIs HTML5 -->
+        <section id="apis">
+            <h2><i class="bi bi-gear"></i> APIs HTML5</h2>
+            
+            <p>HTML5 introduit de puissantes APIs JavaScript pour créer des applications web modernes.</p>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-palette"></i> Canvas API</div>
+                        <span class="element-badge badge-new">HTML5</span>
+                        <div class="element-description">
+                            Dessiner des graphiques 2D dynamiques avec JavaScript.
+                        </div>
+                        <div class="code-example mt-2">
+                            <pre><code class="language-javascript">const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+ctx.fillStyle = 'blue';
+ctx.fillRect(10, 10, 150, 80);</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-geo-alt"></i> Geolocation API</div>
+                        <span class="element-badge badge-new">HTML5</span>
+                        <div class="element-description">
+                            Obtenir la position géographique de l'utilisateur.
+                        </div>
+                        <div class="code-example mt-2">
+                            <pre><code class="language-javascript">navigator.geolocation.getCurrentPosition(
+    (position) => {
+        console.log(position.coords.latitude);
+        console.log(position.coords.longitude);
+    }
+);</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-database"></i> Web Storage API</div>
+                        <span class="element-badge badge-new">HTML5</span>
+                        <div class="element-description">
+                            Stocker des données localement dans le navigateur (localStorage, sessionStorage).
+                        </div>
+                        <div class="code-example mt-2">
+                            <pre><code class="language-javascript">// Sauvegarder
+localStorage.setItem('nom', 'Jean');
 
-<section id="multimedia">
-    <h2><i class="bi bi-play-btn-fill"></i> Multimedya</h2>
-    <p>SVG ve Canvas ile gelişmiş grafik yetenekleri.</p>
-    <pre><code>&lt;!-- Ölçeklenebilir Vektör Grafiği (SVG) --&gt;
-&lt;svg width="100" height="100"&gt;
-   &lt;circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" /&gt;
-&lt;/svg&gt;
+// Récupérer
+const nom = localStorage.getItem('nom');
 
-&lt;!-- Canvas Çizim Alanı --&gt;
-&lt;canvas id="myCanvas" width="200" height="100" style="border:1px solid #000;"&gt;&lt;/canvas&gt;</code></pre>
-</section>
+// Supprimer
+localStorage.removeItem('nom');</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-arrows-move"></i> Drag and Drop API</div>
+                        <span class="element-badge badge-new">HTML5</span>
+                        <div class="element-description">
+                            Permettre le glisser-déposer d'éléments.
+                        </div>
+                        <div class="code-example mt-2">
+                            <pre><code class="language-html">&lt;div draggable="true" ondragstart="drag(event)"&gt;
+    Glissez-moi !
+&lt;/div&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-file-earmark"></i> File API</div>
+                        <span class="element-badge badge-new">HTML5</span>
+                        <div class="element-description">
+                            Lire et manipuler des fichiers locaux.
+                        </div>
+                        <div class="code-example mt-2">
+                            <pre><code class="language-javascript">const fileInput = document.querySelector('input[type="file"]');
+fileInput.addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    console.log(file.name, file.size);
+});</code></pre>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="element-card">
+                        <div class="element-name"><i class="bi bi-clock-history"></i> History API</div>
+                        <span class="element-badge badge-new">HTML5</span>
+                        <div class="element-description">
+                            Manipuler l'historique du navigateur.
+                        </div>
+                        <div class="code-example mt-2">
+                            <pre><code class="language-javascript">// Ajouter une entrée
+history.pushState({page: 1}, "titre", "?page=1");
 
-<section id="accessibility">
-    <h2><i class="bi bi-universal-access"></i> Erişilebilirlik (Accessibility)</h2>
-    <p>Web sitenizi herkes için kullanılabilir hale getirmek önemlidir. HTML5, anlamsal etiketler ve ARIA rolleri ile bunu kolaylaştırır.</p>
-    <pre><code>&lt;!-- Resimler için her zaman alt metin sağlayın --&gt;
-&lt;img src="logo.png" alt="Şirket Logosu"&gt;
+// Naviguer
+history.back();
+history.forward();</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Accessibilité -->
+        <section id="accessibility">
+            <h2><i class="bi bi-universal-access"></i> Accessibilité (ARIA)</h2>
+            
+            <p>L'accessibilité web garantit que votre site est utilisable par tous, y compris les personnes en situation de handicap.</p>
+            
+            <div class="info-box success">
+                <strong><i class="bi bi-check-circle"></i> Pourquoi l'accessibilité est importante</strong>
+                <ul class="mt-2">
+                    <li>Rend votre site utilisable par les lecteurs d'écran</li>
+                    <li>Améliore le SEO</li>
+                    <li>Obligation légale dans de nombreux pays</li>
+                    <li>Meilleure expérience pour tous les utilisateurs</li>
+                </ul>
+            </div>
+            
+            <h3>Bonnes Pratiques d'Accessibilité</h3>
+            
+            <div class="element-card">
+                <div class="element-name">Texte Alternatif pour les Images</div>
+                <div class="element-description">
+                    Toujours fournir un attribut <code>alt</code> descriptif.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;!-- Bon --&gt;
+&lt;img src="logo.png" alt="Logo de l'entreprise XYZ"&gt;
 
-&lt;!-- Form elemanlarını etiketlerle ilişkilendirin --&gt;
-&lt;label for="username">Kullanıcı Adı:&lt;/label&gt;
-&lt;input type="text" id="username"&gt;
+&lt;!-- Mauvais --&gt;
+&lt;img src="logo.png" alt=""&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">Labels pour les Formulaires</div>
+                <div class="element-description">
+                    Associer chaque champ de formulaire avec un <code>&lt;label&gt;</code>.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;label for="email"&gt;Adresse e-mail :&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">Rôles ARIA</div>
+                <div class="element-description">
+                    Utiliser les attributs ARIA pour clarifier le rôle des éléments personnalisés.
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;div role="navigation"&gt;
+    &lt;!-- Menu de navigation --&gt;
+&lt;/div&gt;
 
-&lt;!-- ARIA rolleri ile özel bileşenlerin amacını belirtin --&gt;
-&lt;div role="tabpanel"&gt;...&lt;/div&gt;</code></pre>
-</section>
+&lt;button aria-label="Fermer" onclick="closeModal()"&gt;
+    &times;
+&lt;/button&gt;</code></pre>
+                </div>
+            </div>
+            
+            <div class="element-card">
+                <div class="element-name">Hiérarchie des Titres</div>
+                <div class="element-description">
+                    Respecter l'ordre logique des titres (h1 → h2 → h3).
+                </div>
+                <div class="code-example mt-2">
+                    <pre><code class="language-html">&lt;!-- Bon --&gt;
+&lt;h1&gt;Titre Principal&lt;/h1&gt;
+&lt;h2&gt;Sous-titre&lt;/h2&gt;
+&lt;h3&gt;Sous-sous-titre&lt;/h3&gt;
 
-<section id="best-practices">
-    <h2><i class="bi bi-check-circle-fill"></i> En İyi Uygulamalar</h2>
-    <p>Daha iyi performans, SEO ve bakım için HTML5'i etkili bir şekilde kullanın.</p>
-    <ul>
-        <li><b>Anlamlı Etiketler Kullanın:</b> İçeriğinizi doğru şekilde tanımlayan semantik etiketleri tercih edin.</li>
-        <li><b>Erişilebilirliği Düşünün:</b> Herkesin sitenizi kullanabildiğinden emin olun.</li>
-        <li><b>Performansı Optimize Edin:</b> Resimleri sıkıştırın, gereksiz kodları kaldırın ve tarayıcı önbellekleme mekanizmalarını kullanın.</li>
-        <li><b>Doğrulama Yapın:</b> Kodunuzun standartlara uygun olduğundan emin olmak için W3C doğrulayıcısını kullanın.</li>
-    </ul>
-</section>
+&lt;!-- Mauvais : sauter des niveaux --&gt;
+&lt;h1&gt;Titre Principal&lt;/h1&gt;
+&lt;h3&gt;Sous-titre&lt;/h3&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Bonnes Pratiques -->
+        <section id="best-practices">
+            <h2><i class="bi bi-check-circle"></i> Bonnes Pratiques HTML5</h2>
+            
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <div class="info-box success">
+                        <strong><i class="bi bi-check2"></i> À FAIRE</strong>
+                        <ul class="mt-2">
+                            <li>Utiliser des balises sémantiques appropriées</li>
+                            <li>Valider votre HTML avec le validateur W3C</li>
+                            <li>Toujours inclure l'attribut <code>alt</code> pour les images</li>
+                            <li>Utiliser des titres hiérarchiques (h1-h6)</li>
+                            <li>Séparer structure (HTML), présentation (CSS) et comportement (JS)</li>
+                            <li>Optimiser les images pour le web</li>
+                            <li>Utiliser HTTPS</li>
+                            <li>Tester sur différents navigateurs</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-3">
+                    <div class="info-box danger">
+                        <strong><i class="bi bi-x-circle"></i> À ÉVITER</strong>
+                        <ul class="mt-2">
+                            <li>Utiliser des balises obsolètes (<code>&lt;font&gt;</code>, <code>&lt;center&gt;</code>)</li>
+                            <li>Utiliser des tableaux pour la mise en page</li>
+                            <li>Utiliser des balises sémantiques uniquement pour le style</li>
+                            <li>Oublier la balise <code>&lt;!DOCTYPE html&gt;</code></li>
+                            <li>Mettre du CSS inline dans le HTML</li>
+                            <li>Négliger l'accessibilité</li>
+                            <li>Utiliser trop de <code>&lt;div&gt;</code> au lieu de balises sémantiques</li>
+                            <li>Ignorer la validation du code</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <h3>Séparation des Préoccupations</h3>
+            
+            <div class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Langage</th>
+                        <th>Rôle</th>
+                        <th>Exemple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>HTML</strong></td>
+                        <td>Structure et contenu</td>
+                        <td><code>&lt;h1&gt;Titre&lt;/h1&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>CSS</strong></td>
+                        <td>Présentation et style</td>
+                        <td><code>h1 { color: blue; }</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>JavaScript</strong></td>
+                        <td>Comportement et interactivité</td>
+                        <td><code>document.querySelector('h1').onclick = ...</code></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h3>Validation du Code</h3>
+            
+            <div class="info-box">
+                <strong><i class="bi bi-check-square"></i> Validateur W3C</strong>
+                <p class="mt-2">Utilisez le validateur officiel du W3C pour vérifier que votre code HTML est conforme aux standards :</p>
+                <p><a href="https://validator.w3.org/" target="_blank" class="btn btn-primary">https://validator.w3.org/</a></p>
+            </div>
+        </section>
+        
+        <!-- TP N3 -->
+        <section id="tp-n3" class="tp-section">
+            <h2><i class="bi bi-file-earmark-code"></i> TP N3 : Nouveaux Éléments HTML5 d'Organisation des Contenus</h2>
+            
+            <h3>Objectif du TP</h3>
+            <p>Créer un document web avec un modèle minimaliste HTML5 / CSS3 basé sur l'utilisation de nouveaux éléments sémantiques HTML5 d'organisation des contenus.</p>
+            
+            <h3>Consignes</h3>
+            <ul>
+                <li>Utiliser les éléments de section : <code>&lt;header&gt;</code>, <code>&lt;footer&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code></li>
+                <li>Contrôler la disposition avec CSS (propriétés <code>float</code> ou <code>display: inline-block</code>)</li>
+                <li>Créer un design en 2 colonnes (contenu principal + aside)</li>
+                <li>Ajouter une description de chaque élément HTML5 utilisé</li>
+            </ul>
+            
+            <h3>Techniques CSS Interdites</h3>
+            <div class="alert alert-warning mt-3">
+                <strong><i class="bi bi-exclamation-triangle"></i> Attention :</strong> N'utilisez pas CSS Grid ni Flexbox pour ce TP.
+            </div>
+            
+            <h3>Exemple Visuel</h3>
+            <div class="mt-3">
+                <img src="HTML5_Template_Example.jpg" alt="Exemple de structure HTML5 pour le TP" class="img-fluid rounded shadow">
+            </div>
+            
+            <h3>Ressources</h3>
+            <ul class="mt-3">
+                <li><a href="tp-n3/Détail-de-la-ressource.md" style="color: white; text-decoration: underline;">Détail de la ressource (Consignes complètes)</a></li>
+                <li><a href="HTMLchapitre3_HTML5ElementsSemantiquesOrganisationContenu.pdf" style="color: white; text-decoration: underline;">Documentation PDF - Chapitre 3</a></li>
+            </ul>
+            
+            <h3>Résultats Attendus</h3>
+            <ol>
+                <li>Une page HTML valide avec structure sémantique</li>
+                <li>Mise en page CSS en 2 colonnes sans Grid/Flexbox</li>
+                <li>Document instructif (tutoriel/fiche pratique)</li>
+                <li>Dépôt sur la plateforme et hébergement en ligne</li>
+            </ol>
+        </section>
+        
+        <!-- Back to Top Button -->
+        <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <i class="bi bi-arrow-up"></i>
+        </div>
+        
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script>
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // Smooth scroll for sidebar links
+        document.querySelectorAll('#sidebar-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
 

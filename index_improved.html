@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LP DWCA - Portfolio Complet - Mikail Lekesiz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary-gradient);
+            min-height: 100vh;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .hero .lead {
+            font-size: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .stats {
+            background: white;
+            padding: 60px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        
+        .stat-card h3 {
+            font-size: 3rem;
+            font-weight: bold;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+        
+        .section-title {
+            background: var(--primary-gradient);
+            color: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 60px 0 40px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            margin-bottom: 35px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .project-card h3 {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .project-card p {
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+        
+        .project-card .badge {
+            font-size: 0.85rem;
+            padding: 8px 14px;
+            margin-right: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .project-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary-gradient);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            margin-right: 10px;
+        }
+        
+        .project-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        
+        .highlight-new {
+            position: relative;
+        }
+        
+        .highlight-new::after {
+            content: "⭐ NOUVEAU";
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+        
+        footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0;
+            margin-top: 80px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 0.7;
+        }
+        
+        /* Improved spacing for rows */
+        .row {
+            margin-bottom: 20px;
+        }
+        
+        .row:last-child {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1><i class="bi bi-code-slash"></i> LP DWCA - Portfolio Complet</h1>
+            <p class="lead">Formation Développeur Web et Conception d'Applications</p>
+            <p class="lead">HTML • CSS • JavaScript • PHP • Bootstrap • Emmet</p>
+            <p class="mt-4"><strong>Par Mikail Lekesiz</strong> - DevOps Engineer & Full Stack Developer</p>
+            <p>Professeur: <strong>ERIC CHRISTOFFEL</strong> | Université de Strasbourg</p>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 stat-card">
+                    <h3>244+</h3>
+                    <p>Fichiers</p>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <h3>~38,286</h3>
+                    <p>Lignes de Code</p>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <h3>13</h3>
+                    <p>Modules</p>
+                </div>
+                <div class="col-md-3 stat-card">
+                    <h3>20+</h3>
+                    <p>Ressources</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container my-5">
+        
+        <!-- PROJETS PHARES -->
+        <div class="section-title">
+            <i class="bi bi-star-fill"></i> Projets Phares
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-filetype-html"></i> Kapsamlı HTML5 Referansı</h3>
+                    <p>HTML5 hakkında her şeyi öğrenmek için kullanım örnekleri ve açıklamalar içeren kapsamlı bir rehber.</p>
+                    <div>
+                        <span class="badge bg-success">HTML5</span>
+                        <span class="badge bg-primary">~500 lignes</span>
+                        <span class="badge bg-info">Rehber</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="html5-reference/" class="project-link">
+                            <i class="bi bi-book"></i> Rehberi İncele
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-book"></i> Course Exercises</h3>
+                    <p>4 chapitres JavaScript complets démontrant la maîtrise de tous les concepts enseignés.</p>
+                    <div>
+                        <span class="badge bg-warning">JavaScript</span>
+                        <span class="badge bg-primary">~1,267 lignes</span>
+                        <span class="badge bg-success">Interactif</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="course-exercises/" class="project-link">
+                            <i class="bi bi-folder-open"></i> Explorer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-bootstrap"></i> Mini-Projet Bootstrap</h3>
+                    <p>Projet en binôme (avec Mickael Hoffer) démontrant 50+ composants Bootstrap 5.3.</p>
+                    <div>
+                        <span class="badge bg-primary">Bootstrap</span>
+                        <span class="badge bg-info">~850 lignes</span>
+                        <span class="badge bg-success">Binôme</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="mini-projet-bootstrap/" class="project-link">
+                            <i class="bi bi-eye"></i> Voir le Projet
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="project-card">
+                    <h3><i class="bi bi-lightning"></i> Emmet Mastery</h3>
+                    <p>Guide complet avec 100+ raccourcis Emmet, exemples pratiques et projet showcase.</p>
+                    <div>
+                        <span class="badge bg-danger">Emmet</span>
+                        <span class="badge bg-primary">~2,500 lignes</span>
+                        <span class="badge bg-warning">Guide</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="emmet-mastery/" class="project-link">
+                            <i class="bi bi-rocket"></i> Apprendre
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-code-square"></i> XHTML Reference</h3>
+                    <p>Guide interactif complet basé sur XHTML Qanuq avec 77 balises HTML/XHTML et recherche interactive.</p>
+                    <div>
+                        <span class="badge bg-info">XHTML</span>
+                        <span class="badge bg-primary">~1,200 lignes</span>
+                        <span class="badge bg-success">Interactif</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="xhtml-reference/interactive/" class="project-link">
+                            <i class="bi bi-search"></i> Explorer
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-palette-fill"></i> CSS Zen Garden Demo</h3>
+                    <p>Démonstration interactive de la puissance du CSS - Un même HTML, des designs infinis!</p>
+                    <div>
+                        <span class="badge bg-danger">CSS</span>
+                        <span class="badge bg-primary">~2,500 lignes</span>
+                        <span class="badge bg-warning">Interactif</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="css-zen-garden-demo/interactive/" class="project-link">
+                            <i class="bi bi-eye"></i> Voir la Démo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-braces-asterisk"></i> JavaScript Reference</h3>
+                    <p>Guide JavaScript complet avec playground interactif et 6 exercices progressifs avec solutions.</p>
+                    <div>
+                        <span class="badge bg-warning">JavaScript</span>
+                        <span class="badge bg-primary">~3,200 lignes</span>
+                        <span class="badge bg-success">Playground</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="javascript-reference/interactive/" class="project-link">
+                            <i class="bi bi-play-circle"></i> Playground
+                        </a>
+                        <a href="javascript-reference/exercises/exercises.html" class="project-link ms-2">
+                            <i class="bi bi-pencil-square"></i> Exercices
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-wind"></i> Tailwind CSS Mastery</h3>
+                    <p>Framework CSS utility-first moderne avec comparaisons Bootstrap/Tailwind et showcase interactif.</p>
+                    <div>
+                        <span class="badge bg-primary">Tailwind CSS</span>
+                        <span class="badge bg-success">~2,500 lignes</span>
+                        <span class="badge bg-info">Utility-First</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="tailwind-css-mastery/" class="project-link">
+                            <i class="bi bi-palette-fill"></i> Explorer Tailwind
+                        </a>
+                        <a href="tailwind-css-mastery/showcase/" class="project-link ms-2">
+                            <i class="bi bi-eye"></i> Showcase
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="project-card">
+                    <h3><i class="bi bi-bookmark-star"></i> Resources & Tools</h3>
+                    <p>15+ ressources documentées avec utilisation pratique dans mes projets.</p>
+                    <div>
+                        <span class="badge bg-info">Ressources</span>
+                        <span class="badge bg-success">~626 lignes</span>
+                        <span class="badge bg-warning">Documentation</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="resources-and-tools/" class="project-link">
+                            <i class="bi bi-collection"></i> Découvrir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 mb-4">
+                <div class="project-card">
+                    <h3><i class="bi bi-check2-square"></i> To-Do-List App</h3>
+                    <p>Application CRUD complète avec LocalStorage, filtres et statistiques.</p>
+                    <div>
+                        <span class="badge bg-success">JavaScript</span>
+                        <span class="badge bg-primary">~1,500 lignes</span>
+                        <span class="badge bg-info">CRUD</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="todolist-app/" class="project-link">
+                            <i class="bi bi-play-circle"></i> Lancer l'App
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-award"></i> HTML N1 CV Homework</h3>
+                    <p>Évaluation HTML5 sémantique sans CSS, avec validation W3C et analyse de code.</p>
+                    <div>
+                        <span class="badge bg-success">HTML5</span>
+                        <span class="badge bg-primary">~1,017 lignes</span>
+                        <span class="badge bg-info">Évaluation</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="html-n1-cv/" class="project-link">
+                            <i class="bi bi-folder-open"></i> Explorer
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 mb-4">
+                <div class="project-card highlight-new">
+                    <h3><i class="bi bi-diagram-3"></i> DOM CSS Mastery</h3>
+                    <p>Module interactif pour maîtriser la manipulation DOM et le contrôle CSS avec JavaScript.</p>
+                    <div>
+                        <span class="badge bg-warning">DOM & CSS</span>
+                        <span class="badge bg-primary">~1,051 lignes</span>
+                        <span class="badge bg-success">Interactif</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="dom-css-mastery/" class="project-link">
+                            <i class="bi bi-play-circle"></i> Explorer
+                        </a>
+                        <a href="dom-css-mastery/interactive/playground.html" class="project-link ms-2">
+                            <i class="bi bi-code-square"></i> Playground
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="project-card">
+                    <h3><i class="bi bi-braces"></i> JSON SP</h3>
+                    <p>Situations Professionnelles - Activités JSON (Etapes 1A-1E) avec relations de données.</p>
+                    <div>
+                        <span class="badge bg-warning">JSON</span>
+                        <span class="badge bg-primary">~642 lignes</span>
+                        <span class="badge bg-success">Complet</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="js/SP/Etape1/" class="project-link">
+                            <i class="bi bi-file-code"></i> Voir JSON
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- HTML SECTION -->
+        <div class="section-title">
+            <i class="bi bi-filetype-html"></i> HTML - Exemples & Projets
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <h3>Formulaire Professionnel</h3>
+                    <p>Formulaire de contact complet avec validation HTML5 et JavaScript.</p>
+                    <div>
+                        <span class="badge bg-primary">~380 lignes</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="html/practical-examples/forms/01-contact-form-professional.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <h3>Article Sémantique</h3>
+                    <p>Article de blog avec toutes les balises sémantiques HTML5.</p>
+                    <div>
+                        <span class="badge bg-success">~580 lignes</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="html/practical-examples/semantic/01-blog-article-semantic.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <h3>Formulaires Web</h3>
+                    <p>Collection de formulaires avec validation et traitement PHP.</p>
+                    <div>
+                        <span class="badge bg-warning">Multiple</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="html/webForm/" class="project-link">
+                            <i class="bi bi-folder"></i> Explorer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CSS SECTION -->
+        <div class="section-title">
+            <i class="bi bi-palette"></i> CSS - Layouts & Design
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <h3>Pricing Table (Flexbox)</h3>
+                    <p>Tableau de tarifs avec Flexbox et design moderne.</p>
+                    <div>
+                        <span class="badge bg-primary">~470 lignes</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="css/practical-examples/flexbox/01-pricing-table-flexbox.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <h3>Photo Gallery (Grid)</h3>
+                    <p>Galerie photos Masonry avec CSS Grid.</p>
+                    <div>
+                        <span class="badge bg-success">~350 lignes</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="css/practical-examples/grid/01-photo-gallery.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <h3>Plus d'exemples CSS</h3>
+                    <p>Flexbox, Grid, Box Model, Combinateurs, Responsive...</p>
+                    <div>
+                        <span class="badge bg-info">Multiple</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="css/" class="project-link">
+                            <i class="bi bi-folder"></i> Explorer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- JAVASCRIPT SECTION -->
+        <div class="section-title">
+            <i class="bi bi-code-square"></i> JavaScript - Applications & Concepts
+        </div>
+        
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <h3>Fetch API Demo</h3>
+                    <p>Démonstration Fetch API avec données personnalisées.</p>
+                    <div>
+                        <span class="badge bg-warning">API</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="js/json/fetchAPIDemo.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <h3>User Management (OOJS)</h3>
+                    <p>Système de gestion d'utilisateurs avec JavaScript Orienté Objet.</p>
+                    <div>
+                        <span class="badge bg-primary">OOJS</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="js/OOJS/userManagementSystem.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4 mb-4">
+                <div class="project-card">
+                    <h3>Todo App Modern</h3>
+                    <p>Application moderne de gestion de tâches avec design épuré.</p>
+                    <div>
+                        <span class="badge bg-success">App</span>
+                    </div>
+                    <div class="mt-3">
+                        <a href="js/todoAppModern.html" class="project-link">
+                            <i class="bi bi-link"></i> Voir
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2025 Mikail Lekesiz - LP DWCA Portfolio</p>
+            <div class="footer-links mt-3">
+                <a href="https://github.com/lekesiz"><i class="bi bi-github"></i> GitHub</a>
+                <a href="#"><i class="bi bi-linkedin"></i> LinkedIn</a>
+                <a href="#"><i class="bi bi-envelope"></i> Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
