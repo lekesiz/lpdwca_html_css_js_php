@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Chapitre 2 : Navigation DOM | LP DWCA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --info-color: #3b82f6;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b0764 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+            padding: 30px 20px;
+            overflow-y: auto;
+            z-index: 1000;
+            box-shadow: 5px 0 20px rgba(0,0,0,0.3);
+        }
+
+        .sidebar-title {
+            color: white;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .sidebar-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar-nav li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar-nav a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            display: block;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+        }
+
+        .sidebar-nav a:hover {
+            background: rgba(102, 126, 234, 0.2);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .sidebar-nav .badge {
+            float: right;
+            font-size: 0.7rem;
+        }
+
+        .main-content {
+            margin-left: 280px;
+            padding: 40px;
+            background: white;
+            min-height: 100vh;
+        }
+
+        section {
+            margin-bottom: 60px;
+            scroll-margin-top: 20px;
+        }
+
+        section h2 {
+            color: #1e293b;
+            font-weight: bold;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        section h3 {
+            color: #475569;
+            font-weight: 600;
+            font-size: 1.6rem;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        section h4 {
+            color: #64748b;
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .concept-card {
+            background: #f8fafc;
+            border-left: 4px solid #667eea;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .concept-card h4 {
+            color: #667eea;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .code-example {
+            background: #1e293b;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .code-example pre {
+            margin: 0;
+        }
+
+        .code-example code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9rem;
+        }
+
+        .info-box {
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+
+        .info-box.info {
+            background: #eff6ff;
+            border-color: var(--info-color);
+            color: #1e40af;
+        }
+
+        .info-box.success {
+            background: #f0fdf4;
+            border-color: var(--success-color);
+            color: #166534;
+        }
+
+        .info-box.warning {
+            background: #fffbeb;
+            border-color: var(--warning-color);
+            color: #92400e;
+        }
+
+        .info-box.danger {
+            background: #fef2f2;
+            border-color: var(--danger-color);
+            color: #991b1b;
+        }
+
+        .method-card {
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        .method-card:hover {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .method-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #667eea;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 15px;
+        }
+
+        .method-description {
+            color: #475569;
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .demo-box {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+
+        .demo-box-title {
+            font-weight: bold;
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .demo-output {
+            background: white;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 15px;
+            margin-top: 15px;
+            font-family: monospace;
+            min-height: 50px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            margin: 25px 0;
+            border-collapse: collapse;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .comparison-table thead {
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: #f8fafc;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        }
+
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #e11d48;
+            font-size: 0.9em;
+        }
+
+        .badge-method {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+
+        .badge-property {
+            background: #10b981;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            margin-right: 8px;
+        }
+
+        .badge-readonly {
+            background: #f59e0b;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-title">
+            <i class="bi bi-code-square"></i> JavaScript DOM
+        </div>
+        <ul class="sidebar-nav" id="sidebar-nav">
+            <li><a href="#intro"><span class="badge bg-primary">1</span> Introduction</a></li>
+            <li><a href="#dom-tree"><span class="badge bg-primary">2</span> Arbre DOM</a></li>
+            <li><a href="#selection"><span class="badge bg-primary">3</span> Sélection d'Éléments</a></li>
+            <li><a href="#navigation"><span class="badge bg-primary">4</span> Navigation DOM</a></li>
+            <li><a href="#properties"><span class="badge bg-primary">5</span> Propriétés des Éléments</a></li>
+            <li><a href="#manipulation"><span class="badge bg-primary">6</span> Manipulation du DOM</a></li>
+            <li><a href="#creation"><span class="badge bg-primary">7</span> Création d'Éléments</a></li>
+            <li><a href="#events"><span class="badge bg-primary">8</span> Événements</a></li>
+            <li><a href="#attributes"><span class="badge bg-primary">9</span> Attributs HTML</a></li>
+            <li><a href="#classes"><span class="badge bg-primary">10</span> Classes CSS</a></li>
+            <li><a href="#styles"><span class="badge bg-primary">11</span> Styles CSS</a></li>
+            <li><a href="#examples"><span class="badge bg-success">12</span> Exemples Pratiques</a></li>
+            <li><a href="#best-practices"><span class="badge bg-warning">13</span> Bonnes Pratiques</a></li>
+        </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Introduction -->
+        <section id="intro">
+            <h2><i class="bi bi-info-circle"></i> Introduction au DOM</h2>
+            
+            <p>Le <strong>DOM (Document Object Model)</strong> est une interface de programmation qui représente la structure d'un document HTML ou XML sous forme d'arbre d'objets. Chaque élément HTML devient un objet JavaScript que vous pouvez manipuler.</p>
+            
+            <div class="info-box info">
+                <strong><i class="bi bi-lightbulb"></i> Concept Clé</strong>
+                <p class="mt-2 mb-0">Les éléments HTML sont des <strong>objets en JavaScript</strong>. Cela signifie que vous pouvez accéder à leurs propriétés, modifier leurs attributs, et appeler des méthodes sur eux.</p>
+            </div>
+            
+            <h3>Pourquoi le DOM est Important ?</h3>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="concept-card">
+                        <h4><i class="bi bi-check-circle"></i> Interactivité</h4>
+                        <p>Permet de créer des pages web dynamiques et interactives en répondant aux actions de l'utilisateur.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card">
+                        <h4><i class="bi bi-arrow-repeat"></i> Manipulation</h4>
+                        <p>Modifiez le contenu, la structure et le style de la page sans recharger.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card">
+                        <h4><i class="bi bi-plug"></i> Événements</h4>
+                        <p>Réagissez aux actions utilisateur : clics, saisie clavier, mouvements de souris, etc.</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="concept-card">
+                        <h4><i class="bi bi-diagram-3"></i> Structure</h4>
+                        <p>Accédez et naviguez dans la structure hiérarchique du document.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arbre DOM -->
+        <section id="dom-tree">
+            <h2><i class="bi bi-diagram-3"></i> L'Arbre DOM</h2>
+            
+            <p>Le DOM représente le document HTML sous forme d'arbre hiérarchique. Chaque élément est un <strong>nœud (node)</strong> dans cet arbre.</p>
+            
+            <h3>Structure Hiérarchique</h3>
+            
+            <div class="code-example">
+                <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;title&gt;Ma Page&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;h1 id="titre"&gt;Bonjour&lt;/h1&gt;
+        &lt;p class="texte"&gt;Bienvenue sur ma page.&lt;/p&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+            
+            <div class="info-box success">
+                <strong><i class="bi bi-tree"></i> Représentation en Arbre</strong>
+                <pre class="mt-2 mb-0" style="background: transparent; padding: 0;">
+Document
+└── html
+    ├── head
+    │   └── title
+    │       └── "Ma Page"
+    └── body
+        ├── h1#titre
+        │   └── "Bonjour"
+        └── p.texte
+            └── "Bienvenue sur ma page."
+                </pre>
+            </div>
+            
+            <h3>Types de Nœuds</h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Exemple</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Element Node</strong></td>
+                        <td>Éléments HTML (balises)</td>
+                        <td><code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>, <code>&lt;h1&gt;</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Text Node</strong></td>
+                        <td>Contenu textuel</td>
+                        <td>"Bonjour le monde"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Attribute Node</strong></td>
+                        <td>Attributs des éléments</td>
+                        <td><code>id="titre"</code>, <code>class="texte"</code></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Comment Node</strong></td>
+                        <td>Commentaires HTML</td>
+                        <td><code>&lt;!-- commentaire --&gt;</code></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Sélection d'Éléments -->
+        <section id="selection">
+            <h2><i class="bi bi-cursor"></i> Sélection d'Éléments</h2>
+            
+            <p>Pour manipuler un élément, vous devez d'abord le sélectionner. JavaScript offre plusieurs méthodes pour sélectionner des éléments du DOM.</p>
+            
+            <h3>Méthodes de Sélection</h3>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-method">Méthode</span>
+                    document.getElementById(id)
+                </div>
+                <div class="method-description">
+                    Sélectionne un élément par son attribut <code>id</code>. Retourne <strong>un seul élément</strong> ou <code>null</code> si non trouvé.
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">// HTML: &lt;h1 id="titre"&gt;Bonjour&lt;/h1&gt;
+const titre = document.getElementById('titre');
+console.log(titre.textContent); // "Bonjour"</code></pre>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-method">Méthode</span>
+                    document.getElementsByClassName(className)
+                </div>
+                <div class="method-description">
+                    Sélectionne tous les éléments ayant une classe spécifique. Retourne une <strong>HTMLCollection</strong> (collection live).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">// HTML: &lt;p class="texte"&gt;Paragraphe 1&lt;/p&gt;
+//        &lt;p class="texte"&gt;Paragraphe 2&lt;/p&gt;
+const paragraphes = document.getElementsByClassName('texte');
+console.log(paragraphes.length); // 2
+console.log(paragraphes[0].textContent); // "Paragraphe 1"</code></pre>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-method">Méthode</span>
+                    document.getElementsByTagName(tagName)
+                </div>
+                <div class="method-description">
+                    Sélectionne tous les éléments d'un type de balise donné. Retourne une <strong>HTMLCollection</strong>.
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">// Sélectionner tous les paragraphes
+const allParagraphs = document.getElementsByTagName('p');
+
+// Sélectionner toutes les images
+const allImages = document.getElementsByTagName('img');</code></pre>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-method">Méthode</span>
+                    document.querySelector(selector)
+                </div>
+                <div class="method-description">
+                    Sélectionne le <strong>premier élément</strong> correspondant au sélecteur CSS. Très flexible et moderne.
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">// Par ID
+const titre = document.querySelector('#titre');
+
+// Par classe
+const premierTexte = document.querySelector('.texte');
+
+// Par balise
+const premierParagraphe = document.querySelector('p');
+
+// Sélecteur complexe
+const lien = document.querySelector('nav a.active');</code></pre>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-method">Méthode</span>
+                    document.querySelectorAll(selector)
+                </div>
+                <div class="method-description">
+                    Sélectionne <strong>tous les éléments</strong> correspondant au sélecteur CSS. Retourne une <strong>NodeList</strong> (statique).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">// Tous les paragraphes
+const allParagraphs = document.querySelectorAll('p');
+
+// Tous les éléments avec la classe 'texte'
+const allTexts = document.querySelectorAll('.texte');
+
+// Sélecteur complexe
+const navLinks = document.querySelectorAll('nav ul li a');</code></pre>
+                </div>
+            </div>
+            
+            <div class="info-box warning">
+                <strong><i class="bi bi-exclamation-triangle"></i> HTMLCollection vs NodeList</strong>
+                <ul class="mt-2 mb-0">
+                    <li><strong>HTMLCollection</strong> : Collection "live" qui se met à jour automatiquement si le DOM change</li>
+                    <li><strong>NodeList</strong> : Collection "statique" qui ne change pas après sa création</li>
+                    <li>Les deux sont similaires à des tableaux mais ne sont pas de vrais tableaux</li>
+                    <li>Utilisez <code>Array.from()</code> ou <code>[...collection]</code> pour les convertir en tableaux</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Navigation DOM -->
+        <section id="navigation">
+            <h2><i class="bi bi-arrows-move"></i> Navigation dans le DOM</h2>
+            
+            <p>Une fois qu'un élément est sélectionné, vous pouvez naviguer vers ses éléments parents, enfants et voisins.</p>
+            
+            <h3>Relations Familiales dans le DOM</h3>
+            
+            <div class="code-example">
+                <pre><code class="language-html">&lt;div id="parent"&gt;
+    &lt;h2 id="titre"&gt;Titre&lt;/h2&gt;
+    &lt;p id="paragraphe"&gt;Texte&lt;/p&gt;
+    &lt;ul id="liste"&gt;
+        &lt;li&gt;Item 1&lt;/li&gt;
+        &lt;li&gt;Item 2&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+            
+            <h3>Navigation vers le Parent</h3>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.parentNode
+                </div>
+                <div class="method-description">
+                    Retourne le nœud parent (peut être n'importe quel type de nœud).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">const paragraphe = document.getElementById('paragraphe');
+const parent = paragraphe.parentNode;
+console.log(parent.id); // "parent"</code></pre>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.parentElement
+                </div>
+                <div class="method-description">
+                    Retourne l'élément parent (uniquement les éléments HTML, pas les autres types de nœuds).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">const paragraphe = document.getElementById('paragraphe');
+const parent = paragraphe.parentElement;
+console.log(parent.tagName); // "DIV"</code></pre>
+                </div>
+            </div>
+            
+            <h3>Navigation vers les Enfants</h3>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.childNodes
+                </div>
+                <div class="method-description">
+                    Retourne une NodeList de <strong>tous les nœuds enfants</strong> (éléments, texte, commentaires).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">const parent = document.getElementById('parent');
+const enfants = parent.childNodes;
+console.log(enfants.length); // Inclut les espaces/retours à la ligne</code></pre>
+                </div>
+                <div class="info-box warning">
+                    <strong>Attention :</strong> <code>childNodes</code> inclut les nœuds de texte (espaces, retours à la ligne), ce qui peut être déroutant.
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.children
+                </div>
+                <div class="method-description">
+                    Retourne une HTMLCollection contenant <strong>uniquement les éléments enfants</strong> (pas les nœuds de texte).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">const parent = document.getElementById('parent');
+const enfants = parent.children;
+console.log(enfants.length); // 3 (h2, p, ul)
+console.log(enfants[0].tagName); // "H2"</code></pre>
+                </div>
+                <div class="info-box success">
+                    <strong>Recommandé :</strong> Utilisez <code>children</code> plutôt que <code>childNodes</code> pour éviter les nœuds de texte indésirables.
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.firstChild / element.lastChild
+                </div>
+                <div class="method-description">
+                    Retourne le premier/dernier nœud enfant (peut être un nœud de texte).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">const parent = document.getElementById('parent');
+const premier = parent.firstChild; // Peut être un nœud de texte
+const dernier = parent.lastChild;</code></pre>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.firstElementChild / element.lastElementChild
+                </div>
+                <div class="method-description">
+                    Retourne le premier/dernier <strong>élément</strong> enfant (ignore les nœuds de texte).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">const parent = document.getElementById('parent');
+const premierElement = parent.firstElementChild;
+console.log(premierElement.tagName); // "H2"
+
+const dernierElement = parent.lastElementChild;
+console.log(dernierElement.tagName); // "UL"</code></pre>
+                </div>
+            </div>
+            
+            <h3>Navigation entre Frères et Sœurs (Siblings)</h3>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.nextSibling / element.previousSibling
+                </div>
+                <div class="method-description">
+                    Retourne le nœud frère suivant/précédent (peut être un nœud de texte).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">const paragraphe = document.getElementById('paragraphe');
+const suivant = paragraphe.nextSibling; // Peut être un nœud de texte
+const precedent = paragraphe.previousSibling;</code></pre>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.nextElementSibling / element.previousElementSibling
+                </div>
+                <div class="method-description">
+                    Retourne l'élément frère suivant/précédent (ignore les nœuds de texte).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">const paragraphe = document.getElementById('paragraphe');
+const suivant = paragraphe.nextElementSibling;
+console.log(suivant.tagName); // "UL"
+
+const precedent = paragraphe.previousElementSibling;
+console.log(precedent.tagName); // "H2"</code></pre>
+                </div>
+            </div>
+            
+            <h3>Tableau Récapitulatif</h3>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Propriété</th>
+                        <th>Retourne</th>
+                        <th>Inclut Nœuds Texte</th>
+                        <th>Recommandé</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>parentNode</code></td>
+                        <td>Nœud parent</td>
+                        <td>Oui</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td><code>parentElement</code></td>
+                        <td>Élément parent</td>
+                        <td>Non</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td><code>childNodes</code></td>
+                        <td>Tous les nœuds enfants</td>
+                        <td>Oui</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td><code>children</code></td>
+                        <td>Éléments enfants</td>
+                        <td>Non</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td><code>firstChild</code></td>
+                        <td>Premier nœud</td>
+                        <td>Oui</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td><code>firstElementChild</code></td>
+                        <td>Premier élément</td>
+                        <td>Non</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td><code>nextSibling</code></td>
+                        <td>Nœud frère suivant</td>
+                        <td>Oui</td>
+                        <td>❌</td>
+                    </tr>
+                    <tr>
+                        <td><code>nextElementSibling</code></td>
+                        <td>Élément frère suivant</td>
+                        <td>Non</td>
+                        <td>✅</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Propriétés des Éléments -->
+        <section id="properties">
+            <h2><i class="bi bi-list-ul"></i> Propriétés des Éléments</h2>
+            
+            <p>Chaque élément DOM possède des propriétés que vous pouvez lire ou modifier.</p>
+            
+            <h3>Contenu Textuel</h3>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.textContent
+                </div>
+                <div class="method-description">
+                    Obtient ou définit le contenu textuel de l'élément et de ses descendants (sans balises HTML).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">// HTML: &lt;p id="texte"&gt;Bonjour &lt;strong&gt;monde&lt;/strong&gt;&lt;/p&gt;
+const p = document.getElementById('texte');
+console.log(p.textContent); // "Bonjour monde"
+
+// Modifier le texte
+p.textContent = "Nouveau texte"; // Remplace tout le contenu</code></pre>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.innerHTML
+                </div>
+                <div class="method-description">
+                    Obtient ou définit le contenu HTML de l'élément (avec balises).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">// HTML: &lt;div id="contenu"&gt;&lt;p&gt;Texte&lt;/p&gt;&lt;/div&gt;
+const div = document.getElementById('contenu');
+console.log(div.innerHTML); // "&lt;p&gt;Texte&lt;/p&gt;"
+
+// Modifier le HTML
+div.innerHTML = "&lt;h2&gt;Nouveau titre&lt;/h2&gt;&lt;p&gt;Nouveau paragraphe&lt;/p&gt;";</code></pre>
+                </div>
+                <div class="info-box danger">
+                    <strong><i class="bi bi-shield-exclamation"></i> Attention Sécurité !</strong>
+                    <p class="mt-2 mb-0">N'utilisez jamais <code>innerHTML</code> avec du contenu provenant de l'utilisateur sans le nettoyer, car cela peut créer des failles XSS (Cross-Site Scripting).</p>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.outerHTML
+                </div>
+                <div class="method-description">
+                    Obtient ou définit le HTML de l'élément <strong>incluant l'élément lui-même</strong>.
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">// HTML: &lt;div id="box"&gt;&lt;p&gt;Contenu&lt;/p&gt;&lt;/div&gt;
+const div = document.getElementById('box');
+console.log(div.outerHTML); 
+// "&lt;div id=\"box\"&gt;&lt;p&gt;Contenu&lt;/p&gt;&lt;/div&gt;"</code></pre>
+                </div>
+            </div>
+            
+            <h3>Informations sur l'Élément</h3>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.tagName
+                </div>
+                <div class="method-description">
+                    Retourne le nom de la balise en MAJUSCULES (lecture seule).
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">const titre = document.querySelector('h1');
+console.log(titre.tagName); // "H1"</code></pre>
+                </div>
+            </div>
+            
+            <div class="method-card">
+                <div class="method-name">
+                    <span class="badge-property">Propriété</span>
+                    element.id / element.className
+                </div>
+                <div class="method-description">
+                    Obtient ou définit l'ID ou la classe de l'élément.
+                </div>
+                <div class="code-example">
+                    <pre><code class="language-javascript">const element = document.querySelector('div');
+
+// ID
+console.log(element.id);
+element.id = "nouveau-id";
+
+// Classe (chaîne de caractères)
+console.log(element.className);
+element.className = "classe1 classe2";</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back to Top Button -->
+        <div class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+            <i class="bi bi-arrow-up"></i>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script>
+        // Back to top button
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('show');
+            } else {
+                backToTop.classList.remove('show');
+            }
+        });
+        
+        // Smooth scroll for sidebar links
+        document.querySelectorAll('#sidebar-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
