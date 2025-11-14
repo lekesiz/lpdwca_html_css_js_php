@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz HTML & CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        .intro {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #667eea;
+            margin-bottom: 30px;
+            border-radius: 5px;
+        }
+
+        .intro p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        fieldset {
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            background: #fafafa;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #667eea;
+            padding: 0 10px;
+            font-size: 1.1em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="date"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        input[type="email"]:invalid:not(:placeholder-shown) {
+            border-color: #e74c3c;
+            background: #ffe6e6;
+        }
+
+        input[type="email"]:valid:not(:placeholder-shown) {
+            border-color: #27ae60;
+            background: #e6ffe6;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .radio-group,
+        .checkbox-group {
+            margin-top: 10px;
+        }
+
+        .radio-option,
+        .checkbox-option {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .radio-option label,
+        .checkbox-option label {
+            margin-bottom: 0;
+            cursor: pointer;
+            display: inline;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        .required {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quiz HTML & CSS</h1>
+        
+        <div class="intro">
+            <p>
+                Bienvenue au Quiz sur les langages HTML et CSS ! Ce formulaire a été conçu pour 
+                tester vos connaissances sur les éléments fondamentaux du développement web front-end. 
+                Veuillez répondre aux questions suivantes en utilisant vos connaissances sur HTML5 
+                et CSS3. Les champs marqués d'un astérisque (<span class="required">*</span>) sont obligatoires.
+            </p>
+        </div>
+
+        <form action="traitement.php" method="post">
+            
+            <fieldset>
+                <legend>Informations de l'étudiant</legend>
+                
+                <div class="form-group">
+                    <label for="nom">Nom <span class="required">*</span></label>
+                    <input type="text" id="nom" name="nom" placeholder="Entrez votre nom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="prenom">Prénom <span class="required">*</span></label>
+                    <input type="text" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Adresse e-mail <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="exemple@domaine.fr" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date_quiz">Date du Quiz <span class="required">*</span></label>
+                    <input type="date" id="date_quiz" name="date_quiz" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 1 : Structure HTML</legend>
+                <label>Quel élément HTML5 est utilisé pour définir la navigation principale d'un site web ? <span class="required">*</span></label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="q1_a" name="question1" value="header" required>
+                        <label for="q1_a">&lt;header&gt;</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="q1_b" name="question1" value="nav">
+                        <label for="q1_b">&lt;nav&gt;</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="q1_c" name="question1" value="menu">
+                        <label for="q1_c">&lt;menu&gt;</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="q1_d" name="question1" value="section">
+                        <label for="q1_d">&lt;section&gt;</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 2 : Propriétés CSS</legend>
+                <label>Quelles sont les propriétés CSS utilisées pour le modèle de boîte (Box Model) ? <span class="required">*</span></label>
+                <div class="checkbox-group">
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="q2_a" name="question2[]" value="margin" required>
+                        <label for="q2_a">margin</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="q2_b" name="question2[]" value="padding">
+                        <label for="q2_b">padding</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="q2_c" name="question2[]" value="border">
+                        <label for="q2_c">border</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="q2_d" name="question2[]" value="width">
+                        <label for="q2_d">width</label>
+                    </div>
+                    <div class="checkbox-option">
+                        <input type="checkbox" id="q2_e" name="question2[]" value="font-size">
+                        <label for="q2_e">font-size</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 3 : Sélecteurs CSS</legend>
+                <div class="form-group">
+                    <label for="selecteur">Quel type de sélecteur CSS préférez-vous utiliser ? <span class="required">*</span></label>
+                    <select id="selecteur" name="selecteur" required>
+                        <option value="">-- Choisissez une option --</option>
+                        <optgroup label="Sélecteurs simples">
+                            <option value="element">Sélecteur d'élément (p, div, h1)</option>
+                            <option value="classe">Sélecteur de classe (.maClasse)</option>
+                            <option value="id">Sélecteur d'ID (#monId)</option>
+                        </optgroup>
+                        <optgroup label="Sélecteurs avancés">
+                            <option value="descendant">Sélecteur descendant (div p)</option>
+                            <option value="enfant">Sélecteur d'enfant direct (div > p)</option>
+                            <option value="pseudo-classe">Pseudo-classes (:hover, :first-child)</option>
+                            <option value="pseudo-element">Pseudo-éléments (::before, ::after)</option>
+                        </optgroup>
+                        <optgroup label="Sélecteurs d'attribut">
+                            <option value="attribut">Sélecteur d'attribut ([type="text"])</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 4 : Code HTML/CSS</legend>
+                <div class="form-group">
+                    <label for="code">Écrivez un exemple de code HTML ou CSS qui crée une div avec un arrière-plan coloré :</label>
+                    <textarea id="code" name="code" rows="8" cols="50" placeholder="Exemple :
+<div style='background-color: #3498db;'>
+    Mon contenu
+</div>
+
+ou en CSS :
+.ma-div {
+    background-color: #3498db;
+}"></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Question 5 : Responsive Design</legend>
+                <label>Quelle unité CSS est recommandée pour créer des layouts responsives ?</label>
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="q5_a" name="question5" value="px">
+                        <label for="q5_a">px (pixels)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="q5_b" name="question5" value="em">
+                        <label for="q5_b">em (relative à la taille de police)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="q5_c" name="question5" value="rem">
+                        <label for="q5_c">rem (relative à la racine)</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="q5_d" name="question5" value="percent">
+                        <label for="q5_d">% (pourcentage)</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <button type="submit">Envoyer le Quiz</button>
+        </form>
+    </div>
+</body>
+</html>
