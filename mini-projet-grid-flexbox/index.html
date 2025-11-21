@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid vs Flexbox - Guide Comparatif</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .section {
+            background: white;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tech-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            border-left: 5px solid #667eea;
+        }
+
+        .tech-card.flexbox {
+            border-left-color: #f093fb;
+        }
+
+        .tech-card.grid {
+            border-left-color: #4facfe;
+        }
+
+        .tech-card h3 {
+            margin-top: 0;
+        }
+
+        .demo-container {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            border: 2px dashed #ddd;
+        }
+
+        .demo-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        /* Flexbox Demo */
+        .flex-demo {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .flex-item {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            min-width: 100px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Grid Demo */
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+        }
+
+        .grid-item {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Complex Grid Layout Demo */
+        .complex-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 100px);
+            gap: 1rem;
+        }
+
+        .complex-grid .item1 { grid-column: 1 / 3; grid-row: 1 / 2; background: #667eea; }
+        .complex-grid .item2 { grid-column: 3 / 5; grid-row: 1 / 3; background: #764ba2; }
+        .complex-grid .item3 { grid-column: 1 / 2; grid-row: 2 / 4; background: #f093fb; }
+        .complex-grid .item4 { grid-column: 2 / 4; grid-row: 2 / 3; background: #4facfe; }
+        .complex-grid .item5 { grid-column: 2 / 5; grid-row: 3 / 4; background: #43e97b; }
+
+        .complex-grid div {
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* Comparison Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: bold;
+        }
+
+        tr:hover {
+            background: #f5f7fa;
+        }
+
+        .pros-cons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .pros, .cons {
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+
+        .pros {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+        }
+
+        .cons {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+        }
+
+        .pros h4, .cons h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        ul {
+            margin-left: 1.5rem;
+        }
+
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .code-block .comment {
+            color: #6a9955;
+        }
+
+        .code-block .property {
+            color: #9cdcfe;
+        }
+
+        .code-block .value {
+            color: #ce9178;
+        }
+
+        .decision-tree {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .decision-tree h3 {
+            color: #d63031;
+            margin-top: 0;
+        }
+
+        .decision-box {
+            background: white;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+            border-left: 4px solid #d63031;
+        }
+
+        footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-radius: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pros-cons {
+                grid-template-columns: 1fr;
+            }
+
+            .complex-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(5, 80px);
+            }
+
+            .complex-grid .item1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+            .complex-grid .item2 { grid-column: 1 / 3; grid-row: 2 / 3; }
+            .complex-grid .item3 { grid-column: 1 / 2; grid-row: 3 / 4; }
+            .complex-grid .item4 { grid-column: 2 / 3; grid-row: 3 / 4; }
+            .complex-grid .item5 { grid-column: 1 / 3; grid-row: 4 / 5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CSS Grid vs Flexbox</h1>
+            <p>Guide Comparatif et Tutoriel Interactif</p>
+            <p style="font-size: 1rem; margin-top: 1rem; opacity: 0.8;">Mini-Projet - Université de Strasbourg</p>
+        </header>
+
+        <!-- Introduction -->
+        <section class="section">
+            <h2>Introduction</h2>
+            <p>
+                CSS Grid et Flexbox sont deux systèmes de mise en page puissants introduits dans CSS3. 
+                Bien qu'ils puissent sembler similaires, chacun est conçu pour résoudre des problèmes différents 
+                et excelle dans des cas d'usage spécifiques. Ce guide vous aidera à comprendre les différences 
+                fondamentales et à choisir le bon outil pour votre projet.
+            </p>
+            
+            <div class="comparison-grid">
+                <div class="tech-card flexbox">
+                    <h3>🔷 Flexbox</h3>
+                    <p><strong>Système unidimensionnel (1D)</strong></p>
+                    <p>Flexbox est conçu pour organiser les éléments dans une seule direction : soit en ligne (horizontalement), 
+                    soit en colonne (verticalement). Il excelle dans la création de composants et de petites mises en page.</p>
+                </div>
+
+                <div class="tech-card grid">
+                    <h3>🔶 CSS Grid</h3>
+                    <p><strong>Système bidimensionnel (2D)</strong></p>
+                    <p>CSS Grid permet de créer des mises en page complexes en deux dimensions simultanément : 
+                    lignes et colonnes. Il est idéal pour les structures de page complètes et les grilles complexes.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Démonstrations -->
+        <section class="section">
+            <h2>Démonstrations Visuelles</h2>
+
+            <h3>Flexbox en Action</h3>
+            <div class="demo-container">
+                <div class="demo-title">Navigation Horizontale (Flexbox)</div>
+                <div class="flex-demo">
+                    <div class="flex-item">Accueil</div>
+                    <div class="flex-item">À propos</div>
+                    <div class="flex-item">Services</div>
+                    <div class="flex-item">Portfolio</div>
+                    <div class="flex-item">Contact</div>
+                </div>
+            </div>
+
+            <div class="code-block">
+<span class="comment">/* Flexbox - Navigation horizontale */</span>
+<span class="property">.flex-demo</span> {
+    <span class="property">display</span>: <span class="value">flex</span>;
+    <span class="property">gap</span>: <span class="value">1rem</span>;
+    <span class="property">justify-content</span>: <span class="value">center</span>;
+    <span class="property">flex-wrap</span>: <span class="value">wrap</span>;
+}
+            </div>
+
+            <h3>CSS Grid en Action</h3>
+            <div class="demo-container">
+                <div class="demo-title">Galerie d'Images (CSS Grid)</div>
+                <div class="grid-demo">
+                    <div class="grid-item">Image 1</div>
+                    <div class="grid-item">Image 2</div>
+                    <div class="grid-item">Image 3</div>
+                    <div class="grid-item">Image 4</div>
+                    <div class="grid-item">Image 5</div>
+                    <div class="grid-item">Image 6</div>
+                </div>
+            </div>
+
+            <div class="code-block">
+<span class="comment">/* CSS Grid - Galerie responsive */</span>
+<span class="property">.grid-demo</span> {
+    <span class="property">display</span>: <span class="value">grid</span>;
+    <span class="property">grid-template-columns</span>: <span class="value">repeat(auto-fit, minmax(120px, 1fr))</span>;
+    <span class="property">gap</span>: <span class="value">1rem</span>;
+}
+            </div>
+
+            <h3>Layout Complexe avec Grid</h3>
+            <div class="demo-container">
+                <div class="demo-title">Mise en Page Avancée (CSS Grid)</div>
+                <div class="complex-grid">
+                    <div class="item1">Header</div>
+                    <div class="item2">Sidebar</div>
+                    <div class="item3">Nav</div>
+                    <div class="item4">Main</div>
+                    <div class="item5">Footer</div>
+                </div>
+            </div>
+
+            <div class="code-block">
+<span class="comment">/* CSS Grid - Layout complexe */</span>
+<span class="property">.complex-grid</span> {
+    <span class="property">display</span>: <span class="value">grid</span>;
+    <span class="property">grid-template-columns</span>: <span class="value">repeat(4, 1fr)</span>;
+    <span class="property">grid-template-rows</span>: <span class="value">repeat(3, 100px)</span>;
+    <span class="property">gap</span>: <span class="value">1rem</span>;
+}
+
+<span class="comment">/* Positionnement des éléments */</span>
+<span class="property">.item1</span> { <span class="property">grid-column</span>: <span class="value">1 / 3</span>; <span class="property">grid-row</span>: <span class="value">1 / 2</span>; }
+<span class="property">.item2</span> { <span class="property">grid-column</span>: <span class="value">3 / 5</span>; <span class="property">grid-row</span>: <span class="value">1 / 3</span>; }
+            </div>
+        </section>
+
+        <!-- Tableau Comparatif -->
+        <section class="section">
+            <h2>Tableau Comparatif Détaillé</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Critère</th>
+                        <th>Flexbox</th>
+                        <th>CSS Grid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Dimensionnalité</strong></td>
+                        <td>Unidimensionnel (1D)</td>
+                        <td>Bidimensionnel (2D)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Direction</strong></td>
+                        <td>Ligne OU colonne</td>
+                        <td>Lignes ET colonnes simultanément</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cas d'usage principal</strong></td>
+                        <td>Composants, navigation, alignement</td>
+                        <td>Layouts de page, grilles complexes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contrôle</strong></td>
+                        <td>Les enfants contrôlent leur taille</td>
+                        <td>Le parent contrôle la disposition</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alignement</strong></td>
+                        <td>Excellent pour centrer et aligner</td>
+                        <td>Alignement précis en 2D</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Responsive</strong></td>
+                        <td>Naturellement flexible</td>
+                        <td>Contrôle précis avec media queries</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Complexité</strong></td>
+                        <td>Plus simple pour débuter</td>
+                        <td>Plus de propriétés à maîtriser</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Support navigateurs</strong></td>
+                        <td>Excellent (IE 11+)</td>
+                        <td>Excellent (IE 11+ avec préfixes)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Avantages et Inconvénients -->
+        <section class="section">
+            <h2>Avantages et Inconvénients</h2>
+
+            <h3>Flexbox</h3>
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>✅ Avantages</h4>
+                    <ul>
+                        <li>Simple et intuitif pour les layouts 1D</li>
+                        <li>Excellent pour l'alignement et le centrage</li>
+                        <li>Parfait pour les composants réutilisables</li>
+                        <li>Gestion automatique de l'espace disponible</li>
+                        <li>Idéal pour les interfaces responsives</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h4>❌ Limitations</h4>
+                    <ul>
+                        <li>Limité aux layouts unidimensionnels</li>
+                        <li>Difficile pour les grilles complexes</li>
+                        <li>Pas de contrôle précis sur les deux axes</li>
+                        <li>Peut devenir complexe avec beaucoup d'éléments</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>CSS Grid</h3>
+            <div class="pros-cons">
+                <div class="pros">
+                    <h4>✅ Avantages</h4>
+                    <ul>
+                        <li>Contrôle total en 2D (lignes et colonnes)</li>
+                        <li>Parfait pour les layouts de page complets</li>
+                        <li>Positionnement précis des éléments</li>
+                        <li>Superposition facile d'éléments</li>
+                        <li>Grilles complexes simplifiées</li>
+                    </ul>
+                </div>
+                <div class="cons">
+                    <h4>❌ Limitations</h4>
+                    <ul>
+                        <li>Courbe d'apprentissage plus élevée</li>
+                        <li>Peut être trop complexe pour des cas simples</li>
+                        <li>Nécessite plus de planification</li>
+                        <li>Syntaxe plus verbose pour des layouts simples</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arbre de Décision -->
+        <section class="section">
+            <h2>Quand Utiliser Quoi ?</h2>
+            
+            <div class="decision-tree">
+                <h3>🎯 Arbre de Décision</h3>
+                
+                <div class="decision-box">
+                    <strong>Utilisez FLEXBOX si :</strong>
+                    <ul>
+                        <li>Vous créez une navigation horizontale ou verticale</li>
+                        <li>Vous devez aligner ou centrer des éléments</li>
+                        <li>Vous travaillez sur un composant réutilisable</li>
+                        <li>Vous avez besoin d'une distribution automatique de l'espace</li>
+                        <li>Votre layout est principalement unidimensionnel</li>
+                    </ul>
+                </div>
+
+                <div class="decision-box">
+                    <strong>Utilisez CSS GRID si :</strong>
+                    <ul>
+                        <li>Vous créez la structure principale d'une page</li>
+                        <li>Vous avez besoin d'un contrôle précis en 2D</li>
+                        <li>Vous créez une galerie d'images ou une grille de produits</li>
+                        <li>Vous devez superposer des éléments</li>
+                        <li>Votre design nécessite des alignements complexes</li>
+                    </ul>
+                </div>
+
+                <div class="decision-box" style="background: #e8f5e9; border-left-color: #4caf50;">
+                    <strong>💡 Conseil Pro :</strong> Vous pouvez (et devriez) combiner les deux ! 
+                    Utilisez Grid pour la structure globale et Flexbox pour les composants internes.
+                </div>
+            </div>
+        </section>
+
+        <!-- Ressources -->
+        <section class="section">
+            <h2>Ressources et Références</h2>
+            <h3>Documentation Officielle</h3>
+            <ul>
+                <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Flexible_Box_Layout" target="_blank">MDN - Flexbox</a></li>
+                <li><a href="https://developer.mozilla.org/fr/docs/Web/CSS/CSS_Grid_Layout" target="_blank">MDN - CSS Grid</a></li>
+                <li><a href="https://www.w3.org/TR/css-flexbox-1/" target="_blank">W3C - Flexbox Specification</a></li>
+                <li><a href="https://www.w3.org/TR/css-grid-1/" target="_blank">W3C - Grid Specification</a></li>
+            </ul>
+
+            <h3>Outils Interactifs</h3>
+            <ul>
+                <li><a href="https://flexboxfroggy.com/#fr" target="_blank">Flexbox Froggy</a> - Jeu pour apprendre Flexbox</li>
+                <li><a href="https://cssgridgarden.com/#fr" target="_blank">Grid Garden</a> - Jeu pour apprendre CSS Grid</li>
+                <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/" target="_blank">CSS-Tricks - Complete Guide to Grid</a></li>
+                <li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">CSS-Tricks - Complete Guide to Flexbox</a></li>
+            </ul>
+
+            <h3>Générateurs</h3>
+            <ul>
+                <li><a href="https://grid.layoutit.com/" target="_blank">Grid Generator</a> - Générateur visuel de CSS Grid</li>
+                <li><a href="https://flexbox.help/" target="_blank">Flexbox Help</a> - Générateur de Flexbox</li>
+            </ul>
+        </section>
+
+        <footer>
+            <p><strong>Mini-Projet : CSS Grid vs Flexbox</strong></p>
+            <p>Université de Strasbourg - Cours "Langages HTML et CSS"</p>
+            <p style="margin-top: 1rem; opacity: 0.7;">© 2025 - Projet Pédagogique</p>
+        </footer>
+    </div>
+</body>
+</html>
